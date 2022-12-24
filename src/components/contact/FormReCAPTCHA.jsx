@@ -1,4 +1,5 @@
 import { Typography, useTheme } from "@mui/material";
+import { memo } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 const FormReCAPTCHA = ({ formik }) => {
@@ -23,4 +24,4 @@ const FormReCAPTCHA = ({ formik }) => {
   );
 };
 
-export default FormReCAPTCHA;
+export default memo(FormReCAPTCHA);

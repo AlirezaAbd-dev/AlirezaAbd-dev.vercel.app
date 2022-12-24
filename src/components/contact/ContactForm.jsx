@@ -1,26 +1,30 @@
-import {
-  Button,
-  CardActions,
-} from "@mui/material";
+import { Button, CardActions } from "@mui/material";
 import { contactValidationSchema } from "../../pages/validations/contactValidation";
 import { useFormik } from "formik";
 import FormReCAPTCHA from "./FormReCAPTCHA";
 import FormInputs from "./FormInputs";
+import { useMemo } from "react";
 
 const ContactForm = () => {
-  const contactInputNames = {
-    fullname: "",
-    subject: "",
-    message: "",
-    recaptcha: "",
-  };
+  const contactInputNames = useMemo(() => {
+    return {
+      fullname: "",
+      subject: "",
+      message: "",
+      recaptcha: "",
+    };
+  }, []);
 
   const formik = useFormik({
     initialValues: contactInputNames,
     validationSchema: contactValidationSchema,
     onSubmit: (values) => {
       console.log("Form Values: " + values);
-      window.location.assign(`mailto:alireza.abedi9310@gmail.com?subject=${values.fullname+"-"+values.subject}&body=${values.message}`)
+      window.location.assign(
+        `mailto:alireza.abedi9310@gmail.com?subject=${
+          values.fullname + "-" + values.subject
+        }&body=${values.message}`
+      );
     },
   });
 

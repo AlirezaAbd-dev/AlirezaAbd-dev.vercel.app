@@ -11,7 +11,7 @@ const AboutMeHeader = () => {
   const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Grid container sx={{ mx: 3 }}>
+    <Grid container sx={{ mx: 1 }}>
       <Grid xs={12} sm={12} md={8} lg={8} xl={8}>
         <HeaderDivider
           color="secondary.main"

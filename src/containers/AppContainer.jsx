@@ -32,9 +32,9 @@ function AppContainer() {
     setPageNumber(newValue);
   }, []);
 
-  const handleThemeChange = () => {
+  const handleThemeChange = useCallback(() => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  };
+  }, []);
 
   return (
     <MainContext.Provider

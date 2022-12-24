@@ -2,7 +2,7 @@ import { Slide, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import { useEffect, useState } from "react";
 
-import worldMap from "../../assets/map.svg";
+import worldMap from "../../assets/tech2.png";
 
 const EmailMe = () => {
   const [loading, setLoading] = useState(false);
@@ -36,6 +36,7 @@ const EmailMe = () => {
           textAlign: "center",
           backgroundImage: `url(${worldMap})`,
           backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
           backgroundPosition: "center",
           filter: theme.palette.mode === "dark" ? "invert(100%)" : "",
         }}
