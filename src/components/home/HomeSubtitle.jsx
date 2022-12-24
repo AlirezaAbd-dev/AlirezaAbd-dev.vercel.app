@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { useMemo } from "react";
 import { useState } from "react";
@@ -6,6 +6,10 @@ import TextTransition, { presets } from "react-text-transition";
 
 const HomeSubtitle = () => {
   const [index, setIndex] = useState(0);
+
+  const theme = useTheme();
+
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   const strings = useMemo(
     () => [
@@ -41,7 +45,7 @@ const HomeSubtitle = () => {
         direction="up"
       >
         <Typography
-          variant="h5"
+          variant={isSmDown ? "h6" : "h5"}
           color="text.primary"
           sx={{
             mt: 4,
@@ -51,7 +55,7 @@ const HomeSubtitle = () => {
         </Typography>
       </TextTransition>
       <Typography
-        variant="h5"
+        variant={isSmDown ? "h6" : "h5"}
         color="text.primary"
         sx={{
           mt: 4,

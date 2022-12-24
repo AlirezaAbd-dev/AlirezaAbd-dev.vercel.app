@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { useRef } from "react";
 import Typed from "typed.js";
@@ -7,6 +7,8 @@ const HomeTitle = () => {
   const theme = useTheme();
 
   const nameEl = useRef(null);
+
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     const typedName = new Typed(nameEl.current, {
@@ -29,7 +31,7 @@ const HomeTitle = () => {
       }}
     >
       <Typography
-        variant="h3"
+        variant={isSmDown ? "h4" : "h3"}
         color={
           theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
         }
@@ -38,14 +40,14 @@ const HomeTitle = () => {
       </Typography>
       <Typography
         textAlign="center"
-        variant="h3"
+        variant={isSmDown ? "h4" : "h3"}
         color={
           theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
         }
         ref={nameEl}
       ></Typography>
       <Typography
-        variant="h3"
+        variant={isSmDown ? "h4" : "h3"}
         color={
           theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
         }
