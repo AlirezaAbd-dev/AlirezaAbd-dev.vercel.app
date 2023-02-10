@@ -1,5 +1,5 @@
 "use client";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Box, Skeleton, useTheme } from "@mui/material";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
@@ -13,12 +13,23 @@ import Image from "next/image";
 
 const Home = () => {
   const theme = useTheme();
+  const [background, setBackground] = useState(null);
+
+  const mode = theme.palette.mode;
 
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
   }, []);
 
   const particlesLoaded = useCallback(async (_container) => {}, []);
+
+  useEffect(() => {
+    if (mode === "light") {
+      setBackground(bg04);
+    } else {
+      setBackground(bg03);
+    }
+  }, [mode]);
 
   return (
     <Box
@@ -32,8 +43,7 @@ const Home = () => {
         width: "100%",
       }}
     >
-      {(theme.palette.mode === "dark" && !bg03) ||
-      (theme.palette.mode === "light" && !bg04) ? (
+      {!background ? (
         <Skeleton
           variant="rectangular"
           animation="wave"
@@ -48,7 +58,7 @@ const Home = () => {
       ) : (
         <Image
           priority
-          src={theme.palette.mode === "dark" ? bg03 : bg04}
+          src={background}
           alt="portfolio background"
           width={1500}
           height={1200}
