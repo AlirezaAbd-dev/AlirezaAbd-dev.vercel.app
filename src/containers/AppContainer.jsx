@@ -1,22 +1,16 @@
-import { useState, useCallback, useEffect, lazy, Suspense } from "react";
+"use client";
+import { useState, useCallback, useEffect } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 
-import MainLayout from "../Layouts/MainLayout";
-import { Sidebar } from "../components/sidebar";
-import Page from "../pages/components/Page";
-import SidebarContainer from "./SidebarContainer";
-import MainContext from "../context";
-import PagesContainer from "./PagesContainer";
-import { DrawerActionButton } from "../components/drawer";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
+import MainLayout from "@/Layouts/MainLayout";
+import { Sidebar } from "@/components/sidebar";
+import SidebarContainer from "@/containers/SidebarContainer";
+import MainContext from "@/context";
+import PagesContainer from "@/containers/PagesContainer";
+import { DrawerActionButton } from "@/components/drawer";
 
-const Home = lazy(() => import("../pages/Home"));
-const About = lazy(() => import("../pages/About"));
-const MyProjects = lazy(() => import("../pages/MyProjects"));
-const Contact = lazy(() => import("../pages/Contact"));
-
-function AppContainer() {
+function AppContainer({ children }) {
   const [pageNumber, setPageNumber] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mode, setMode] = useState();
@@ -64,26 +58,7 @@ function AppContainer() {
             index={pageNumber}
             onChangeIndex={handlePageNumber}
           >
-            <Page index={0}>
-              <Suspense fallback={<LoadingSpinner />}>
-                <Home />
-              </Suspense>
-            </Page>
-            <Page index={1}>
-              <Suspense fallback={<LoadingSpinner />}>
-                <About />
-              </Suspense>
-            </Page>
-            <Page index={2}>
-              <Suspense fallback={<LoadingSpinner />}>
-                <MyProjects />
-              </Suspense>
-            </Page>
-            <Page index={3}>
-              <Suspense fallback={<LoadingSpinner />}>
-                <Contact />
-              </Suspense>
-            </Page>
+            {children}
           </SwipeableViews>
         </PagesContainer>
       </MainLayout>

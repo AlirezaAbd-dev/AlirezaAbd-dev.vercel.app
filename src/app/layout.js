@@ -1,9 +1,12 @@
+import AppContainer from "@/containers/AppContainer";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="fa">
       <head />
-      <body>{children}</body>
+      <body dir="rtl">
+        <AppContainer>{children}</AppContainer>
+      </body>
     </html>
-  )
+  );
 }

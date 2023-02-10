@@ -1,5 +1,5 @@
+"use client"
 import { ThemeProvider } from "@mui/material/styles";
-import { HelmetProvider } from "react-helmet-async";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
@@ -21,12 +21,10 @@ const MainLayout = ({ children, mode }) => {
     <CacheProvider value={cacheRTL}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <HelmetProvider>
           {/* Grid System */}
           <Grid container sx={{ height: "100vh" }}>
             {children}
           </Grid>
-        </HelmetProvider>
       </ThemeProvider>
     </CacheProvider>
   );

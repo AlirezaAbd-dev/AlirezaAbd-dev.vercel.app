@@ -1,65 +1,96 @@
-import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
-import { RandomReveal } from "react-random-reveal";
+"use client";
+import { Suspense, lazy, useEffect, useState } from "react";
+import {
+  Avatar,
+  Box,
+  IconButton,
+  Skeleton,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import { GitHub, Telegram, Instagram } from "@mui/icons-material";
+import Image from "next/image";
 
 import AlphabetPersian from "../../constants/alphabetPersian";
-import { useState } from "react";
-import { GitHub, Telegram, Instagram } from "@mui/icons-material";
 import ThemeActionButton from "../ThemeActionButton";
 
 import avatar from "../../assets/avatar.png";
 
+const RandomReveal = lazy(() => import("@/dynamic-imports/useRandomReveal"));
+
 const SidebarHeader = () => {
   const [reveal, setReveal] = useState(false);
+  const [isRevealStart, setIsRevealStart] = useState(false);
 
-const theme = useTheme()
+  useEffect(() => {
+      setIsRevealStart(true);
+  }, []);
+
+  const theme = useTheme();
 
   return (
     <>
-      <ThemeActionButton /> 
-      <Avatar
-        src={avatar}
-        variant="circular"
-        sx={{
-          height: "auto",
-          width: "90%",
-          margin: "0 auto",
-          display: {
-            xs: "none",
-            sm: "none",
-            md: "flex",
-            lg: "flex",
-            xl: "flex",
-          },
-        }}
-      >
-        AA
-      </Avatar>
-      {/*</Hidden>*/}
-      <Typography variant="h6" color={theme.palette.mode === 'dark' ? "primary.light" : 'secondary.main'}>
-        <Typography variant="caption">
-          {`{" `}
-        </Typography>
-        <RandomReveal
-          isPlaying
-          duration={3}
-          characters="علیرضا عابدی"
-          characterSet={AlphabetPersian}
-          onComplete={() => {
-            setReveal(true);
+      <ThemeActionButton />
+      {!avatar ? (
+        <Skeleton
+          variant="circular"
+          sx={{
+            width: "150px",
+            height: "150px",
+            margin: "0 auto",
           }}
         />
-        <Typography variant="caption">
-          {` "}`}
-        </Typography>
+      ) : (
+        <Avatar
+          variant="circular"
+          sx={{
+            height: "auto",
+            width: "90%",
+            margin: "0 auto",
+            bgcolor: "transparent",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "flex",
+              lg: "flex",
+              xl: "flex",
+            },
+          }}
+        >
+          <Image src={avatar} alt="علیرضا عابدی" width={200} height={200} />
+        </Avatar>
+      )}
+      {/*</Hidden>*/}
+      <Typography
+        variant="h6"
+        color={
+          theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
+        }
+      >
+        <Typography variant="caption">{`{" `}</Typography>
+        <Suspense fallback=" ">
+          <RandomReveal
+            isPlaying={isRevealStart}
+            duration={3}
+            characters="علیرضا عابدی"
+            characterSet={AlphabetPersian}
+            onComplete={() => {
+              setReveal(true);
+            }}
+          />
+        </Suspense>
+        <Typography variant="caption">{` "}`}</Typography>
       </Typography>
       {reveal && (
         <Typography variant="caption" color={"text.primary"}>
-          <RandomReveal
-            isPlaying
-            duration={3}
-            characters="توسعه دهنده فول استک"
-            characterSet={AlphabetPersian}
-          />
+          <Suspense fallback=" ">
+            <RandomReveal
+              isPlaying={isRevealStart}
+              duration={3}
+              characters="توسعه دهنده فول استک"
+              characterSet={AlphabetPersian}
+            />
+          </Suspense>
         </Typography>
       )}
 

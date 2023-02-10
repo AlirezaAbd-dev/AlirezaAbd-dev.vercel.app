@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from "react";
 
 import { Tab, Tabs, useTheme } from "@mui/material";
