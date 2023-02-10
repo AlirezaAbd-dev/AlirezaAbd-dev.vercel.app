@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -5,12 +7,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Skeleton,
   Slide,
   Typography,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { useEffect } from "react";
-import { useState } from "react";
+import Grid from "@mui/material/Unstable_Grid2";
+import Image from "next/image";
 
 const ProjectCard = ({ item, index }) => {
   const [loading, setLoading] = useState(false);
@@ -41,13 +43,29 @@ const ProjectCard = ({ item, index }) => {
       >
         <Card sx={{ maxWidth: 600, backgroundColor: "steelblue" }}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              height="250"
-              width="300"
-              image={item.image}
-              alt={item.title}
-            />
+            <CardMedia width="400" height="250">
+              {!item.image ? (
+                <Skeleton
+                  variant="rectangular"
+                  animation="wave"
+                  width={400}
+                  height={250}
+                />
+              ) : (
+                <Image
+                  priority
+                  src={item.image}
+                  alt={item.title}
+                  width={600}
+                  height={450}
+                  style={{
+                    width: "400px",
+                    height: "250px",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+            </CardMedia>
             <CardContent>
               <Typography variant="body1" textAlign="left" gutterBottom>
                 {item.title}

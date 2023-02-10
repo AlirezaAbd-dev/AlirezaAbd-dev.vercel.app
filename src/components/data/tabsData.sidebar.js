@@ -27,7 +27,7 @@ const tabs = [
     ...tabProps(1),
   },
   {
-    path: 'myProjrcts',
+    path: 'myProjects',
     label: "نمونه کارها",
     icon: <TerminalRounded />,
     ...tabProps(2),

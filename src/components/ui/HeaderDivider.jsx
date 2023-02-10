@@ -1,6 +1,6 @@
 "use client";
-import { Chip, Divider, Slide, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Chip, Divider, Slide, Typography } from "@mui/material";
 
 const HeaderDivider = ({
   color,

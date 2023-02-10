@@ -13,7 +13,6 @@ const AboutMeSkills = () => {
   const [css, setCss] = useState(0);
   const [nodeJs, setNodeJs] = useState(0);
   const [reactJs, setReactJs] = useState(0);
-  const [reactNative, setReactNative] = useState(0);
   const [nextJs, setNextJs] = useState(0);
   const [git, setGit] = useState(0);
 
@@ -39,17 +38,13 @@ const AboutMeSkills = () => {
         const diff = Math.random() * 10;
         return Math.min(prevState + diff, 90);
       });
-      setReactNative((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 60);
-      });
       setNextJs((prevState) => {
         const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 60);
+        return Math.min(prevState + diff, 70);
       });
       setGit((prevState) => {
         const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 50);
+        return Math.min(prevState + diff, 60);
       });
     }, 200);
 
@@ -65,7 +60,6 @@ const AboutMeSkills = () => {
     reactSkill,
     nodeSkill,
     gitSkill,
-    reactNativeSkill,
     nextJsSkill,
   } = devSkills;
 
@@ -102,12 +96,6 @@ const AboutMeSkills = () => {
           name={reactSkill.name}
           color={reactSkill.color}
           icon={reactSkill.icon}
-        />
-        <Skill
-          value={reactNative}
-          name={reactNativeSkill.name}
-          color={reactNativeSkill.color}
-          icon={reactNativeSkill.icon}
         />
         <Skill
           value={nodeJs}

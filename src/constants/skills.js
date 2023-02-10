@@ -1,5 +1,5 @@
 "use client"
-import {htmlIcon, cssIcon, gitIcon, javascriptIcon, nodeIcon, reactIcon, reactNative, nextJsIcon} from '../assets/icons'
+import {htmlIcon, cssIcon, gitIcon, javascriptIcon, nodeIcon, reactIcon, nextJsIcon} from '../assets/icons'
 
 export const devSkills = {
     htmlSkill: {
@@ -26,14 +26,8 @@ export const devSkills = {
         icon: reactIcon,
         color: "info",
     },
-    reactNativeSkill:{
-        id: 4,
-        name: 'ReactNative',
-        icon: reactNative,
-        color: 'info'
-    },
     nodeSkill: {
-        id: 5,
+        id: 4,
         name: "NodeJS",
         icon: nodeIcon,
         color: "success",

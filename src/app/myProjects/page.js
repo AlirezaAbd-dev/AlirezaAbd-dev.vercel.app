@@ -1,10 +1,11 @@
+"use client";
 import { Card, CardContent, useTheme } from "@mui/material";
-
-import { myProjects } from "../constants/myProjects";
 import { CurrencyExchangeRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import HeaderDivider from "../components/ui/HeaderDivider";
-import ProjectCard from "../components/myProjects/ProjectCard";
+import Grid from "@mui/material/Unstable_Grid2";
+
+import { myProjects } from "@/constants/myProjects";
+import HeaderDivider from "@/components/ui/HeaderDivider";
+import ProjectCard from "@/components/myProjects/ProjectCard";
 
 const MyProjects = () => {
   const theme = useTheme();
