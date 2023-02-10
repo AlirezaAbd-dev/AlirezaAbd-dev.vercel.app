@@ -1,3 +1,4 @@
+"use client"
 import { Divider, Chip, Typography, Box, LinearProgress, Badge } from "@mui/material";
 
 const Skill = ({ icon, color, name, value }) => {

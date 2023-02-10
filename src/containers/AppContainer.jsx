@@ -55,8 +55,6 @@ function AppContainer({ children }) {
         <PagesContainer>
           <SwipeableViews
             axis={theme.direction === "ltr" ? "x-reverse" : "x"}
-            index={pageNumber}
-            onChangeIndex={handlePageNumber}
           >
             {children}
           </SwipeableViews>

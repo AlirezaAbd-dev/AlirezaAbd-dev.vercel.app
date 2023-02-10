@@ -1,10 +1,11 @@
-import { SelfImprovementRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
-
-import Skill from "../../pages/components/Skill";
-import { devSkills } from "../../constants/skills";
+"use client";
 import { useEffect, useState } from "react";
-import HeaderDivider from "../ui/HeaderDivider";
+import { SelfImprovementRounded } from "@mui/icons-material";
+import Grid from "@mui/material/Unstable_Grid2";
+
+import Skill from "@/page-components/Skill";
+import { devSkills } from "@/constants/skills";
+import HeaderDivider from "@/components/ui/HeaderDivider";
 
 const AboutMeSkills = () => {
   const [javascript, setJavascript] = useState(0);

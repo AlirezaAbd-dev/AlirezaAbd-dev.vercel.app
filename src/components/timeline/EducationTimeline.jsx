@@ -1,10 +1,11 @@
+"use client";
 import { WorkOutlineRounded } from "@mui/icons-material";
 import { Timeline } from "@mui/lab";
 import { Box } from "@mui/material";
 
-import education from "../../constants/education";
-import HeaderDivider from "../ui/HeaderDivider";
-import EducationTimelineItem from "./EducationTimelineItem";
+import education from "@/constants/education";
+import HeaderDivider from "@/components/ui/HeaderDivider";
+import EducationTimelineItem from "@/components/timeline/EducationTimelineItem";
 
 const EducationTimeline = () => {
   return (

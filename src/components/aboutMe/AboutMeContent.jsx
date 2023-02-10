@@ -1,8 +1,10 @@
-import { Avatar, Box, Slide } from "@mui/material";
+"use client";
+import { Avatar, Box, Skeleton, Slide } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import DevInfo from "../../pages/components/DevInfo";
+import DevInfo from "@/page-components/DevInfo";
 import avatar from "../../assets/avatar.jpg";
+import Image from "next/image";
 
 const AboutMeContent = () => {
   const [loading, setLoading] = useState(false);
@@ -31,11 +33,17 @@ const AboutMeContent = () => {
           },
         }}
       >
-        <Avatar
-          variant="circular"
-          src={avatar}
-          sx={{ width: 150, height: "auto" }}
-        />
+        {!avatar ? <Skeleton variant="circular" animation="pulse" width={150} height={150} />:(
+          <Avatar variant="circular" sx={{ width: 150, height: "auto" }}>
+          <Image
+            priority
+            src={avatar}
+            alt="علیرضا عابدی"
+            width={150}
+            height={150}
+            />
+        </Avatar>
+            )}
       </Box>
       <Slide
         direction="right"
@@ -46,8 +54,8 @@ const AboutMeContent = () => {
       >
         <Box>
           <DevInfo>نام و نام خانوادگی : علیرضا عابدی</DevInfo>
-          {/* <DevInfo>سال تولد : 1382</DevInfo> */}
-          <DevInfo>سن : 19</DevInfo>
+          <DevInfo>سال تولد : 1382</DevInfo>
+          {/* <DevInfo>سن : 19</DevInfo> */}
           <DevInfo>شهر : رشت</DevInfo>
           <DevInfo>alireza.abedi9310@gmail.com : ایمیل</DevInfo>
         </Box>

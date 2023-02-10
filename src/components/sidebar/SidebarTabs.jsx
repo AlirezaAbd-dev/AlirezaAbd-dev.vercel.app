@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useContext } from "react";
-
 import { Tab, Tabs, useTheme } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { grey } from "@mui/material/colors";
 
 import MainContext from "../../context";
@@ -11,7 +11,17 @@ const SidebarTabs = () => {
   const { pageNumber, handlePageNumber, setDrawerOpen } =
     useContext(MainContext);
 
+  const router = useRouter();
+
   const theme = useTheme();
+
+  const redirectToChosenPage = (path) => {
+    router.push(path);
+  };
+
+  const onMouseOverPrefetch = (path) => {
+    router.prefetch(path);
+  };
 
   return (
     <Tabs
@@ -24,10 +34,9 @@ const SidebarTabs = () => {
       onChange={handlePageNumber}
       sx={{
         "& .MuiTabs-indicator": {
-            bgcolor: theme.palette.mode === 'light' && "redAccent.main"
-        }
+          bgcolor: theme.palette.mode === "light" && "redAccent.main",
+        },
       }}
-      
     >
       {tabs.map((tab) => (
         <Tab
@@ -46,7 +55,11 @@ const SidebarTabs = () => {
               py: 1.5,
             },
           }}
-          onClick={() => setDrawerOpen(false)}
+          onClick={() => {
+            setDrawerOpen(false);
+            redirectToChosenPage(tab.path);
+          }}
+          onMouseOver={onMouseOverPrefetch.bind(null, tab.path)}
           {...tab}
         />
       ))}

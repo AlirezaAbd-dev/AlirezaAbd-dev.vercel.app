@@ -1,3 +1,4 @@
+"use client"
 import { lightTheme } from "../Layouts/theme/theme";
 
 export const createLinks = (mode) => {

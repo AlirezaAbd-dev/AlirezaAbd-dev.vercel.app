@@ -1,10 +1,11 @@
+"use client";
 import { CodeRounded } from "@mui/icons-material";
 import { useMediaQuery, useTheme } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Unstable_Grid2";
 
-import HeaderDivider from "../ui/HeaderDivider";
-import AboutMeMobile from "./AboutMeMobile";
-import AboutMeContent from "./AboutMeContent";
+import HeaderDivider from "@/components/ui/HeaderDivider";
+import AboutMeMobile from "@/components/aboutMe/AboutMeMobile";
+import AboutMeContent from "@/components/aboutMe/AboutMeContent";
 
 const AboutMeHeader = () => {
   const theme = useTheme();

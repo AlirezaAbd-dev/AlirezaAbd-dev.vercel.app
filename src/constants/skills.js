@@ -1,3 +1,4 @@
+"use client"
 import {htmlIcon, cssIcon, gitIcon, javascriptIcon, nodeIcon, reactIcon, reactNative, nextJsIcon} from '../assets/icons'
 
 export const devSkills = {

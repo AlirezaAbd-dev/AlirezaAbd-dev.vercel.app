@@ -1,7 +1,6 @@
+"use client"
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect } from "react";
-import { useMemo } from "react";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TextTransition, { presets } from "react-text-transition";
 
 const HomeSubtitle = () => {

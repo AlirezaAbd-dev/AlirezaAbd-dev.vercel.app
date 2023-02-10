@@ -15,21 +15,25 @@ const tabProps = (index) => {
 
 const tabs = [
   {
+    path: "/",
     label: "صفحه اصلی",
     icon: <HomeRounded />,
     ...tabProps(0),
   },
   {
+    path: 'about',
     label: "درباره من",
     icon: <FaceRounded />,
     ...tabProps(1),
   },
   {
+    path: 'myProjrcts',
     label: "نمونه کارها",
     icon: <TerminalRounded />,
     ...tabProps(2),
   },
   {
+    path: 'contactUs',
     label: "ارتباط با من",
     icon: <ConnectWithoutContactRounded />,
     ...tabProps(3),
