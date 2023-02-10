@@ -1,9 +1,11 @@
-import { Button, CardActions } from "@mui/material";
-import { contactValidationSchema } from "../../pages/validations/contactValidation";
-import { useFormik } from "formik";
-import FormReCAPTCHA from "./FormReCAPTCHA";
-import FormInputs from "./FormInputs";
+"use client";
 import { useMemo } from "react";
+import { Button, CardActions } from "@mui/material";
+import { useFormik } from "formik";
+
+import { contactValidationSchema } from "@/validations/contactValidation";
+import FormReCAPTCHA from "@/components/contact/FormReCAPTCHA";
+import FormInputs from "@/components/contact/FormInputs";
 
 const ContactForm = () => {
   const contactInputNames = useMemo(() => {
@@ -19,7 +21,6 @@ const ContactForm = () => {
     initialValues: contactInputNames,
     validationSchema: contactValidationSchema,
     onSubmit: (values) => {
-      console.log("Form Values: " + values);
       window.location.assign(
         `mailto:alireza.abedi9310@gmail.com?subject=${
           values.fullname + "-" + values.subject

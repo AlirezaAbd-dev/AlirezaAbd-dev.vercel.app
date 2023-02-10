@@ -1,6 +1,8 @@
+"use client"
 import { Slide, Typography, useTheme } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import worldMap from "../../assets/tech2.png";
 
@@ -30,17 +32,19 @@ const EmailMe = () => {
         sm={0}
         md={4}
         sx={{
+          position: 'relative',
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           textAlign: "center",
-          backgroundImage: `url(${worldMap})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100%",
-          backgroundPosition: "center",
           filter: theme.palette.mode === "dark" ? "invert(100%)" : "",
         }}
       >
+        <Image src={worldMap} alt="world map" width={300} height={200} style={{
+          position: 'absolute',
+          width: '100%',
+          height: 'auto'
+        }} />
         <Typography
           variant="h6"
           sx={{

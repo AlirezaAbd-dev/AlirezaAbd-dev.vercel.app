@@ -8,7 +8,7 @@ const FormReCAPTCHA = ({ formik }) => {
   return (
     <>
       <ReCAPTCHA
-        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
         theme={theme.palette.mode}
         hl="fa"
         onChange={(value) => {

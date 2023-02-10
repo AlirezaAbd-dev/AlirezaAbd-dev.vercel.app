@@ -18,6 +18,9 @@ export const lightTheme = createTheme({
       main: "#43cf21",
       light: "#43ff21",
       dark: "#439921",
+    },
+    progressbar:{
+      main: '#df2343'
     }
   },
   typography: {
@@ -42,6 +45,9 @@ export const darkTheme = createTheme({
       main: "#43cf21",
       light: "#43ff21",
       dark: "#439921",
+    },
+    progressbar:{
+      main: '#8be9fd'
     }
   },
   typography: {

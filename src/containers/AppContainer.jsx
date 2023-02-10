@@ -9,9 +9,11 @@ import SidebarContainer from "@/containers/SidebarContainer";
 import MainContext from "@/context";
 import PagesContainer from "@/containers/PagesContainer";
 import { DrawerActionButton } from "@/components/drawer";
+import { usePathname } from "next/navigation";
 
-function AppContainer({ children }) {
-  const [pageNumber, setPageNumber] = useState(0);
+function AppContainer({ path, children }) {
+
+  const [pageNumber, setPageNumber] = useState(path);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mode, setMode] = useState();
 
@@ -53,9 +55,7 @@ function AppContainer({ children }) {
         <DrawerActionButton />
 
         <PagesContainer>
-          <SwipeableViews
-            axis={theme.direction === "ltr" ? "x-reverse" : "x"}
-          >
+          <SwipeableViews axis={theme.direction === "ltr" ? "x-reverse" : "x"}>
             {children}
           </SwipeableViews>
         </PagesContainer>

@@ -1,12 +1,12 @@
+"use client";
 import { useState, useEffect } from "react";
 import { Card, CardContent, Slide } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Unstable_Grid2";
 import { ContactMail } from "@mui/icons-material";
-import { Helmet } from "react-helmet-async";
 
-import HeaderDivider from "../components/ui/HeaderDivider";
-import EmailMe from "../components/contact/EmailMe";
-import ContactForm from "../components/contact/ContactForm";
+import HeaderDivider from "@/components/ui/HeaderDivider";
+import EmailMe from "@/components/contact/EmailMe";
+import ContactForm from "@/components/contact/ContactForm";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -29,10 +29,6 @@ const Contact = () => {
         flexDirection: "column",
       }}
     >
-      <Helmet>
-        <title>علیرضا عابدی | ارتباط با من</title>
-      </Helmet>
-
       <CardContent>
         {/* DIVIDER */}
         <HeaderDivider
