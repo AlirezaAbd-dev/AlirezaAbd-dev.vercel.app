@@ -54,7 +54,7 @@ const AboutMeContent = () => {
       >
         <Box>
           <DevInfo>نام و نام خانوادگی : علیرضا عابدی</DevInfo>
-          <DevInfo>سال تولد : 1382</DevInfo>
+          <DevInfo>سال تولد : ۱۳۸۲</DevInfo>
           {/* <DevInfo>سن : 19</DevInfo> */}
           <DevInfo>شهر : رشت</DevInfo>
           <DevInfo>alireza.abedi9310@gmail.com : ایمیل</DevInfo>
