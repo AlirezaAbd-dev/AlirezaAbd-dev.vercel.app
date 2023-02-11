@@ -10,12 +10,17 @@ import {
   Skeleton,
   Slide,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 
 const ProjectCard = ({ item, index }) => {
+  const theme = useTheme();
   const [loading, setLoading] = useState(false);
+
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     setLoading(true);
@@ -43,29 +48,27 @@ const ProjectCard = ({ item, index }) => {
       >
         <Card sx={{ maxWidth: 600, backgroundColor: "steelblue" }}>
           <CardActionArea>
-            <CardMedia width="400" height="250">
               {!item.image ? (
                 <Skeleton
                   variant="rectangular"
                   animation="wave"
-                  width={400}
-                  height={250}
+                  width={"600px"}
+                  height={isSmDown ? "150px" : "250px"}
                 />
               ) : (
                 <Image
                   priority
                   src={item.image}
                   alt={item.title}
-                  width={600}
-                  height={450}
+                  width={700}
+                  height={500}
                   style={{
-                    width: "400px",
-                    height: "250px",
-                    objectFit: "cover",
+                    width: isSmDown ? 300: 500,
+                    height: isSmDown ? 200 : 370,
+                    objectFit: 'cover'
                   }}
                 />
               )}
-            </CardMedia>
             <CardContent>
               <Typography variant="body1" textAlign="left" gutterBottom>
                 {item.title}
