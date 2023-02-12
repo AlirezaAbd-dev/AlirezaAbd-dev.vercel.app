@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -21,10 +21,14 @@ const MainLayout = ({ children, mode }) => {
     <CacheProvider value={cacheRTL}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          {/* Grid System */}
-          <Grid container sx={{ height: "100vh" }}>
-            {children}
-          </Grid>
+        <Grid
+          container
+          sx={{
+            height: "100vh",
+          }}
+        >
+          {children}
+        </Grid>
       </ThemeProvider>
     </CacheProvider>
   );

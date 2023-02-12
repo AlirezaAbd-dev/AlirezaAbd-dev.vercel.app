@@ -21,7 +21,7 @@ export const lightTheme = createTheme({
     },
     progressbar:{
       main: '#df2343'
-    }
+    },
   },
   typography: {
     fontFamily: "vazir , roboto",
