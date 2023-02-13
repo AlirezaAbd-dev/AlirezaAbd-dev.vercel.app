@@ -30,7 +30,9 @@
     "stylis-plugin-rtl": "^2.1.1",
     "tsparticles": "^2.8.0",
     "typed.js": "^2.0.12",
-    "yup": "^1.0.0"
+    "yup": "^1.0.0",
+    "zod": "^3.20.6",
+    "zod-formik-adapter": "^1.2.0"
   },
   "devDependencies": {
     "typescript": "4.9.5"

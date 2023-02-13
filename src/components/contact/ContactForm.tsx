@@ -2,10 +2,11 @@
 import { useMemo } from "react";
 import { Button, CardActions } from "@mui/material";
 import { useFormik } from "formik";
+import { toFormikValidationSchema } from "zod-formik-adapter";
 
-import { contactValidationSchema } from "@/validations/contactValidation";
-import FormReCAPTCHA from "@/components/contact/FormReCAPTCHA";
-import FormInputs from "@/components/contact/FormInputs";
+import { contactValidationSchema } from "../../validations/contactValidation";
+import FormReCAPTCHA from "../../components/contact/FormReCAPTCHA";
+import FormInputs from "../../components/contact/FormInputs";
 
 const ContactForm = () => {
   const contactInputNames = useMemo(() => {
@@ -19,7 +20,7 @@ const ContactForm = () => {
 
   const formik = useFormik({
     initialValues: contactInputNames,
-    validationSchema: contactValidationSchema,
+    validationSchema: toFormikValidationSchema(contactValidationSchema),
     onSubmit: (values) => {
       window.location.assign(
         `mailto:alireza.abedi9310@gmail.com?subject=${

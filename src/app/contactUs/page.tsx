@@ -4,9 +4,9 @@ import { Card, CardContent, Slide } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { ContactMail } from "@mui/icons-material";
 
-import HeaderDivider from "@/components/ui/HeaderDivider";
-import EmailMe from "@/components/contact/EmailMe";
-import ContactForm from "@/components/contact/ContactForm";
+import HeaderDivider from "../../components/ui/HeaderDivider";
+import EmailMe from "../../components/contact/EmailMe";
+import ContactForm from "../../components/contact/ContactForm";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +33,7 @@ const Contact = () => {
         {/* DIVIDER */}
         <HeaderDivider
           color="warning.main"
+          //@ts-ignore
           icon={<ContactMail color="text.primary" />}
         >
           ارتباط با من
