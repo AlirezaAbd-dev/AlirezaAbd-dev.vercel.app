@@ -1,7 +1,10 @@
 "use client";
 import { lightTheme } from "../Layouts/theme/theme";
+import { RecursivePartial, IOptions } from "tsparticles-engine";
 
-export const createLinks = (mode: "light" | "dark") => {
+export const createLinks = (
+  mode: "light" | "dark"
+): RecursivePartial<IOptions> => {
   return {
     fps_limit: 60,
     interactivity: {

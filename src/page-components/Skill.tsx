@@ -10,7 +10,17 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 
-const Skill = ({ icon, color, name, value }) => {
+const Skill = ({
+  icon,
+  color,
+  name,
+  value,
+}: {
+  icon: any;
+  name: string;
+  color: string;
+  value: number;
+}) => {
   return (
     <>
       <Divider
@@ -24,9 +34,19 @@ const Skill = ({ icon, color, name, value }) => {
         }}
       >
         <Chip
-          icon={icon ? <Image src={icon} alt={name} width={30} /> : (
-            <Skeleton variant="circular" animation="wave" width={30} height={30} />
-          )}
+          icon={
+            icon ? (
+              <Image src={icon} alt={name} width={30} />
+            ) : (
+              <Skeleton
+                variant="circular"
+                animation="wave"
+                width={30}
+                height={30}
+              />
+            )
+          }
+          // @ts-ignore
           color={color}
           label={name}
           sx={{ color: "#000", p: 3 }}
@@ -37,6 +57,7 @@ const Skill = ({ icon, color, name, value }) => {
           <LinearProgress
             variant="determinate"
             value={value}
+            // @ts-ignore
             color={color}
             sx={{
               height: 10,
@@ -45,10 +66,11 @@ const Skill = ({ icon, color, name, value }) => {
           />
         </Box>
         <Box sx={{ minWidth: 35, mr: 2 }}>
-          <Typography variant="body2" >
+          <Typography variant="body2">
             <Badge
               variant="standard"
               badgeContent={`${Math.round(value)}%`}
+              // @ts-ignore
               color={color}
             />
           </Typography>

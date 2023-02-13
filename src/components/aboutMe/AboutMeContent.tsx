@@ -1,10 +1,10 @@
 "use client";
-import { Avatar, Box, Skeleton, Slide } from "@mui/material";
 import { useEffect, useState } from "react";
-
-import DevInfo from "@/page-components/DevInfo";
-import avatar from "../../assets/avatar.jpg";
+import { Avatar, Box, Skeleton, Slide } from "@mui/material";
 import Image from "next/image";
+
+import DevInfo from "../../page-components/DevInfo";
+import avatar from "../../assets/avatar.jpg";
 
 const AboutMeContent = () => {
   const [loading, setLoading] = useState(false);

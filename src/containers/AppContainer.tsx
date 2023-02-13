@@ -1,21 +1,25 @@
 "use client";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, ReactNode } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 
-import MainLayout from "@/Layouts/MainLayout";
-import { Sidebar } from "@/components/sidebar";
-import SidebarContainer from "@/containers/SidebarContainer";
-import MainContext from "@/context";
-import PagesContainer from "@/containers/PagesContainer";
-import { DrawerActionButton } from "@/components/drawer";
-import { usePathname } from "next/navigation";
+import MainLayout from "../Layouts/MainLayout";
+import { Sidebar } from "../components/sidebar";
+import SidebarContainer from "../containers/SidebarContainer";
+import MainContext from "../context";
+import PagesContainer from "../containers/PagesContainer";
+import { DrawerActionButton } from "../components/drawer";
 
-function AppContainer({ path, children }) {
-
+function AppContainer({
+  path,
+  children,
+}: {
+  path: number;
+  children: ReactNode;
+}) {
   const [pageNumber, setPageNumber] = useState(path);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [mode, setMode] = useState();
+  const [mode, setMode] = useState<"dark" | "light">("dark");
 
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
@@ -25,11 +29,15 @@ function AppContainer({ path, children }) {
     setMode(prefersDarkMode ? "dark" : "light");
   }, [prefersDarkMode]);
 
+  const onSetDrawerOpen = useCallback(() => {
+    setDrawerOpen(false);
+  }, []);
+
   useEffect(() => {
-    isMdUp && setDrawerOpen(false);
+    isMdUp && onSetDrawerOpen();
   }, [isMdUp]);
 
-  const handlePageNumber = useCallback((_event, newValue) => {
+  const handlePageNumber = useCallback((_event: Event, newValue: number) => {
     setPageNumber(newValue);
   }, []);
 
@@ -43,7 +51,7 @@ function AppContainer({ path, children }) {
         pageNumber,
         handlePageNumber,
         drawerOpen,
-        setDrawerOpen,
+        setDrawerOpen: onSetDrawerOpen,
         handleThemeChange,
       }}
     >

@@ -1,13 +1,14 @@
-"use client"
-import "../assets/css/styles.css"
+"use client";
+import "../assets/css/styles.css";
 
-import AppContainer from "@/containers/AppContainer";
+import { ReactNode } from "react";
+import AppContainer from "../containers/AppContainer";
 import { usePathname } from "next/navigation";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  
-  let pageNumberFromPathname;
+
+  let pageNumberFromPathname = 0;
   switch (pathname) {
     case "/":
       pageNumberFromPathname = 0;

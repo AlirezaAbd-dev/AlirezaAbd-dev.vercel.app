@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Chip, Divider, Slide, Typography } from "@mui/material";
 
 const HeaderDivider = ({
@@ -8,6 +8,12 @@ const HeaderDivider = ({
   chipAlign = "center",
   animation = true,
   children,
+}: {
+  color: string;
+  icon: any;
+  chipAlign?: "center" | "right";
+  animation?: boolean;
+  children: ReactNode;
 }) => {
   const [loading, setLoading] = useState(false);
 

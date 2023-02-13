@@ -1,13 +1,12 @@
-'use client'
+"use client";
 import { Box, Typography, useTheme } from "@mui/material";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 
 const HomeTitle = () => {
   const theme = useTheme();
 
-  const nameEl = useRef(null);
+  const nameEl = useRef<any>();
 
   useEffect(() => {
     const typedName = new Typed(nameEl.current, {

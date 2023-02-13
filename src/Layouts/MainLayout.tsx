@@ -8,6 +8,7 @@ import { CssBaseline } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 import { lightTheme, darkTheme } from "./theme/theme";
+import { ReactNode } from "react";
 
 //? NOTE Create RTL Cache
 const cacheRTL = createCache({
@@ -15,7 +16,13 @@ const cacheRTL = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const MainLayout = ({ children, mode }) => {
+const MainLayout = ({
+  children,
+  mode,
+}: {
+  children: ReactNode;
+  mode: "dark" | "light";
+}) => {
   const theme = mode === "dark" ? darkTheme : lightTheme;
   return (
     <CacheProvider value={cacheRTL}>
