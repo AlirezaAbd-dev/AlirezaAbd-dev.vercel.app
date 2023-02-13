@@ -9,11 +9,11 @@ import bg04 from "../assets/bg04.jpg";
 import { createLinks } from "../constants/particles";
 import HomeTitle from "../components/home/HomeTitle";
 import HomeSubtitle from "../components/home/HomeSubtitle";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 const Home = () => {
   const theme = useTheme();
-  const [background, setBackground] = useState(null);
+  const [background, setBackground] = useState<StaticImageData | null>(null);
 
   const mode = theme.palette.mode;
 

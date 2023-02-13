@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import { lightTheme } from "../Layouts/theme/theme";
 
-export const createLinks = (mode) => {
+export const createLinks = (mode: "light" | "dark") => {
   return {
     fps_limit: 60,
     interactivity: {

@@ -1,6 +1,6 @@
 "use client"
 import { SidebarDrawer } from "../drawer";
-import { SidebarContent } from "./";
+import { SidebarContent } from ".";
 
 const Sidebar = () => {
     return (
