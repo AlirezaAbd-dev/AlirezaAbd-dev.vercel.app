@@ -16,14 +16,17 @@ import ThemeActionButton from "../ThemeActionButton";
 
 import avatar from "../../assets/avatar.png";
 
-const RandomReveal = lazy(() => import("../../dynamic-imports/useRandomReveal"));
+const RandomReveal = lazy(
+  () => import("../../dynamic-imports/useRandomReveal")
+);
 
 const SidebarHeader = () => {
   const [reveal, setReveal] = useState(false);
   const [isRevealStart, setIsRevealStart] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-      setIsRevealStart(true);
+    setIsRevealStart(true);
   }, []);
 
   const theme = useTheme();
@@ -31,7 +34,7 @@ const SidebarHeader = () => {
   return (
     <>
       <ThemeActionButton />
-      {!avatar ? (
+      {!isImageLoaded && (
         <Skeleton
           variant="circular"
           sx={{
@@ -40,26 +43,33 @@ const SidebarHeader = () => {
             margin: "0 auto",
           }}
         />
-      ) : (
-        <Avatar
-          variant="circular"
-          sx={{
-            height: "auto",
-            width: "90%",
-            margin: "0 auto",
-            bgcolor: "transparent",
-            display: {
-              xs: "none",
-              sm: "none",
-              md: "flex",
-              lg: "flex",
-              xl: "flex",
-            },
-          }}
-        >
-          <Image src={avatar} alt="علیرضا عابدی" width={200} height={200} />
-        </Avatar>
       )}
+      <Avatar
+        variant="circular"
+        sx={{
+          height: "auto",
+          width: "90%",
+          margin: "0 auto",
+          bgcolor: "transparent",
+          display: {
+            xs: "none",
+            sm: "none",
+            md: isImageLoaded ? "flex" : "none",
+            lg: isImageLoaded ? "flex" : "none",
+            xl: isImageLoaded ? "flex" : "none",
+          },
+        }}
+      >
+        <Image
+          src={avatar}
+          alt="علیرضا عابدی"
+          width={200}
+          height={200}
+          onLoad={() => {
+            setIsImageLoaded(true);
+          }}
+        />
+      </Avatar>
       {/*</Hidden>*/}
       <Typography
         variant="h6"
