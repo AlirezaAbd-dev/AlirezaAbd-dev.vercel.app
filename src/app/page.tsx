@@ -14,7 +14,8 @@ import HomeSubtitle from "../components/home/HomeSubtitle";
 
 const Home = () => {
   const theme = useTheme();
-  const [background, setBackground] = useState<StaticImageData | null>(null);
+  const [background, setBackground] = useState<StaticImageData>(bg03);
+  const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
 
   const mode = theme.palette.mode;
 
@@ -28,6 +29,7 @@ const Home = () => {
   );
 
   useEffect(() => {
+    setIsBackgroundLoaded(false);
     if (mode === "light") {
       setBackground(bg04);
     } else {
@@ -47,7 +49,7 @@ const Home = () => {
         width: "100%",
       }}
     >
-      {!background ? (
+      {!isBackgroundLoaded && (
         <Skeleton
           variant="rectangular"
           animation="wave"
@@ -59,22 +61,25 @@ const Home = () => {
             objectFit: "cover",
           }}
         />
-      ) : (
-        <Image
-          priority
-          src={background}
-          alt="portfolio background"
-          width={1500}
-          height={1200}
-          style={{
-            position: "absolute",
-            zIndex: "-1",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
       )}
+      <Image
+        priority
+        src={background}
+        alt="portfolio background"
+        width={1500}
+        height={1200}
+        style={{
+          display: isBackgroundLoaded ? "block" : "none",
+          position: "absolute",
+          zIndex: "-1",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+        onLoad={() => {
+          setIsBackgroundLoaded(true);
+        }}
+      />
 
       <Particles
         id="tsparticles"

@@ -1,4 +1,11 @@
-const education = [
+export type educationItem= {
+year: string
+cert: string
+major: string
+place: string
+}
+
+const education: educationItem[] = [
   {
     year: "1396 - 1399",
     cert: "دیپلم",

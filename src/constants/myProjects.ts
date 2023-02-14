@@ -1,9 +1,16 @@
+import { StaticImageData } from "next/image";
 import {
   contactManagerImg,
   dashboardImg,
   glassmorphismLoginImg,
   todoImg,
 } from "../assets/projects";
+
+export interface myProjectsType {
+  title: string;
+  image: StaticImageData;
+  link: string;
+}
 
 export const myProjects = [
   {

@@ -8,6 +8,7 @@ import avatar from "../../assets/avatar.jpg";
 
 const AboutMeContent = () => {
   const [loading, setLoading] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -33,17 +34,33 @@ const AboutMeContent = () => {
           },
         }}
       >
-        {!avatar ? <Skeleton variant="circular" animation="pulse" width={150} height={150} />:(
-          <Avatar variant="circular" sx={{ width: 150, height: "auto" }}>
+        {!isImageLoaded && (
+          <Skeleton
+            variant="circular"
+            animation="pulse"
+            width={150}
+            height={150}
+          />
+        )}
+        <Avatar
+          variant="circular"
+          sx={{
+            display: isImageLoaded ? "block" : "none",
+            width: 150,
+            height: "auto",
+          }}
+        >
           <Image
             priority
             src={avatar}
             alt="علیرضا عابدی"
             width={150}
             height={150}
-            />
+            onLoad={() => {
+              setIsImageLoaded(true);
+            }}
+          />
         </Avatar>
-            )}
       </Box>
       <Slide
         direction="right"

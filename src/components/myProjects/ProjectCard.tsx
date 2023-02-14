@@ -6,7 +6,6 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardMedia,
   Skeleton,
   Slide,
   Typography,
@@ -15,10 +14,18 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
+import { myProjectsType } from "../../constants/myProjects";
 
-const ProjectCard = ({ item, index }) => {
+const ProjectCard = ({
+  item,
+  index,
+}: {
+  item: myProjectsType;
+  index: number;
+}) => {
   const theme = useTheme();
   const [loading, setLoading] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -48,27 +55,30 @@ const ProjectCard = ({ item, index }) => {
       >
         <Card sx={{ maxWidth: 600, backgroundColor: "steelblue" }}>
           <CardActionArea>
-              {!item.image ? (
-                <Skeleton
-                  variant="rectangular"
-                  animation="wave"
-                  width={"600px"}
-                  height={isSmDown ? "150px" : "250px"}
-                />
-              ) : (
-                <Image
-                  priority
-                  src={item.image}
-                  alt={item.title}
-                  width={700}
-                  height={500}
-                  style={{
-                    width: isSmDown ? 300: 500,
-                    height: isSmDown ? 200 : 370,
-                    objectFit: 'cover'
-                  }}
-                />
-              )}
+            {!isImageLoaded && (
+              <Skeleton
+                variant="rectangular"
+                animation="wave"
+                width={"600px"}
+                height={isSmDown ? "150px" : "250px"}
+              />
+            )}
+            <Image
+              priority
+              src={item.image}
+              alt={item.title}
+              width={700}
+              height={500}
+              style={{
+                display: isImageLoaded ? "block" : "none",
+                width: isSmDown ? 300 : 500,
+                height: isSmDown ? 200 : 370,
+                objectFit: "cover",
+              }}
+              onLoad={() => {
+                setIsImageLoaded(true);
+              }}
+            />
             <CardContent>
               <Typography variant="body1" textAlign="left" gutterBottom>
                 {item.title}

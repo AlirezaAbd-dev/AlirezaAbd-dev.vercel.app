@@ -8,8 +8,15 @@ import { contactValidationSchema } from "../../validations/contactValidation";
 import FormReCAPTCHA from "../../components/contact/FormReCAPTCHA";
 import FormInputs from "../../components/contact/FormInputs";
 
+export interface initialFormType {
+  fullname: string;
+  subject: string;
+  message: string;
+  recaptcha: string;
+}
+
 const ContactForm = () => {
-  const contactInputNames = useMemo(() => {
+  const contactInputNames: initialFormType = useMemo(() => {
     return {
       fullname: "",
       subject: "",
@@ -41,9 +48,10 @@ const ContactForm = () => {
         {/* SUBMIT BUTTON */}
         <Button
           type="submit"
+          // @ts-ignore
           color="greenAccent"
           variant="contained"
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, color: 'text.primary' }}
           fullWidth
         >
           ارسال پیام

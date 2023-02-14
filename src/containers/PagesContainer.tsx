@@ -1,7 +1,8 @@
 "use client";
 import Grid from "@mui/material/Unstable_Grid2";
+import { ReactNode } from "react";
 
-const PagesContainer = ({ children }) => {
+const PagesContainer = ({ children }: { children: ReactNode }) => {
   return (
     <Grid
       xs={12}

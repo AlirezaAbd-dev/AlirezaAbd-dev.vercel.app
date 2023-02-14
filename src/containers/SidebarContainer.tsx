@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import { useTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Unstable_Grid2";
+import { ReactNode } from "react";
 
-const SidebarContainer = ({ children }) => {
+const SidebarContainer = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
   return (
     <Grid

@@ -3,55 +3,19 @@ import { useEffect, useState } from "react";
 import { SelfImprovementRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 
+import useSkillRandom from "../../hooks/useSkillRandom";
 import Skill from "../../page-components/Skill";
 import { devSkills } from "../../constants/skills";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 
 const AboutMeSkills = () => {
-  const [javascript, setJavascript] = useState(0);
-  const [html, setHtml] = useState(0);
-  const [css, setCss] = useState(0);
-  const [nodeJs, setNodeJs] = useState(0);
-  const [reactJs, setReactJs] = useState(0);
-  const [nextJs, setNextJs] = useState(0);
-  const [git, setGit] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setJavascript((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 80);
-      });
-      setHtml((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 80);
-      });
-      setCss((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 85);
-      });
-      setNodeJs((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 50);
-      });
-      setReactJs((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 90);
-      });
-      setNextJs((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 70);
-      });
-      setGit((prevState) => {
-        const diff = Math.random() * 10;
-        return Math.min(prevState + diff, 60);
-      });
-    }, 200);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+  const javascript = useSkillRandom(80);
+  const html = useSkillRandom(80);
+  const css = useSkillRandom(85);
+  const nodeJs = useSkillRandom(50);
+  const reactJs = useSkillRandom(90);
+  const nextJs = useSkillRandom(70);
+  const git = useSkillRandom(60);
 
   const {
     htmlSkill,

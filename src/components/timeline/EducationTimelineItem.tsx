@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { SchoolRounded } from "@mui/icons-material";
 import {
   TimelineConnector,
@@ -9,7 +9,9 @@ import {
 } from "@mui/lab";
 import { Typography } from "@mui/material";
 
-const EducationTimelineItem = ({ item }) => {
+import { educationItem } from "../../constants/education";
+
+const EducationTimelineItem = ({ item }: { item: educationItem }) => {
   return (
     <TimelineItem>
       <TimelineSeparator>

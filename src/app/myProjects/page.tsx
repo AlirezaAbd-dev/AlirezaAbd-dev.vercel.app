@@ -3,9 +3,9 @@ import { Card, CardContent, useTheme } from "@mui/material";
 import { CurrencyExchangeRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 
-import { myProjects } from "@/constants/myProjects";
-import HeaderDivider from "@/components/ui/HeaderDivider";
-import ProjectCard from "@/components/myProjects/ProjectCard";
+import { myProjects } from "../../constants/myProjects";
+import HeaderDivider from "../../components/ui/HeaderDivider";
+import ProjectCard from "../../components/myProjects/ProjectCard";
 
 const MyProjects = () => {
   const theme = useTheme();
@@ -25,6 +25,7 @@ const MyProjects = () => {
               ? "greenAccent.main"
               : "greenAccent.light"
           }
+          // @ts-ignore
           icon={<CurrencyExchangeRounded color="text.primary" />}
         >
           نمونه کارهای من

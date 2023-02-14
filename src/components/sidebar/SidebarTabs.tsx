@@ -15,11 +15,11 @@ const SidebarTabs = () => {
 
   const theme = useTheme();
 
-  const redirectToChosenPage = (path) => {
+  const redirectToChosenPage = (path: string) => {
     router.push(path);
   };
 
-  const onMouseOverPrefetch = (path) => {
+  const onMouseOverPrefetch = (path: string) => {
     router.prefetch(path);
   };
 
@@ -27,22 +27,20 @@ const SidebarTabs = () => {
     <Tabs
       orientation="vertical"
       variant="scrollable"
-      scrollbutton="auto"
       allowScrollButtonsMobile
       value={pageNumber}
       textColor={theme.palette.mode === "dark" ? "primary" : "secondary"}
       onChange={handlePageNumber}
       sx={{
         "& .MuiTabs-indicator": {
-          bgcolor: theme.palette.mode === "light" && "redAccent.main",
+          bgcolor: theme.palette.mode === "light" ? "redAccent.main" : "",
         },
       }}
     >
-      {tabs.map((tab) => (
+      {tabs.map((tab, index) => (
         <Tab
-          key={tab.id}
-          label={tab.label}
-          icon={tab.icon}
+          key={index}
+          icon={<tab.icon />}
           iconPosition="start"
           sx={{
             "&.MuiTab-root": {
@@ -60,7 +58,7 @@ const SidebarTabs = () => {
             redirectToChosenPage(tab.path);
           }}
           onMouseOver={onMouseOverPrefetch.bind(null, tab.path)}
-          {...tab}
+          label={tab.label}
         />
       ))}
     </Tabs>

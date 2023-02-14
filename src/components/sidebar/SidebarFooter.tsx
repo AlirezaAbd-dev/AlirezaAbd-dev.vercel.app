@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { CopyrightRounded, FavoriteRounded } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 
@@ -17,7 +17,7 @@ const SidebarFooter = () => {
       <Typography variant="subtitle2" color="text.primary">
         طراحی شده توسط علیرضا عابدی{" "}
       </Typography>
-      <Typography variant="subtite2">
+      <Typography variant="subtitle2">
         <FavoriteRounded
           sx={{
             verticalAlign: "middle",

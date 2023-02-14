@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Slide, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ const EmailMe = () => {
         sm={0}
         md={4}
         sx={{
-          position: 'relative',
+          position: "relative",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -40,18 +40,25 @@ const EmailMe = () => {
           filter: theme.palette.mode === "dark" ? "invert(100%)" : "",
         }}
       >
-        <Image src={worldMap} alt="world map" width={300} height={200} style={{
-          position: 'absolute',
-          width: '100%',
-          height: 'auto'
-        }} />
+        <Image
+          src={worldMap}
+          alt="world map"
+          width={300}
+          height={200}
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "auto",
+          }}
+        />
         <Typography
           variant="h6"
           sx={{
             fontFamily: "vazir",
             mt: 4,
             color: "text.primary",
-            filter: theme.palette.mode === "dark" && "invert(100%)",
+            filter:
+              theme.palette.mode === "dark" ? "invert(100%)" : "invert(0)",
             display: {
               xs: "none",
               sm: "none",
@@ -64,22 +71,22 @@ const EmailMe = () => {
           هر چیزی خواستی بهم بگو
         </Typography>
         <Typography
-          variant="body1"
-          color="text.primary"
           sx={{
             mt: 2,
-            filter: theme.palette.mode === "dark" && "invert(100%)",
+            filter:
+              theme.palette.mode === "dark" ? "invert(100%)" : "invert(0)",
             display: {
               xs: "none",
               sm: "none",
               md: "block",
             },
           }}
+          variant="body1"
+          color="text.primary"
         >
           👋{" "}
           <a
             href="mailto:alireza.abedi9310@gmail.com"
-            alt="email"
             style={{
               color: theme.palette.redAccent.main,
             }}

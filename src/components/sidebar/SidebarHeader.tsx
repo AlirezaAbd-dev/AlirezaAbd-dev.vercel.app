@@ -16,7 +16,7 @@ import ThemeActionButton from "../ThemeActionButton";
 
 import avatar from "../../assets/avatar.png";
 
-const RandomReveal = lazy(() => import("@/dynamic-imports/useRandomReveal"));
+const RandomReveal = lazy(() => import("../../dynamic-imports/useRandomReveal"));
 
 const SidebarHeader = () => {
   const [reveal, setReveal] = useState(false);
@@ -94,7 +94,7 @@ const SidebarHeader = () => {
         </Typography>
       )}
 
-      <Box components="div" sx={{ m: "10px auto", textAlign: "center" }}>
+      <Box sx={{ m: "10px auto", textAlign: "center" }}>
         <IconButton aria-label="Github" sx={{ width: 40, height: 40 }}>
           <a
             href="https://github.com/0AliReza0"
@@ -106,7 +106,7 @@ const SidebarHeader = () => {
         </IconButton>
         <IconButton aria-label="Telegram" sx={{ width: 40, height: 40 }}>
           <a
-            href="https://t.me/aliCR7reza"
+            href="https://t.me/AlirezaAbd_Dev"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -115,7 +115,7 @@ const SidebarHeader = () => {
         </IconButton>
         <IconButton aria-label="Instagram" sx={{ width: 40, height: 40 }}>
           <a
-            href="https://www.instagram.com/0alicr7reza0"
+            href="https://www.instagram.com/alirezaabd.dev"
             target="_blank"
             rel="noopener noreferrer"
           >

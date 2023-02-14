@@ -6,37 +6,26 @@ import {
   TerminalRounded,
 } from "@mui/icons-material";
 
-const tabProps = (index) => {
-  return {
-    id: `sidebar-tab-${index}`,
-    "aria-controls": `tabpanel-${index}`,
-  };
-};
-
 const tabs = [
   {
     path: "/",
     label: "صفحه اصلی",
-    icon: <HomeRounded />,
-    ...tabProps(0),
+    icon: HomeRounded,
   },
   {
-    path: 'about',
+    path: "about",
     label: "درباره من",
-    icon: <FaceRounded />,
-    ...tabProps(1),
+    icon: FaceRounded,
   },
   {
-    path: 'myProjects',
+    path: "myProjects",
     label: "نمونه کارها",
-    icon: <TerminalRounded />,
-    ...tabProps(2),
+    icon: TerminalRounded,
   },
   {
-    path: 'contactUs',
+    path: "contactUs",
     label: "ارتباط با من",
-    icon: <ConnectWithoutContactRounded />,
-    ...tabProps(3),
+    icon: ConnectWithoutContactRounded,
   },
 ];
 

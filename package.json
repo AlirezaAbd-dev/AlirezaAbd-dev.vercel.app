@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@mui/types": "^7.2.3",
+    "@types/react-google-recaptcha": "^2.1.5",
     "@types/react-swipeable-views": "^0.13.1",
     "@types/stylis": "^4.0.2",
     "typescript": "4.9.5"

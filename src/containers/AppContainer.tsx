@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useEffect, ReactNode } from "react";
+import { useState, useCallback, useEffect, ReactNode, ChangeEvent, SyntheticEvent } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 
@@ -29,15 +29,15 @@ function AppContainer({
     setMode(prefersDarkMode ? "dark" : "light");
   }, [prefersDarkMode]);
 
-  const onSetDrawerOpen = useCallback(() => {
-    setDrawerOpen(false);
+  const onSetDrawerOpen = useCallback((isOpen: boolean) => {
+    setDrawerOpen(isOpen);
   }, []);
 
   useEffect(() => {
-    isMdUp && onSetDrawerOpen();
+    isMdUp && onSetDrawerOpen(false);
   }, [isMdUp]);
 
-  const handlePageNumber = useCallback((_event: Event, newValue: number) => {
+  const handlePageNumber = useCallback((e: SyntheticEvent, newValue: number) => {
     setPageNumber(newValue);
   }, []);
 
