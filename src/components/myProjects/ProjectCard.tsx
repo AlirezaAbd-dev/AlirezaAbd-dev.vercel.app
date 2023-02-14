@@ -59,8 +59,8 @@ const ProjectCard = ({
               <Skeleton
                 variant="rectangular"
                 animation="wave"
-                width={"600px"}
-                height={isSmDown ? "150px" : "250px"}
+                width={isSmDown ? "300px" : "500px"}
+                height={isSmDown ? "200px" : "370px"}
               />
             )}
             <Image
