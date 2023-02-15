@@ -7,6 +7,7 @@ export default function Head() {
         name="description"
         content="به وبسایت شخصی علیرضا عابدی خوش آمدید. من یک توسعه دهنده فول استک هستم که علاقه ی زیادی به برنامه نویسی دارم و دارم سعی میکنم که روز به روز پیشرفت کنم."
       />
+      <meta name="author" content="علیرضا عابدی" />
       <link rel="icon" href="/favicon.ico" />
     </>
   );
