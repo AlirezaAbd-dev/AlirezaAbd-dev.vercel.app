@@ -12,6 +12,19 @@ import { createLinks } from "../constants/particles";
 import HomeTitle from "../components/home/HomeTitle";
 import HomeSubtitle from "../components/home/HomeSubtitle";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "علیرضا عابدی",
+  viewport: "width=device-width, initial-scale=1",
+  description:
+    "به وبسایت شخصی علیرضا عابدی خوش آمدید. من یک توسعه دهنده فول استک هستم که علاقه ی زیادی به برنامه نویسی دارم و دارم سعی میکنم که روز به روز پیشرفت کنم.",
+  authors: [
+    { name: "alireza abedi", url: "https://github.com/AlirezaAbd-dev" },
+  ],
+  icons: '/favicon.ico',
+};
+
 const Home = () => {
   const theme = useTheme();
   const [background, setBackground] = useState<StaticImageData>(bg03);

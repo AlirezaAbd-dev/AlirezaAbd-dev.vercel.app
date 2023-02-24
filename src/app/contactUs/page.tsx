@@ -7,6 +7,13 @@ import { ContactMail } from "@mui/icons-material";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import EmailMe from "../../components/contact/EmailMe";
 import ContactForm from "../../components/contact/ContactForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "علیرضا عابدی | ارتباط با من",
+  description:
+    "توسط این صفحه میتوانید به نشانی الکترونیکی بنده پیان ارسال کنید و نظرات خود را برای من بفرستید.",
+};
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);

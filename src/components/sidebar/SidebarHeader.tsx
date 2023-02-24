@@ -110,7 +110,7 @@ const SidebarHeader = () => {
       <Box sx={{ m: "10px auto", textAlign: "center" }}>
         <IconButton aria-label="Github" sx={{ width: 40, height: 40 }}>
           <a
-            href="https://github.com/0AliReza0"
+            href="https://github.com/AlirezaAbd-dev"
             target="_blank"
             rel="noopener noreferrer"
           >

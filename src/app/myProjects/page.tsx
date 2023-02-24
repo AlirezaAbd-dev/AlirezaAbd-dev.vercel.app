@@ -6,6 +6,14 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { myProjects } from "../../constants/myProjects";
 import HeaderDivider from "../../components/ui/HeaderDivider";
 import ProjectCard from "../../components/myProjects/ProjectCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "علیرضا عابدی | پروژه های من",
+  description: `در این صفحه میتوانید پروژه هایی که توسط من ساخته شده را ببینید و برای
+  دیدن جزئیات بیشتر میتوانید با کلیک روی دکمه اطلاعات بیشتر وارد
+  ریپازیتوری پروژه در گیتهاب شوید.`,
+};
 
 const MyProjects = () => {
   const theme = useTheme();
