@@ -12,7 +12,7 @@ import { createLinks } from "../constants/particles";
 import HomeTitle from "../components/home/HomeTitle";
 import HomeSubtitle from "../components/home/HomeSubtitle";
 
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "علیرضا عابدی",
