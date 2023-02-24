@@ -3,8 +3,6 @@ import { Box, Divider } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { SidebarFooter, SidebarHeader, SidebarTabs } from './index'
 
-
-
 const SidebarContent = () => {
     return (
         <Box

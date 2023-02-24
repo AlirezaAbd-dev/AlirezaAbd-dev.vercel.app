@@ -1,4 +1,5 @@
 "use client";
+
 import { Suspense, lazy, useEffect, useState } from "react";
 import {
   Avatar,
@@ -54,9 +55,9 @@ const SidebarHeader = () => {
           display: {
             xs: "none",
             sm: "none",
-            md: isImageLoaded ? "flex" : "none",
-            lg: isImageLoaded ? "flex" : "none",
-            xl: isImageLoaded ? "flex" : "none",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
           },
         }}
       >
@@ -65,12 +66,14 @@ const SidebarHeader = () => {
           alt="علیرضا عابدی"
           width={200}
           height={200}
+          style={{
+            display: isImageLoaded ? "block" : "none",
+          }}
           onLoad={() => {
             setIsImageLoaded(true);
           }}
         />
       </Avatar>
-      {/*</Hidden>*/}
       <Typography
         variant="h6"
         color={

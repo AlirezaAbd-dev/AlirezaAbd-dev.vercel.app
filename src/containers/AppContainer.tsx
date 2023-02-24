@@ -1,5 +1,11 @@
 "use client";
-import { useState, useCallback, useEffect, ReactNode, ChangeEvent, SyntheticEvent } from "react";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  ReactNode,
+  SyntheticEvent,
+} from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 
@@ -35,11 +41,14 @@ function AppContainer({
 
   useEffect(() => {
     isMdUp && onSetDrawerOpen(false);
-  }, [isMdUp]);
+  }, [isMdUp, onSetDrawerOpen]);
 
-  const handlePageNumber = useCallback((e: SyntheticEvent, newValue: number) => {
-    setPageNumber(newValue);
-  }, []);
+  const handlePageNumber = useCallback(
+    (e: SyntheticEvent, newValue: number) => {
+      setPageNumber(newValue);
+    },
+    []
+  );
 
   const handleThemeChange = useCallback(() => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
