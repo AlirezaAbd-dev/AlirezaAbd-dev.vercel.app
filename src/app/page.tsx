@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [
     { name: "alireza abedi", url: "https://github.com/AlirezaAbd-dev" },
   ],
-  icons: '/favicon.ico',
+  icons: "/favicon.ico",
 };
 
 const Home = () => {

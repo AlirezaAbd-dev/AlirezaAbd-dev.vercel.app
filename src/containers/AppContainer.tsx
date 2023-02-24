@@ -15,15 +15,28 @@ import SidebarContainer from "../containers/SidebarContainer";
 import MainContext from "../context";
 import PagesContainer from "../containers/PagesContainer";
 import { DrawerActionButton } from "../components/drawer";
+import { usePathname } from "next/navigation";
 
-function AppContainer({
-  path,
-  children,
-}: {
-  path: number;
-  children: ReactNode;
-}) {
-  const [pageNumber, setPageNumber] = useState(path);
+function AppContainer({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
+  let pageNumberFromPathname = 0;
+  switch (pathname) {
+    case "/":
+      pageNumberFromPathname = 0;
+      break;
+    case "/about":
+      pageNumberFromPathname = 1;
+      break;
+    case "/myProjects":
+      pageNumberFromPathname = 2;
+      break;
+    case "/contactUs":
+      pageNumberFromPathname = 3;
+      break;
+  }
+
+  const [pageNumber, setPageNumber] = useState(pageNumberFromPathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mode, setMode] = useState<"dark" | "light">("dark");
 

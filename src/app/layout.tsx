@@ -1,32 +1,25 @@
-"use client";
 import "../assets/css/styles.css";
 
 import { ReactNode } from "react";
 import AppContainer from "../containers/AppContainer";
-import { usePathname } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "علیرضا عابدی",
+  viewport: "width=device-width, initial-scale=1",
+  description:
+    "به وبسایت شخصی علیرضا عابدی خوش آمدید. من یک توسعه دهنده فول استک هستم که علاقه ی زیادی به برنامه نویسی دارم و دارم سعی میکنم که روز به روز پیشرفت کنم.",
+  authors: [
+    { name: "alireza abedi", url: "https://github.com/AlirezaAbd-dev" },
+  ],
+  icons: "/favicon.ico",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-
-  let pageNumberFromPathname = 0;
-  switch (pathname) {
-    case "/":
-      pageNumberFromPathname = 0;
-      break;
-    case "/about":
-      pageNumberFromPathname = 1;
-      break;
-    case "/myProjects":
-      pageNumberFromPathname = 2;
-      break;
-    case "/contactUs":
-      pageNumberFromPathname = 3;
-      break;
-  }
   return (
     <html lang="fa">
       <body dir="rtl">
-        <AppContainer path={pageNumberFromPathname}>{children}</AppContainer>
+        <AppContainer>{children}</AppContainer>
       </body>
     </html>
   );

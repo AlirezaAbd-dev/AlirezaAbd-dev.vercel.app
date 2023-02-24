@@ -1,10 +1,5 @@
-"use client";
-import { Card, CardContent } from "@mui/material";
-
-import EducationTimeline from "../../components/timeline/EducationTimeline";
-import AboutMeHeader from "../../components/aboutMe/AboutMeHeader";
-import AboutMeSkills from "../../components/aboutMe/AboutMeSkills";
 import { Metadata } from "next";
+import MainAboutMe from "@/components/aboutMe/MainAboutMe";
 
 export const metadata: Metadata = {
   title: "علیرضا عابدی | درباره من",
@@ -13,24 +8,7 @@ export const metadata: Metadata = {
 };
 
 const About = () => {
-  return (
-    <Card
-      sx={{
-        height: "100vh",
-        backgroundColor: "background.secondary",
-        overflowY: "scroll",
-        borderRadius: 0,
-      }}
-    >
-      <CardContent>
-        <AboutMeHeader />
-
-        <AboutMeSkills />
-
-        <EducationTimeline />
-      </CardContent>
-    </Card>
-  );
+  return <MainAboutMe />;
 };
 
 export default About;
