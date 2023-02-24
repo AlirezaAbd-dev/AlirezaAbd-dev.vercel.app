@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const UseSkillRandom = (value:number) => {
+const UseSkillRandom = (value: number) => {
   const [languageValue, setlanguageValue] = useState(0);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const UseSkillRandom = (value:number) => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [setlanguageValue, value]);
 
   return languageValue;
 };
