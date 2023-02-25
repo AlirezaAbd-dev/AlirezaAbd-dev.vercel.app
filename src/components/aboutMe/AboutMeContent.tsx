@@ -40,6 +40,13 @@ const AboutMeContent = () => {
             animation="pulse"
             width={150}
             height={150}
+            sx={{
+              display: {
+                xs: "flex",
+                sm: "flex",
+                md: "none",
+              },
+            }}
           />
         )}
         <Avatar

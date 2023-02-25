@@ -19,6 +19,11 @@ const AboutMeMobile = () => {
           height={250}
           sx={{
             m: "0 auto",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+            },
           }}
         />
       )}

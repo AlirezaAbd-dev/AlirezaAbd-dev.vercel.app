@@ -42,6 +42,11 @@ const SidebarHeader = () => {
             width: "150px",
             height: "150px",
             margin: "0 auto",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "block",
+            },
           }}
         />
       )}
