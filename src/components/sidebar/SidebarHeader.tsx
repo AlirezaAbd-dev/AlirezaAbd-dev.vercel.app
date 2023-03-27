@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useState } from "react";
 import { Avatar, Box, IconButton, Skeleton, useTheme } from "@mui/material";
 import { GitHub, Telegram, Instagram } from "@mui/icons-material";
 import Image from "next/image";
