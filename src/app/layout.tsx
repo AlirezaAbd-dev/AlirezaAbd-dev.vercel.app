@@ -13,6 +13,15 @@ export const metadata: Metadata = {
     { name: "alireza abedi", url: "https://github.com/AlirezaAbd-dev" },
   ],
   icons: "/favicon.ico",
+  openGraph: {
+    images: [
+      {
+        url: "../assets/avatar.jpg",
+        width: 400,
+        height: 400,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
