@@ -2,7 +2,6 @@
 import React, { useContext } from "react";
 import { Tab, Tabs, useTheme } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { grey } from "@mui/material/colors";
 
 import MainContext from "../../context";
 import tabs from "../data/tabsData.sidebar";
@@ -44,8 +43,6 @@ const SidebarTabs = () => {
           iconPosition="start"
           sx={{
             "&.MuiTab-root": {
-              backgroundColor:
-                theme.palette.mode === "dark" ? grey[800] : grey[300],
               borderRadius: 1,
               minHeight: 30,
               my: 0.6,
