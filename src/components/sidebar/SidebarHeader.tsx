@@ -1,34 +1,16 @@
 "use client";
 
 import { Suspense, lazy, useEffect, useState } from "react";
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Skeleton,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Avatar, Box, IconButton, Skeleton, useTheme } from "@mui/material";
 import { GitHub, Telegram, Instagram } from "@mui/icons-material";
 import Image from "next/image";
 
-import AlphabetPersian from "../../constants/alphabetPersian";
 import ThemeActionButton from "../ThemeActionButton";
 
 import avatar from "../../assets/avatar.png";
 
-const RandomReveal = lazy(
-  () => import("../../dynamic-imports/useRandomReveal")
-);
-
 const SidebarHeader = () => {
-  const [reveal, setReveal] = useState(false);
-  const [isRevealStart, setIsRevealStart] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsRevealStart(true);
-  }, []);
 
   const theme = useTheme();
 
@@ -79,38 +61,20 @@ const SidebarHeader = () => {
           }}
         />
       </Avatar>
-      <Typography
-        variant="h6"
-        color={
-          theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
-        }
+      <h1
+        style={{
+          fontSize: "20px",
+          color:
+            theme.palette.mode === "dark"
+              ? theme.palette.primary.light
+              : theme.palette.secondary.main,
+        }}
       >
-        <Typography variant="caption">{`{" `}</Typography>
-        <Suspense fallback=" ">
-          <RandomReveal
-            isPlaying={isRevealStart}
-            duration={3}
-            characters="علیرضا عابدی"
-            characterSet={AlphabetPersian}
-            onComplete={() => {
-              setReveal(true);
-            }}
-          />
-        </Suspense>
-        <Typography variant="caption">{` "}`}</Typography>
-      </Typography>
-      {reveal && (
-        <Typography variant="caption" color={"text.primary"}>
-          <Suspense fallback=" ">
-            <RandomReveal
-              isPlaying={isRevealStart}
-              duration={3}
-              characters="توسعه دهنده فول استک"
-              characterSet={AlphabetPersian}
-            />
-          </Suspense>
-        </Typography>
-      )}
+        علیرضا عابدی
+      </h1>
+      <h2 style={{ fontSize: "12px", color: theme.palette.text.primary }}>
+        توسعه دهنده فول استک
+      </h2>
 
       <Box sx={{ m: "10px auto", textAlign: "center" }}>
         <IconButton aria-label="Github" sx={{ width: 40, height: 40 }}>
