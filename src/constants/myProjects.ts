@@ -16,21 +16,21 @@ export const myProjects = [
   {
     title: "مدیریت مخاطبین",
     image: contactManagerImg,
-    link: "https://github.com/0AliReza0/MERN-Contact-Manager",
+    link: "https://github.com/AlirezaAbd-dev/Contact-Manager-client-Remake",
   },
   {
     title: "داشبورد پنل ادمین",
     image: dashboardImg,
-    link: "https://github.com/0AliReza0/Dashboard-Panel-Admin-persian",
+    link: "https://github.com/AlirezaAbd-dev/Dashboard-Panel-Admin-persian",
   },
   {
     title: "لیست کارها",
     image: todoImg,
-    link: "https://github.com/0AliReza0/MERN-Stack-todo-website",
+    link: "https://github.com/AlirezaAbd-dev/MERN-Stack-todo-website",
   },
   {
     title: "صفحه ورود شیشه ای",
     image: glassmorphismLoginImg,
-    link: "https://github.com/0AliReza0/Glassmorphism-login-page",
+    link: "https://github.com/AlirezaAbd-dev/Glassmorphism-login-page",
   },
 ];
