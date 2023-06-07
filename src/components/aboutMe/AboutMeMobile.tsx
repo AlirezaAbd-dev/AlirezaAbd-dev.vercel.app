@@ -4,7 +4,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 import { useState } from "react";
 
-import avatar from "../../assets/avatar.jpg";
+import avatar from "../../assets/new-avatar.jpg";
 
 const AboutMeMobile = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
