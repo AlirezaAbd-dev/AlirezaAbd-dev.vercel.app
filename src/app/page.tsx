@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Box, Skeleton, useTheme } from "@mui/material";
 import Particles from "react-particles";
-// @ts-expect-error
+// @ts-ignore
 import { Container, Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import Image, { StaticImageData } from "next/image";
