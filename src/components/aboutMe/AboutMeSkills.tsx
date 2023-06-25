@@ -12,10 +12,10 @@ const AboutMeSkills = () => {
   const javascript = useSkillRandom(80);
   const html = useSkillRandom(80);
   const css = useSkillRandom(85);
-  const nodeJs = useSkillRandom(50);
+  const nodeJs = useSkillRandom(70);
   const reactJs = useSkillRandom(90);
-  const nextJs = useSkillRandom(70);
-  const git = useSkillRandom(60);
+  const nextJs = useSkillRandom(85);
+  const git = useSkillRandom(65);
 
   const {
     htmlSkill,
