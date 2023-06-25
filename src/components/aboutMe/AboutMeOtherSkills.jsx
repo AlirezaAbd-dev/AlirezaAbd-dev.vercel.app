@@ -1,4 +1,7 @@
 "use client";
+import { SelfImprovementRounded } from "@mui/icons-material";
+import Grid from "@mui/material/Unstable_Grid2";
+import HeaderDivider from "../ui/HeaderDivider";
 
 const AboutMeOtherSkills = () => {
   return (
