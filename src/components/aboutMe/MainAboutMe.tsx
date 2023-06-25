@@ -4,6 +4,7 @@ import { Card, CardContent } from "@mui/material";
 import EducationTimeline from "../timeline/EducationTimeline";
 import AboutMeHeader from "./AboutMeHeader";
 import AboutMeSkills from "./AboutMeSkills";
+import AboutMeOtherSkills from "./AboutMeOtherSkills";
 
 export default function MainAboutMe() {
   return (
@@ -19,6 +20,8 @@ export default function MainAboutMe() {
         <AboutMeHeader />
 
         <AboutMeSkills />
+
+        <AboutMeOtherSkills />
 
         <EducationTimeline />
       </CardContent>
