@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import { SelfImprovementRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 
