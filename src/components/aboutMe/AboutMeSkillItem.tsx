@@ -10,6 +10,7 @@ const AboutMeSkillItem = (props: {
       sx={{
         bgcolor: props.skill.color,
         color: "text.primary",
+        backgroundImage: `linear-gradient(to right, transparent, ${props.skill.color})`,
         mt: "30px",
         mx: "10px",
         fontSize: "18px",
