@@ -8,7 +8,6 @@ const AboutMeSkillItem = (props: {
     <Chip
       label={props.skill.name}
       sx={{
-        bgcolor: props.skill.color,
         color: "text.primary",
         mt: "30px",
         mx: "10px",
