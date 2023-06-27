@@ -4,6 +4,7 @@ import { Chip } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import HeaderDivider from "../ui/HeaderDivider";
 import { reactIcon as ReactNativeIcon } from "../../assets/icons/index";
+import Image from "next/image";
 
 const otherSkills = [
   {
@@ -33,7 +34,14 @@ const AboutMeOtherSkills = () => {
                 sx={{
                   bgcolor: skill.color,
                 }}
-                icon={skill.icon}
+                icon={
+                  <Image
+                    src={skill.icon.src}
+                    alt={skill.name}
+                    width={50}
+                    height={50}
+                  />
+                }
               />
             </Grid>
           ))}
