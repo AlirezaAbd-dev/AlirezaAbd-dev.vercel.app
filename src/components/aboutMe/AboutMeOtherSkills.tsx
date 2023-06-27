@@ -112,15 +112,15 @@ const AboutMeOtherSkills = () => {
                 color: "text.primary",
                 mt: "30px",
                 mx: "10px",
-                fontSize: "24px",
-                fontWeight: "bold",
+                fontSize: "18px",
+                py: 2,
               }}
               icon={
                 <Image
                   src={skill.icon.src}
                   alt={skill.name}
-                  width={70}
-                  height={70}
+                  width={60}
+                  height={60}
                 />
               }
             />
