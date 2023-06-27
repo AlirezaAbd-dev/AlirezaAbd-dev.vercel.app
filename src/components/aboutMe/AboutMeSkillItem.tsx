@@ -15,7 +15,7 @@ const AboutMeSkillItem = (props: {
         py: 2,
       }}
       style={{
-        backgroundImage: `linear-gradient(90deg, transparent, ${props.skill.color})`,
+        backgroundImage: `linear-gradient(90deg, transparent, transparent, ${props.skill.color})`,
       }}
       icon={
         <Image
