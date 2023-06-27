@@ -1,6 +1,6 @@
 "use client";
 import { SelfImprovementRounded } from "@mui/icons-material";
-import { Chip, Theme } from "@mui/material";
+import { Box, Chip, Theme } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import HeaderDivider from "../ui/HeaderDivider";
 import * as skillsIcons from "../../assets/icons/index";
@@ -103,27 +103,27 @@ const AboutMeOtherSkills = () => {
         >
           سایر مهارت ها
         </HeaderDivider>
-        <Grid container>
+        <Box display="flex" flexWrap="wrap" justifyContent="center">
           {otherSkills.map((skill) => (
-            <Grid sm={2} md={2} lg={3} mt={5}>
-              <Chip
-                label={skill.name}
-                sx={{
-                  bgcolor: skill.color,
-                  color: "text.primary",
-                }}
-                icon={
-                  <Image
-                    src={skill.icon.src}
-                    alt={skill.name}
-                    width={50}
-                    height={50}
-                  />
-                }
-              />
-            </Grid>
+            <Chip
+              label={skill.name}
+              sx={{
+                bgcolor: skill.color,
+                color: "text.primary",
+                mt: "10px",
+                mx: "10px",
+              }}
+              icon={
+                <Image
+                  src={skill.icon.src}
+                  alt={skill.name}
+                  width={50}
+                  height={50}
+                />
+              }
+            />
           ))}
-        </Grid>
+        </Box>
       </Grid>
     </Grid>
   );
