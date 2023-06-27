@@ -33,7 +33,7 @@ const AboutMeOtherSkills = () => {
                 label={skill.name}
                 sx={{
                   bgcolor: skill.color,
-                  color: "text.secondary",
+                  color: "text.primary",
                 }}
                 icon={
                   <Image
