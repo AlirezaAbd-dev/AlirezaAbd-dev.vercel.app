@@ -8,7 +8,7 @@ import { reactIcon as ReactNativeIcon } from "../../assets/icons/index";
 const otherSkills = [
   {
     name: "react native",
-    icon: <ReactNativeIcon />,
+    icon: ReactNativeIcon,
     color: "#0059ff",
   },
 ];
