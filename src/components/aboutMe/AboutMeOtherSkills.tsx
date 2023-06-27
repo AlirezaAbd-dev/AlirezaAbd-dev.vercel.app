@@ -37,7 +37,7 @@ const otherSkills = [
   {
     name: "typescript",
     icon: skillsIcons.TypescriptIcon,
-    color: "#444444",
+    color: "#777777",
   },
   {
     name: "webpack",
@@ -57,7 +57,7 @@ const otherSkills = [
   {
     name: "jwt",
     icon: skillsIcons.JwtIcon,
-    color: "#ffcd00",
+    color: "#ffad00",
   },
   {
     name: "TRPC",
@@ -67,7 +67,7 @@ const otherSkills = [
   {
     name: "prisma",
     icon: skillsIcons.PrismaIcon,
-    color: "#acff00",
+    color: "#53ff00",
   },
   {
     name: "mongodb",
