@@ -3,7 +3,7 @@ import { SelfImprovementRounded } from "@mui/icons-material";
 import { Chip } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import HeaderDivider from "../ui/HeaderDivider";
-import { reactIcon as ReactNativeIcon, } from "../../assets/icons/index";
+import { reactIcon as ReactNativeIcon } from "../../assets/icons/index";
 import Image from "next/image";
 
 const otherSkills = [
@@ -33,7 +33,7 @@ const AboutMeOtherSkills = () => {
                 label={skill.name}
                 sx={{
                   bgcolor: skill.color,
-                  color: "secondary.main",
+                  color: "text.secondary",
                 }}
                 icon={
                   <Image
