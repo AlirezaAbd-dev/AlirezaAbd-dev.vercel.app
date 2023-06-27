@@ -27,7 +27,7 @@ const otherSkills = [
   {
     name: "tailwindCss",
     icon: skillsIcons.TailwindCssIcon,
-    color: "#00bbff",
+    color: "#00fbff",
   },
   {
     name: "vite",
@@ -37,7 +37,7 @@ const otherSkills = [
   {
     name: "typescript",
     icon: skillsIcons.TypescriptIcon,
-    color: "#777777",
+    color: "#aaaaaa",
   },
   {
     name: "webpack",
