@@ -5,7 +5,7 @@ import AppContainer from "../containers/AppContainer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "علیرضا عابدی",
+  title: "علیرضا عابدی | توسعه دهنده فول است",
   viewport: "width=device-width, initial-scale=1",
   description:
     "به وبسایت شخصی علیرضا عابدی خوش آمدید. من یک توسعه دهنده فول استک هستم که علاقه ی زیادی به برنامه نویسی دارم و دارم سعی میکنم که روز به روز پیشرفت کنم.",
