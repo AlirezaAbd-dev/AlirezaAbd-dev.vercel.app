@@ -110,8 +110,9 @@ const AboutMeOtherSkills = () => {
               sx={{
                 bgcolor: skill.color,
                 color: "text.primary",
-                mt: "10px",
+                mt: "20px",
                 mx: "10px",
+                fontWeight: "bold",
               }}
               icon={
                 <Image
