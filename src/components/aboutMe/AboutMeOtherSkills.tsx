@@ -105,7 +105,7 @@ const AboutMeOtherSkills = () => {
         </HeaderDivider>
         <Grid container>
           {otherSkills.map((skill) => (
-            <Grid sm={2} md={2} lg={4}>
+            <Grid sm={2} md={2} lg={3} mt={5}>
               <Chip
                 label={skill.name}
                 sx={{
