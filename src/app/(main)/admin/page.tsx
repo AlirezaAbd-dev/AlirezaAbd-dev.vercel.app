@@ -100,6 +100,28 @@ const AdminPanel = () => {
          />
 
          <Button variant='contained'>اضافه کردن</Button>
+
+         {/* -------------------------------------------------------- */}
+
+         <Typography variant='h6'>اضافه کردن نمونه کار</Typography>
+
+         <TextField
+            dir='rtl'
+            color='secondary'
+            label='نام پروژه'
+         />
+         <TextField
+            dir='rtl'
+            color='secondary'
+            label='آدرس عکس'
+         />
+         <TextField
+            dir='rtl'
+            color='secondary'
+            label='لینک رفرنس'
+         />
+
+         <Button variant='contained'>اضافه کردن</Button>
       </Card>
    );
 };
