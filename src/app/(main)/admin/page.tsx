@@ -1,3 +1,5 @@
+import Educations from '@/components/admin/tables/Educations';
+import Projects from '@/components/admin/tables/Projects';
 import { Box, Button, Card, TextField, Typography } from '@mui/material';
 
 const AdminPanel = () => {
@@ -20,6 +22,8 @@ const AdminPanel = () => {
          >
             <Typography variant='h5'>پنل ادمین</Typography>
          </Box>
+
+         <Typography variant='h6'>مشخصات</Typography>
 
          <TextField
             dir='rtl'
@@ -46,7 +50,7 @@ const AdminPanel = () => {
 
          {/* -------------------------------------------------------- */}
 
-         <Typography variant='h6'>اضافه کردن معرفی</Typography>
+         <Typography variant='h6'>معرفی ها</Typography>
 
          <TextField
             dir='rtl'
@@ -71,7 +75,9 @@ const AdminPanel = () => {
 
          {/* -------------------------------------------------------- */}
 
-         <Typography variant='h6'>اضافه کردن تحصیلات</Typography>
+         <Typography variant='h6'>تحصیلات</Typography>
+
+         <Educations />
 
          <TextField
             dir='rtl'
@@ -104,6 +110,8 @@ const AdminPanel = () => {
          {/* -------------------------------------------------------- */}
 
          <Typography variant='h6'>اضافه کردن نمونه کار</Typography>
+
+         <Projects />
 
          <TextField
             dir='rtl'
