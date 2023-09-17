@@ -49,9 +49,6 @@ const SidebarHeader = () => {
          >
             علیرضا عابدی
          </h1>
-         <h2 style={{ fontSize: '12px', color: theme.palette.text.primary }}>
-            توسعه دهنده فول استک
-         </h2>
 
          <Box sx={{ m: '10px auto', textAlign: 'center' }}>
             <IconButton
