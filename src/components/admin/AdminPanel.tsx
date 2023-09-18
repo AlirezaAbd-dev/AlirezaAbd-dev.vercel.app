@@ -15,6 +15,17 @@ const AdminPanel = () => {
 
    useEffect(() => {
       handlePageNumber.call(null, undefined, 4);
+
+      const formData = new FormData();
+
+      formData.append('yoyo', 'Image');
+
+      (async () => {
+         await fetch('/api/information', {
+            method: 'post',
+            body: formData,
+         });
+      })();
    }, []);
 
    return (
