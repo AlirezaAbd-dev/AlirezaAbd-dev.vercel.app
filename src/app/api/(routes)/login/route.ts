@@ -60,23 +60,32 @@ export const POST = async (req: NextRequest) => {
    const salt = await bcrypt.genSalt(10);
    const hashedPassword = await bcrypt.hash(validatedBody.data.password, salt);
 
-   const newUser = await UserModel.create({
-      username: validatedBody.data.username,
-      password: hashedPassword,
-      name: 'ناشناخته',
-      city: 'ناشناخته',
-      email: 'ناشناخته',
-      yearOfBirth: 1300,
-   });
+   try {
+      const newUser = await UserModel.create({
+         username: validatedBody.data.username,
+         password: hashedPassword,
+         name: 'ناشناخته',
+         city: 'ناشناخته',
+         email: 'ناشناخته',
+         yearOfBirth: 1300,
+      });
 
-   const token = jwt.sign(
-      { username: newUser.username },
-      process.env.JWT_SECRET!,
-      { expiresIn: '1d' },
-   );
-
-   return NextResponse.json(
-      { message: 'با موفقیت وارد شدید.' },
-      { headers: { token } },
-   );
+      const token = jwt.sign(
+        { username: newUser.username },
+        process.env.JWT_SECRET!,
+        { expiresIn: '1d' },
+     );
+  
+     return NextResponse.json(
+        { message: 'با موفقیت وارد شدید.' },
+        { headers: { token } },
+     );
+   } catch (err) {
+      return NextResponse.json(
+         { message: 'خطایی در سرور رخ داد!' },
+         {
+            status: 500,
+         },
+      );
+   }
 };
