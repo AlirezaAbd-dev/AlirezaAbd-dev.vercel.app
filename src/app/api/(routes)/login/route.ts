@@ -4,8 +4,11 @@ import * as jwt from 'jsonwebtoken';
 
 import { loginValidation } from './loginValidation';
 import UserModel from '../../models/UserModel';
+import dbConnect from '../../utils/dbConnect';
 
 export const POST = async (req: NextRequest) => {
+   await dbConnect();
+
    const data = await req.json();
 
    const validatedBody = loginValidation.safeParse(data);
@@ -71,15 +74,15 @@ export const POST = async (req: NextRequest) => {
       });
 
       const token = jwt.sign(
-        { username: newUser.username },
-        process.env.JWT_SECRET!,
-        { expiresIn: '1d' },
-     );
-  
-     return NextResponse.json(
-        { message: 'با موفقیت وارد شدید.' },
-        { headers: { token } },
-     );
+         { username: newUser.username },
+         process.env.JWT_SECRET!,
+         { expiresIn: '1d' },
+      );
+
+      return NextResponse.json(
+         { message: 'با موفقیت وارد شدید.' },
+         { headers: { token } },
+      );
    } catch (err) {
       return NextResponse.json(
          { message: 'خطایی در سرور رخ داد!' },

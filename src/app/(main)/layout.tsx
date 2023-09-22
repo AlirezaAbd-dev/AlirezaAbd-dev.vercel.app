@@ -1,4 +1,4 @@
-import "@/env";
+import '@/env';
 import '../../assets/css/styles.css';
 
 import { ReactNode } from 'react';

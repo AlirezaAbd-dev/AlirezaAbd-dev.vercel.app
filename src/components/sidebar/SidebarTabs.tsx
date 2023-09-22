@@ -36,28 +36,31 @@ const SidebarTabs = () => {
             },
          }}
       >
-         {tabs.map((tab, index) => (
-            <Tab
-               key={index}
-               icon={<tab.icon />}
-               iconPosition='start'
-               sx={{
-                  '&.MuiTab-root': {
-                     borderRadius: 1,
-                     minHeight: 30,
-                     my: 0.6,
-                     mx: 1,
-                     py: 1.5,
-                  },
-               }}
-               onClick={() => {
-                  setDrawerOpen(false);
-                  redirectToChosenPage(tab.path);
-               }}
-               onMouseOver={onMouseOverPrefetch.bind(null, tab.path)}
-               label={tab.label}
-            />
-         ))}
+         {tabs().map((tab, index) => {
+            if (tab)
+               return (
+                  <Tab
+                     key={index}
+                     icon={<tab.icon />}
+                     iconPosition='start'
+                     sx={{
+                        '&.MuiTab-root': {
+                           borderRadius: 1,
+                           minHeight: 30,
+                           my: 0.6,
+                           mx: 1,
+                           py: 1.5,
+                        },
+                     }}
+                     onClick={() => {
+                        setDrawerOpen(false);
+                        redirectToChosenPage(tab.path);
+                     }}
+                     onMouseOver={onMouseOverPrefetch.bind(null, tab.path)}
+                     label={tab.label}
+                  />
+               );
+         })}
       </Tabs>
    );
 };
