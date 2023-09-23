@@ -36,7 +36,7 @@ const SidebarTabs = () => {
             },
          }}
       >
-         {tabs().map((tab, index) => {
+         {tabs(localStorage.getItem('token')).map((tab, index) => {
             if (tab)
                return (
                   <Tab

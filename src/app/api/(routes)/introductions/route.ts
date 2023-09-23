@@ -1,25 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '../../utils/dbConnect';
-import { informationValidator } from './informationValidation';
+import introductionValidation from './introductionValidation';
 import { adminAuth } from '../auth/auth';
 
 export async function POST(req: NextRequest) {
    await dbConnect();
 
-   const data = await adminAuth<typeof informationValidator>(
+   const data = await adminAuth<typeof introductionValidation>(
       req,
       NextResponse,
-      informationValidator,
+      introductionValidation,
    );
 
    if (data instanceof NextResponse) {
       return data;
    }
 
-   data.users[0].name = data.verifiedBody.data.fullname;
-   data.users[0].email = data.verifiedBody.data.email;
-   data.users[0].yearOfBirth = data.verifiedBody.data.birthYear;
-   data.users[0].city = data.verifiedBody.data.city;
+   data.users[0].introductions.push({ text: data.verifiedBody.data.text });
 
    try {
       await data.users[0].save();

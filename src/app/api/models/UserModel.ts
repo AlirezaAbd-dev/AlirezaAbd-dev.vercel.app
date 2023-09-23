@@ -1,4 +1,4 @@
-import mongoose, { InferSchemaType, Model } from 'mongoose';
+import mongoose, { InferSchemaType, Model, ObjectId } from 'mongoose';
 
 const userSchema = new mongoose.Schema({
    username: { type: String, required: true },
@@ -7,7 +7,16 @@ const userSchema = new mongoose.Schema({
    yearOfBirth: { type: Number, required: true },
    city: { type: String, required: true },
    email: { type: String, required: true },
-   introductions: { type: Array<String> },
+   introductions: [
+      {
+         _id: {
+            type: mongoose.SchemaTypes.ObjectId,
+            unique: true,
+            auto: true,
+         },
+         text: { type: String, required: true },
+      },
+   ],
    skills: [
       {
          name: { type: String, required: true },

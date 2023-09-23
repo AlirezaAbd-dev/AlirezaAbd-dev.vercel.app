@@ -9,8 +9,7 @@ import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSetting
 import { SvgIconTypeMap } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
-const tabs = () => {
-   const hasToken = !!localStorage.getItem('token');
+const tabs = (hasToken: string | null) => {
    return [
       {
          path: '/',
