@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
    ],
    skills: [
       {
+         _id: {
+            type: mongoose.SchemaTypes.ObjectId,
+            unique: true,
+            auto: true,
+         },
          name: { type: String, required: true },
          rate: { type: String, require: true },
          icon: { type: String, required: true },
@@ -26,6 +31,11 @@ const userSchema = new mongoose.Schema({
    ],
    educations: [
       {
+         _id: {
+            type: mongoose.SchemaTypes.ObjectId,
+            unique: true,
+            auto: true,
+         },
          certificate: { type: String, required: true },
          duration: { type: String, required: true },
          major: { type: String, required: true },
@@ -34,6 +44,11 @@ const userSchema = new mongoose.Schema({
    ],
    projects: [
       {
+         _id: {
+            type: mongoose.SchemaTypes.ObjectId,
+            unique: true,
+            auto: true,
+         },
          name: { type: String, required: true },
          image: { type: String, required: true },
          details: { type: String, required: true },

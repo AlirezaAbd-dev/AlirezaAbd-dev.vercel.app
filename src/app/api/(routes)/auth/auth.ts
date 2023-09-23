@@ -7,7 +7,7 @@ import { JwtPayload } from 'jsonwebtoken';
 export async function adminAuth<Tvalidation extends z.AnyZodObject>(
    req: NextRequest,
    res: typeof NextResponse,
-   validation: z.AnyZodObject,
+   validation: z.AnyZodObject | null,
 ) {
    const token = req.headers.get('token');
    const tokenVerified = verifyToken(token);
@@ -19,20 +19,26 @@ export async function adminAuth<Tvalidation extends z.AnyZodObject>(
       );
    }
    let body;
-   try {
-      body = await req.json();
-   } catch (err: any) {
-      return NextResponse.json(
-         { message: 'لطفا داده json وارد نمایید!' },
-         { status: 400 },
-      );
+   if (validation != null) {
+      try {
+         body = await req.json();
+      } catch (err: any) {
+         return NextResponse.json(
+            { message: 'لطفا داده json وارد نمایید!' },
+            { status: 400 },
+         );
+      }
    }
-   const verifiedBody = validation.safeParse(body);
-   if (!verifiedBody.success) {
-      return NextResponse.json(
-         { message: verifiedBody.error.errors[0].message },
-         { status: 400 },
-      );
+
+   let verifiedBody;
+   if (validation != null) {
+      verifiedBody = validation.safeParse(body);
+      if (!verifiedBody.success) {
+         return NextResponse.json(
+            { message: verifiedBody.error.errors[0].message },
+            { status: 400 },
+         );
+      }
    }
    const users = await UserModel.find();
    if (users.length === 0) {
