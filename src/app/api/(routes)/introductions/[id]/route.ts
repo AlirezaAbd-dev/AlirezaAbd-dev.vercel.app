@@ -1,6 +1,6 @@
 import dbConnect from '@/app/api/utils/dbConnect';
 import { NextRequest, NextResponse } from 'next/server';
-import { adminAuth } from '../../auth/auth';
+import { adminAuth } from '../../../auth/auth';
 import { z } from 'zod';
 
 const validation = z.object({

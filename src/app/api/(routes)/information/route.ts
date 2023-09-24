@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '../../utils/dbConnect';
 import { informationValidator } from './informationValidation';
-import { adminAuth } from '../auth/auth';
+import { adminAuth } from '../../auth/auth';
 
 export async function POST(req: NextRequest) {
    await dbConnect();
