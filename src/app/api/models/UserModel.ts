@@ -1,4 +1,4 @@
-import mongoose, { InferSchemaType, Model, ObjectId } from 'mongoose';
+import mongoose, { InferSchemaType, Model } from 'mongoose';
 
 const userSchema = new mongoose.Schema({
    username: { type: String, required: true },
@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
          },
          name: { type: String, required: true },
          image: { type: String, required: true },
-         details: { type: String, required: true },
+         reference: { type: String, required: false },
       },
    ],
 });
