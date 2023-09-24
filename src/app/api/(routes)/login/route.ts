@@ -23,6 +23,7 @@ export const POST = async (req: NextRequest) => {
    }
 
    const user = await UserModel.find();
+   console.log(user);
 
    if (user.length !== 0) {
       if (user[0].username === validatedBody.data.username) {
@@ -30,7 +31,7 @@ export const POST = async (req: NextRequest) => {
             validatedBody.data.password,
             user[0].password,
          );
-
+         console.log('pass match:', passMatch);
          if (!passMatch) {
             return NextResponse.json(
                {

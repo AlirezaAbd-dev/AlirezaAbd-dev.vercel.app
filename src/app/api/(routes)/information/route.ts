@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse as res } from 'next/server';
+import { adminAuth } from '../../auth/auth';
 import dbConnect from '../../utils/dbConnect';
 import { informationValidator } from './informationValidation';
-import { adminAuth } from '../../auth/auth';
 
 export async function GET(req: NextRequest) {
    await dbConnect();
 
-   const data = await adminAuth(req, res, null);
+   const data = await adminAuth(req, null);
 
    if (data instanceof res) {
       return data;
@@ -27,7 +27,6 @@ export async function POST(req: NextRequest) {
 
    const data = await adminAuth<typeof informationValidator>(
       req,
-      res,
       informationValidator,
    );
 
@@ -35,13 +34,17 @@ export async function POST(req: NextRequest) {
       return data;
    }
 
-   data.users[0].name = data.verifiedBody.data.fullname;
-   data.users[0].email = data.verifiedBody.data.email;
-   data.users[0].yearOfBirth = data.verifiedBody.data.birthYear;
-   data.users[0].city = data.verifiedBody.data.city;
+   if (data.users[0]) {
+      data.users[0].name = data.verifiedBody.data.fullname;
+      data.users[0].email = data.verifiedBody.data.email;
+      data.users[0].yearOfBirth = data.verifiedBody.data.birthYear;
+      data.users[0].city = data.verifiedBody.data.city;
+   }
 
    try {
-      await data.users[0].save();
+      if (data.users[0]) {
+         await data.users[0].save();
+      }
       return res.json({ status: 'done' });
    } catch (err: any) {
       return res.json({ message: err.message }, { status: 500 });

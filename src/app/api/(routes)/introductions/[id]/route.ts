@@ -13,29 +13,27 @@ export async function PUT(req: NextRequest) {
    await dbConnect();
    const id = req.nextUrl.pathname.split('/')[3];
 
-   const data = await adminAuth<typeof validation>(
-      req,
-      NextResponse,
-      validation,
-   );
+   const data = await adminAuth<typeof validation>(req, validation);
 
    if (data instanceof NextResponse) {
       return data;
    }
 
-   const introductionIndex = data.users[0].introductions.findIndex(
-      (i) => i._id?.toString() === id,
-   );
-
-   if (introductionIndex === -1) {
-      return NextResponse.json(
-         { message: 'معرفی مورد نظر یافت نشد!' },
-         { status: 404 },
+   if (data.users[0]) {
+      const introductionIndex = data.users[0].introductions.findIndex(
+         (i) => i._id?.toString() === id,
       );
-   }
 
-   data.users[0].introductions[introductionIndex].text =
-      data.verifiedBody.data.text;
+      if (introductionIndex === -1) {
+         return NextResponse.json(
+            { message: 'معرفی مورد نظر یافت نشد!' },
+            { status: 404 },
+         );
+      }
+
+      data.users[0].introductions[introductionIndex].text =
+         data.verifiedBody.data.text;
+   }
 
    try {
       await data.users[0].save();
@@ -50,7 +48,7 @@ export async function DELETE(req: NextRequest) {
 
    const id = req.nextUrl.pathname.split('/')[3];
 
-   const data = await adminAuth(req, NextResponse, null);
+   const data = await adminAuth(req, null);
 
    if (data instanceof NextResponse) {
       return data;

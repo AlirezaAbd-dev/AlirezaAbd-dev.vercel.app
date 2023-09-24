@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-import verifyToken from '../utils/verifyToken';
-import UserModel from '../models/UserModel';
 import { JwtPayload } from 'jsonwebtoken';
+import UserModel from '../models/UserModel';
+import verifyToken from '../utils/verifyToken';
+import { z } from 'zod';
 
 export async function adminAuth<Tvalidation extends z.AnyZodObject>(
    req: NextRequest,
-   res: typeof NextResponse,
    validation: z.AnyZodObject | null,
 ) {
    const token = req.headers.get('token');
@@ -35,7 +34,7 @@ export async function adminAuth<Tvalidation extends z.AnyZodObject>(
       verifiedBody = validation.safeParse(body);
       if (!verifiedBody.success) {
          return NextResponse.json(
-            { message: verifiedBody.error.errors[0].message },
+            { message: verifiedBody?.error?.errors[0]?.message },
             { status: 400 },
          );
       }
@@ -48,7 +47,7 @@ export async function adminAuth<Tvalidation extends z.AnyZodObject>(
       );
    }
 
-   if ((tokenVerified as JwtPayload).username !== users[0].username) {
+   if ((tokenVerified as JwtPayload).username !== users.at(0)?.username) {
       return NextResponse.json(
          { message: 'شما اجازه دسترسی ندارید!' },
          { status: 401 },

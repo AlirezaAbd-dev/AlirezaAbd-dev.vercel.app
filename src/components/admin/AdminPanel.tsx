@@ -26,7 +26,7 @@ const AdminPanel = () => {
             body: formData,
          });
       })();
-   }, []);
+   }, [handlePageNumber]);
 
    return (
       <Card

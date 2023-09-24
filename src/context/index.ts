@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, createContext, SyntheticEvent } from 'react';
+import { createContext, SyntheticEvent } from 'react';
 
 export default createContext({
    pageNumber: 0,

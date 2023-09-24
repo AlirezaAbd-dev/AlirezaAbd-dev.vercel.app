@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
             auto: true,
          },
          name: { type: String, required: true },
-         rate: { type: String, require: true },
+         rate: { type: Number, require: true },
       },
    ],
    educations: [
