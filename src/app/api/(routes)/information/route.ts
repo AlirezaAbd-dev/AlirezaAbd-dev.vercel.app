@@ -1,18 +1,37 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse as res } from 'next/server';
 import dbConnect from '../../utils/dbConnect';
 import { informationValidator } from './informationValidation';
 import { adminAuth } from '../../auth/auth';
+
+export async function GET(req: NextRequest) {
+   await dbConnect();
+
+   const data = await adminAuth(req, res, null);
+
+   if (data instanceof res) {
+      return data;
+   }
+
+   const information = {
+      fullname: data.users.at(0)?.name,
+      birthYear: data.users.at(0)?.yearOfBirth,
+      email: data.users.at(0)?.email,
+      city: data.users.at(0)?.city,
+   };
+
+   return res.json({ information });
+}
 
 export async function POST(req: NextRequest) {
    await dbConnect();
 
    const data = await adminAuth<typeof informationValidator>(
       req,
-      NextResponse,
+      res,
       informationValidator,
    );
 
-   if (data instanceof NextResponse) {
+   if (data instanceof res) {
       return data;
    }
 
@@ -23,8 +42,8 @@ export async function POST(req: NextRequest) {
 
    try {
       await data.users[0].save();
-      return NextResponse.json({ status: 'done' });
+      return res.json({ status: 'done' });
    } catch (err: any) {
-      return NextResponse.json({ message: err.message }, { status: 500 });
+      return res.json({ message: err.message }, { status: 500 });
    }
 }

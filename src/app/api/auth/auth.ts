@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import verifyToken from '../../utils/verifyToken';
-import UserModel from '../../models/UserModel';
+import verifyToken from '../utils/verifyToken';
+import UserModel from '../models/UserModel';
 import { JwtPayload } from 'jsonwebtoken';
 
 export async function adminAuth<Tvalidation extends z.AnyZodObject>(

@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
          },
          name: { type: String, required: true },
          rate: { type: String, require: true },
-         icon: { type: String, required: true },
       },
    ],
    educations: [
