@@ -17,6 +17,22 @@ export async function adminAuth<Tvalidation extends z.AnyZodObject>(
          { status: 401 },
       );
    }
+
+   const users = await UserModel.find();
+   if (users.length === 0) {
+      return NextResponse.json(
+         { message: 'شما اجازه دسترسی ندارید!' },
+         { status: 401 },
+      );
+   }
+
+   if ((tokenVerified as JwtPayload).username !== users.at(0)?.username) {
+      return NextResponse.json(
+         { message: 'شما اجازه دسترسی ندارید!' },
+         { status: 401 },
+      );
+   }
+
    let body;
    if (validation != null) {
       try {
@@ -39,20 +55,7 @@ export async function adminAuth<Tvalidation extends z.AnyZodObject>(
          );
       }
    }
-   const users = await UserModel.find();
-   if (users.length === 0) {
-      return NextResponse.json(
-         { message: 'شما اجازه دسترسی ندارید!' },
-         { status: 401 },
-      );
-   }
 
-   if ((tokenVerified as JwtPayload).username !== users.at(0)?.username) {
-      return NextResponse.json(
-         { message: 'شما اجازه دسترسی ندارید!' },
-         { status: 401 },
-      );
-   }
    return {
       users,
       verifiedBody: verifiedBody as z.SafeParseSuccess<z.infer<Tvalidation>>,

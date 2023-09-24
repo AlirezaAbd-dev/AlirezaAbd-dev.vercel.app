@@ -1,8 +1,26 @@
-import { NextRequest, NextResponse as res } from 'next/server';
+import { NextRequest, NextResponse, NextResponse as res } from 'next/server';
 
 import { adminAuth } from '../../auth/auth';
 import dbConnect from '../../utils/dbConnect';
 import educationValidation from './educationValidation';
+import UserModel from '../../models/UserModel';
+
+export async function GET() {
+   await dbConnect();
+
+   const users = await UserModel.find();
+
+   if (!users.at(0)) {
+      return res.json(
+         { message: 'داده ای برای نمایش وجود ندارد!' },
+         { status: 404 },
+      );
+   }
+
+   const educations = users.at(0)?.educations;
+
+   return res.json({ educations });
+}
 
 export async function POST(req: NextRequest) {
    await dbConnect();
