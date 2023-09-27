@@ -1,6 +1,5 @@
 'use client';
 
-import axios from 'axios';
 import { ObjectId } from 'mongoose';
 import { ReactNode, useEffect } from 'react';
 import { create } from 'zustand';
@@ -32,13 +31,6 @@ export type AllDataType = {
    }[];
 };
 
-async function getAllData() {
-   const response = await axios.get('http://localhost:3000/api/all');
-   return response.data as AllDataType;
-}
-
-// const data = await getAllData();
-// console.log(data);
 export const useStore = create<Store>()((set) => ({
    data: undefined,
    setAllData(data) {

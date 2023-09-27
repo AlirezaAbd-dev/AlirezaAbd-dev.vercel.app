@@ -3,7 +3,6 @@ import '../../assets/css/styles.css';
 
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
-import axios from 'axios';
 
 import AppContainer from '../../containers/AppContainer';
 import { AllDataType, StoreContainer } from '@/store/store';

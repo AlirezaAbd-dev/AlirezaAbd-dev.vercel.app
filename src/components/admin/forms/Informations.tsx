@@ -1,7 +1,9 @@
-import { informationValidator } from '@/app/api/(routes)/information/informationValidation';
+import informationAction from '@/actions/informationAction';
+import { informationValidation } from '@/validations/informationValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { Button, CircularProgress, TextField, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -12,9 +14,13 @@ type InformationType = {
    email?: string;
 };
 
-type InformationDataType = z.infer<typeof informationValidator>;
+export type InformationDataType = z.infer<typeof informationValidation>;
 
 const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
+   const [isLoading, setIsLoading] = useState(false);
+
+   const router = useRouter();
+
    const { control, handleSubmit } = useForm<InformationDataType>({
       defaultValues: {
          email: email,
@@ -22,11 +28,35 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
          city,
          fullname: name,
       },
-      resolver: zodResolver(informationValidator),
+      resolver: zodResolver(informationValidation),
    });
 
-   function onSubmitHandler(value: InformationDataType) {
-      console.log(value);
+   async function onSubmitHandler(value: InformationDataType) {
+      setIsLoading(true);
+
+      const response = await informationAction(
+         value,
+         localStorage.getItem('token')!,
+      );
+
+      if (response?.status === 401) {
+         localStorage.removeItem('token');
+         router.replace('/');
+      }
+
+      if (response?.status !== 200) {
+         if (response?.message) {
+            alert(response?.message.message);
+         } else {
+            alert('خطایی در سرور به وجود آمد!');
+         }
+      }
+
+      if (response?.status === 200) {
+         alert('اطلاعات با موفقیت ویرایش شدند!');
+      }
+
+      setIsLoading(false);
    }
 
    return (
@@ -138,8 +168,16 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
             <Button
                type='submit'
                variant='contained'
+               disabled={isLoading}
             >
-               تایید
+               {isLoading ? (
+                  <CircularProgress
+                     color='info'
+                     size={25}
+                  />
+               ) : (
+                  'تایید'
+               )}
             </Button>
          </form>
       </>
