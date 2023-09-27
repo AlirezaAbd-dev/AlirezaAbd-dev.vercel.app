@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useEffect } from 'react';
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, CircularProgress, Typography } from '@mui/material';
 
 import Informations from './forms/Informations';
 import IntroductionForm from './forms/IntroductionForm';
@@ -9,24 +9,19 @@ import SkillForm from './forms/SkillForm';
 import EducationForm from './forms/EducationForm';
 import ProjectForm from './forms/ProjectForm';
 import MainContext from '@/context/index';
+import { useStore } from '@/store/store';
 
 const AdminPanel = () => {
+   const data = useStore((state) => state.data);
+   console.log(data);
+
    const { handlePageNumber } = useContext(MainContext);
 
    useEffect(() => {
       handlePageNumber.call(null, undefined, 4);
-
-      const formData = new FormData();
-
-      formData.append('yoyo', 'Image');
-
-      (async () => {
-         await fetch('/api/information', {
-            method: 'post',
-            body: formData,
-         });
-      })();
    }, [handlePageNumber]);
+
+   if (!data) return <CircularProgress />;
 
    return (
       <Card
@@ -48,7 +43,12 @@ const AdminPanel = () => {
             <Typography variant='h5'>پنل ادمین</Typography>
          </Box>
 
-         <Informations />
+         <Informations
+            city={data?.city}
+            email={data?.email}
+            name={data?.name}
+            yearOfBirth={data?.yearOfBirth}
+         />
 
          <IntroductionForm />
 

@@ -2,8 +2,11 @@ import '@/env';
 import '../../assets/css/styles.css';
 
 import { ReactNode } from 'react';
-import AppContainer from '../../containers/AppContainer';
 import { Metadata } from 'next';
+import axios from 'axios';
+
+import AppContainer from '../../containers/AppContainer';
+import { AllDataType, StoreContainer } from '@/store/store';
 
 export const metadata: Metadata = {
    title: 'علیرضا عابدی | توسعه دهنده فول استک',
@@ -19,11 +22,36 @@ export const metadata: Metadata = {
    },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export const revalidate = 3600;
+
+const getAllData = async () => {
+   const response = await fetch('http://localhost:3000/api/all', {
+      next: { tags: ['data'] },
+   });
+   const data = await response.json();
+   return data as AllDataType;
+};
+
+export default async function RootLayout({
+   children,
+}: {
+   children: ReactNode;
+}) {
+   let data;
+   try {
+      data = await getAllData();
+   } catch (err) {
+      console.log(err);
+   }
+
    return (
       <html lang='fa'>
          <body dir='rtl'>
-            <AppContainer>{children}</AppContainer>
+            {data && (
+               <StoreContainer data={data}>
+                  <AppContainer>{children}</AppContainer>
+               </StoreContainer>
+            )}
          </body>
       </html>
    );

@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Avatar, Box, IconButton, Skeleton, useTheme } from '@mui/material';
+import { Avatar, Box, IconButton, useTheme } from '@mui/material';
 import { GitHub, Telegram, Instagram } from '@mui/icons-material';
 import Image from 'next/image';
 

@@ -30,7 +30,7 @@
       "formik": "^2.4.4",
       "jsonwebtoken": "^9.0.2",
       "mongoose": "^7.5.2",
-      "next": "^13.4.19",
+      "next": "^13.5.3",
       "react": "18.2.0",
       "react-dom": "18.2.0",
       "react-google-recaptcha": "^2.1.0",
@@ -47,7 +47,8 @@
       "typescript": "5.2.2",
       "yup": "^1.2.0",
       "zod": "^3.22.2",
-      "zod-formik-adapter": "^1.2.0"
+      "zod-formik-adapter": "^1.2.0",
+      "zustand": "^4.4.1"
    },
    "devDependencies": {
       "@mui/types": "^7.2.4",

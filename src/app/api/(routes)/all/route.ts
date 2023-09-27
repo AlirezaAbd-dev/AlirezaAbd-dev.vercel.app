@@ -1,6 +1,7 @@
 import { NextResponse as res } from 'next/server';
 import dbConnect from '../../utils/dbConnect';
 import UserModel from '../../models/UserModel';
+import { revalidateTag } from 'next/cache';
 
 export async function GET() {
    await dbConnect();
@@ -16,5 +17,6 @@ export async function GET() {
       return res.json({ message: 'داده ای برای نمایش وجود ندارد!' });
    }
 
+   revalidateTag('data');
    return res.json(users[0]);
 }
