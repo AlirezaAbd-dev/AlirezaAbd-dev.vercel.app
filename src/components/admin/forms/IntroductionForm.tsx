@@ -1,7 +1,15 @@
 import { Button, TextField, Typography } from '@mui/material';
+import { ObjectId } from 'mongoose';
 import React from 'react';
 
-const IntroductionForm = () => {
+type IntroductionsFormType = {
+   introductions: {
+      _id: ObjectId;
+      text: string;
+   }[];
+};
+
+const IntroductionForm = (props: IntroductionsFormType) => {
    return (
       <>
          <Typography variant='h6'>معرفی ها</Typography>

@@ -50,7 +50,7 @@ const AdminPanel = () => {
             yearOfBirth={data?.yearOfBirth}
          />
 
-         <IntroductionForm />
+         <IntroductionForm introductions={data.introductions} />
 
          <SkillForm />
 
