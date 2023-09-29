@@ -1,7 +1,13 @@
 'use client';
 
 import { useContext, useEffect } from 'react';
-import { Box, Card, CircularProgress, Typography } from '@mui/material';
+import {
+   Box,
+   Card,
+   CircularProgress,
+   Divider,
+   Typography,
+} from '@mui/material';
 
 import Informations from './forms/Informations';
 import IntroductionForm from './forms/IntroductionForm';
@@ -49,6 +55,8 @@ const AdminPanel = () => {
             name={data?.name}
             yearOfBirth={data?.yearOfBirth}
          />
+
+         <Divider sx={{ width: '100%' }} />
 
          <IntroductionForm introductions={data.introductions} />
 
