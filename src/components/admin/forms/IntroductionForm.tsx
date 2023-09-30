@@ -1,4 +1,10 @@
-import { Button, IconButton, TextField, Typography } from '@mui/material';
+import {
+   Button,
+   CircularProgress,
+   IconButton,
+   TextField,
+   Typography,
+} from '@mui/material';
 import { ObjectId } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import IntroductionsTable, {
@@ -8,6 +14,7 @@ import { Close } from '@mui/icons-material';
 import IntroductionsModal from '../modals/IntroductionsModal';
 import introductionValidation from '@/validations/introductionValidation';
 import { addIntroductionAction } from '@/actions/introductionActions';
+import { useRouter } from 'next/navigation';
 
 type IntroductionsFormType = {
    introductions: {
@@ -17,12 +24,15 @@ type IntroductionsFormType = {
 };
 
 const IntroductionForm = (props: IntroductionsFormType) => {
+   const router = useRouter();
+
    const [selectedItem, setSelectedItem] = useState<IntroductionsType | null>(
       null,
    );
    const [inputValue, setInputValue] = useState('');
    const [deleteSelected, setDeleteSelected] = useState<string | undefined>();
    const [error, setError] = useState('');
+   const [isLoading, setIsLoading] = useState(false);
 
    useEffect(() => {
       if (selectedItem?._id) {
@@ -45,10 +55,26 @@ const IntroductionForm = (props: IntroductionsFormType) => {
          return setError(verified.error.errors[0].message);
       }
 
+      setIsLoading(true);
       const response = await addIntroductionAction(
          localStorage.getItem('token')!,
          verified.data.text,
       );
+
+      setIsLoading(false);
+
+      if (response.status === 401) {
+         localStorage.removeItem('token');
+         router.replace('/');
+      }
+
+      if (response.status === 200) {
+         setError('');
+         setInputValue('');
+         alert('معرفی با موفقیت اضافه شد!');
+      } else {
+         alert(response.message || 'خطایی در سرور رخ داد!');
+      }
    };
 
    const editSubmitHandler = () => {
@@ -109,8 +135,9 @@ const IntroductionForm = (props: IntroductionsFormType) => {
                type='button'
                variant='contained'
                onClick={addSubmitHandler}
+               disabled={isLoading}
             >
-               اضافه کردن
+               {isLoading ? <CircularProgress size={25} /> : 'اضافه کردن'}
             </Button>
          )}
 

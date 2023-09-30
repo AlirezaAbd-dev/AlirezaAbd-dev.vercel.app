@@ -10,12 +10,15 @@ export async function addIntroductionAction(token: string, text: string) {
    });
 
    if (!response.ok) {
+      const message = await response.json();
+
       if (response.status === 401) {
-         return { status: 401 };
+         return { status: 401, message };
       }
+
       return {
          status: response.status,
-         message: await response.json().then((res) => res.message as string),
+         message: message as string,
       };
    }
 
