@@ -84,13 +84,7 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
-                        helperText={
-                           fieldState.error && (
-                              <Typography color={'red'}>
-                                 {fieldState.error.message}
-                              </Typography>
-                           )
-                        }
+                        helperText={fieldState.error?.message}
                      />
                   );
                }}
@@ -108,13 +102,7 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
-                        helperText={
-                           fieldState.error && (
-                              <Typography color={'red'}>
-                                 {fieldState.error.message}
-                              </Typography>
-                           )
-                        }
+                        helperText={fieldState.error?.message}
                      />
                   );
                }}
@@ -131,13 +119,7 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
-                        helperText={
-                           fieldState.error && (
-                              <Typography color={'red'}>
-                                 {fieldState.error.message}
-                              </Typography>
-                           )
-                        }
+                        helperText={fieldState.error?.message}
                      />
                   );
                }}
@@ -154,13 +136,7 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
-                        helperText={
-                           fieldState.error && (
-                              <Typography color={'red'}>
-                                 {fieldState.error.message}
-                              </Typography>
-                           )
-                        }
+                        helperText={fieldState.error?.message}
                      />
                   );
                }}

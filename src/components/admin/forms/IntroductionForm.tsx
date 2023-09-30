@@ -6,6 +6,8 @@ import IntroductionsTable, {
 } from '../tables/IntroductionsTable';
 import { Close } from '@mui/icons-material';
 import IntroductionsModal from '../modals/IntroductionsModal';
+import introductionValidation from '@/validations/introductionValidation';
+import { addIntroductionAction } from '@/actions/introductionActions';
 
 type IntroductionsFormType = {
    introductions: {
@@ -20,6 +22,7 @@ const IntroductionForm = (props: IntroductionsFormType) => {
    );
    const [inputValue, setInputValue] = useState('');
    const [deleteSelected, setDeleteSelected] = useState<string | undefined>();
+   const [error, setError] = useState('');
 
    useEffect(() => {
       if (selectedItem?._id) {
@@ -33,6 +36,27 @@ const IntroductionForm = (props: IntroductionsFormType) => {
 
    const onDeleteSelectedHandler = (_id: string | undefined) => {
       setDeleteSelected(_id);
+   };
+
+   const addSubmitHandler = async () => {
+      const verified = introductionValidation.safeParse({ text: inputValue });
+
+      if (!verified.success) {
+         return setError(verified.error.errors[0].message);
+      }
+
+      const response = await addIntroductionAction(
+         localStorage.getItem('token')!,
+         verified.data.text,
+      );
+   };
+
+   const editSubmitHandler = () => {
+      const verified = introductionValidation.safeParse({ text: inputValue });
+
+      if (!verified.success) {
+         setError(verified.error.errors[0].message);
+      }
    };
 
    return (
@@ -56,6 +80,7 @@ const IntroductionForm = (props: IntroductionsFormType) => {
             sx={{ width: '80%' }}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            helperText={error}
             InputProps={{
                startAdornment: selectedItem && (
                   <IconButton
@@ -72,9 +97,21 @@ const IntroductionForm = (props: IntroductionsFormType) => {
          />
 
          {selectedItem ? (
-            <Button variant='contained'>ویرایش</Button>
+            <Button
+               type='button'
+               variant='contained'
+               onClick={editSubmitHandler}
+            >
+               ویرایش
+            </Button>
          ) : (
-            <Button variant='contained'>اضافه کردن</Button>
+            <Button
+               type='button'
+               variant='contained'
+               onClick={addSubmitHandler}
+            >
+               اضافه کردن
+            </Button>
          )}
 
          <IntroductionsModal
