@@ -13,7 +13,10 @@ import IntroductionsTable, {
 import { Close } from '@mui/icons-material';
 import IntroductionsModal from '../modals/IntroductionsModal';
 import introductionValidation from '@/validations/introductionValidation';
-import { addIntroductionAction } from '@/actions/introductionActions';
+import {
+   addIntroductionAction,
+   editIntroductionAction,
+} from '@/actions/introductionActions';
 import { useRouter } from 'next/navigation';
 
 type IntroductionsFormType = {
@@ -77,11 +80,37 @@ const IntroductionForm = (props: IntroductionsFormType) => {
       }
    };
 
-   const editSubmitHandler = () => {
-      const verified = introductionValidation.safeParse({ text: inputValue });
+   const editSubmitHandler = async () => {
+      if (selectedItem) {
+         const verified = introductionValidation.safeParse({
+            text: inputValue,
+         });
 
-      if (!verified.success) {
-         setError(verified.error.errors[0].message);
+         if (!verified.success) {
+            return setError(verified.error.errors[0].message);
+         }
+         setIsLoading(true);
+
+         const response = await editIntroductionAction(
+            localStorage.getItem('token')!,
+            selectedItem._id.toString(),
+            inputValue,
+         );
+
+         setIsLoading(false);
+
+         if (response.status === 401) {
+            localStorage.removeItem('token');
+            router.replace('/');
+         }
+
+         if (response.status === 200) {
+            setError('');
+            setInputValue('');
+            alert('معرفی با موفقیت ویرایش شد!');
+         } else {
+            alert(response.message || 'خطایی در سرور رخ داد!');
+         }
       }
    };
 
@@ -127,8 +156,9 @@ const IntroductionForm = (props: IntroductionsFormType) => {
                type='button'
                variant='contained'
                onClick={editSubmitHandler}
+               disabled={isLoading}
             >
-               ویرایش
+               {isLoading ? <CircularProgress size={25} /> : 'ویرایش'}
             </Button>
          ) : (
             <Button

@@ -35,7 +35,7 @@ const IntroductionsModal = (props: IntroductionsModalProps) => {
                router.replace('/');
             }
 
-            return alert(response.message);
+            return alert(response.message || 'خطایی در سرور رخ داد!');
          }
 
          if (response.status === 200) {
