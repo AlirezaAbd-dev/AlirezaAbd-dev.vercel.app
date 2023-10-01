@@ -115,6 +115,7 @@ const SkillForm = (props: SkillFormProps) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
                      />
                   );
                }}
@@ -133,6 +134,7 @@ const SkillForm = (props: SkillFormProps) => {
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
                      />
                   );
                }}

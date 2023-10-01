@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = false;
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 const getAllData = async () => {
    const response = await fetch('http://localhost:3000/api/all', {

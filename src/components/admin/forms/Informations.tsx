@@ -85,6 +85,8 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
+
                      />
                   );
                }}
@@ -103,6 +105,8 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
+
                      />
                   );
                }}
@@ -120,6 +124,8 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
+
                      />
                   );
                }}
@@ -137,6 +143,8 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
+
                      />
                   );
                }}

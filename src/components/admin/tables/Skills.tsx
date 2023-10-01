@@ -1,7 +1,7 @@
 import { Box, IconButton, Typography } from '@mui/material';
 import { Skill, SkillFormProps } from '../forms/SkillForm';
 import { Close, Delete, Edit } from '@mui/icons-material';
-import SkillsModal from '../modals/skillsModal';
+import SkillsModal from '../modals/SkillsModal';
 import { useState } from 'react';
 
 type SkillsProps = SkillFormProps & {
@@ -20,6 +20,7 @@ const Skills = (props: SkillsProps) => {
             const isActive = props.selectedSkill?._id === s._id;
             return (
                <Box
+                  key={s._id}
                   sx={{
                      display: 'flex',
                      flexDirection: 'row-reverse',

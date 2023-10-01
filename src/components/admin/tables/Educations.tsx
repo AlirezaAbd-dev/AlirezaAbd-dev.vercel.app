@@ -9,32 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, IconButton } from '@mui/material';
-import { Delete } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import { EducationType } from '../forms/EducationForm';
-
-function createData(
-   cert: string,
-   duration: string,
-   university: string,
-   major: string,
-) {
-   return { cert, duration, university, major };
-}
-
-const rows = [
-   createData(
-      'دیپلم',
-      '1400 - 1402',
-      'دانشکده شهید چمران',
-      'کامپیوتر - نرم افزار',
-   ),
-   createData(
-      'فوق دیپلم',
-      '1402 - 1404',
-      'دانشکده شهید چمران',
-      'کامپیوتر - نرم افزار',
-   ),
-];
 
 type EducationsProps = {
    educations: EducationType[];
@@ -70,6 +46,9 @@ export default function Educations(props: EducationsProps) {
                         <TableCell align='center'>{row.major}</TableCell>
                         <TableCell align='center'>{row.university}</TableCell>
                         <TableCell align='center'>
+                           <IconButton color='info'>
+                              <Edit />
+                           </IconButton>
                            <IconButton color='error'>
                               <Delete />
                            </IconButton>

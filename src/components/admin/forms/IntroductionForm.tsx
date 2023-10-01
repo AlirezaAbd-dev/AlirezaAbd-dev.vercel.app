@@ -136,6 +136,7 @@ const IntroductionForm = (props: IntroductionsFormType) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             helperText={error}
+            error={!!error}
             InputProps={{
                startAdornment: selectedItem && (
                   <IconButton
