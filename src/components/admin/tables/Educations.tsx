@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
+import { EducationType } from '../forms/EducationForm';
 
 function createData(
    cert: string,
@@ -35,7 +36,11 @@ const rows = [
    ),
 ];
 
-export default function Educations() {
+type EducationsProps = {
+   educations: EducationType[];
+};
+
+export default function Educations(props: EducationsProps) {
    return (
       <Box width={'100%'}>
          <TableContainer component={Paper}>
@@ -53,14 +58,14 @@ export default function Educations() {
                   </TableRow>
                </TableHead>
                <TableBody>
-                  {rows.map((row) => (
+                  {props.educations.map((row) => (
                      <TableRow
-                        key={row.cert}
+                        key={row.certificate}
                         sx={{
                            '&:last-child td, &:last-child th': { border: 0 },
                         }}
                      >
-                        <TableCell align='center'>{row.cert}</TableCell>
+                        <TableCell align='center'>{row.certificate}</TableCell>
                         <TableCell align='center'>{row.duration}</TableCell>
                         <TableCell align='center'>{row.major}</TableCell>
                         <TableCell align='center'>{row.university}</TableCell>

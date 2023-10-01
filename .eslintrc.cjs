@@ -35,6 +35,7 @@ const config = {
          'warn',
          { argsIgnorePattern: '^_' },
       ],
+      'no-console': 'warn',
    },
 };
 

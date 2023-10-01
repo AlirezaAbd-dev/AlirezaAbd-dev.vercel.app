@@ -61,7 +61,7 @@ const AdminPanel = () => {
 
          <SkillForm skills={data.skills} />
 
-         <EducationForm />
+         <EducationForm educations={data.educations} />
 
          <ProjectForm />
       </Card>
