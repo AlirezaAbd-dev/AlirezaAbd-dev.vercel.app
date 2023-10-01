@@ -1,5 +1,13 @@
-import { Box, Button, Modal, Typography } from '@mui/material';
-import React from 'react';
+import { deleteIntroductionAction } from '@/actions/introductionActions';
+import {
+   Box,
+   Button,
+   CircularProgress,
+   Modal,
+   Typography,
+} from '@mui/material';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 type IntroductionsModalProps = {
    deleteSelected: string | undefined;
@@ -7,6 +15,36 @@ type IntroductionsModalProps = {
 };
 
 const IntroductionsModal = (props: IntroductionsModalProps) => {
+   const router = useRouter();
+
+   const [loading, setLoading] = useState(false);
+
+   const deleteHandler = async () => {
+      if (props.deleteSelected) {
+         setLoading(true);
+         const response = await deleteIntroductionAction(
+            localStorage.getItem('token')!,
+            props.deleteSelected,
+         );
+         setLoading(false);
+
+         if (response.status !== 200) {
+            if (response.status === 401) {
+               props.setDeleteSelected(undefined);
+               localStorage.removeItem('token');
+               router.replace('/');
+            }
+
+            return alert(response.message);
+         }
+
+         if (response.status === 200) {
+            props.setDeleteSelected(undefined);
+            alert('معرفی مورد نظر با موفقیت حذف شد');
+         }
+      }
+   };
+
    return (
       <Modal
          open={!!props.deleteSelected}
@@ -38,7 +76,21 @@ const IntroductionsModal = (props: IntroductionsModalProps) => {
                >
                   لغو
                </Button>
-               <Button color='error'>حذف</Button>
+               <Button
+                  type='button'
+                  onClick={deleteHandler}
+                  color='error'
+                  disabled={loading}
+               >
+                  {loading ? (
+                     <CircularProgress
+                        color='error'
+                        size={25}
+                     />
+                  ) : (
+                     'حذف'
+                  )}
+               </Button>
             </Box>
          </Box>
       </Modal>
