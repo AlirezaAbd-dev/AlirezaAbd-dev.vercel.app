@@ -15,16 +15,16 @@ export type AllDataType = {
    city: string;
    email: string;
    introductions: { text: string; _id: ObjectId }[];
-   skills: { _id: ObjectId; name: string; rate: number }[];
+   skills: { _id: string; name: string; rate: number }[];
    educations: {
-      _id: ObjectId;
+      _id: string;
       certificate: string;
       duration: string;
       major: string;
       university: string;
    }[];
    projects: {
-      _id: ObjectId;
+      _id: string;
       name: string;
       image: string;
       reference: string;

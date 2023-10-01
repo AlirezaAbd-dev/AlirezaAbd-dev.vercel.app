@@ -19,7 +19,6 @@ import { useStore } from '@/store/store';
 
 const AdminPanel = () => {
    const data = useStore((state) => state.data);
-   console.log(data);
 
    const { handlePageNumber } = useContext(MainContext);
 
@@ -60,7 +59,7 @@ const AdminPanel = () => {
 
          <IntroductionForm introductions={data.introductions} />
 
-         <SkillForm />
+         <SkillForm skills={data.skills} />
 
          <EducationForm />
 

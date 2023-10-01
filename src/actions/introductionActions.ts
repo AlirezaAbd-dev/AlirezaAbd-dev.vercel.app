@@ -12,10 +12,6 @@ export async function addIntroductionAction(token: string, text: string) {
    if (!response.ok) {
       const message = await response.json();
 
-      if (response.status === 401) {
-         return { status: 401, message };
-      }
-
       return {
          status: response.status,
          message: message as string,
@@ -38,10 +34,6 @@ export async function editIntroductionAction(
    if (!response.ok) {
       const message = await response.json();
 
-      if (response.status === 401) {
-         return { status: 401, message };
-      }
-
       return {
          status: response.status,
          message: message as string,
@@ -59,10 +51,6 @@ export async function deleteIntroductionAction(token: string, id: string) {
 
    if (!response.ok) {
       const message = await response.json();
-
-      if (response.status === 401) {
-         return { status: 401, message };
-      }
 
       return {
          status: response.status,
