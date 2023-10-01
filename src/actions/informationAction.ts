@@ -12,6 +12,9 @@ export default async function informationAction(
       headers: {
          token,
       },
+      next: {
+         revalidate: 0,
+      },
    });
 
    if (!response.ok) {

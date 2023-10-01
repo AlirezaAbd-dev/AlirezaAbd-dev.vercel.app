@@ -21,11 +21,13 @@ export const metadata: Metadata = {
    },
 };
 
-export const revalidate = 3600;
+export const revalidate = false;
+export const runtime = 'edge';
 
 const getAllData = async () => {
    const response = await fetch('http://localhost:3000/api/all', {
-      next: { tags: ['data'] },
+      next: { tags: ['data'], revalidate: 3600 },
+      cache: 'force-cache',
    });
    const data = await response.json();
    return data as AllDataType;

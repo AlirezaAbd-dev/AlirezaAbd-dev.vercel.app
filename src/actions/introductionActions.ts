@@ -7,6 +7,7 @@ export async function addIntroductionAction(token: string, text: string) {
       headers: {
          token,
       },
+      next: { revalidate: 0 },
    });
 
    if (!response.ok) {
@@ -28,7 +29,12 @@ export async function editIntroductionAction(
 ) {
    const response = await fetch(
       `http://localhost:3000/api/introductions/${id}`,
-      { method: 'PUT', headers: { token }, body: JSON.stringify({ text }) },
+      {
+         method: 'PUT',
+         headers: { token },
+         body: JSON.stringify({ text }),
+         next: { revalidate: 0 },
+      },
    );
 
    if (!response.ok) {
@@ -46,7 +52,7 @@ export async function editIntroductionAction(
 export async function deleteIntroductionAction(token: string, id: string) {
    const response = await fetch(
       `http://localhost:3000/api/introductions/${id}`,
-      { method: 'DELETE', headers: { token } },
+      { method: 'DELETE', headers: { token }, next: { revalidate: 0 } },
    );
 
    if (!response.ok) {
