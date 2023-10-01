@@ -7,6 +7,7 @@ export async function addSkillAction(
       method: 'POST',
       headers: { token },
       body: JSON.stringify({ name, rate }),
+      next: { revalidate: 0 },
    });
 
    if (!response.ok) {
@@ -34,6 +35,7 @@ export async function editSkillAction(
       method: 'PUT',
       headers: { token },
       body: JSON.stringify({ name, rate }),
+      next: { revalidate: 0 },
    });
 
    if (!response.ok) {
@@ -51,6 +53,7 @@ export async function deleteSkillAction(token: string, id: string) {
    const response = await fetch(`http://localhost:3000/api/skills/${id}`, {
       method: 'DELETE',
       headers: { token },
+      next: { revalidate: 0 },
    });
 
    if (!response.ok) {

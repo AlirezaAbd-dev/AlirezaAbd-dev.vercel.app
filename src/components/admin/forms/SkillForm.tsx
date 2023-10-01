@@ -11,10 +11,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import skillValidation from '@/validations/skillValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { addSkillAction } from '@/actions/SkillAction';
+import { addSkillAction, editSkillAction } from '@/actions/SkillAction';
 import { useRouter } from 'next/navigation';
 
-type Skill = {
+export type Skill = {
    _id: string;
    name: string;
    rate: number;
@@ -27,43 +27,57 @@ export type SkillFormProps = {
 type SkillType = z.infer<typeof skillValidation>;
 
 const SkillForm = (props: SkillFormProps) => {
-   const { control, handleSubmit, reset } = useForm<SkillType>({
-      resolver: zodResolver(skillValidation),
-      defaultValues: {
-         name: '',
-         rate: 1,
-      },
-   });
-   const router = useRouter();
-
    const [selectedSkill, setSelectedSkill] = useState<Skill | undefined>();
    const [loading, setLoading] = useState(false);
 
+   const router = useRouter();
+
+   const { control, handleSubmit, reset } = useForm<SkillType>({
+      resolver: zodResolver(skillValidation),
+      values: selectedSkill
+         ? { name: selectedSkill.name, rate: selectedSkill.rate }
+         : { name: '', rate: 1 },
+   });
+
+   function selectedSkillHandler(skill: Skill | undefined) {
+      setSelectedSkill(skill);
+   }
+
    async function addSkillHandler(value: SkillType) {
-      console.log(value);
+      setLoading(true);
+      let response;
       if (!selectedSkill) {
-         setLoading(true);
-         const response = await addSkillAction(
+         response = await addSkillAction(
             localStorage.getItem('token')!,
             value.name,
             value.rate,
          );
-         setLoading(false);
-
-         if (response.status === 401) {
-            localStorage.removeItem('token');
-            router.replace('/');
-         }
-
-         if (response.status !== 200) {
-            return alert(response.message || 'خطایی در سرور رخ داد!');
-         }
-
-         if (response.status === 200) {
-            reset();
-            alert('مهارت با موفقیت اضافه شد!');
-         }
       } else {
+         response = await editSkillAction(
+            localStorage.getItem('token')!,
+            selectedSkill._id,
+            value.name,
+            value.rate,
+         );
+      }
+      setLoading(false);
+
+      if (response.status === 401) {
+         localStorage.removeItem('token');
+         router.replace('/');
+      }
+
+      if (response.status !== 200) {
+         return alert(response.message.message || 'خطایی در سرور رخ داد!');
+      }
+
+      if (response.status === 200) {
+         reset();
+         if (!selectedSkill) alert('مهارت با موفقیت اضافه شد!');
+         else {
+            alert('مهارت با موفقیت ویرایش شد!');
+            setSelectedSkill(undefined);
+         }
       }
    }
 
@@ -71,7 +85,11 @@ const SkillForm = (props: SkillFormProps) => {
       <>
          <Typography variant='h6'>اضافه کردن مهارت</Typography>
 
-         <Skills skills={props.skills} />
+         <Skills
+            skills={props.skills}
+            selectedSkill={selectedSkill}
+            setSelectedSkill={selectedSkillHandler}
+         />
 
          <Box
             component={'form'}
