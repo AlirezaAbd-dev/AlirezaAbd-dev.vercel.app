@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,14 +8,20 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, IconButton } from '@mui/material';
-import { Delete, Edit } from '@mui/icons-material';
-import { EducationType } from '../forms/EducationForm';
+import { Close, Delete, Edit } from '@mui/icons-material';
+import { EducationType, SelectedEducationType } from '../forms/EducationForm';
+import { useState } from 'react';
+import EducationsModal from '../modals/EducationsModal';
 
 type EducationsProps = {
    educations: EducationType[];
+   selectedItem?: SelectedEducationType;
+   setSelectedItem: (education?: SelectedEducationType) => void;
 };
 
 export default function Educations(props: EducationsProps) {
+   const [deleteSelected, setDeleteSelected] = useState<string>();
+
    return (
       <Box width={'100%'}>
          <TableContainer component={Paper}>
@@ -34,30 +39,60 @@ export default function Educations(props: EducationsProps) {
                   </TableRow>
                </TableHead>
                <TableBody>
-                  {props.educations.map((row) => (
-                     <TableRow
-                        key={row.certificate}
-                        sx={{
-                           '&:last-child td, &:last-child th': { border: 0 },
-                        }}
-                     >
-                        <TableCell align='center'>{row.certificate}</TableCell>
-                        <TableCell align='center'>{row.duration}</TableCell>
-                        <TableCell align='center'>{row.major}</TableCell>
-                        <TableCell align='center'>{row.university}</TableCell>
-                        <TableCell align='center'>
-                           <IconButton color='info'>
-                              <Edit />
-                           </IconButton>
-                           <IconButton color='error'>
-                              <Delete />
-                           </IconButton>
-                        </TableCell>
-                     </TableRow>
-                  ))}
+                  {props.educations.map((e) => {
+                     const isActive = props.selectedItem?._id === e._id;
+
+                     return (
+                        <TableRow
+                           key={e.certificate}
+                           sx={{
+                              '&:last-child td, &:last-child th': { border: 0 },
+                           }}
+                        >
+                           <TableCell align='center'>{e.certificate}</TableCell>
+                           <TableCell align='center'>{e.duration}</TableCell>
+                           <TableCell align='center'>{e.major}</TableCell>
+                           <TableCell align='center'>{e.university}</TableCell>
+                           <TableCell align='center'>
+                              <IconButton
+                                 onClick={() => {
+                                    if (isActive) {
+                                       return props.setSelectedItem(undefined);
+                                    }
+                                    const duration = e.duration.split(' - ');
+
+                                    props.setSelectedItem({
+                                       _id: e._id,
+                                       certificate: e.certificate,
+                                       major: e.major,
+                                       university: e.university,
+                                       since: +duration[0],
+                                       until: +duration[1],
+                                    });
+                                 }}
+                                 color={isActive ? 'error' : 'info'}
+                              >
+                                 {isActive ? <Close /> : <Edit />}
+                              </IconButton>
+                              <IconButton
+                                 onClick={() => {
+                                    setDeleteSelected(e._id);
+                                 }}
+                                 color='error'
+                              >
+                                 <Delete />
+                              </IconButton>
+                           </TableCell>
+                        </TableRow>
+                     );
+                  })}
                </TableBody>
             </Table>
          </TableContainer>
+         <EducationsModal
+            deleteSelected={deleteSelected}
+            setDeleteSelected={setDeleteSelected}
+         />
       </Box>
    );
 }

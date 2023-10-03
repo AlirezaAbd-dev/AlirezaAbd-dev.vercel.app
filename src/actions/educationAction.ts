@@ -65,7 +65,7 @@ export async function deleteEducationAction(token: string, id: string) {
 
       return {
          status: response.status,
-         message: message as string,
+         message: message,
       };
    }
 

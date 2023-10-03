@@ -11,7 +11,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import educationValidation from '@/validations/educationValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { addEducationAction } from '@/actions/educationAction';
+import {
+   addEducationAction,
+   editEducationAction,
+} from '@/actions/educationAction';
 import { useRouter } from 'next/navigation';
 
 export type EducationType = {
@@ -26,7 +29,7 @@ type EducationFormProps = {
    educations: EducationType[];
 };
 
-type SelectedEducationType = Prettify<
+export type SelectedEducationType = Prettify<
    Omit<EducationType, 'duration'> & {
       since: number;
       until: number;
@@ -42,12 +45,26 @@ const EducationForm = (props: EducationFormProps) => {
 
    const { control, handleSubmit, reset } = useForm<EducationFormType>({
       resolver: zodResolver(educationValidation),
+      values: selectedItem
+         ? selectedItem
+         : {
+              certificate: '',
+              major: '',
+              university: '',
+              since: 0,
+              until: 0,
+           },
    });
 
    async function educationHandler(value: EducationFormType) {
       setLoading(true);
       let response;
       if (selectedItem) {
+         response = await editEducationAction(
+            localStorage.getItem('token')!,
+            selectedItem._id,
+            value,
+         );
       } else {
          response = await addEducationAction(
             localStorage.getItem('token')!,
@@ -67,7 +84,10 @@ const EducationForm = (props: EducationFormProps) => {
 
       if (response.status === 200) {
          reset();
-         alert('تحصیلات با موفقیت اضافه شد!');
+         if (selectedItem) {
+            return alert('تحصیلات با موفقیت ویرایش شد');
+         }
+         alert('تحصیلات با موفقیت اضافه شد');
       }
       setLoading(false);
    }
@@ -76,7 +96,11 @@ const EducationForm = (props: EducationFormProps) => {
       <>
          <Typography variant='h6'>تحصیلات</Typography>
 
-         <Educations educations={props.educations} />
+         <Educations
+            educations={props.educations}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+         />
          <Box
             component='form'
             onSubmit={handleSubmit(educationHandler)}
@@ -184,7 +208,13 @@ const EducationForm = (props: EducationFormProps) => {
                variant='contained'
                disabled={loading}
             >
-               {loading ? <CircularProgress size={25} /> : 'اضافه کردن'}
+               {loading ? (
+                  <CircularProgress size={25} />
+               ) : selectedItem ? (
+                  'ویرایش'
+               ) : (
+                  'اضافه کردن'
+               )}
             </Button>
          </Box>
       </>
