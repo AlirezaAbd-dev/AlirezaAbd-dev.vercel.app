@@ -3,7 +3,6 @@ import { WorkOutlineRounded } from '@mui/icons-material';
 import { Timeline } from '@mui/lab';
 import { Box } from '@mui/material';
 
-import education from '../../constants/education';
 import HeaderDivider from '../../components/ui/HeaderDivider';
 import EducationTimelineItem from '../../components/timeline/EducationTimelineItem';
 import { useStore } from '@/store/store';
@@ -31,7 +30,7 @@ const EducationTimeline = () => {
                position='right'
                sx={{ direction: 'ltr' }}
             >
-               {educations?.map((item, index) => (
+               {educations?.map((item) => (
                   <EducationTimelineItem
                      item={item}
                      key={item._id}

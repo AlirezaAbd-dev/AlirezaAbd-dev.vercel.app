@@ -59,11 +59,17 @@ const AdminPanel = () => {
 
          <IntroductionForm introductions={data.introductions} />
 
+         <Divider sx={{ width: '100%' }} />
+
          <SkillForm skills={data.skills} />
+
+         <Divider sx={{ width: '100%' }} />
 
          <EducationForm educations={data.educations} />
 
-         <ProjectForm projects={data.projects}  />
+         <Divider sx={{ width: '100%' }} />
+
+         <ProjectForm projects={data.projects} />
       </Card>
    );
 };
