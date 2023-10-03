@@ -1,42 +1,42 @@
 'use server';
 
-export async function addSkillAction(
+import { EducationFormType } from '@/components/admin/forms/EducationForm';
+
+export async function addEducationAction(
    token: string,
-   name: string,
-   rate: number,
+   education: EducationFormType,
 ) {
-   const response = await fetch('http://localhost:3000/api/skills', {
+   const response = await fetch('http://localhost:3000/api/educations', {
       method: 'POST',
-      headers: { token },
-      body: JSON.stringify({ name, rate }),
+      headers: {
+         token,
+      },
+      body: JSON.stringify(education),
       next: { revalidate: 0 },
    });
 
    if (!response.ok) {
       const message = await response.json();
 
-      if (response.status === 401) {
-         return { status: 401, message };
-      }
-
       return {
          status: response.status,
-         message: message as string,
+         message: message,
       };
    }
 
    return { status: 200 };
 }
-export async function editSkillAction(
+export async function editEducationAction(
    token: string,
    id: string,
-   name: string,
-   rate: number,
+   education: EducationFormType,
 ) {
-   const response = await fetch(`http://localhost:3000/api/skills/${id}`, {
+   const response = await fetch(`http://localhost:3000/api/educations/${id}`, {
       method: 'PUT',
-      headers: { token },
-      body: JSON.stringify({ name, rate }),
+      headers: {
+         token,
+      },
+      body: JSON.stringify(education),
       next: { revalidate: 0 },
    });
 
@@ -51,19 +51,17 @@ export async function editSkillAction(
 
    return { status: 200 };
 }
-export async function deleteSkillAction(token: string, id: string) {
-   const response = await fetch(`http://localhost:3000/api/skills/${id}`, {
+export async function deleteEducationAction(token: string, id: string) {
+   const response = await fetch(`http://localhost:3000/api/educations/${id}`, {
       method: 'DELETE',
-      headers: { token },
+      headers: {
+         token,
+      },
       next: { revalidate: 0 },
    });
 
    if (!response.ok) {
       const message = await response.json();
-
-      if (response.status === 401) {
-         return { status: 401, message };
-      }
 
       return {
          status: response.status,

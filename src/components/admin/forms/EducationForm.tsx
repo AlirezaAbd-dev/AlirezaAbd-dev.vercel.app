@@ -1,10 +1,18 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
-import React from 'react';
+import {
+   Box,
+   Button,
+   CircularProgress,
+   TextField,
+   Typography,
+} from '@mui/material';
+import React, { useState } from 'react';
 import Educations from '../tables/Educations';
 import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import educationValidation from '@/validations/educationValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { addEducationAction } from '@/actions/educationAction';
+import { useRouter } from 'next/navigation';
 
 export type EducationType = {
    _id: string;
@@ -18,17 +26,50 @@ type EducationFormProps = {
    educations: EducationType[];
 };
 
-type EducationFormType = z.infer<typeof educationValidation>;
+type SelectedEducationType = Prettify<
+   Omit<EducationType, 'duration'> & {
+      since: number;
+      until: number;
+   }
+>;
+
+export type EducationFormType = z.infer<typeof educationValidation>;
 
 const EducationForm = (props: EducationFormProps) => {
-   console.log(props.educations);
+   const router = useRouter();
+   const [selectedItem, setSelectedItem] = useState<SelectedEducationType>();
+   const [loading, setLoading] = useState(false);
 
-   const { control, handleSubmit } = useForm<EducationFormType>({
+   const { control, handleSubmit, reset } = useForm<EducationFormType>({
       resolver: zodResolver(educationValidation),
    });
 
-   function educationHandler(value: EducationFormType) {
-      console.log(value);
+   async function educationHandler(value: EducationFormType) {
+      setLoading(true);
+      let response;
+      if (selectedItem) {
+      } else {
+         response = await addEducationAction(
+            localStorage.getItem('token')!,
+            value,
+         );
+      }
+      if (!response) return;
+
+      if (response.status !== 200) {
+         if (response.status === 401) {
+            localStorage.removeItem('token');
+            router.replace('/');
+         }
+
+         return alert(response.message.message || 'خطایی در سرور رخ داد!');
+      }
+
+      if (response.status === 200) {
+         reset();
+         alert('تحصیلات با موفقیت اضافه شد!');
+      }
+      setLoading(false);
    }
 
    return (
@@ -141,8 +182,9 @@ const EducationForm = (props: EducationFormProps) => {
             <Button
                type='submit'
                variant='contained'
+               disabled={loading}
             >
-               اضافه کردن
+               {loading ? <CircularProgress size={25} /> : 'اضافه کردن'}
             </Button>
          </Box>
       </>
