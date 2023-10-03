@@ -63,7 +63,7 @@ const AdminPanel = () => {
 
          <EducationForm educations={data.educations} />
 
-         <ProjectForm />
+         <ProjectForm projects={data.projects}  />
       </Card>
    );
 };

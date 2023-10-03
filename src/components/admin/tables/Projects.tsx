@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,22 +8,20 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, IconButton } from '@mui/material';
-import { Delete } from '@mui/icons-material';
+import { Close, Delete, Edit } from '@mui/icons-material';
+import { Project } from '../forms/ProjectForm';
+import { useState } from 'react';
+import ProjectsModal from '../modals/ProjectsModal';
 
-function createData(
-   name: string,
-   imageAddress: string,
-   detailsAddress: string,
-) {
-   return { name, imageAddress, detailsAddress };
-}
+type ProjectsProps = {
+   projects: Project[];
+   selectedItem?: Project;
+   setSelectedItem: (project?: Project) => void;
+};
 
-const rows = [
-   createData('دیپلم', '1400 - 1402', 'دانشکده شهید چمران'),
-   createData('فوق دیپلم', '1402 - 1404', 'دانشکده شهید چمران'),
-];
+export default function Projects(props: ProjectsProps) {
+   const [deleteSelected, setDeleteSelected] = useState<string>();
 
-export default function Projects() {
    return (
       <Box width={'100%'}>
          <TableContainer component={Paper}>
@@ -41,28 +38,55 @@ export default function Projects() {
                   </TableRow>
                </TableHead>
                <TableBody>
-                  {rows.map((row) => (
-                     <TableRow
-                        key={row.name}
-                        sx={{
-                           '&:last-child td, &:last-child th': { border: 0 },
-                        }}
-                     >
-                        <TableCell align='center'>{row.name}</TableCell>
-                        <TableCell align='center'>{row.imageAddress}</TableCell>
-                        <TableCell align='center'>
-                           {row.detailsAddress}
-                        </TableCell>
-                        <TableCell align='center'>
-                           <IconButton color='error'>
-                              <Delete />
-                           </IconButton>
-                        </TableCell>
-                     </TableRow>
-                  ))}
+                  {props.projects.map((p) => {
+                     const isActive = props.selectedItem?._id === p._id;
+
+                     return (
+                        <TableRow
+                           key={p.name}
+                           sx={{
+                              '&:last-child td, &:last-child th': { border: 0 },
+                           }}
+                        >
+                           <TableCell align='center'>{p.name}</TableCell>
+                           <TableCell align='center'>{p.image}</TableCell>
+                           <TableCell align='center'>{p.reference}</TableCell>
+                           <TableCell align='center'>
+                              <IconButton
+                                 onClick={() => {
+                                    if (isActive)
+                                       return props.setSelectedItem(undefined);
+
+                                    props.setSelectedItem({
+                                       _id: p._id,
+                                       image: p.image,
+                                       name: p.name,
+                                       reference: p.reference,
+                                    });
+                                 }}
+                                 color={isActive ? 'error' : 'info'}
+                              >
+                                 {isActive ? <Close /> : <Edit />}
+                              </IconButton>
+                              <IconButton
+                                 onClick={() => {
+                                    setDeleteSelected(p._id);
+                                 }}
+                                 color='error'
+                              >
+                                 <Delete />
+                              </IconButton>
+                           </TableCell>
+                        </TableRow>
+                     );
+                  })}
                </TableBody>
             </Table>
          </TableContainer>
+         <ProjectsModal
+            deleteSelected={deleteSelected}
+            setDeleteSelected={setDeleteSelected}
+         />
       </Box>
    );
 }
