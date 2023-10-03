@@ -20,7 +20,7 @@ const AboutMeHeader = () => {
           //@ts-ignore
           icon={<CodeRounded color="text.primary" />}
         >
-          توسعه دهنده فول استک
+          مشخصات
         </HeaderDivider>
 
         <AboutMeContent />

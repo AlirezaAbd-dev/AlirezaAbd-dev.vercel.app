@@ -60,7 +60,7 @@ function AppContainer({ children }: { children: ReactNode }) {
    }, [isMdUp, onSetDrawerOpen]);
 
    const handlePageNumber = useCallback(
-      (e: SyntheticEvent | undefined, newValue: number) => {
+      (_e: SyntheticEvent | undefined, newValue: number) => {
          setPageNumber(newValue);
       },
       [],

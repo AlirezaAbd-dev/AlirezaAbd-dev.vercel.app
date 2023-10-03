@@ -7,9 +7,11 @@ import Image from 'next/image';
 import ThemeActionButton from '../ThemeActionButton';
 
 import avatar from '../../assets/avatar.png';
+import { useStore } from '@/store/store';
 
 const SidebarHeader = () => {
    const theme = useTheme();
+   const data = useStore((state) => state.data);
 
    return (
       <>
@@ -32,7 +34,7 @@ const SidebarHeader = () => {
          >
             <Image
                src={avatar}
-               alt='علیرضا عابدی'
+               alt={data?.name || ''}
                width={200}
                height={200}
             />
@@ -46,7 +48,7 @@ const SidebarHeader = () => {
                      : theme.palette.secondary.main,
             }}
          >
-            علیرضا عابدی
+            {data?.name || 'بی نام'}
          </h1>
 
          <Box sx={{ m: '10px auto', textAlign: 'center' }}>
