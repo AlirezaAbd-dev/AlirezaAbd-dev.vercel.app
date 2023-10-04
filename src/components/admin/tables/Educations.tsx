@@ -39,7 +39,7 @@ export default function Educations(props: EducationsProps) {
                   </TableRow>
                </TableHead>
                <TableBody>
-                  {props.educations.map((e) => {
+                  {props?.educations?.map((e) => {
                      const isActive = props.selectedItem?._id === e._id;
 
                      return (

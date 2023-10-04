@@ -38,7 +38,7 @@ export default function Projects(props: ProjectsProps) {
                   </TableRow>
                </TableHead>
                <TableBody>
-                  {props.projects.map((p) => {
+                  {props?.projects?.map((p) => {
                      const isActive = props.selectedItem?._id === p._id;
 
                      return (
