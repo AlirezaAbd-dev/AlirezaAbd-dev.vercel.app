@@ -1,83 +1,70 @@
-"use client";
+'use client';
 import {
-  Divider,
-  Chip,
-  Typography,
-  Box,
-  LinearProgress,
-  Badge,
-  Skeleton,
-} from "@mui/material";
-import Image from "next/image";
+   Divider,
+   Chip,
+   Typography,
+   Box,
+   LinearProgress,
+   Badge,
+} from '@mui/material';
 
 const Skill = ({
-  icon,
-  color,
-  name,
-  value,
+   color,
+   name,
+   value,
 }: {
-  icon: any;
-  name: string;
-  color: string;
-  value: number;
+   name: string;
+   color: string;
+   value: number;
 }) => {
-  return (
-    <>
-      <Divider
-        textAlign="right"
-        sx={{
-          "&::before, &::after": {
-            borderColor: `${color}.main`,
-          },
-          mt: 3,
-          mb: 1,
-        }}
-      >
-        <Chip
-          icon={
-            icon ? (
-              <Image src={icon} alt={name} width={30} />
-            ) : (
-              <Skeleton
-                variant="circular"
-                animation="wave"
-                width={30}
-                height={30}
-              />
-            )
-          }
-          // @ts-ignore
-          color={color}
-          label={name}
-          sx={{ color: "#000", p: 3 }}
-        />
-      </Divider>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box sx={{ width: "100%", ml: 1 }}>
-          <LinearProgress
-            variant="determinate"
-            value={value}
-            // @ts-ignore
-            color={color}
+   return (
+      <>
+         <Divider
+            textAlign='right'
             sx={{
-              height: 10,
-              borderRadius: 2,
+               '&::before, &::after': {
+                  borderColor: color,
+               },
+               mt: 3,
+               mb: 1,
             }}
-          />
-        </Box>
-        <Box sx={{ minWidth: 35, mr: 2 }}>
-          <Typography variant="body2">
-            <Badge
-              variant="standard"
-              badgeContent={`${Math.round(value)}%`}
-              // @ts-ignore
-              color={color}
+         >
+            <Chip
+               label={name}
+               sx={{ p: 3, background: color }}
             />
-          </Typography>
-        </Box>
-      </Box>
-    </>
-  );
+         </Divider>
+         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', ml: 1 }}>
+               <LinearProgress
+                  variant='determinate'
+                  value={value}
+                  sx={{
+                     height: 10,
+                     borderRadius: 2,
+                     background: 'gray',
+                     '& .muirtl-qd76qg-MuiLinearProgress-bar1': {
+                        bgcolor: color,
+                     },
+                  }}
+               />
+            </Box>
+            <Box sx={{ minWidth: 35, mr: 2 }}>
+               <Typography variant='body2'>
+                  <Badge
+                     variant='standard'
+                     badgeContent={`${Math.round(value)}%`}
+                     sx={{
+                        '& .MuiBadge-badge': {
+                           bgcolor: color,
+                        },
+                     }}
+                  />
+               </Typography>
+            </Box>
+         </Box>
+      </>
+   );
 };
 
 export default Skill;

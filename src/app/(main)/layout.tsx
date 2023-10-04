@@ -4,8 +4,13 @@ import '../../assets/css/styles.css';
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
 
-import AppContainer from '../../containers/AppContainer';
+// import AppContainer from '../../containers/AppContainer';
 import { AllDataType, StoreContainer } from '@/store/store';
+import dynamic from 'next/dynamic';
+
+const AppContainer = dynamic(() => import('../../containers/AppContainer'), {
+   ssr: false,
+});
 
 export const metadata: Metadata = {
    title: 'علیرضا عابدی | توسعه دهنده فول استک',
