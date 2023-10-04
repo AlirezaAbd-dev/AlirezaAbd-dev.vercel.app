@@ -1,4 +1,8 @@
-import AdminPanel from '@/components/admin/AdminPanel';
+// import AdminPanel from '@/components/admin/AdminPanel';
+import dynamic from 'next/dynamic';
+const AdminPanel = dynamic(() => import('@/components/admin/AdminPanel'), {
+   ssr: false,
+});
 
 const AdminPanelPage = () => {
    return <AdminPanel />;

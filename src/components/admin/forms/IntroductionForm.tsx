@@ -118,7 +118,7 @@ const IntroductionForm = (props: IntroductionsFormType) => {
       <>
          <Typography variant='h6'>معرفی ها</Typography>
 
-         {props.introductions.map((i) => (
+         {props?.introductions?.map((i) => (
             <IntroductionsTable
                key={i._id.toString()}
                _id={i._id}

@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardContent } from '@mui/material';
+
 import EducationTimeline from '../timeline/EducationTimeline';
 import AboutMeHeader from './AboutMeHeader';
 import AboutMeSkills from './AboutMeSkills';

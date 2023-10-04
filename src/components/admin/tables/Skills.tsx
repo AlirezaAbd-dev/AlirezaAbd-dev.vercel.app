@@ -16,8 +16,8 @@ const Skills = (props: SkillsProps) => {
 
    return (
       <Box sx={{ display: 'flex', gap: 5 }}>
-         {props.skills.map((s) => {
-            const isActive = props.selectedSkill?._id === s._id;
+         {props?.skills?.map((s) => {
+            const isActive = props?.selectedSkill?._id === s._id;
             return (
                <Box
                   key={s._id}
