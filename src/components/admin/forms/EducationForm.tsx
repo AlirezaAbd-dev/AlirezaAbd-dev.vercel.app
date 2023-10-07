@@ -85,6 +85,7 @@ const EducationForm = (props: EducationFormProps) => {
       if (response.status === 200) {
          reset();
          if (selectedItem) {
+            setSelectedItem(undefined);
             return alert('تحصیلات با موفقیت ویرایش شد');
          }
          alert('تحصیلات با موفقیت اضافه شد');

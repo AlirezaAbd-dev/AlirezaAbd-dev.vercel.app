@@ -22,10 +22,10 @@ const AboutMeSkills = () => {
                مهارت های من
             </HeaderDivider>
             {data?.skills?.map((s) => {
-               const randomColor = Math.floor(
-                  Math.random() * 16777215,
-               ).toString(16);
-               console.log(randomColor);
+               const randomColor = (Math.random() * 0xfffff * 1000000)
+                  .toString(16)
+                  .slice(0, 6);
+
                return (
                   <Skill
                      value={s.rate}

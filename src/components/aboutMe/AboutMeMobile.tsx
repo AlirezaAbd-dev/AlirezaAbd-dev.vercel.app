@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import avatar from '../../assets/new-avatar.jpg';
+import avatar from '../../assets/avatar.png';
 import { useStore } from '@/store/store';
 
 const AboutMeMobile = () => {
@@ -53,6 +53,7 @@ const AboutMeMobile = () => {
             <Image
                src={avatar}
                alt={data?.name || ''}
+               loading='eager'
                width={250}
                height={250}
                onLoad={() => {

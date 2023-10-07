@@ -30,6 +30,7 @@ const SidebarHeader = () => {
                   lg: 'flex',
                   xl: 'flex',
                },
+               borderRadius: '10%',
             }}
          >
             <Image

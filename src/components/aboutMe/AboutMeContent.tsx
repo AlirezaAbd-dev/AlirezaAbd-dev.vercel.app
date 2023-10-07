@@ -1,15 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Avatar, Box, Skeleton, Slide } from '@mui/material';
+import { Avatar, Box, Slide } from '@mui/material';
 import Image from 'next/image';
 
 import DevInfo from '../../page-components/DevInfo';
-import avatar from '../../assets/new-avatar.jpg';
+import avatar from '../../assets/avatar.png';
 import { useStore } from '@/store/store';
 
 const AboutMeContent = () => {
    const [loading, setLoading] = useState(false);
-   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
    const data = useStore((state) => state.data);
 
@@ -37,25 +36,10 @@ const AboutMeContent = () => {
                },
             }}
          >
-            {!isImageLoaded && (
-               <Skeleton
-                  variant='circular'
-                  animation='pulse'
-                  width={150}
-                  height={150}
-                  sx={{
-                     display: {
-                        xs: 'flex',
-                        sm: 'flex',
-                        md: 'none',
-                     },
-                  }}
-               />
-            )}
             <Avatar
                variant='circular'
                sx={{
-                  display: isImageLoaded ? 'block' : 'none',
+                  display: 'block',
                   width: 150,
                   height: 'auto',
                }}
@@ -66,9 +50,6 @@ const AboutMeContent = () => {
                   alt={data?.name || ''}
                   width={150}
                   height={150}
-                  onLoad={() => {
-                     setIsImageLoaded(true);
-                  }}
                />
             </Avatar>
          </Box>

@@ -71,6 +71,7 @@ const ProjectForm = (props: ProjectFormProps) => {
       if (response.status === 200) {
          reset();
          if (selectedItem) {
+            setSelectedItem(undefined);
             return alert('پروژه با موفقیت ویرایش شد');
          }
          alert('پروژه با موفقیت اضافه شد');

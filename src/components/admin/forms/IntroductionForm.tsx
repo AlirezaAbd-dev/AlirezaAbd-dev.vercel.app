@@ -107,6 +107,7 @@ const IntroductionForm = (props: IntroductionsFormType) => {
          if (response.status === 200) {
             setError('');
             setInputValue('');
+            setSelectedItem(null);
             alert('معرفی با موفقیت ویرایش شد!');
          } else {
             alert(response.message || 'خطایی در سرور رخ داد!');
