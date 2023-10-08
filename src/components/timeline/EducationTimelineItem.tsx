@@ -16,10 +16,10 @@ const EducationTimelineItem = ({ item }: { item: EducationType }) => {
       <TimelineItem>
          <TimelineSeparator>
             <TimelineDot
-               color='info'
+               color='primary'
                variant='outlined'
             >
-               <SchoolRounded color='info' />
+               <SchoolRounded color='primary' />
             </TimelineDot>
             <TimelineConnector />
          </TimelineSeparator>

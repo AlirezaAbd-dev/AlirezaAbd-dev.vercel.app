@@ -13,7 +13,7 @@ const EducationTimeline = () => {
    return (
       <Box sx={{ mt: 2 }}>
          <HeaderDivider
-            color='redAccent.main'
+            color='primary.dark'
             animation={false}
             // @ts-ignore
             icon={<WorkOutlineRounded color='text.primary' />}

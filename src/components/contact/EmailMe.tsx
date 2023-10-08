@@ -93,7 +93,7 @@ const EmailMe = () => {
                <a
                   href={`mailto:${email}`}
                   style={{
-                     color: theme.palette.redAccent.main,
+                     color: theme.palette.primary.main,
                   }}
                >
                   ایمیل

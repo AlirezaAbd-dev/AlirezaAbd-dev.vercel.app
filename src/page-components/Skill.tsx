@@ -42,7 +42,6 @@ const Skill = ({
                   sx={{
                      height: 10,
                      borderRadius: 2,
-                     background: 'gray',
                      '& .muirtl-qd76qg-MuiLinearProgress-bar1': {
                         bgcolor: color,
                      },

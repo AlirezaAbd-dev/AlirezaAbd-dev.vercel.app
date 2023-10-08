@@ -8,7 +8,7 @@ declare module '@mui/material/styles/createPalette' {
    }
 
    interface PaletteOptions {
-      redAccent?: PaletteColor;
+      redAccent?: Partial<PaletteColor>;
       greenAccent?: PaletteColor;
       progressbar?: PaletteColor;
    }
@@ -22,16 +22,16 @@ export const lightTheme = createTheme({
    palette: {
       mode: 'light',
       primary: {
-         main: '#8be9fd',
+         main: '#E9B824',
+         dark: '#E9B824',
       },
       secondary: {
-         main: '#df2343',
+         main: '#E9B824',
+         dark: '#E9B824',
       },
       redAccent: {
-         light: '#e54f69',
-         main: '#df2343',
-         dark: '#861528',
-         contrastText: '#861528',
+         main: '#E9B824',
+         dark: '#E9B824',
       },
       greenAccent: {
          main: '#43cf21',
@@ -56,8 +56,6 @@ export const darkTheme = createTheme({
    palette: {
       mode: 'dark',
       primary: {
-         // main: '#8be9fd',
-         // main: '#FFCD4B',
          main: '#E9B824',
       },
       secondary: {

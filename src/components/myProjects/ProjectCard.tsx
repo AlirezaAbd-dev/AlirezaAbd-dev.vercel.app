@@ -47,7 +47,7 @@ const ProjectCard = ({ item, index }: { item: ProjectType; index: number }) => {
                transitionDelay: loading ? `${index + 3}99ms` : '0ms',
             }}
          >
-            <Card sx={{ maxWidth: 600, backgroundColor: 'steelblue' }}>
+            <Card sx={{ maxWidth: 600, backgroundColor: 'primary.dark' }}>
                <CardActionArea>
                   {!isImageLoaded && (
                      <Skeleton
@@ -89,6 +89,7 @@ const ProjectCard = ({ item, index }: { item: ProjectType; index: number }) => {
                         href={item.reference}
                         size='small'
                         color='primary'
+                        variant='contained'
                         target='_blank'
                      >
                         اطلاعات بیشتر

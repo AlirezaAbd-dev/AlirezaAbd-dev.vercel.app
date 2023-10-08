@@ -49,9 +49,9 @@ const ContactForm = () => {
             <Button
                type='submit'
                // @ts-ignore
-               color='greenAccent'
+               color='primary'
                variant='contained'
-               sx={{ mt: 2, color: 'text.primary' }}
+               sx={{ mt: 2 }}
                fullWidth
             >
                ارسال پیام

@@ -22,11 +22,7 @@ export default function MainMyProject() {
       >
          <CardContent>
             <HeaderDivider
-               color={
-                  theme.palette.mode === 'dark'
-                     ? 'greenAccent.main'
-                     : 'greenAccent.light'
-               }
+               color={'primary.dark'}
                // @ts-ignore
                icon={<CurrencyExchangeRounded color='text.primary' />}
             >
