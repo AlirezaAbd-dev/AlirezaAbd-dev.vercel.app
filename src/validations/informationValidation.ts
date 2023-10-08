@@ -16,4 +16,9 @@ export const informationValidation = z.object({
    email: z
       .string({ required_error: 'ایمیل خود را وارد نمایید!' })
       .email({ message: 'لطفا یک ایمیل معتبر وارد نمایید!' }),
+   phone: z
+      .string({ required_error: 'لطفا شماره تلفن خود را وارد نمایید!' })
+      .regex(/^(\+98?)?{?(0?9[0-9]{9,9}}?)$/, {
+         message: 'شماره تلفن را به درستی وارد نمایید!',
+      }),
 });

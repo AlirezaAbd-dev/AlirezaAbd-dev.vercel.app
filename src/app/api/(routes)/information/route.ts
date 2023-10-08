@@ -17,6 +17,7 @@ export async function GET(req: NextRequest) {
       birthYear: data.users.at(0)?.yearOfBirth,
       email: data.users.at(0)?.email,
       city: data.users.at(0)?.city,
+      phone: data.users.at(0)?.phone,
    };
 
    return res.json({ information });
@@ -39,6 +40,7 @@ export async function POST(req: NextRequest) {
       data.users[0].email = data.verifiedBody.data.email;
       data.users[0].yearOfBirth = data.verifiedBody.data.birthYear;
       data.users[0].city = data.verifiedBody.data.city;
+      data.users[0].phone = data.verifiedBody.data.phone;
    }
 
    try {

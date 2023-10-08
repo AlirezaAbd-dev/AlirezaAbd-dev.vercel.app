@@ -20,7 +20,7 @@ const SidebarHeader = () => {
             variant='circular'
             sx={{
                height: 'auto',
-               width: '90%',
+               width: '80%',
                margin: '0 auto',
                bgcolor: 'transparent',
                display: {
@@ -30,7 +30,6 @@ const SidebarHeader = () => {
                   lg: 'flex',
                   xl: 'flex',
                },
-               borderRadius: '10%',
             }}
          >
             <Image

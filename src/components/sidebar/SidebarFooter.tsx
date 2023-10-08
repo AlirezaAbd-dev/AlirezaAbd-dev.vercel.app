@@ -1,5 +1,5 @@
 'use client';
-import { CopyrightRounded, FavoriteRounded } from '@mui/icons-material';
+import { CopyrightRounded } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 
 const SidebarFooter = () => {

@@ -21,7 +21,7 @@ const AboutMeMobile = () => {
       >
          {!isImageLoaded && (
             <Skeleton
-               variant='rounded'
+               variant='circular'
                animation='pulse'
                width={250}
                height={250}
@@ -36,7 +36,7 @@ const AboutMeMobile = () => {
             />
          )}
          <Avatar
-            variant='rounded'
+            variant='circular'
             sx={{
                height: 250,
                width: 250,

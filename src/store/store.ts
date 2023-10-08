@@ -14,6 +14,7 @@ export type AllDataType = {
    yearOfBirth: number;
    city: string;
    email: string;
+   phone: string;
    introductions: { text: string; _id: ObjectId }[];
    skills: { _id: string; name: string; rate: number }[];
    educations: {

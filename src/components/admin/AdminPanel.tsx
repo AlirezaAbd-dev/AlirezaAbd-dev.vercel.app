@@ -53,6 +53,7 @@ const AdminPanel = () => {
             email={data?.email}
             name={data?.name}
             yearOfBirth={data?.yearOfBirth}
+            phone={data?.phone}
          />
 
          <Divider sx={{ width: '100%' }} />

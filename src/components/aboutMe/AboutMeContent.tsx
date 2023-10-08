@@ -64,6 +64,7 @@ const AboutMeContent = () => {
                <DevInfo>نام و نام خانوادگی : {data?.name || 'بی نام'}</DevInfo>
                <DevInfo>سال تولد : {data?.yearOfBirth || 'نامشخص'}</DevInfo>
                <DevInfo>شهر : {data?.city || 'نامشخص'}</DevInfo>
+               <DevInfo>{data?.phone || 'نامشخص'} : شماره تلفن</DevInfo>
                <DevInfo>{data?.email || 'نامشخص'} : ایمیل</DevInfo>
             </Box>
          </Slide>

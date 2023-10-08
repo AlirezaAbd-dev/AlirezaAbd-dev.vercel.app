@@ -12,11 +12,18 @@ type InformationType = {
    yearOfBirth?: number;
    city?: string;
    email?: string;
+   phone?: string;
 };
 
 export type InformationDataType = z.infer<typeof informationValidation>;
 
-const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
+const Informations = ({
+   name,
+   yearOfBirth,
+   city,
+   email,
+   phone,
+}: InformationType) => {
    const [isLoading, setIsLoading] = useState(false);
 
    const router = useRouter();
@@ -27,6 +34,7 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
          birthYear: yearOfBirth,
          city,
          fullname: name,
+         phone: phone,
       },
       resolver: zodResolver(informationValidation),
    });
@@ -141,19 +149,29 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                   );
                }}
             />
+            <Controller
+               name='phone'
+               control={control}
+               render={({ field, fieldState }) => {
+                  return (
+                     <TextField
+                        dir='rtl'
+                        label='شماره تلفن'
+                        onBlur={field.onBlur}
+                        onChange={field.onChange}
+                        value={field.value}
+                        helperText={fieldState.error?.message}
+                        error={!!fieldState.error}
+                     />
+                  );
+               }}
+            />
             <Button
                type='submit'
                variant='contained'
                disabled={isLoading}
             >
-               {isLoading ? (
-                  <CircularProgress
-                     color='info'
-                     size={25}
-                  />
-               ) : (
-                  'تایید'
-               )}
+               {isLoading ? <CircularProgress size={25} /> : 'تایید'}
             </Button>
          </form>
       </>

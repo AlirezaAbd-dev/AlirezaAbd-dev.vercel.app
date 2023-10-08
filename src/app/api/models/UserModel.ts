@@ -7,6 +7,7 @@ export const userSchema = new mongoose.Schema({
    yearOfBirth: { type: Number, required: true },
    city: { type: String, required: true },
    email: { type: String, required: true },
+   phone: { type: String, required: true },
    introductions: [
       {
          _id: {
