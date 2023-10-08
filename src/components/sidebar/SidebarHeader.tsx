@@ -19,11 +19,11 @@ const SidebarHeader = () => {
          <Avatar
             variant='circular'
             sx={{
+               border: `3px solid ${theme.palette.primary.main}`,
                height: 'auto',
                width: '75%',
                aspectRatio: 1 / 1,
                margin: '0 auto',
-               bgcolor: 'transparent',
                display: {
                   xs: 'none',
                   sm: 'none',
