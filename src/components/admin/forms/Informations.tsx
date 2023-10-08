@@ -79,14 +79,12 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='نام و نام خانوادگی'
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
                         error={!!fieldState.error}
-
                      />
                   );
                }}
@@ -98,7 +96,6 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='سال تولد'
                         type='number'
                         onBlur={field.onBlur}
@@ -106,7 +103,6 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                         value={field.value}
                         helperText={fieldState.error?.message}
                         error={!!fieldState.error}
-
                      />
                   );
                }}
@@ -118,14 +114,12 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='شهر'
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
                         error={!!fieldState.error}
-
                      />
                   );
                }}
@@ -137,14 +131,12 @@ const Informations = ({ name, yearOfBirth, city, email }: InformationType) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='ایمیل'
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         value={field.value}
                         helperText={fieldState.error?.message}
                         error={!!fieldState.error}
-
                      />
                   );
                }}

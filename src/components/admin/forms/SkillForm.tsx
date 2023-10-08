@@ -109,7 +109,6 @@ const SkillForm = (props: SkillFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='مهارت'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -127,7 +126,6 @@ const SkillForm = (props: SkillFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         type='number'
                         label='میزان مهارت'
                         value={field.value}

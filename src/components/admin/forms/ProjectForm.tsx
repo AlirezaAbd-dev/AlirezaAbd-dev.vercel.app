@@ -106,7 +106,6 @@ const ProjectForm = (props: ProjectFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='نام پروژه'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -124,7 +123,6 @@ const ProjectForm = (props: ProjectFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='آدرس عکس'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -142,7 +140,6 @@ const ProjectForm = (props: ProjectFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='لینک رفرنس'
                         value={field.value}
                         onBlur={field.onBlur}

@@ -120,7 +120,6 @@ const EducationForm = (props: EducationFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='مدرک'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -138,7 +137,6 @@ const EducationForm = (props: EducationFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='از سال'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -156,7 +154,6 @@ const EducationForm = (props: EducationFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='تا سال'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -174,7 +171,6 @@ const EducationForm = (props: EducationFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='رشته'
                         value={field.value}
                         onBlur={field.onBlur}
@@ -192,7 +188,6 @@ const EducationForm = (props: EducationFormProps) => {
                   return (
                      <TextField
                         dir='rtl'
-                        color='secondary'
                         label='محل تحصیل'
                         value={field.value}
                         onBlur={field.onBlur}

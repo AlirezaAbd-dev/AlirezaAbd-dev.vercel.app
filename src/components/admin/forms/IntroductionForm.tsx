@@ -131,7 +131,6 @@ const IntroductionForm = (props: IntroductionsFormType) => {
 
          <TextField
             dir='rtl'
-            color='secondary'
             label='از خودت کوتاه تعریف کن'
             sx={{ width: '80%' }}
             value={inputValue}
