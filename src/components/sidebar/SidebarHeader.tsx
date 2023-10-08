@@ -20,7 +20,8 @@ const SidebarHeader = () => {
             variant='circular'
             sx={{
                height: 'auto',
-               width: '80%',
+               width: '75%',
+               aspectRatio: 1 / 1,
                margin: '0 auto',
                bgcolor: 'transparent',
                display: {
