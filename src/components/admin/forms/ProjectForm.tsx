@@ -42,7 +42,6 @@ const ProjectForm = (props: ProjectFormProps) => {
    });
 
    async function projectHandler(value: ProjectType) {
-      console.log(value);
       setLoading(true);
       let response;
       if (!selectedItem) {

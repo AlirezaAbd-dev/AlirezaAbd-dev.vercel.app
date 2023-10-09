@@ -1,15 +1,13 @@
 'use client';
 
-import { myProjects } from '@/constants/myProjects';
 import { CurrencyExchangeRounded } from '@mui/icons-material';
-import { Card, CardContent, useTheme } from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import HeaderDivider from '../ui/HeaderDivider';
 import ProjectCard from './ProjectCard';
 import { useStore } from '@/store/store';
 
 export default function MainMyProject() {
-   const theme = useTheme();
    const projects = useStore((state) => state.data?.projects);
 
    return (

@@ -1,6 +1,6 @@
 'use server';
 
-import { EducationFormType } from '@/components/admin/forms/EducationForm';
+import type { EducationFormType } from '@/components/admin/forms/EducationForm';
 
 export async function addEducationAction(
    token: string,

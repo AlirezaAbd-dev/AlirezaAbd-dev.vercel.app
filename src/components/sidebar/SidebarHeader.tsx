@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, Box, IconButton, useTheme } from '@mui/material';
-import { GitHub, Telegram, Instagram, LinkedIn } from '@mui/icons-material';
+import { Telegram, LinkedIn } from '@mui/icons-material';
 import Eitaa from '../../assets/eitaa-svgrepo-com.svg';
 import Image from 'next/image';
 

@@ -1,6 +1,6 @@
 'use server';
 
-import { InformationDataType } from '@/components/admin/forms/Informations';
+import type { InformationDataType } from '@/components/admin/forms/Informations';
 
 export default async function informationAction(
    info: InformationDataType,

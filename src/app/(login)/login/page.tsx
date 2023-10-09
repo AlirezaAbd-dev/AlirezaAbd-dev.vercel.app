@@ -8,7 +8,7 @@ import {
    Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import axios from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +30,7 @@ const LoginPage = () => {
       try {
          setIsLoading(true);
          const response = await axios.post('/api/login', data);
-         localStorage.setItem('token', response.headers.token);
+         localStorage.setItem('token', response.headers.token as string);
          router.push('/');
       } catch (err: any) {
          if (err.response.data.message) {

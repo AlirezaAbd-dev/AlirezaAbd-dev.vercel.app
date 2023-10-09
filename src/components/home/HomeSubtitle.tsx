@@ -12,7 +12,10 @@ const HomeSubtitle = () => {
 
    const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-   const strings = useMemo(() => introductions?.map((i) => [i.text]), []);
+   const strings = useMemo(
+      () => introductions?.map((i) => [i.text]),
+      [introductions],
+   );
 
    useEffect(() => {
       const textInterval = setInterval(() => {

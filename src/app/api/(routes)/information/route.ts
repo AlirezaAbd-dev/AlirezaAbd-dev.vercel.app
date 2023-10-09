@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse as res } from 'next/server';
+import { type NextRequest, NextResponse as res } from 'next/server';
 import { adminAuth } from '../../auth/auth';
 import dbConnect from '../../utils/dbConnect';
 import { informationValidator } from './informationValidation';

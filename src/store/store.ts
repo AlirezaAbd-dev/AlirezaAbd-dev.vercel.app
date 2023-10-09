@@ -47,7 +47,7 @@ export const StoreContainer = (props: {
 
    useEffect(() => {
       setAllData(props.data);
-   }, []);
+   }, [props.data]);
 
    return props.children;
 };

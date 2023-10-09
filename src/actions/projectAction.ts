@@ -1,5 +1,5 @@
 'use server';
-import { ProjectType } from '@/components/admin/forms/ProjectForm';
+import type { ProjectType } from '@/components/admin/forms/ProjectForm';
 
 export async function addProjectAction(token: string, project: ProjectType) {
    const response = await fetch('http://localhost:3000/api/projects', {

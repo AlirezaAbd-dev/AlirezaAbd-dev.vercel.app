@@ -4,7 +4,6 @@ import { Box, LinearProgress } from '@mui/material';
 const Loading = () => {
    return (
       <Box>
-         {/* @ts-ignore */}
          <LinearProgress color='primary' />
       </Box>
    );

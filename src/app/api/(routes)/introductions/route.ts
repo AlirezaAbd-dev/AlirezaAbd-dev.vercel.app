@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 import { adminAuth } from '../../auth/auth';
 import dbConnect from '../../utils/dbConnect';

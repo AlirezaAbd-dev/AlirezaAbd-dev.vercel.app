@@ -2,10 +2,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Box, Skeleton, useTheme } from '@mui/material';
 import Particles from 'react-particles';
-// @ts-ignore
-import { Container, Engine } from 'tsparticles-engine';
+import type { Container, Engine } from 'tsparticles-engine';
 import { loadFull } from 'tsparticles';
-import Image, { StaticImageData } from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 
 import bg03 from '../../assets/bg03.jpg';
 import bg04 from '../../assets/bg04.jpg';

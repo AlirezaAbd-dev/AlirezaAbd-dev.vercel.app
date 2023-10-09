@@ -22,7 +22,7 @@ const HomeTitle = () => {
       return () => {
          typedName.destroy();
       };
-   }, []);
+   }, [data?.name]);
 
    return (
       <Box

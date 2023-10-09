@@ -1,6 +1,6 @@
 import { adminAuth } from '@/app/api/auth/auth';
 import dbConnect from '@/app/api/utils/dbConnect';
-import { NextRequest, NextResponse as res } from 'next/server';
+import { type NextRequest, NextResponse as res } from 'next/server';
 import educationValidation from '../educationValidation';
 
 export async function PUT(req: NextRequest) {

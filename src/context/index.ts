@@ -4,10 +4,10 @@ import { createContext, SyntheticEvent } from 'react';
 export default createContext({
    pageNumber: 0,
    handlePageNumber: (
-      e: SyntheticEvent | undefined,
-      newValue: number,
+      _e: SyntheticEvent | undefined,
+      _newValue: number,
    ): void => {},
    drawerOpen: false,
-   setDrawerOpen: (isOpen: boolean): void => {},
+   setDrawerOpen: (_isOpen: boolean): void => {},
    handleThemeChange: () => {},
 });

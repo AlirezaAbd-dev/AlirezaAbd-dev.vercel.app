@@ -23,6 +23,7 @@
       "@types/node": "20.6.2",
       "@types/react": "18.2.21",
       "@types/react-dom": "18.2.7",
+      "@typescript-eslint/eslint-plugin": "^6.7.4",
       "axios": "^1.5.0",
       "bcryptjs": "^2.4.3",
       "eslint": "8.49.0",

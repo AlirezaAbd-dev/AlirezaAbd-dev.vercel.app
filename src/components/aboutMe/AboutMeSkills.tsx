@@ -26,6 +26,7 @@ const AboutMeSkills = () => {
             {data?.skills?.map((s) => {
                return (
                   <Skill
+                     key={s._id}
                      value={s.rate}
                      name={s.name}
                      color={theme.palette.primary.dark}

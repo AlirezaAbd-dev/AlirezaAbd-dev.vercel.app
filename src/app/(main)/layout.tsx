@@ -1,11 +1,11 @@
 import '@/env';
 import '../../assets/css/styles.css';
 
-import { ReactNode } from 'react';
-import { Metadata } from 'next';
+import { type ReactNode } from 'react';
+import { type Metadata } from 'next';
 
 // import AppContainer from '../../containers/AppContainer';
-import { AllDataType, StoreContainer } from '@/store/store';
+import { type AllDataType, StoreContainer } from '@/store/store';
 import dynamic from 'next/dynamic';
 
 const AppContainer = dynamic(() => import('../../containers/AppContainer'), {
@@ -42,21 +42,14 @@ export default async function RootLayout({
 }: {
    children: ReactNode;
 }) {
-   let data;
-   try {
-      data = await getAllData();
-   } catch (err) {
-      console.log(err);
-   }
+   const data = await getAllData();
 
    return (
       <html lang='fa'>
          <body dir='rtl'>
-            {data && (
-               <StoreContainer data={data}>
-                  <AppContainer>{children}</AppContainer>
-               </StoreContainer>
-            )}
+            <StoreContainer data={data}>
+               <AppContainer>{children}</AppContainer>
+            </StoreContainer>
          </body>
       </html>
    );
