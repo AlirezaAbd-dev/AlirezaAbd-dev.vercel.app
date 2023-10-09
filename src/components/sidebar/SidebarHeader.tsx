@@ -1,7 +1,8 @@
 'use client';
 
 import { Avatar, Box, IconButton, useTheme } from '@mui/material';
-import { GitHub, Telegram, Instagram } from '@mui/icons-material';
+import { GitHub, Telegram, Instagram, LinkedIn } from '@mui/icons-material';
+import Eitaa from '../../assets/eitaa-svgrepo-com.svg';
 import Image from 'next/image';
 
 import ThemeActionButton from '../ThemeActionButton';
@@ -54,39 +55,60 @@ const SidebarHeader = () => {
 
          <Box sx={{ m: '10px auto', textAlign: 'center' }}>
             <IconButton
-               aria-label='Github'
-               sx={{ width: 40, height: 40 }}
-            >
-               <a
-                  href='https://github.com/AlirezaAbd-dev'
-                  target='_blank'
-                  rel='noopener noreferrer'
-               >
-                  <GitHub />
-               </a>
-            </IconButton>
-            <IconButton
                aria-label='Telegram'
                sx={{ width: 40, height: 40 }}
             >
                <a
-                  href='https://t.me/AlirezaAbd_Dev'
+                  href='https://t.me/ali_mozhdehi'
                   target='_blank'
                   rel='noopener noreferrer'
+                  style={{
+                     display: 'inline-flex',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                  }}
                >
                   <Telegram sx={{ color: '#0093f5' }} />
                </a>
             </IconButton>
             <IconButton
                aria-label='Instagram'
+               sx={{
+                  width: 40,
+                  height: 40,
+               }}
+            >
+               <a
+                  href='https://eitaa.com/ali_mozhdehi'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  style={{
+                     display: 'inline-flex',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                  }}
+               >
+                  <Image
+                     src={Eitaa}
+                     alt='eitaa'
+                  />
+               </a>
+            </IconButton>
+            <IconButton
+               aria-label='LinkedIn'
                sx={{ width: 40, height: 40 }}
             >
                <a
-                  href='https://www.instagram.com/alirezaabd.dev'
+                  href='https://linkedin.com/in/ali-mozhdehi-3ba306176'
                   target='_blank'
                   rel='noopener noreferrer'
+                  style={{
+                     display: 'inline-flex',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                  }}
                >
-                  <Instagram sx={{ color: '#ba23ab' }} />
+                  <LinkedIn sx={{ color: '#0023bb' }} />
                </a>
             </IconButton>
          </Box>
