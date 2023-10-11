@@ -1,13 +1,13 @@
-"use client";
-import { ChangeEvent, createContext, SyntheticEvent } from "react";
+'use client';
+import { createContext, SyntheticEvent } from 'react';
 
 export default createContext({
-  pageNumber: 0,
-  handlePageNumber: (
-    e: SyntheticEvent,
-    newValue: number
-  ): void => {},
-  drawerOpen: false,
-  setDrawerOpen: (isOpen: boolean): void => {},
-  handleThemeChange: () => {},
+   pageNumber: 0,
+   handlePageNumber: (
+      _e: SyntheticEvent | undefined,
+      _newValue: number,
+   ): void => {},
+   drawerOpen: false,
+   setDrawerOpen: (_isOpen: boolean): void => {},
+   handleThemeChange: () => {},
 });
