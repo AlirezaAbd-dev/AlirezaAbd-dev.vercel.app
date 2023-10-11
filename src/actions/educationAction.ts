@@ -6,14 +6,17 @@ export async function addEducationAction(
    token: string,
    education: EducationFormType,
 ) {
-   const response = await fetch('http://localhost:3000/api/educations', {
-      method: 'POST',
-      headers: {
-         token,
+   const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/educations`,
+      {
+         method: 'POST',
+         headers: {
+            token,
+         },
+         body: JSON.stringify(education),
+         next: { revalidate: 0 },
       },
-      body: JSON.stringify(education),
-      next: { revalidate: 0 },
-   });
+   );
 
    if (!response.ok) {
       const message = await response.json();
@@ -31,14 +34,17 @@ export async function editEducationAction(
    id: string,
    education: EducationFormType,
 ) {
-   const response = await fetch(`http://localhost:3000/api/educations/${id}`, {
-      method: 'PUT',
-      headers: {
-         token,
+   const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/educations/${id}`,
+      {
+         method: 'PUT',
+         headers: {
+            token,
+         },
+         body: JSON.stringify(education),
+         next: { revalidate: 0 },
       },
-      body: JSON.stringify(education),
-      next: { revalidate: 0 },
-   });
+   );
 
    if (!response.ok) {
       const message = await response.json();
@@ -52,13 +58,16 @@ export async function editEducationAction(
    return { status: 200 };
 }
 export async function deleteEducationAction(token: string, id: string) {
-   const response = await fetch(`http://localhost:3000/api/educations/${id}`, {
-      method: 'DELETE',
-      headers: {
-         token,
+   const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/educations/${id}`,
+      {
+         method: 'DELETE',
+         headers: {
+            token,
+         },
+         next: { revalidate: 0 },
       },
-      next: { revalidate: 0 },
-   });
+   );
 
    if (!response.ok) {
       const message = await response.json();

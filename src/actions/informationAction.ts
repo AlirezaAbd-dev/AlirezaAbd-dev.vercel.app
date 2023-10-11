@@ -6,16 +6,19 @@ export default async function informationAction(
    info: InformationDataType,
    token: string,
 ) {
-   const response = await fetch('http://localhost:3000/api/information', {
-      method: 'POST',
-      body: JSON.stringify(info),
-      headers: {
-         token,
+   const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/information`,
+      {
+         method: 'POST',
+         body: JSON.stringify(info),
+         headers: {
+            token,
+         },
+         next: {
+            revalidate: 0,
+         },
       },
-      next: {
-         revalidate: 0,
-      },
-   });
+   );
 
    if (!response.ok) {
       return {

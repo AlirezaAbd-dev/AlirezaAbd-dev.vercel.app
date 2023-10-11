@@ -54,6 +54,18 @@ export const userSchema = new mongoose.Schema({
          reference: { type: String, required: false },
       },
    ],
+   works: [
+      {
+         _id: {
+            type: mongoose.SchemaTypes.ObjectId,
+            unique: true,
+            auto: true,
+         },
+         company: { type: String, required: true },
+         time: { type: String, required: true },
+         post: { type: String, required: true },
+      },
+   ],
 });
 
 export type UserSchemaType = InferSchemaType<typeof userSchema>;

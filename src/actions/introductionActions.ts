@@ -1,14 +1,17 @@
 'use server';
 
 export async function addIntroductionAction(token: string, text: string) {
-   const response = await fetch('http://localhost:3000/api/introductions', {
-      method: 'POST',
-      body: JSON.stringify({ text }),
-      headers: {
-         token,
+   const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/introductions`,
+      {
+         method: 'POST',
+         body: JSON.stringify({ text }),
+         headers: {
+            token,
+         },
+         next: { revalidate: 0 },
       },
-      next: { revalidate: 0 },
-   });
+   );
 
    if (!response.ok) {
       const message = await response.json();
@@ -28,7 +31,7 @@ export async function editIntroductionAction(
    text: string,
 ) {
    const response = await fetch(
-      `http://localhost:3000/api/introductions/${id}`,
+      `http://localhost:${process.env.PORT}/api/introductions/${id}`,
       {
          method: 'PUT',
          headers: { token },
@@ -51,7 +54,7 @@ export async function editIntroductionAction(
 
 export async function deleteIntroductionAction(token: string, id: string) {
    const response = await fetch(
-      `http://localhost:3000/api/introductions/${id}`,
+      `http://localhost:${process.env.PORT}/api/introductions/${id}`,
       { method: 'DELETE', headers: { token }, next: { revalidate: 0 } },
    );
 
