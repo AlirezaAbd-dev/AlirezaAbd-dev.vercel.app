@@ -1,10 +1,10 @@
-"use client";
-import { Slide, Typography, useTheme } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+'use client';
+import { Slide, Typography, useTheme } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import worldMap from "../../assets/tech2.png";
+import worldMap from '../../assets/tech2.png';
 
 const EmailMe = () => {
   const [loading, setLoading] = useState(false);
@@ -21,50 +21,52 @@ const EmailMe = () => {
 
   return (
     <Slide
-      direction="left"
+      direction='left'
       in={loading}
       style={{
-        transitionDelay: loading ? `200ms` : "0ms",
+        transitionDelay: loading ? `200ms` : '0ms',
       }}
     >
       <Grid
-        xs={0}
-        sm={0}
-        md={4}
+        size={{
+          xs: 0,
+          sm: 0,
+          md: 4,
+        }}
         sx={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          textAlign: "center",
-          filter: theme.palette.mode === "dark" ? "invert(100%)" : "",
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: 'center',
+          filter: theme.palette.mode === 'dark' ? 'invert(100%)' : '',
         }}
       >
         <Image
           src={worldMap}
-          alt="world map"
+          alt='world map'
           width={300}
           height={200}
           style={{
-            position: "absolute",
-            width: "100%",
-            height: "auto",
+            position: 'absolute',
+            width: '100%',
+            height: 'auto',
           }}
         />
         <Typography
-          variant="h6"
+          variant='h6'
           sx={{
-            fontFamily: "vazir",
+            fontFamily: 'vazir',
             mt: 4,
-            color: "text.primary",
+            color: 'text.primary',
             filter:
-              theme.palette.mode === "dark" ? "invert(100%)" : "invert(0)",
+              theme.palette.mode === 'dark' ? 'invert(100%)' : 'invert(0)',
             display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
-              lg: "block",
-              xl: "block",
+              xs: 'none',
+              sm: 'none',
+              md: 'block',
+              lg: 'block',
+              xl: 'block',
             },
           }}
         >
@@ -74,25 +76,25 @@ const EmailMe = () => {
           sx={{
             mt: 2,
             filter:
-              theme.palette.mode === "dark" ? "invert(100%)" : "invert(0)",
+              theme.palette.mode === 'dark' ? 'invert(100%)' : 'invert(0)',
             display: {
-              xs: "none",
-              sm: "none",
-              md: "block",
+              xs: 'none',
+              sm: 'none',
+              md: 'block',
             },
           }}
-          variant="body1"
-          color="text.primary"
+          variant='body1'
+          color='text.primary'
         >
-          👋{" "}
+          👋{' '}
           <a
-            href="mailto:alireza.abedi9310@gmail.com"
+            href='mailto:alireza.abedi9310@gmail.com'
             style={{
               color: theme.palette.redAccent.main,
             }}
           >
             ایمیل
-          </a>{" "}
+          </a>{' '}
           بزن به من
         </Typography>
       </Grid>

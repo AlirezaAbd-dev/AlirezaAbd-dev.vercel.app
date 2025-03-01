@@ -1,11 +1,11 @@
-"use client";
-import { ContactMail } from "@mui/icons-material";
-import { Card, CardContent, Slide } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
-import { useEffect, useState } from "react";
-import HeaderDivider from "../ui/HeaderDivider";
-import ContactForm from "./ContactForm";
-import EmailMe from "./EmailMe";
+'use client';
+import { ContactMail } from '@mui/icons-material';
+import { Card, CardContent, Slide } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import { useEffect, useState } from 'react';
+import HeaderDivider from '../ui/HeaderDivider';
+import ContactForm from './ContactForm';
+import EmailMe from './EmailMe';
 
 export default function MainContactUs() {
   const [loading, setLoading] = useState(false);
@@ -21,36 +21,45 @@ export default function MainContactUs() {
   return (
     <Card
       sx={{
-        height: "100vh",
-        background: "background.primary",
-        overflowY: "scroll",
-        display: "flex",
-        flexDirection: "column",
+        height: '100vh',
+        background: 'background.primary',
+        overflowY: 'scroll',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <CardContent>
         {/* DIVIDER */}
         <HeaderDivider
-          color="warning.main"
+          color='warning.main'
           //@ts-ignore
-          icon={<ContactMail color="text.primary" />}
+          icon={<ContactMail color='text.primary' />}
         >
           ارتباط با من
         </HeaderDivider>
 
-        <Grid container sx={{ mt: 5 }}>
+        <Grid
+          container
+          sx={{ mt: 5 }}
+        >
           <Slide
-            direction="up"
+            direction='up'
             in={loading}
             style={{
-              transitionDelay: loading ? `200ms` : "0ms",
+              transitionDelay: loading ? `200ms` : '0ms',
             }}
           >
-            <Grid xs={12} sm={12} md={8}>
+            <Grid
+              size={{
+                xs: 12,
+                sm: 12,
+                md: 8,
+              }}
+            >
               <Card
                 sx={{
-                  justifyContent: "center",
-                  alignItems: "center",
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
                 {/* FORM */}

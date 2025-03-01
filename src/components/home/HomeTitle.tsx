@@ -1,12 +1,12 @@
-"use client";
-import { Box, Typography, useTheme } from "@mui/material";
-import { useEffect, useRef } from "react";
-import Typed from "typed.js";
+'use client';
+import { Box, Typography, useTheme } from '@mui/material';
+import { useEffect, useRef } from 'react';
+import Typed from 'typed.js';
 
 const HomeTitle = () => {
   const theme = useTheme();
 
-  const nameEl = useRef<any>();
+  const nameEl = useRef<any>(null);
 
   useEffect(() => {
     const typedName = new Typed(nameEl.current, {
@@ -25,29 +25,29 @@ const HomeTitle = () => {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: 'flex',
       }}
     >
       <Typography
-        variant="h4"
+        variant='h4'
         color={
-          theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
+          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
         }
       >
         {`{" `}
       </Typography>
       <Typography
-        textAlign="center"
-        variant="h4"
+        textAlign='center'
+        variant='h4'
         color={
-          theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
+          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
         }
         ref={nameEl}
       ></Typography>
       <Typography
-        variant="h4"
+        variant='h4'
         color={
-          theme.palette.mode === "dark" ? "primary.light" : "secondary.main"
+          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
         }
       >
         {` "}`}

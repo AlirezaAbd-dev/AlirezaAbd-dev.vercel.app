@@ -1,11 +1,11 @@
-"use client";
-import { SelfImprovementRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Unstable_Grid2";
+'use client';
+import { SelfImprovementRounded } from '@mui/icons-material';
+import Grid from '@mui/material/Grid2';
 
-import useSkillRandom from "../../hooks/useSkillRandom";
-import Skill from "../../page-components/Skill";
-import { devSkills } from "../../constants/skills";
-import HeaderDivider from "../../components/ui/HeaderDivider";
+import useSkillRandom from '../../hooks/useSkillRandom';
+import Skill from '../../page-components/Skill';
+import { devSkills } from '../../constants/skills';
+import HeaderDivider from '../../components/ui/HeaderDivider';
 
 const AboutMeSkills = () => {
   const javascript = useSkillRandom(80);
@@ -30,10 +30,10 @@ const AboutMeSkills = () => {
     <Grid container>
       <Grid sx={{ width: 1, mt: 1 }}>
         <HeaderDivider
-          color="primary.dark"
+          color='primary.dark'
           animation={false}
           // @ts-ignore
-          icon={<SelfImprovementRounded color="text.primary" />}
+          icon={<SelfImprovementRounded color='text.primary' />}
         >
           مهارت های من
         </HeaderDivider>
