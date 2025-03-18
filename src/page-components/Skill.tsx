@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Divider,
   Chip,
@@ -7,26 +7,24 @@ import {
   LinearProgress,
   Badge,
   Skeleton,
-} from "@mui/material";
-import Image from "next/image";
+} from '@mui/material';
+import Image from 'next/image';
+import { StaticImageData } from 'next/image';
 
-const Skill = ({
-  icon,
-  color,
-  name,
-  value,
-}: {
-  icon: any;
+interface SkillProps {
+  icon?: StaticImageData | string;
   name: string;
-  color: string;
+  color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
   value: number;
-}) => {
+}
+
+const Skill = ({ icon, color, name, value }: SkillProps) => {
   return (
     <>
       <Divider
-        textAlign="right"
+        textAlign='right'
         sx={{
-          "&::before, &::after": {
+          '&::before, &::after': {
             borderColor: `${color}.main`,
           },
           mt: 3,
@@ -36,28 +34,30 @@ const Skill = ({
         <Chip
           icon={
             icon ? (
-              <Image src={icon} alt={name} width={30} />
+              <Image
+                src={icon}
+                alt={name}
+                width={30}
+              />
             ) : (
               <Skeleton
-                variant="circular"
-                animation="wave"
+                variant='circular'
+                animation='wave'
                 width={30}
                 height={30}
               />
             )
           }
-          // @ts-ignore
           color={color}
           label={name}
-          sx={{ color: "#000", p: 3 }}
+          sx={{ color: '#000', p: 3 }}
         />
       </Divider>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box sx={{ width: "100%", ml: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', ml: 1 }}>
           <LinearProgress
-            variant="determinate"
+            variant='determinate'
             value={value}
-            // @ts-ignore
             color={color}
             sx={{
               height: 10,
@@ -66,11 +66,10 @@ const Skill = ({
           />
         </Box>
         <Box sx={{ minWidth: 35, mr: 2 }}>
-          <Typography variant="body2">
+          <Typography variant='body2'>
             <Badge
-              variant="standard"
+              variant='standard'
               badgeContent={`${Math.round(value)}%`}
-              // @ts-ignore
               color={color}
             />
           </Typography>
