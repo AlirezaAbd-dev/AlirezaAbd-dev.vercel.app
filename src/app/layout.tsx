@@ -1,7 +1,7 @@
 import '../assets/css/styles.css';
 
 import { ReactNode } from 'react';
-import AppContainer from '../containers/AppContainer';
+import AppContainer from '../containers/AppContainer/AppContainer';
 import { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {

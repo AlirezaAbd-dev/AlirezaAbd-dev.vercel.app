@@ -7,42 +7,13 @@ import {
   SyntheticEvent,
 } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
-import SwipeableViews from 'react-swipeable-views';
 
-import MainLayout from '../Layouts/MainLayout';
-import { Sidebar } from '../components/sidebar';
-import SidebarContainer from '../containers/SidebarContainer';
-import MainContext from '../context';
-import PagesContainer from '../containers/PagesContainer';
-import { DrawerActionButton } from '../components/drawer';
+import MainLayout from '../../Layouts/MainLayout';
+import MainContext from '../../context';
 import { usePathname } from 'next/navigation';
-import {
-  isServer,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000,
-      },
-    },
-  });
-}
-
-let browserQueryClient: QueryClient | undefined = undefined;
-
-function getQueryClient() {
-  if (isServer) {
-    return makeQueryClient();
-  } else {
-    if (!browserQueryClient) browserQueryClient = makeQueryClient();
-    return browserQueryClient;
-  }
-}
+import AppContainerContent from './AppContainerContent';
+import AppQueryClientProvider from './AppQueryClientProvider';
 
 function AppContainer({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -94,10 +65,8 @@ function AppContainer({ children }: { children: ReactNode }) {
     setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   }, []);
 
-  const queryClient = getQueryClient();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <AppQueryClientProvider>
       <MainContext.Provider
         value={{
           pageNumber,
@@ -108,23 +77,10 @@ function AppContainer({ children }: { children: ReactNode }) {
         }}
       >
         <MainLayout mode={mode}>
-          <SidebarContainer>
-            <Sidebar />
-          </SidebarContainer>
-
-          <DrawerActionButton />
-
-          <PagesContainer>
-            <SwipeableViews
-              axis={theme.direction === 'ltr' ? 'x-reverse' : 'x'}
-            >
-              {children}
-            </SwipeableViews>
-          </PagesContainer>
+          <AppContainerContent>{children}</AppContainerContent>
         </MainLayout>
       </MainContext.Provider>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    </AppQueryClientProvider>
   );
 }
 
