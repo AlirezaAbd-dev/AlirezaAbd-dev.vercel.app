@@ -27,6 +27,7 @@
     "eslint-config-next": "15.4.6",
     "formik": "^2.4.6",
     "framer-motion": "^12.23.12",
+    "jalali-moment": "^3.3.11",
     "next": "^15.4.6",
     "react": "19.1.1",
     "react-dom": "19.1.1",

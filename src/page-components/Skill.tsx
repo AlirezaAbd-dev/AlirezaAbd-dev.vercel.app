@@ -1,4 +1,5 @@
 'use client';
+import UseSkillRandom from '@/hooks/useSkillRandom';
 import {
   Divider,
   Chip,
@@ -9,16 +10,17 @@ import {
   Skeleton,
 } from '@mui/material';
 import Image from 'next/image';
-import { StaticImageData } from 'next/image';
 
 interface SkillProps {
-  icon?: StaticImageData | string;
+  icon?: string;
   name: string;
-  color: 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
+  color: string;
   value: number;
 }
 
 const Skill = ({ icon, color, name, value }: SkillProps) => {
+  const skillRate = UseSkillRandom(value);
+
   return (
     <>
       <Divider
@@ -34,11 +36,26 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
         <Chip
           icon={
             icon ? (
-              <Image
-                src={icon}
-                alt={name}
-                width={30}
-              />
+              <Box
+                sx={{
+                  width: 30,
+                  height: 30,
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Image
+                  src={icon}
+                  alt={name}
+                  width={30}
+                  height={30}
+                  style={{
+                    objectFit: 'contain',
+                  }}
+                />
+              </Box>
             ) : (
               <Skeleton
                 variant='circular'
@@ -48,16 +65,15 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
               />
             )
           }
-          color={color}
           label={name}
-          sx={{ color: '#000', p: 3 }}
+          sx={{ color: '#000', p: 3, bgcolor: color }}
         />
       </Divider>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <Box sx={{ width: '100%', ml: 1 }}>
           <LinearProgress
             variant='determinate'
-            value={value}
+            value={skillRate}
             color={color}
             sx={{
               height: 10,
@@ -69,7 +85,7 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
           <Typography variant='body2'>
             <Badge
               variant='standard'
-              badgeContent={`${Math.round(value)}%`}
+              badgeContent={`${Math.round(skillRate)}%`}
               color={color}
             />
           </Typography>
