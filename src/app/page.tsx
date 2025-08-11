@@ -12,11 +12,18 @@ import bg04 from '../assets/bg04.jpg';
 import { createLinks } from '../constants/particles';
 import HomeTitle from '../components/home/HomeTitle';
 import HomeSubtitle from '../components/home/HomeSubtitle';
+import useProfileQuery from '@/services/main/useProfileQuery';
+import useAbilitiesQuery from '@/services/main/useAbilitiesQuery';
 
 const Home = () => {
   const theme = useTheme();
   const [background, setBackground] = useState<StaticImageData>(bg03);
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
+
+  const { data: profileData, isPending: profileIsPending } = useProfileQuery();
+
+  const { data: abilitiesData, isPending: abilitiesIsPending } =
+    useAbilitiesQuery();
 
   const mode = theme.palette.mode;
 
@@ -38,64 +45,81 @@ const Home = () => {
     }
   }, [mode]);
 
-  return (
-    <Box
-      sx={{
-        position: 'relative',
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-      }}
-    >
-      {!isBackgroundLoaded && (
-        <Skeleton
-          variant='rectangular'
-          animation='wave'
-          sx={{
-            position: 'absolute',
-            zIndex: '-1',
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-      )}
-      <Image
-        priority
-        src={background}
-        alt='portfolio background'
-        width={1500}
-        height={1200}
-        style={{
-          display: isBackgroundLoaded ? 'block' : 'none',
+  if (profileIsPending || abilitiesIsPending) {
+    return (
+      <Skeleton
+        variant='rectangular'
+        animation='wave'
+        sx={{
           position: 'absolute',
           zIndex: '-1',
           width: '100%',
           height: '100%',
           objectFit: 'cover',
         }}
-        onLoad={() => {
-          setIsBackgroundLoaded(true);
+      />
+    );
+  }
+
+  if (!profileIsPending && !abilitiesIsPending && profileData && abilitiesData)
+    return (
+      <Box
+        sx={{
+          position: 'relative',
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}
-      />
+      >
+        {!isBackgroundLoaded && (
+          <Skeleton
+            variant='rectangular'
+            animation='wave'
+            sx={{
+              position: 'absolute',
+              zIndex: '-1',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        )}
+        <Image
+          priority
+          src={background}
+          alt='portfolio background'
+          width={1500}
+          height={1200}
+          style={{
+            display: isBackgroundLoaded ? 'block' : 'none',
+            position: 'absolute',
+            zIndex: '-1',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+          onLoad={() => {
+            setIsBackgroundLoaded(true);
+          }}
+        />
 
-      <Particles
-        id='tsparticles'
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={createLinks(theme.palette.mode)}
-      />
+        <Particles
+          id='tsparticles'
+          init={particlesInit}
+          loaded={particlesLoaded}
+          options={createLinks(theme.palette.mode)}
+        />
 
-      {/* MAIN TITLE */}
-      <HomeTitle />
+        {/* MAIN TITLE */}
+        <HomeTitle fullname={profileData.fullname} />
 
-      {/* SUBTITLE */}
-      <HomeSubtitle />
-    </Box>
-  );
+        {/* SUBTITLE */}
+        <HomeSubtitle abilities={abilitiesData} />
+      </Box>
+    );
 };
 
 export default Home;

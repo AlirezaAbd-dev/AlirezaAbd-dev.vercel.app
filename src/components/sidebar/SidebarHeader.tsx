@@ -1,15 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { Avatar, Box, IconButton, Skeleton, useTheme } from '@mui/material';
+import { Avatar, Box, IconButton, useTheme } from '@mui/material';
 import { GitHub, Telegram, Instagram } from '@mui/icons-material';
 import Image from 'next/image';
 
 import ThemeActionButton from '../ThemeActionButton';
 
 import avatar from '../../assets/avatar.png';
-import { queryClient } from '@/containers/AppContainer/AppQueryClientProvider';
-import QueryKeys from '@/constants/queryKeys';
 import useProfileQuery from '@/services/main/useProfileQuery';
 
 const SidebarHeader = () => {

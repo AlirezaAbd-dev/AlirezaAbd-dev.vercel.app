@@ -3,14 +3,18 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
-const HomeTitle = () => {
+type Props = {
+  fullname: string;
+};
+
+const HomeTitle = (props: Props) => {
   const theme = useTheme();
 
   const nameEl = useRef<any>(null);
 
   useEffect(() => {
     const typedName = new Typed(nameEl.current, {
-      strings: [`علیرضا عابدی`],
+      strings: [props.fullname],
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 30,

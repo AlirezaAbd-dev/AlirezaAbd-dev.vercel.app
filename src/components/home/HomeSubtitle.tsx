@@ -2,25 +2,19 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Ability } from '@/services/main/useAbilitiesQuery';
 
-const HomeSubtitle = () => {
+type Props = {
+  abilities: Ability[];
+};
+
+const HomeSubtitle = (props: Props) => {
   const [index, setIndex] = useState(0);
 
   const theme = useTheme();
   const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const strings = useMemo(
-    () => [
-      'توسعه‌دهنده فول استک هستم',
-      'دانشجوی نرم‌افزار هستم',
-      'طرفدار جاوااسکریپت و دات‌نت هستم',
-      'عاشق یادگیری هستم',
-      'خالق نرم‌افزار هستم',
-      'بهینه‌ساز کد هستم',
-      'کاوشگر برنامه‌نویسی هستم',
-    ],
-    [],
-  );
+  const strings = useMemo(() => props.abilities.map((a) => a.content), []);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
