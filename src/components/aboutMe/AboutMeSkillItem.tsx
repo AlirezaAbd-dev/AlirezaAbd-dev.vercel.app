@@ -1,17 +1,16 @@
-import { Chip } from "@mui/material";
-import Image from "next/image";
+import { SideSkill } from '@/services/aboutMe/useSideSkillsQuery';
+import { Chip } from '@mui/material';
+import Image from 'next/image';
 
-const AboutMeSkillItem = (props: {
-  skill: { name: string; color: string; icon: any };
-}) => {
+const AboutMeSkillItem = (props: { skill: Omit<SideSkill, 'id'> }) => {
   return (
     <Chip
       label={props.skill.name}
       sx={{
-        color: "text.primary",
-        mt: "30px",
-        mx: "10px",
-        fontSize: "18px",
+        color: 'text.primary',
+        mt: '30px',
+        mx: '10px',
+        fontSize: '18px',
         py: 2,
       }}
       style={{
@@ -19,7 +18,7 @@ const AboutMeSkillItem = (props: {
       }}
       icon={
         <Image
-          src={props.skill.icon.src}
+          src={props.skill.icon}
           alt={props.skill.name}
           width={60}
           height={60}

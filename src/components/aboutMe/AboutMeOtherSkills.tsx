@@ -1,12 +1,14 @@
 'use client';
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import otherSkillsData from '../data/otherSkillsData';
 import HeaderDivider from '../ui/HeaderDivider';
 import AboutMeSkillItem from './AboutMeSkillItem';
 import SkateboardingIcon from '@mui/icons-material/Skateboarding';
+import useSideSkillsQuery from '@/services/aboutMe/useSideSkillsQuery';
 
 const AboutMeOtherSkills = () => {
+  const { data, isPending } = useSideSkillsQuery();
+
   return (
     <Grid container>
       <Grid sx={{ width: 1, mt: 1 }}>
@@ -23,7 +25,17 @@ const AboutMeOtherSkills = () => {
           flexWrap='wrap'
           justifyContent='center'
         >
-          {otherSkillsData.map((skill) => (
+          {isPending &&
+            Array.from<number>({ length: 23 }).map((_item, index) => (
+              <Skeleton
+                key={index}
+                width={100}
+                height={64}
+                sx={{ borderRadius: 6, mx: 1 }}
+              />
+            ))}
+
+          {data?.map((skill) => (
             <AboutMeSkillItem
               key={skill.name}
               skill={skill}
