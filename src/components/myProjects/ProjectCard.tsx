@@ -14,15 +14,9 @@ import {
 } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
-import { myProjectsType } from '../../constants/myProjects';
+import { Project } from '@/services/myProjects/useProjectsQuery';
 
-const ProjectCard = ({
-  item,
-  index,
-}: {
-  item: myProjectsType;
-  index: number;
-}) => {
+const ProjectCard = ({ item, index }: { item: Project; index: number }) => {
   const theme = useTheme();
   const [loading, setLoading] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -46,7 +40,12 @@ const ProjectCard = ({
         md: 6,
         lg: 6,
       }}
-      sx={{ px: 2, my: 2, display: 'flex', justifyContent: 'center' }}
+      sx={{
+        px: 2,
+        my: 2,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
     >
       <Slide
         direction='up'
@@ -68,7 +67,7 @@ const ProjectCard = ({
             <Image
               priority
               src={item.image}
-              alt={item.title}
+              alt={item.name}
               width={700}
               height={500}
               style={{
@@ -87,13 +86,13 @@ const ProjectCard = ({
                 textAlign='left'
                 gutterBottom
               >
-                {item.title}
+                {item.name}
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
             <Button
-              href={item.link}
+              href={item.referenceUrl}
               size='small'
               color='primary'
               target='_blank'

@@ -1,14 +1,16 @@
 'use client';
 
-import { myProjects } from '@/constants/myProjects';
 import { CurrencyExchangeRounded } from '@mui/icons-material';
 import { Card, CardContent, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import HeaderDivider from '../ui/HeaderDivider';
 import ProjectCard from './ProjectCard';
+import useProjectsQuery from '@/services/myProjects/useProjectsQuery';
 
 export default function MainMyProject() {
   const theme = useTheme();
+
+  const { data, isPending } = useProjectsQuery();
 
   return (
     <Card
@@ -35,13 +37,14 @@ export default function MainMyProject() {
           container
           sx={{ mx: 3 }}
         >
-          {myProjects.map((item, index) => (
-            <ProjectCard
-              item={item}
-              index={index}
-              key={index}
-            />
-          ))}
+          {!isPending &&
+            data?.map((item, index) => (
+              <ProjectCard
+                item={item}
+                index={index}
+                key={index}
+              />
+            ))}
         </Grid>
       </CardContent>
     </Card>
