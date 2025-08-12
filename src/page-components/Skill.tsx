@@ -8,6 +8,7 @@ import {
   LinearProgress,
   Badge,
   Skeleton,
+  hexToRgb,
 } from '@mui/material';
 import Image from 'next/image';
 
@@ -27,7 +28,7 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
         textAlign='right'
         sx={{
           '&::before, &::after': {
-            borderColor: `${color}.main`,
+            borderColor: color,
           },
           mt: 3,
           mb: 1,
@@ -74,10 +75,17 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
           <LinearProgress
             variant='determinate'
             value={skillRate}
-            color={color}
             sx={{
               height: 10,
               borderRadius: 2,
+              '&.MuiLinearProgress-colorPrimary': {
+                // Set background color with opacity (0.2 in this example)
+                bgcolor: hexToRgb(color).replace(')', ', .7)'),
+              },
+              '& .MuiLinearProgress-bar': {
+                // Keep solid color for the progress bar
+                bgcolor: color,
+              },
             }}
           />
         </Box>
@@ -86,7 +94,11 @@ const Skill = ({ icon, color, name, value }: SkillProps) => {
             <Badge
               variant='standard'
               badgeContent={`${Math.round(skillRate)}%`}
-              color={color}
+              sx={{
+                '& .MuiBadge-badge': {
+                  bgcolor: color,
+                },
+              }}
             />
           </Typography>
         </Box>
