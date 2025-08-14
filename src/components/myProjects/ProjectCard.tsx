@@ -54,7 +54,7 @@ const ProjectCard = ({ item, index }: { item: Project; index: number }) => {
           transitionDelay: loading ? `${index + 3}99ms` : '0ms',
         }}
       >
-        <Card sx={{ maxWidth: 600, backgroundColor: 'steelblue' }}>
+        <Card sx={{ backgroundColor: 'steelblue' }}>
           <CardActionArea>
             {!isImageLoaded && (
               <Skeleton

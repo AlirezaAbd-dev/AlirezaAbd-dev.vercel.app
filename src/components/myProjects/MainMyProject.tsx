@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid2';
 import HeaderDivider from '../ui/HeaderDivider';
 import ProjectCard from './ProjectCard';
 import useProjectsQuery from '@/services/myProjects/useProjectsQuery';
+import ProjectCardSkeleton from './ProjectCardSkeleton';
 
 export default function MainMyProject() {
   const theme = useTheme();
@@ -37,6 +38,11 @@ export default function MainMyProject() {
           container
           sx={{ mx: 3 }}
         >
+          {isPending &&
+            Array.from({ length: 6 }).map((_, index) => (
+              <ProjectCardSkeleton key={index} />
+            ))}
+
           {!isPending &&
             data?.map((item, index) => (
               <ProjectCard

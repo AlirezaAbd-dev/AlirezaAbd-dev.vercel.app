@@ -6,9 +6,12 @@ import { useEffect, useState } from 'react';
 import HeaderDivider from '../ui/HeaderDivider';
 import ContactForm from './ContactForm';
 import EmailMe from './EmailMe';
+import useProfileQuery from '@/services/main/useProfileQuery';
 
 export default function MainContactUs() {
   const [loading, setLoading] = useState(false);
+
+  const { data } = useProfileQuery();
 
   useEffect(() => {
     setLoading(true);
@@ -18,60 +21,61 @@ export default function MainContactUs() {
     };
   }, []);
 
-  return (
-    <Card
-      sx={{
-        height: '100vh',
-        background: 'background.primary',
-        overflowY: 'scroll',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <CardContent>
-        {/* DIVIDER */}
-        <HeaderDivider
-          color='warning.main'
-          //@ts-ignore
-          icon={<ContactMail color='text.primary' />}
-        >
-          ارتباط با من
-        </HeaderDivider>
-
-        <Grid
-          container
-          sx={{ mt: 5 }}
-        >
-          <Slide
-            direction='up'
-            in={loading}
-            style={{
-              transitionDelay: loading ? `200ms` : '0ms',
-            }}
+  if (data)
+    return (
+      <Card
+        sx={{
+          height: '100vh',
+          background: 'background.primary',
+          overflowY: 'scroll',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <CardContent>
+          {/* DIVIDER */}
+          <HeaderDivider
+            color='warning.main'
+            //@ts-ignore
+            icon={<ContactMail color='text.primary' />}
           >
-            <Grid
-              size={{
-                xs: 12,
-                sm: 12,
-                md: 8,
+            ارتباط با من
+          </HeaderDivider>
+
+          <Grid
+            container
+            sx={{ mt: 5 }}
+          >
+            <Slide
+              direction='up'
+              in={loading}
+              style={{
+                transitionDelay: loading ? `200ms` : '0ms',
               }}
             >
-              <Card
-                sx={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
+              <Grid
+                size={{
+                  xs: 12,
+                  sm: 12,
+                  md: 8,
                 }}
               >
-                {/* FORM */}
-                <ContactForm />
-              </Card>
-            </Grid>
-          </Slide>
+                <Card
+                  sx={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  {/* FORM */}
+                  <ContactForm email={data.email} />
+                </Card>
+              </Grid>
+            </Slide>
 
-          {/* MAP STANDS HERE */}
-          <EmailMe />
-        </Grid>
-      </CardContent>
-    </Card>
-  );
+            {/* MAP STANDS HERE */}
+            <EmailMe email={data.email} />
+          </Grid>
+        </CardContent>
+      </Card>
+    );
 }

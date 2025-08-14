@@ -6,7 +6,11 @@ import Image from 'next/image';
 
 import worldMap from '../../assets/tech2.png';
 
-const EmailMe = () => {
+type Props = {
+  email: string;
+};
+
+const EmailMe = (props: Props) => {
   const [loading, setLoading] = useState(false);
 
   const theme = useTheme();
@@ -88,7 +92,7 @@ const EmailMe = () => {
         >
           👋{' '}
           <a
-            href='mailto:alireza.abedi9310@gmail.com'
+            href={`mailto:${props.email}`}
             style={{
               color: theme.palette.redAccent.main,
             }}
