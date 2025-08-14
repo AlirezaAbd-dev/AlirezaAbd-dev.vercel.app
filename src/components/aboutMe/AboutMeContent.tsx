@@ -10,7 +10,7 @@ import { gregorianToSolar } from '@/utils/persianData';
 
 const AboutMeContent = () => {
   const [loading, setLoading] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(true);
 
   const { data, isPending } = useProfileQuery();
 
@@ -21,7 +21,7 @@ const AboutMeContent = () => {
       setLoading(false);
     };
   }, []);
-
+  console.log(isImageLoaded);
   if (!isPending && data)
     return (
       <>
@@ -60,16 +60,20 @@ const AboutMeContent = () => {
               display: isImageLoaded ? 'block' : 'none',
               width: 150,
               height: 'auto',
+              aspectRatio: '1/1',
             }}
           >
             <Image
               priority
-              src={avatar}
+              src={data.avatar || avatar}
               alt={data.fullname}
               width={150}
               height={150}
               onLoad={() => {
                 setIsImageLoaded(true);
+              }}
+              style={{
+                objectFit: 'fill',
               }}
             />
           </Avatar>

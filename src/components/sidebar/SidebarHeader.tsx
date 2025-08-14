@@ -34,10 +34,14 @@ const SidebarHeader = () => {
           }}
         >
           <Image
-            src={avatar}
+            src={data.avatar || avatar}
             alt={data.fullname}
             width={200}
             height={200}
+            style={{
+              height: 'auto',
+              width: '100%',
+            }}
           />
         </Avatar>
         <h1

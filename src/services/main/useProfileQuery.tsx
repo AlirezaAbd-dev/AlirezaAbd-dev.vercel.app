@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 type Profile = {
   fullname: string;
+  avatar: string;
   email: string;
   birthCity: string;
   birthday: string;

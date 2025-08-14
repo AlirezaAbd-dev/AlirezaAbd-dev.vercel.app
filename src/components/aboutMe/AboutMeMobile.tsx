@@ -2,12 +2,19 @@
 import { Avatar, Skeleton } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import avatar from '../../assets/new-avatar.jpg';
+import useProfileQuery from '@/services/main/useProfileQuery';
 
 const AboutMeMobile = () => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(true);
+
+  const { data } = useProfileQuery();
+
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, []);
 
   return (
     <Grid
@@ -51,7 +58,7 @@ const AboutMeMobile = () => {
         }}
       >
         <Image
-          src={avatar}
+          src={data?.avatar || avatar}
           alt='علیرضا عابدی'
           width={250}
           height={250}
