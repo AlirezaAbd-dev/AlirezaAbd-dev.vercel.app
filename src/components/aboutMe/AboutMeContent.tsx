@@ -6,7 +6,7 @@ import Image from 'next/image';
 import DevInfo from '../../page-components/DevInfo';
 import avatar from '../../assets/new-avatar.jpg';
 import useProfileQuery from '@/services/main/useProfileQuery';
-import { gregorianToSolar } from '@/utils/persianData';
+import { gregorianToSolar } from '@/utils/persianDate';
 
 const AboutMeContent = () => {
   const [loading, setLoading] = useState(false);
