@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   return (
-    <Card
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -26,10 +26,12 @@ const Login = () => {
         height: '100vh',
       }}
     >
-      <Box
+      <Card
         sx={{
           py: 6,
+          px: 4,
           width: '300px',
+          borderRadius: '16px',
         }}
       >
         <Typography
@@ -113,8 +115,8 @@ const Login = () => {
             ورود
           </Button>
         </Box>
-      </Box>
-    </Card>
+      </Card>
+    </Box>
   );
 };
 
