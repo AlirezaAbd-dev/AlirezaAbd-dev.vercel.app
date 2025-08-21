@@ -5,11 +5,15 @@ import loginValidation, {
   LoginValidationType,
 } from '@/validations/loginValidation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, Card, Input, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Card, Input, Snackbar, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 const LoginMain = () => {
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined,
+  );
+
   const { mutate, isPending, error } = useLoginMutation();
 
   const { control, handleSubmit } = useForm<LoginValidationType>({
@@ -17,8 +21,12 @@ const LoginMain = () => {
   });
 
   const submitHandler = (data: LoginValidationType) => {
-    console.log('Login data:', data);
+    mutate(data);
   };
+
+  useEffect(() => {
+    if (error) setErrorMessage(error.response?.data.message);
+  }, [error]);
 
   return (
     <Box
@@ -119,6 +127,14 @@ const LoginMain = () => {
           >
             ورود
           </Button>
+          <Snackbar
+            open={!!errorMessage}
+            autoHideDuration={5000}
+            onClose={() => {
+              setErrorMessage(undefined);
+            }}
+            message={errorMessage}
+          />
         </Box>
       </Card>
     </Box>
