@@ -2,7 +2,7 @@ import QueryKeys from '@/constants/queryKeys';
 import axiosBase from '@/utils/axiosBase';
 import { useQuery } from '@tanstack/react-query';
 
-type Profile = {
+export type Profile = {
   fullname: string;
   avatar: string;
   email: string;

@@ -9,6 +9,7 @@ const QueryKeys = {
 
   // ?Mutations
   M_LOGIN: 'loginMutation',
+  M_EDIT_PROFILE: 'editProfileMutation',
 };
 
 export default QueryKeys;
