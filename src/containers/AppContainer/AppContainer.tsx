@@ -5,6 +5,7 @@ import {
   useEffect,
   ReactNode,
   SyntheticEvent,
+  use,
 } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
 
@@ -14,25 +15,17 @@ import { usePathname } from 'next/navigation';
 
 import AppContainerContent from './AppContainerContent';
 import AppQueryClientProvider from './AppQueryClientProvider';
+import { adminTabs } from '@/components/data/tabsData.sidebar';
 
 function AppContainer({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   let pageNumberFromPathname = 0;
-  switch (pathname) {
-    case '/':
-      pageNumberFromPathname = 0;
-      break;
-    case '/about':
-      pageNumberFromPathname = 1;
-      break;
-    case '/myProjects':
-      pageNumberFromPathname = 2;
-      break;
-    case '/contactUs':
-      pageNumberFromPathname = 3;
-      break;
-  }
+
+  useEffect(() => {
+    pageNumberFromPathname =
+      adminTabs.filter((tab) => tab.path === pathname)[0]?.id || 0;
+  }, [pathname]);
 
   const [pageNumber, setPageNumber] = useState(pageNumberFromPathname);
   const [drawerOpen, setDrawerOpen] = useState(false);

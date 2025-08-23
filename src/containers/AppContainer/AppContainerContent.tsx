@@ -11,7 +11,7 @@ import Loading from '@/app/loading';
 const AppContainerContent = ({ children }: { children: ReactNode }) => {
   const theme = useTheme();
 
-  const { data, isPending, error } = useProfileQuery();
+  const { data, isPending } = useProfileQuery();
 
   if (isPending) {
     return <Loading />;

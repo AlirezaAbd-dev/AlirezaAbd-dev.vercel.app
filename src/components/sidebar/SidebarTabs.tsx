@@ -24,7 +24,7 @@ const SidebarTabs = () => {
   const onMouseOverPrefetch = (path: string) => {
     router.prefetch(path);
   };
-  console.log(data);
+
   return (
     <Tabs
       orientation='vertical'
