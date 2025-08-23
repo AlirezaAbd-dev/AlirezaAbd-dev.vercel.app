@@ -1,12 +1,13 @@
 import QueryKeys from '@/constants/queryKeys';
-import { queryClient } from '@/containers/AppContainer/AppQueryClientProvider';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import addBearer from '@/utils/addBearer';
 import axiosBase from '@/utils/axiosBase';
 import { ProfileValidationType } from '@/validations/(admin)/profileValidation';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const useEditProfileMutation = () => {
+  const queryClient = useQueryClient();
+
   const [token] = useLocalStorage('token', '');
 
   const mutation = useMutation({
