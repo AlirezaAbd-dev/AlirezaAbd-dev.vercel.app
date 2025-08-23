@@ -5,6 +5,7 @@ const QueryKeys = {
   SIDE_SKILLS: 'sideSkillsQuery',
   EDUCATION: 'educationQuery',
   PROJECTS: 'projectsQuery',
+  AUTH: 'authQuery',
 
   // ?Mutations
   M_LOGIN: 'loginMutation',

@@ -1,4 +1,5 @@
 import QueryKeys from '@/constants/queryKeys';
+import { queryClient } from '@/containers/AppContainer/AppQueryClientProvider';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import axiosBase from '@/utils/axiosBase';
 import { LoginValidationType } from '@/validations/loginValidation';
@@ -18,6 +19,7 @@ const useLoginMutation = () => {
       axiosBase.post('/auth/login', data).then((res) => res.data),
     onSuccess(data) {
       setToken(data.token);
+      queryClient.refetchQueries({ queryKey: [QueryKeys.AUTH] });
     },
   });
 

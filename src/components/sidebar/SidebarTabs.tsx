@@ -1,12 +1,15 @@
-"use client";
-import React, { useContext } from "react";
-import { Tab, Tabs, useTheme } from "@mui/material";
-import { useRouter } from "next/navigation";
+'use client';
+import React, { useContext } from 'react';
+import { Tab, Tabs, useTheme } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
-import MainContext from "../../context";
-import tabs from "../data/tabsData.sidebar";
+import MainContext from '../../context';
+import tabs, { adminTabs } from '../data/tabsData.sidebar';
+import useAuth from '@/services/login/useAuth';
 
 const SidebarTabs = () => {
+  const { data } = useAuth();
+
   const { pageNumber, handlePageNumber, setDrawerOpen } =
     useContext(MainContext);
 
@@ -21,28 +24,28 @@ const SidebarTabs = () => {
   const onMouseOverPrefetch = (path: string) => {
     router.prefetch(path);
   };
-
+  console.log(data);
   return (
     <Tabs
-      orientation="vertical"
-      variant="scrollable"
+      orientation='vertical'
+      variant='scrollable'
       allowScrollButtonsMobile
       value={pageNumber}
-      textColor={theme.palette.mode === "dark" ? "primary" : "secondary"}
+      textColor={theme.palette.mode === 'dark' ? 'primary' : 'secondary'}
       onChange={handlePageNumber}
       sx={{
-        "& .MuiTabs-indicator": {
-          bgcolor: theme.palette.mode === "light" ? "redAccent.main" : "",
+        '& .MuiTabs-indicator': {
+          bgcolor: theme.palette.mode === 'light' ? 'redAccent.main' : '',
         },
       }}
     >
-      {tabs.map((tab, index) => (
+      {(data ? adminTabs : tabs).map((tab, index) => (
         <Tab
           key={index}
           icon={<tab.icon />}
-          iconPosition="start"
+          iconPosition='start'
           sx={{
-            "&.MuiTab-root": {
+            '&.MuiTab-root': {
               borderRadius: 1,
               minHeight: 30,
               my: 0.6,
