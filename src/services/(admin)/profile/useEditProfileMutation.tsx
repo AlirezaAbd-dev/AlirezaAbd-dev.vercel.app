@@ -1,23 +1,16 @@
 import QueryKeys from '@/constants/queryKeys';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import addBearer from '@/utils/addBearer';
-import axiosBase from '@/utils/axiosBase';
+import { useAxiosAuth } from '@/hooks/useAxiosAuth';
 import { ProfileValidationType } from '@/validations/(admin)/profileValidation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const useEditProfileMutation = () => {
+  const axiosAuth = useAxiosAuth();
   const queryClient = useQueryClient();
-
-  const [token] = useLocalStorage('token', '');
 
   const mutation = useMutation({
     mutationKey: [QueryKeys.M_EDIT_PROFILE],
     mutationFn: (data: ProfileValidationType) =>
-      axiosBase.patch('/users', data, {
-        headers: {
-          Authorization: addBearer(token),
-        },
-      }),
+      axiosAuth.patch('/users', data),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: [QueryKeys.PROFILE] });
       await queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
