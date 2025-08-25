@@ -14,7 +14,7 @@ export type Project = {
 
 const useProjectsQuery = () => {
   const query = useQuery<Project[]>({
-    queryKey: [QueryKeys.PROJECTS],
+    queryKey: [QueryKeys.Q_PROJECTS],
     queryFn: () => axiosBase.get('/projects').then((res) => res.data),
   });
 

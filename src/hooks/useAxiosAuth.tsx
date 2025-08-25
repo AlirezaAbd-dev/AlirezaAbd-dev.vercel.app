@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import axiosBase from '@/utils/axiosBase';
 
-export function useAxiosAuth(action: string = '/') {
+export function useAxiosAuth(action?: string) {
   const router = useRouter();
   const [token] = useLocalStorage<string>('token', '');
 
@@ -24,7 +24,7 @@ export function useAxiosAuth(action: string = '/') {
       (response) => response,
       (error) => {
         if (error.response?.status === 401 && action) {
-          router.push(action);
+          router.replace(action);
         }
         return Promise.reject(error);
       },

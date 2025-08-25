@@ -12,8 +12,8 @@ const useEditProfileMutation = () => {
     mutationFn: (data: ProfileValidationType) =>
       axiosAuth.patch('/users', data),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: [QueryKeys.PROFILE] });
-      await queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
+      await queryClient.invalidateQueries({ queryKey: [QueryKeys.Q_PROFILE] });
+      await queryClient.invalidateQueries({ queryKey: [QueryKeys.Q_AUTH] });
     },
   });
 

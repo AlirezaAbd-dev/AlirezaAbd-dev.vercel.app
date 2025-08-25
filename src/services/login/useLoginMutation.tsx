@@ -1,12 +1,14 @@
 import QueryKeys from '@/constants/queryKeys';
-import { queryClient } from '@/containers/AppContainer/AppQueryClientProvider';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import axiosBase from '@/utils/axiosBase';
 import { LoginValidationType } from '@/validations/loginValidation';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
 
 const useLoginMutation = () => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
   const [_token, setToken] = useLocalStorage<string>('token', '');
 
   const mutation = useMutation<
@@ -17,9 +19,11 @@ const useLoginMutation = () => {
     mutationKey: [QueryKeys.M_LOGIN],
     mutationFn: (data) =>
       axiosBase.post('/auth/login', data).then((res) => res.data),
-    onSuccess(data) {
+    async onSuccess(data) {
       setToken(data.token);
-      queryClient.refetchQueries({ queryKey: [QueryKeys.AUTH] });
+      await queryClient.refetchQueries({ queryKey: [QueryKeys.Q_PROFILE] });
+      await queryClient.refetchQueries({ queryKey: [QueryKeys.Q_AUTH] });
+      router.push('/profile');
     },
   });
 

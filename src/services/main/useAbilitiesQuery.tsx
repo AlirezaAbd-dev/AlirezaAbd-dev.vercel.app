@@ -11,7 +11,7 @@ export type Ability = {
 
 const useAbilitiesQuery = () => {
   const query = useQuery<Ability[]>({
-    queryKey: [QueryKeys.ABILITIES],
+    queryKey: [QueryKeys.Q_ABILITIES],
     queryFn: () => axiosBase.get('/ability').then((res) => res.data),
   });
 

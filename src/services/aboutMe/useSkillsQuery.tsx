@@ -12,7 +12,7 @@ export type Skill = {
 
 const useSkillsQuery = () => {
   const query = useQuery<Skill[]>({
-    queryKey: [QueryKeys.SKILLS],
+    queryKey: [QueryKeys.Q_SKILLS],
     queryFn: () => axiosBase.get('/skills').then((res) => res.data),
   });
 

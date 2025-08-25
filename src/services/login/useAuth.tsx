@@ -1,26 +1,18 @@
 import QueryKeys from '@/constants/queryKeys';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import addBearer from '@/utils/addBearer';
-import axiosBase from '@/utils/axiosBase';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { Profile } from '../main/useProfileQuery';
+import { useAxiosAuth } from '@/hooks/useAxiosAuth';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const useAuth = (action?: string) => {
   const router = useRouter();
-
+  const axiosAuth = useAxiosAuth();
   const [token] = useLocalStorage('token', '');
 
   const query = useQuery<Profile>({
-    queryKey: [QueryKeys.AUTH],
-    queryFn: () =>
-      axiosBase
-        .get('/auth/me', {
-          headers: {
-            Authorization: addBearer(token),
-          },
-        })
-        .then((res) => res.data),
+    queryKey: [QueryKeys.Q_AUTH, token],
+    queryFn: () => axiosAuth.get('/auth/me').then((res) => res.data),
   });
 
   if (!query.isPending && !query.data && action) {

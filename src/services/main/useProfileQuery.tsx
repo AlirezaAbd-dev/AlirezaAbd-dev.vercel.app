@@ -16,7 +16,7 @@ export type Profile = {
 
 const useProfileQuery = () => {
   const query = useQuery<Profile>({
-    queryKey: [QueryKeys.PROFILE],
+    queryKey: [QueryKeys.Q_PROFILE],
     queryFn: () => axiosBase.get('/users').then((res) => res.data),
   });
 

@@ -7,7 +7,7 @@ export type SideSkill = Omit<Skill, 'value'>;
 
 const useSideSkillsQuery = () => {
   const query = useQuery<SideSkill[]>({
-    queryKey: [QueryKeys.SIDE_SKILLS],
+    queryKey: [QueryKeys.Q_SIDE_SKILLS],
     queryFn: () => axiosBase.get('/sideSkills').then((res) => res.data),
   });
 

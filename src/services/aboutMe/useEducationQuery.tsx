@@ -13,7 +13,7 @@ export type Education = {
 
 const useEducationQuery = () => {
   const query = useQuery<Education[]>({
-    queryKey: [QueryKeys.EDUCATION],
+    queryKey: [QueryKeys.Q_EDUCATION],
     queryFn: () => axiosBase.get('/education').then((res) => res.data),
   });
 
