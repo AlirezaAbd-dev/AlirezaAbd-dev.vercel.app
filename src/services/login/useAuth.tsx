@@ -13,8 +13,10 @@ const useAuth = (action?: string) => {
   const query = useQuery<Profile>({
     queryKey: [QueryKeys.Q_AUTH, token],
     queryFn: () => axiosAuth.get('/auth/me').then((res) => res.data),
+    retry: 0,
   });
 
+  console.log(query.isPending);
   if (!query.isPending && !query.data && action) {
     router.replace(action);
   }

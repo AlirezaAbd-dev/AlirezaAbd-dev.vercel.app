@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { Box, IconButton, Typography } from '@mui/material';
 import SkillsDeleteDialog from './SkillsDeleteDialog';
 import { Edit } from '@mui/icons-material';
+import SkillEditDialog from './SkillEditDialog';
 
 type Props = {
   skills: Skill[];
@@ -68,9 +69,7 @@ export default function SkillsTable(props: Props) {
                 </Box>
               </TableCell>
               <TableCell>
-                <IconButton>
-                  <Edit sx={{ color: '#ffa726' }} />
-                </IconButton>
+                <SkillEditDialog skill={row} />
                 <SkillsDeleteDialog skill={row} />
               </TableCell>
             </TableRow>

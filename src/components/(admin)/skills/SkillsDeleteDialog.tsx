@@ -55,6 +55,8 @@ const SkillsDeleteDialog = (props: Props) => {
             onClick={handleDelete}
             autoFocus
             color='error'
+            loading={isPending}
+            disabled={isPending}
           >
             حذف
           </Button>
