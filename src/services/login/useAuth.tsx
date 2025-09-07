@@ -16,7 +16,6 @@ const useAuth = (action?: string) => {
     retry: 0,
   });
 
-  console.log(query.isPending);
   if (!query.isPending && !query.data && action) {
     router.replace(action);
   }

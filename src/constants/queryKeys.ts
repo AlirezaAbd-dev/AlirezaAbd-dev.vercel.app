@@ -6,6 +6,7 @@ const QueryKeys = {
   Q_EDUCATION: 'educationQuery',
   Q_PROJECTS: 'projectsQuery',
   Q_AUTH: 'authQuery',
+  Q_IMAGES: 'imagesQuery',
 
   // ?Mutations
   M_LOGIN: 'loginMutation',
