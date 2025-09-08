@@ -14,6 +14,7 @@ const QueryKeys = {
   M_DELETE_SKILL: 'deleteSkillMutation',
   M_ADD_SKILL: 'addSkillMutation',
   M_EDIT_SKILL: 'editSkillMutation',
+  M_DELETE_IMAGE: 'deleteImageMutation',
 };
 
 export default QueryKeys;

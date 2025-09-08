@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import { Delete, Edit } from '@mui/icons-material';
 import { useMediaQuery, useTheme } from '@mui/material';
+import ImagesDeleteDialog from './imagesDeleteDialog';
 
 type Props = {
   images: string[];
@@ -35,9 +36,7 @@ export default function ImagesSection(props: Props) {
                 <IconButton>
                   <Edit color='warning' />
                 </IconButton>
-                <IconButton>
-                  <Delete color='error' />
-                </IconButton>
+                <ImagesDeleteDialog image={item} />
               </>
             }
           />
