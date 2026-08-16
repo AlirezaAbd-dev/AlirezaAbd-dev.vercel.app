@@ -12,7 +12,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import { myProjectsType } from '../../constants/myProjects';
 
@@ -84,7 +84,7 @@ const ProjectCard = ({
             <CardContent>
               <Typography
                 variant='body1'
-                textAlign='left'
+                align='left'
                 gutterBottom
               >
                 {item.title}

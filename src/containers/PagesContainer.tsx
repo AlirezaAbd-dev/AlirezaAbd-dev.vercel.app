@@ -1,5 +1,5 @@
 'use client';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import { ReactNode } from 'react';
 
 const PagesContainer = ({ children }: { children: ReactNode }) => {

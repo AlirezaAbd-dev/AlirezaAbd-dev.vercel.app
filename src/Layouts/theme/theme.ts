@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, PaletteColor, PaletteColorOptions } from "@mui/material/styles";
 
-declare module "@mui/material/styles/createPalette" {
+declare module "@mui/material/styles" {
   interface Palette {
     redAccent: PaletteColor;
     greenAccent: PaletteColor;
@@ -8,12 +8,10 @@ declare module "@mui/material/styles/createPalette" {
   }
 
   interface PaletteOptions {
-    redAccent?: PaletteColor;
-    greenAccent?: PaletteColor;
-    progressbar?: PaletteColor;
+    redAccent?: PaletteColorOptions;
+    greenAccent?: PaletteColorOptions;
+    progressbar?: PaletteColorOptions;
   }
-
-  export default function createPalette(options: PaletteOptions): Palette;
 }
 
 //? NOTE Create Custom Theme

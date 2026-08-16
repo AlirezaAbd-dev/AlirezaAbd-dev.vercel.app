@@ -1,6 +1,6 @@
 'use client';
 import { SelfImprovementRounded } from '@mui/icons-material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 
 import useSkillRandom from '../../hooks/useSkillRandom';
 import Skill from '../../page-components/Skill';

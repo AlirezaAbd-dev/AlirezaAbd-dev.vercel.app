@@ -1,6 +1,6 @@
 'use client';
 import { Box } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import otherSkillsData from '../data/otherSkillsData';
 import HeaderDivider from '../ui/HeaderDivider';
 import AboutMeSkillItem from './AboutMeSkillItem';
@@ -19,9 +19,11 @@ const AboutMeOtherSkills = () => {
           سایر مهارت ها
         </HeaderDivider>
         <Box
-          display='flex'
-          flexWrap='wrap'
-          justifyContent='center'
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
         >
           {otherSkillsData.map((skill) => (
             <AboutMeSkillItem

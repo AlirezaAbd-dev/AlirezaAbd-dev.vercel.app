@@ -19,7 +19,7 @@ const EducationTimeline = () => {
         تحصیلات
       </HeaderDivider>
 
-      <Box display="flex" justifyContent="center" width="100%">
+      <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
         <Timeline position="right" sx={{ direction: "ltr" }}>
           {education.map((item, index) => (
             <EducationTimelineItem item={item} key={index} />

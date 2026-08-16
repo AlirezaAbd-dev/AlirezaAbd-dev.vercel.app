@@ -3,7 +3,7 @@
 import { myProjects } from '@/constants/myProjects';
 import { CurrencyExchangeRounded } from '@mui/icons-material';
 import { Card, CardContent, useTheme } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import HeaderDivider from '../ui/HeaderDivider';
 import ProjectCard from './ProjectCard';
 

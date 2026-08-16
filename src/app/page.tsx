@@ -1,10 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import { Box, Skeleton, useTheme } from "@mui/material";
-import Particles from "react-particles";
-// @ts-ignore
-import { Container, Engine } from "tsparticles-engine";
-import { loadFull } from "tsparticles";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
+import type { Engine } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 import Image, { StaticImageData } from "next/image";
 
 import bg03 from "../assets/bg03.jpg";
@@ -20,14 +19,9 @@ const Home = () => {
 
   const mode = theme.palette.mode;
 
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
+  const initParticles = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
   }, []);
-
-  const particlesLoaded = useCallback(
-    async (_container: Container | undefined) => {},
-    []
-  );
 
   useEffect(() => {
     setIsBackgroundLoaded(false);
@@ -82,12 +76,12 @@ const Home = () => {
         }}
       />
 
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={createLinks(theme.palette.mode)}
-      />
+      <ParticlesProvider init={initParticles}>
+        <Particles
+          id="tsparticles"
+          options={createLinks(theme.palette.mode)}
+        />
+      </ParticlesProvider>
 
       {/* MAIN TITLE */}
       <HomeTitle />
@@ -99,3 +93,4 @@ const Home = () => {
 };
 
 export default Home;
+

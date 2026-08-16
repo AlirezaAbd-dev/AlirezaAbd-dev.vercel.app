@@ -1,22 +1,21 @@
 "use client";
 import { lightTheme } from "../Layouts/theme/theme";
-import { RecursivePartial, IOptions } from "tsparticles-engine";
+import type { ISourceOptions } from "@tsparticles/engine";
 
 export const createLinks = (
   mode: "light" | "dark"
-): RecursivePartial<IOptions> => {
+): ISourceOptions => {
   return {
-    fps_limit: 60,
+    fpsLimit: 60,
     interactivity: {
-      detect_on: "canvas",
       events: {
-        onclick: { enable: false, mode: "push" },
-        onhover: {
+        onClick: { enable: false, mode: "push" },
+        onHover: {
           enable: true,
           mode: "attract",
           parallax: { enable: true, force: 60, smooth: 15 },
         },
-        resize: true,
+        resize: { enable: true },
       },
       modes: {
         push: { quantity: 4 },
@@ -30,7 +29,7 @@ export const createLinks = (
             ? lightTheme.palette.secondary.main
             : lightTheme.palette.primary.dark,
       },
-      line_linked: {
+      links: {
         color:
           mode === "light"
             ? lightTheme.palette.secondary.main
@@ -41,46 +40,26 @@ export const createLinks = (
         width: 0.5,
       },
       move: {
-        attract: { enable: false, rotateX: 600, rotateY: 1200 },
-        bounce: false,
         direction: "none",
         enable: true,
-        out_mode: "out",
+        outModes: { default: "out" },
         random: false,
         speed: 2,
         straight: false,
       },
-      number: { density: { enable: true, value_area: 800 }, value: 100 },
+      number: { density: { enable: true }, value: 100 },
       opacity: {
-        anim: { enable: false, opacity_min: 0.1, speed: 1, sync: false },
-        random: false,
         value: 0.5,
       },
       shape: {
-        character: {
-          fill: false,
-          font: "Verdana",
-          style: "",
-          value: "*",
-          weight: "400",
-        },
-        polygon: { nb_sides: 5 },
-        stroke: { color: "#000000", width: 0 },
         type: "circle",
       },
       size: {
-        anim: { enable: true, size_min: 0.1, speed: 40, sync: false },
-        random: true,
-        value: 5,
+        value: { min: 1, max: 5 },
+        animation: { enable: true, speed: 40, sync: false },
       },
     },
-    polygon: {
-      draw: { enable: false, lineColor: "#ffffff", lineWidth: 0.5 },
-      move: { radius: 10 },
-      scale: 1,
-      type: "none",
-      url: "",
-    },
-    retina_detect: true,
+    detectRetina: true,
   };
 };
+

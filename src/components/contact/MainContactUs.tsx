@@ -1,7 +1,7 @@
 'use client';
 import { ContactMail } from '@mui/icons-material';
 import { Card, CardContent, Slide } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
 import HeaderDivider from '../ui/HeaderDivider';
 import ContactForm from './ContactForm';

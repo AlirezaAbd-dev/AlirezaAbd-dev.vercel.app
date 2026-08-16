@@ -1,6 +1,6 @@
 import { Face6Rounded, SubjectRounded } from '@mui/icons-material';
 import { CardContent, InputAdornment, TextField } from '@mui/material';
-import Grid from '@mui/material/Grid2/Grid2';
+import Grid from '@mui/material/Grid';
 import { FormikErrors, FormikTouched, FormikValues } from 'formik';
 import { ChangeEventHandler } from 'react';
 import { initialFormType } from './ContactForm';
@@ -25,7 +25,7 @@ const FormInputs = ({
           <Grid
             container
             spacing={2}
-            flexDirection={'column'}
+            sx={{ flexDirection: 'column' }}
           >
             <Grid size={{ xs: 12, md: 12 }}>
               <TextField
@@ -41,12 +41,14 @@ const FormInputs = ({
                 )}
                 value={formik.values?.fullname}
                 onChange={formik.handleChange}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <Face6Rounded />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position='end'>
+                        <Face6Rounded />
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
             </Grid>
@@ -62,12 +64,14 @@ const FormInputs = ({
                 error={Boolean(formik.touched.subject && formik.errors.subject)}
                 value={formik.values?.subject}
                 onChange={formik.handleChange}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <SubjectRounded />
-                    </InputAdornment>
-                  ),
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position='end'>
+                        <SubjectRounded />
+                      </InputAdornment>
+                    ),
+                  },
                 }}
               />
             </Grid>

@@ -5,7 +5,7 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import { CssBaseline } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 
 import { lightTheme, darkTheme } from './theme/theme';
 import { ReactNode } from 'react';

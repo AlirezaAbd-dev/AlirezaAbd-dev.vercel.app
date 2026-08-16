@@ -1,7 +1,7 @@
 'use client';
 import { useTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import { ReactNode } from 'react';
 
 const SidebarContainer = ({ children }: { children: ReactNode }) => {

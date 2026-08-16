@@ -37,7 +37,7 @@ const HomeTitle = () => {
         {`{" `}
       </Typography>
       <Typography
-        textAlign='center'
+        align='center'
         variant='h4'
         color={
           theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'

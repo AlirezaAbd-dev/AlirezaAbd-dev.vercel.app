@@ -1,6 +1,6 @@
 'use client';
 import { Avatar, Skeleton } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import { useState } from 'react';
 

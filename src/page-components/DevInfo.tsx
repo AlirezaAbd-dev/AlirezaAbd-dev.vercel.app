@@ -7,7 +7,7 @@ const DevInfo = ({ children }: { children: ReactNode }) => {
     <Typography
       variant="body1"
       color="text.primary"
-      textAlign="left"
+      align="left"
       sx={{ mt: 2 }}
     >
       {children}

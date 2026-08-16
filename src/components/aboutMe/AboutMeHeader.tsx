@@ -1,7 +1,7 @@
 'use client';
 import { CodeRounded } from '@mui/icons-material';
 import { useMediaQuery, useTheme } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 
 import HeaderDivider from '../../components/ui/HeaderDivider';
 import AboutMeMobile from '../../components/aboutMe/AboutMeMobile';

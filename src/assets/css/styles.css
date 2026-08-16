@@ -29,10 +29,9 @@ body {
   scrollbar-width: none;
 }
 
-.MuiCard-root::-webkit-scrollbar {
-  display: none;
-}
-
+.MuiCard-root::-webkit-scrollbar,
+.MuiGrid-root::-webkit-scrollbar,
 .MuiGrid2-root::-webkit-scrollbar {
   display: none;
 }
+
