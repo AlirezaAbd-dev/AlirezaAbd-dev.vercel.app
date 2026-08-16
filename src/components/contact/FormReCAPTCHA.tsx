@@ -1,12 +1,11 @@
-import { Typography, useTheme } from "@mui/material";
-import { FormikErrors, FormikHandlers, FormikTouched } from "formik";
-import { memo } from "react";
+"use client";
+import React, { memo } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { FormikErrors, FormikTouched } from "formik";
+import { useThemeContext } from "../../context/ThemeContext";
 import { initialFormType } from "./ContactForm";
 
-const FormReCAPTCHA = ({
-  formik,
-}: {
+interface FormReCAPTCHAProps {
   formik: {
     setFieldValue: (
       field: string,
@@ -16,28 +15,33 @@ const FormReCAPTCHA = ({
     errors: FormikErrors<initialFormType>;
     touched: FormikTouched<initialFormType>;
   };
-}) => {
-  const theme = useTheme();
+}
+
+function FormReCAPTCHA({ formik }: FormReCAPTCHAProps) {
+  const { mode } = useThemeContext();
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  if (!siteKey) return null;
 
   return (
-    <>
-      {typeof process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY === "string" && (
+    <div className="flex flex-col items-center justify-center my-3 w-full">
+      <div className="overflow-hidden rounded-xl">
         <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-          theme={theme.palette.mode}
+          sitekey={siteKey}
+          theme={mode === "dark" ? "dark" : "light"}
           hl="fa"
           onChange={(value) => {
-            formik.setFieldValue("recaptcha", value);
+            formik.setFieldValue("recaptcha", value || "");
           }}
         />
-      )}
+      </div>
       {formik.errors.recaptcha && formik.touched.recaptcha && (
-        <Typography variant="caption" color="error">
+        <p className="text-xs text-rose-500 mt-1 font-medium text-center">
           {formik.errors.recaptcha}
-        </Typography>
+        </p>
       )}
-    </>
+    </div>
   );
-};
+}
 
 export default memo(FormReCAPTCHA);

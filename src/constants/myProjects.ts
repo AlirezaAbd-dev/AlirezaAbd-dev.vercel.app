@@ -1,48 +1,162 @@
-import { StaticImageData } from 'next/image';
 import {
-   bolboler,
-   contactManagerImg,
-   contactManagerMobile,
-   dashboardImg,
-   glassmorphismLoginImg,
-   todoImg,
-} from '../assets/projects';
+  dashboardImg,
+  bolboler,
+  contactManagerMobile,
+  dotnetMicroservicesImg,
+  nestRealtorImg,
+  moviesAspnetImg,
+  webrtcCallImg,
+  geminiChatbotImg,
+  petShopImg,
+  mazeSolverImg,
+  trpcFullstackImg,
+} from "../assets/projects";
+import { StaticImageData } from "next/image";
 
 export interface myProjectsType {
-   title: string;
-   image: StaticImageData;
-   link: string;
+  id: string;
+  title: string;
+  image: StaticImageData;
+  gradient: string;
+  badgeColor: string;
+  link: string;
+  category: string;
+  technologies: string[];
+  description: string;
+  features: string[];
 }
 
-export const myProjects = [
-   {
-      title: 'مدیریت مخاطبین',
-      image: contactManagerImg,
-      link: 'https://github.com/AlirezaAbd-dev/Contact-Manager-client-Remake',
-   },
-   {
-      title: 'بلبلر',
-      image: bolboler,
-      link: 'https://github.com/AlirezaAbd-dev/Bolboler',
-   },
-   {
-      title: 'مدیریت مخاطبین اندروید',
-      image: contactManagerMobile,
-      link: 'https://github.com/AlirezaAbd-dev/Contact-Manager-Mobile',
-   },
-   {
-      title: 'داشبورد پنل ادمین',
-      image: dashboardImg,
-      link: 'https://github.com/AlirezaAbd-dev/Dashboard-Panel-Admin-persian',
-   },
-   {
-      title: 'لیست کارها',
-      image: todoImg,
-      link: 'https://github.com/AlirezaAbd-dev/MERN-Stack-todo-website',
-   },
-   {
-      title: 'صفحه ورود شیشه ای',
-      image: glassmorphismLoginImg,
-      link: 'https://github.com/AlirezaAbd-dev/Glassmorphism-login-page',
-   },
+export const myProjects: myProjectsType[] = [
+  {
+    id: "dotnet-microservices",
+    title: "معماری میکروسرویس سازمانی دات‌نت (Dotnet Microservices)",
+    image: dotnetMicroservicesImg,
+    gradient: "from-purple-900/40 via-indigo-950/60 to-zinc-950",
+    badgeColor: "text-purple-400 border-purple-500/30 bg-purple-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Dotnet-Microservices",
+    category: "C# و میکروسرویس",
+    technologies: ["C#", ".NET Core", "Microservices", "Docker", "RabbitMQ", "SQL Server"],
+    description: "پیاده‌سازی معماری میکروسرویس سازمانی با دات‌نت کور، ارتباطات ناهمگام مبتنی بر رویداد (Event-Driven)، داکرایز شده و الگوهای تاب‌آوری.",
+    features: ["Event-Driven Messaging", "Docker & Containerization", "Resilience & Service Discovery"],
+  },
+  {
+    id: "nest-realtor",
+    title: "پلتفرم جامع املاک NestJS Realtor API",
+    image: nestRealtorImg,
+    gradient: "from-rose-900/40 via-red-950/60 to-zinc-950",
+    badgeColor: "text-rose-400 border-rose-500/30 bg-rose-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Nest-Realtor-Api",
+    category: "بک‌اند و API",
+    technologies: ["NestJS", "TypeScript", "PostgreSQL", "Prisma ORM", "JWT Auth", "Clean Architecture"],
+    description: "توسعه RESTful API مقیاس‌پذیر برای مدیریت معاملات املاک و مستغلات با معماری ماژولار NestJS، احراز هویت RBAC و Prisma ORM.",
+    features: ["Role-Based Access Control", "Prisma ORM & PostgreSQL", "Modular Architecture"],
+  },
+  {
+    id: "bolboler",
+    title: "شبکه اجتماعی بلبلر (Bolboler Social App)",
+    image: bolboler,
+    gradient: "from-sky-900/40 via-blue-950/60 to-zinc-950",
+    badgeColor: "text-sky-400 border-sky-500/30 bg-sky-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Bolboler",
+    category: "فول‌استک و فرانت‌اند",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API", "State Management"],
+    description: "شبکه اجتماعی تعاملی مشابه توییتر با فید اختصاصی، ارسال پست و مدیا، لایک، ریتوییت، مدیریت پروفایل و طراحی مدرن واکنش‌گرا.",
+    features: ["Interactive Social Feed", "Media & Post Operations", "Optimized SSR / CSR"],
+  },
+  {
+    id: "movies-aspnet",
+    title: "سامانه مدیریت و استریم رسانه با ASP.NET Core",
+    image: moviesAspnetImg,
+    gradient: "from-pink-900/40 via-purple-950/60 to-zinc-950",
+    badgeColor: "text-pink-400 border-pink-500/30 bg-pink-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Movies-ASP.NET-Core",
+    category: "C# و بک‌اند",
+    technologies: ["C#", "ASP.NET Core", "Entity Framework Core", "SQL Server", "MVC Architecture"],
+    description: "پلتفرم مدیریت محتوا و رسانه با معماری MVC، مدیریت تراکنش‌های دیتابیس با EF Core و سیستم جامع احراز هویت کاربران.",
+    features: ["MVC Clean Design", "EF Core Relational DB", "Custom Authentication"],
+  },
+  {
+    id: "webrtc-call",
+    title: "سامانه تماس تصویری P2P بلادرنگ (WebRTC Video Call)",
+    image: webrtcCallImg,
+    gradient: "from-emerald-900/40 via-teal-950/60 to-zinc-950",
+    badgeColor: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
+    link: "https://github.com/AlirezaAbd-dev/webRTC-VideoCall",
+    category: "بلادرنگ و وب",
+    technologies: ["JavaScript", "WebRTC", "Socket.io", "Node.js", "P2P Streaming"],
+    description: "پیاده‌سازی سیستم تماس صوتی و تصویری دوطرفه و بلادرنگ بدون واسطه (Peer-to-Peer) با مکانیزم سیگنالینگ تحت وب‌سوکت.",
+    features: ["P2P Audio/Video Streams", "WebSocket Signaling", "Low-Latency Communication"],
+  },
+  {
+    id: "gemini-chatbot",
+    title: "دستیار هوش مصنوعی و ربات چت هوشمند (Gemini AI)",
+    image: geminiChatbotImg,
+    gradient: "from-cyan-900/40 via-blue-950/60 to-zinc-950",
+    badgeColor: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Gemini-Chat-Bot",
+    category: "هوش مصنوعی و ابزارها",
+    technologies: ["Python", "Gemini 2.5 Pro API", "Prompt Engineering", "Async IO"],
+    description: "پیاده‌سازی چت‌بات مکالمه‌ای چندحالته با قدرت مدل هوش مصنوعی Gemini 2.5 Pro، تحلیل زمینه گفتگو و پردازش زبان طبیعی.",
+    features: ["LLM Streaming Response", "Context Memory", "API Integration"],
+  },
+  {
+    id: "trpc-type-safe",
+    title: "معماری فول‌استک Type-Safe با tRPC & Next.js",
+    image: trpcFullstackImg,
+    gradient: "from-blue-900/40 via-indigo-950/60 to-zinc-950",
+    badgeColor: "text-blue-400 border-blue-500/30 bg-blue-500/10",
+    link: "https://github.com/AlirezaAbd-dev/TRPC-Example",
+    category: "فول‌استک و فرانت‌اند",
+    technologies: ["tRPC", "Next.js", "TypeScript", "Prisma", "Zod Validation"],
+    description: "طراحی معماری کلاینت-سرور با امنیت کامل انواع (End-to-End Type Safety) بدون نیاز به تولید کدهای تکراری API.",
+    features: ["Zero-API Code Generation", "Full Type Safety", "Zod Schema Validation"],
+  },
+  {
+    id: "admin-dashboard",
+    title: "داشبورد پنل ادمین و آمار پیشرفته فارسی",
+    image: dashboardImg,
+    gradient: "from-teal-900/40 via-zinc-950 to-zinc-950",
+    badgeColor: "text-teal-400 border-teal-500/30 bg-teal-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Dashboard-Panel-Admin-persian",
+    category: "داشبورد و ابزارها",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Recharts", "RTL Architecture"],
+    description: "داشبورد مدیریت داده‌های کسب‌وکار با پشتیبانی کامل از زبان فارسی و راست‌چین، تم تیره/روشن و نمودارهای تحلیلی تعاملی.",
+    features: ["Interactive Analytics Charts", "Dark/Light Modes", "Modular Components"],
+  },
+  {
+    id: "contact-mobile",
+    title: "اپلیکیشن نیتیو موبایل مدیریت مخاطبین (React Native)",
+    image: contactManagerMobile,
+    gradient: "from-cyan-900/40 via-blue-950 to-zinc-950",
+    badgeColor: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Contact-Manager-Mobile",
+    category: "موبایل (React Native)",
+    technologies: ["React Native", "TypeScript", "AsyncStorage", "Mobile Navigation"],
+    description: "اپلیکیشن موبایل کراس‌پلتفرم برای مدیریت و گروه‌بندی هوشمند اطلاعات مخاطبین با رابط کاربری نیتیو و ذخیره‌سازی آفلاین.",
+    features: ["Cross-Platform Android/iOS", "Offline-First Storage", "Fluid Touch Gestures"],
+  },
+  {
+    id: "pet-shop",
+    title: "فروشگاه آنلاین و پلتفرم تجارت الکترونیک پت‌شاپ",
+    image: petShopImg,
+    gradient: "from-amber-900/40 via-orange-950/60 to-zinc-950",
+    badgeColor: "text-amber-400 border-amber-500/30 bg-amber-500/10",
+    link: "https://github.com/AlirezaAbd-dev/Pet-Shop",
+    category: "فول‌استک و فرانت‌اند",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Cart State Management"],
+    description: "پلتفرم فروشگاهی مدرن عرضه محصولات حیوانات خانگی با فیلترهای چندمعیاره، سبد خرید زنده و تجربه خرید بهینه.",
+    features: ["Dynamic Cart & Checkout", "Multi-Filter Search", "High-Performance SSR"],
+  },
+  {
+    id: "maze-solver-ai",
+    title: "الگوریتم حل ماز و هوش مصنوعی مسیریابی در .NET",
+    image: mazeSolverImg,
+    gradient: "from-violet-900/40 via-purple-950/60 to-zinc-950",
+    badgeColor: "text-violet-400 border-violet-500/30 bg-violet-500/10",
+    link: "https://github.com/AlirezaAbd-dev/.Net-Maze-Solver-AI",
+    category: "C# و الگوریتم",
+    technologies: ["C#", ".NET", "AI Pathfinding", "Graph Algorithms", "Data Structures"],
+    description: "پیاده‌سازی الگوریتم‌های هوش مصنوعی و پیمایش گراف برای حل بهینه مازهای پیچیده.",
+    features: ["A* & Graph Traversal", "Performance Optimization", "Algorithmic Precision"],
+  },
 ];

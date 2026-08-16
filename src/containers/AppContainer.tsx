@@ -1,97 +1,48 @@
 "use client";
-import {
-  useState,
-  useCallback,
-  useEffect,
-  ReactNode,
-  SyntheticEvent,
-} from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
-import SwipeableViews from "react-swipeable-views";
-
-import MainLayout from "../Layouts/MainLayout";
-import { Sidebar } from "../components/sidebar";
-import SidebarContainer from "../containers/SidebarContainer";
-import MainContext from "../context";
-import PagesContainer from "../containers/PagesContainer";
-import { DrawerActionButton } from "../components/drawer";
+import React, { useState, ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import { ThemeProvider } from "../context/ThemeContext";
+import MainContext from "../context";
+import { Sidebar } from "../components/sidebar";
+import { DrawerActionButton } from "../components/drawer";
+import InteractiveCursor from "../components/ui/InteractiveCursor";
 
-function AppContainer({ children }: { children: ReactNode }) {
+export default function AppContainer({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
-  let pageNumberFromPathname = 0;
-  switch (pathname) {
-    case "/":
-      pageNumberFromPathname = 0;
-      break;
-    case "/about":
-      pageNumberFromPathname = 1;
-      break;
-    case "/myProjects":
-      pageNumberFromPathname = 2;
-      break;
-    case "/contactUs":
-      pageNumberFromPathname = 3;
-      break;
-  }
+  let pageNumber = 0;
+  if (pathname === "/about") pageNumber = 1;
+  else if (pathname === "/myProjects") pageNumber = 2;
+  else if (pathname === "/contactUs") pageNumber = 3;
 
-  const [pageNumber, setPageNumber] = useState(pageNumberFromPathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [mode, setMode] = useState<"dark" | "light">("dark");
-
-  const theme = useTheme();
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  useEffect(() => {
-    setMode(prefersDarkMode ? "dark" : "light");
-  }, [prefersDarkMode]);
-
-  const onSetDrawerOpen = useCallback((isOpen: boolean) => {
-    setDrawerOpen(isOpen);
-  }, []);
-
-  useEffect(() => {
-    isMdUp && onSetDrawerOpen(false);
-  }, [isMdUp, onSetDrawerOpen]);
-
-  const handlePageNumber = useCallback(
-    (e: SyntheticEvent, newValue: number) => {
-      setPageNumber(newValue);
-    },
-    []
-  );
-
-  const handleThemeChange = useCallback(() => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-  }, []);
 
   return (
-    <MainContext.Provider
-      value={{
-        pageNumber,
-        handlePageNumber,
-        drawerOpen,
-        setDrawerOpen: onSetDrawerOpen,
-        handleThemeChange,
-      }}
-    >
-      <MainLayout mode={mode}>
-        <SidebarContainer>
+    <ThemeProvider>
+      <MainContext.Provider
+        value={{
+          pageNumber,
+          setPageNumber: () => {},
+          drawerOpen,
+          setDrawerOpen,
+        }}
+      >
+        <div className="flex w-full h-screen overflow-hidden bg-zinc-50 dark:bg-[#09090b] text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
+          {/* Cyber Interactive Magnetic Cursor */}
+          <InteractiveCursor />
+
+          {/* Sidebar */}
           <Sidebar />
-        </SidebarContainer>
 
-        <DrawerActionButton />
+          {/* Floating Mobile Drawer Trigger */}
+          <DrawerActionButton />
 
-        <PagesContainer>
-          <SwipeableViews axis={theme.direction === "ltr" ? "x-reverse" : "x"}>
+          {/* Main Content Area */}
+          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden relative bg-transparent">
             {children}
-          </SwipeableViews>
-        </PagesContainer>
-      </MainLayout>
-    </MainContext.Provider>
+          </main>
+        </div>
+      </MainContext.Provider>
+    </ThemeProvider>
   );
 }
-
-export default AppContainer;

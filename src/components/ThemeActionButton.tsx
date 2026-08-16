@@ -1,40 +1,28 @@
-import { Box, Fab, useTheme } from "@mui/material";
-import { NightlightOutlined, WbSunnyOutlined } from "@mui/icons-material";
-import { useContext } from "react";
+"use client";
+import React from "react";
+import { Sun, Moon } from "lucide-react";
+import { useThemeContext } from "../context/ThemeContext";
 
-import mainContext from "../context";
-
-const ThemeActionButton = () => {
-  const theme = useTheme();
-  const { handleThemeChange } = useContext(mainContext);
+export default function ThemeActionButton() {
+  const { mode, toggleTheme } = useThemeContext();
+  const isDark = mode === "dark";
 
   return (
-    <Box
-      sx={{
-        position: {
-          sm: 'block',
-          md:"absolute"
-      },
-      mb: 2,
-      textAlign:'left'
-      }}
+    <button
+      onClick={toggleTheme}
+      type="button"
+      aria-label="تغییر تم"
+      className={`relative inline-flex items-center justify-center p-2.5 rounded-xl transition-all duration-300 shadow-sm hover:scale-110 active:scale-95 cursor-pointer ${
+        isDark
+          ? "bg-zinc-800/90 hover:bg-zinc-700 text-amber-400 border border-zinc-700/80 shadow-amber-500/10"
+          : "bg-zinc-100 hover:bg-zinc-200 text-violet-600 border border-zinc-300/80 shadow-violet-500/10"
+      }`}
     >
-      <Fab
-        aria-label="ThemeChanger"
-        variant="extended"
-        size="small"
-        color={theme.palette.mode === 'dark' ? 'primary' : 'error'}
-        onClick={handleThemeChange}
-        sx={{ ml: 2, color: "background", bgcolor:theme.palette.mode === 'dark' ? 'primary.main' : "redAccent.main" }}
-      >
-        {theme.palette.mode === "dark" ? (
-          <NightlightOutlined />
-        ) : (
-          <WbSunnyOutlined />
-        )}
-      </Fab>
-    </Box>
+      {isDark ? (
+        <Sun className="w-4.5 h-4.5 transition-transform duration-500 hover:rotate-90" />
+      ) : (
+        <Moon className="w-4.5 h-4.5 transition-transform duration-500 hover:-rotate-12" />
+      )}
+    </button>
   );
-};
-
-export default ThemeActionButton;
+}

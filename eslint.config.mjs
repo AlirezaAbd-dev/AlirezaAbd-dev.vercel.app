@@ -4,7 +4,7 @@ export default [
   ...nextConfig,
   {
     rules: {
-      "react-hooks/set-state-in-effect": "warn",
+      "import/no-anonymous-default-export": "off",
     },
   },
 ];

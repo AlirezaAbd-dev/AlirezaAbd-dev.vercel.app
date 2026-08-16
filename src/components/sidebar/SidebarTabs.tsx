@@ -1,65 +1,49 @@
 "use client";
 import React, { useContext } from "react";
-import { Tab, Tabs, useTheme } from "@mui/material";
-import { useRouter } from "next/navigation";
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MainContext from "../../context";
 import tabs from "../data/tabsData.sidebar";
 
-const SidebarTabs = () => {
-  const { pageNumber, handlePageNumber, setDrawerOpen } =
-    useContext(MainContext);
-
-  const router = useRouter();
-
-  const theme = useTheme();
-
-  const redirectToChosenPage = (path: string) => {
-    router.push(path);
-  };
-
-  const onMouseOverPrefetch = (path: string) => {
-    router.prefetch(path);
-  };
+export default function SidebarTabs() {
+  const pathname = usePathname();
+  const { setDrawerOpen } = useContext(MainContext);
 
   return (
-    <Tabs
-      orientation="vertical"
-      variant="scrollable"
-      allowScrollButtonsMobile
-      value={pageNumber}
-      textColor={theme.palette.mode === "dark" ? "primary" : "secondary"}
-      onChange={handlePageNumber}
-      sx={{
-        "& .MuiTabs-indicator": {
-          bgcolor: theme.palette.mode === "light" ? "redAccent.main" : "",
-        },
-      }}
-    >
-      {tabs.map((tab, index) => (
-        <Tab
-          key={index}
-          icon={<tab.icon />}
-          iconPosition="start"
-          sx={{
-            "&.MuiTab-root": {
-              borderRadius: 1,
-              minHeight: 30,
-              my: 0.6,
-              mx: 1,
-              py: 1.5,
-            },
-          }}
-          onClick={() => {
-            setDrawerOpen(false);
-            redirectToChosenPage(tab.path);
-          }}
-          onMouseOver={onMouseOverPrefetch.bind(null, tab.path)}
-          label={tab.label}
-        />
-      ))}
-    </Tabs>
-  );
-};
+    <nav className="w-full px-3 py-3 space-y-1.5" aria-label="منوی اصلی">
+      {tabs.map((tab) => {
+        const Icon = tab.icon;
+        const isActive =
+          pathname === tab.path ||
+          (tab.path !== "/" && pathname?.startsWith(tab.path));
 
-export default SidebarTabs;
+        return (
+          <Link
+            key={tab.path}
+            href={tab.path}
+            onClick={() => setDrawerOpen(false)}
+            className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-sm font-bold transition-all duration-300 ${
+              isActive
+                ? "bg-gradient-to-l from-emerald-500/15 via-emerald-500/10 to-transparent text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-sm"
+                : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/60"
+            }`}
+          >
+            {/* Active glowing indicator pill */}
+            {isActive && (
+              <span className="absolute right-0 w-1.5 h-6 bg-emerald-500 rounded-l-full shadow-sm shadow-emerald-500/50" />
+            )}
+
+            <Icon
+              className={`w-4.5 h-4.5 transition-transform duration-300 group-hover:scale-110 ${
+                isActive
+                  ? "text-emerald-500 dark:text-emerald-400"
+                  : "text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-800 dark:group-hover:text-zinc-200"
+              }`}
+            />
+            <span>{tab.label}</span>
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}

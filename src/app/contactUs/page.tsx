@@ -2,9 +2,19 @@ import { Metadata } from "next";
 import MainContactUs from "@/components/contact/MainContactUs";
 
 export const metadata: Metadata = {
-  title: "علیرضا عابدی | ارتباط با من",
+  title: "ارتباط با من | تماس و همکاری",
   description:
-    "توسط این صفحه میتوانید به نشانی الکترونیکی بنده پیان ارسال کنید و نظرات خود را برای من بفرستید.",
+    "راه‌های ارتباطی با علیرضا عابدی جهت مشاوره فنی، طراحی و توسعه پروژه‌های وب، همکاری تیمی و استخدام.",
+  keywords: [
+    "تماس با علیرضا عابدی",
+    "همکاری با علیرضا عابدی",
+    "استخدام برنامه نویس فرانت اند",
+    "مشاوره فنی وب",
+    "ایمیل علیرضا عابدی",
+  ],
+  alternates: {
+    canonical: "/contactUs",
+  },
 };
 
 const Contact = () => {

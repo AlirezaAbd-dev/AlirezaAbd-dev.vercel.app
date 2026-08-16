@@ -1,33 +1,22 @@
 "use client";
-import { WorkOutlineRounded } from "@mui/icons-material";
-import { Timeline } from "@mui/lab";
-import { Box } from "@mui/material";
-
+import React from "react";
+import { GraduationCap } from "lucide-react";
+import HeaderDivider from "../ui/HeaderDivider";
 import education from "../../constants/education";
-import HeaderDivider from "../../components/ui/HeaderDivider";
-import EducationTimelineItem from "../../components/timeline/EducationTimelineItem";
+import EducationTimelineItem from "./EducationTimelineItem";
 
-const EducationTimeline = () => {
+export default function EducationTimeline() {
   return (
-    <Box sx={{ mt: 2 }}>
-      <HeaderDivider
-        color="redAccent.main"
-        animation={false}
-        // @ts-ignore
-        icon={<WorkOutlineRounded color="text.primary" />}
-      >
-        تحصیلات
+    <div className="w-full mb-8">
+      <HeaderDivider icon={<GraduationCap className="w-5 h-5" />} chipAlign="right">
+        سوابق تحصیلی
       </HeaderDivider>
 
-      <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
-        <Timeline position="right" sx={{ direction: "ltr" }}>
-          {education.map((item, index) => (
-            <EducationTimelineItem item={item} key={index} />
-          ))}
-        </Timeline>
-      </Box>
-    </Box>
+      <div className="flex flex-col mt-6 max-w-2xl mx-auto">
+        {education.map((item, index) => (
+          <EducationTimelineItem key={index} item={item} />
+        ))}
+      </div>
+    </div>
   );
-};
-
-export default EducationTimeline;
+}

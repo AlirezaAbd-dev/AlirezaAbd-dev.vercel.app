@@ -1,23 +1,15 @@
 "use client";
-import { Box } from "@mui/material";
-import { SidebarFooter, SidebarHeader, SidebarTabs } from "./index";
+import React from "react";
+import SidebarHeader from "./SidebarHeader";
+import SidebarTabs from "./SidebarTabs";
+import SidebarFooter from "./SidebarFooter";
 
-const SidebarContent = () => {
+export default function SidebarContent() {
   return (
-    <Box
-      sx={{
-        justifyContent: "center",
-        textAlign: "center",
-        mt: 2,
-      }}
-    >
+    <div className="flex flex-col h-full min-h-screen w-full select-none overflow-y-auto no-scrollbar">
       <SidebarHeader />
-
       <SidebarTabs />
-
       <SidebarFooter />
-    </Box>
+    </div>
   );
-};
-
-export default SidebarContent;
+}

@@ -1,31 +1,32 @@
-"use client";
-import {
-  ConnectWithoutContactRounded,
-  FaceRounded,
-  HomeRounded,
-  TerminalRounded,
-} from "@mui/icons-material";
+import { Home, User, FolderGit2, Mail } from "lucide-react";
 
-const tabs = [
+export interface NavTabItem {
+  path: string;
+  label: string;
+  icon: typeof Home;
+  badge?: string;
+}
+
+const tabs: NavTabItem[] = [
   {
     path: "/",
     label: "صفحه اصلی",
-    icon: HomeRounded,
+    icon: Home,
   },
   {
-    path: "about",
+    path: "/about",
     label: "درباره من",
-    icon: FaceRounded,
+    icon: User,
   },
   {
-    path: "myProjects",
+    path: "/myProjects",
     label: "نمونه کارها",
-    icon: TerminalRounded,
+    icon: FolderGit2,
   },
   {
-    path: "contactUs",
+    path: "/contactUs",
     label: "ارتباط با من",
-    icon: ConnectWithoutContactRounded,
+    icon: Mail,
   },
 ];
 

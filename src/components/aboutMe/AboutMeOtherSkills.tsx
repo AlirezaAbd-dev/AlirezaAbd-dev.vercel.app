@@ -1,40 +1,22 @@
-'use client';
-import { Box } from '@mui/material';
-import Grid from '@mui/material/Grid';
-import otherSkillsData from '../data/otherSkillsData';
-import HeaderDivider from '../ui/HeaderDivider';
-import AboutMeSkillItem from './AboutMeSkillItem';
-import SkateboardingIcon from '@mui/icons-material/Skateboarding';
+"use client";
+import React from "react";
+import { Layers } from "lucide-react";
+import otherSkillsData from "../data/otherSkillsData";
+import HeaderDivider from "../ui/HeaderDivider";
+import AboutMeSkillItem from "./AboutMeSkillItem";
 
-const AboutMeOtherSkills = () => {
+export default function AboutMeOtherSkills() {
   return (
-    <Grid container>
-      <Grid sx={{ width: 1, mt: 1 }}>
-        <HeaderDivider
-          color='greenAccent.main'
-          animation={false}
-          // @ts-ignore
-          icon={<SkateboardingIcon color='text.primary' />}
-        >
-          سایر مهارت ها
-        </HeaderDivider>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-          }}
-        >
-          {otherSkillsData.map((skill) => (
-            <AboutMeSkillItem
-              key={skill.name}
-              skill={skill}
-            />
-          ))}
-        </Box>
-      </Grid>
-    </Grid>
-  );
-};
+    <div className="w-full mb-10">
+      <HeaderDivider icon={<Layers className="w-5 h-5" />} chipAlign="right">
+        سایر تکنولوژی‌ها و ابزارها
+      </HeaderDivider>
 
-export default AboutMeOtherSkills;
+      <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
+        {otherSkillsData.map((skill) => (
+          <AboutMeSkillItem key={skill.name} skill={skill} />
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -1,59 +1,26 @@
-'use client';
-import { Box, Typography, useTheme } from '@mui/material';
-import { useEffect, useRef } from 'react';
-import Typed from 'typed.js';
+"use client";
+import React from "react";
+import { useTypewriter } from "../../hooks/useTypewriter";
 
-const HomeTitle = () => {
-  const theme = useTheme();
-
-  const nameEl = useRef<any>(null);
-
-  useEffect(() => {
-    const typedName = new Typed(nameEl.current, {
-      strings: [`علیرضا عابدی`],
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 30,
-      showCursor: false,
-    });
-
-    return () => {
-      typedName.destroy();
-    };
-  }, []);
+export default function HomeTitle() {
+  const { displayedText } = useTypewriter({
+    text: "علیرضا عابدی",
+    speed: 120,
+    delay: 300,
+  });
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-      }}
-    >
-      <Typography
-        variant='h4'
-        color={
-          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
-        }
-      >
-        {`{" `}
-      </Typography>
-      <Typography
-        align='center'
-        variant='h4'
-        color={
-          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
-        }
-        ref={nameEl}
-      ></Typography>
-      <Typography
-        variant='h4'
-        color={
-          theme.palette.mode === 'dark' ? 'primary.light' : 'secondary.main'
-        }
-      >
-        {` "}`}
-      </Typography>
-    </Box>
+    <div className="flex items-center justify-center gap-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight select-none">
+      <span className="text-emerald-500/80 dark:text-emerald-400/80 font-mono">
+        {"{"}&quot;
+      </span>
+      <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-violet-400 dark:from-emerald-400 dark:via-teal-300 dark:to-violet-400 bg-clip-text text-transparent min-w-[1ch] text-center animate-text-shimmer">
+        {displayedText}
+      </span>
+      <span className="inline-block w-1 md:w-1.5 h-8 md:h-12 bg-emerald-400 animate-blink rounded-full mr-1" />
+      <span className="text-emerald-500/80 dark:text-emerald-400/80 font-mono">
+        &quot;{"}"}
+      </span>
+    </div>
   );
-};
-
-export default HomeTitle;
+}

@@ -1,44 +1,24 @@
-'use client';
-import { CodeRounded } from '@mui/icons-material';
-import { useMediaQuery, useTheme } from '@mui/material';
-import Grid from '@mui/material/Grid';
+"use client";
+import React from "react";
+import { Code2 } from "lucide-react";
+import HeaderDivider from "../ui/HeaderDivider";
+import AboutMeContent from "./AboutMeContent";
+import AboutMeMobile from "./AboutMeMobile";
 
-import HeaderDivider from '../../components/ui/HeaderDivider';
-import AboutMeMobile from '../../components/aboutMe/AboutMeMobile';
-import AboutMeContent from '../../components/aboutMe/AboutMeContent';
-
-const AboutMeHeader = () => {
-  const theme = useTheme();
-  const isMdDown = useMediaQuery(theme.breakpoints.down('md'));
-
+export default function AboutMeHeader() {
   return (
-    <Grid
-      container
-      sx={{ mx: 1 }}
-    >
-      <Grid
-        size={{
-          xs: 12,
-          sm: 12,
-          md: 8,
-          lg: 8,
-          xl: 8,
-        }}
-      >
-        <HeaderDivider
-          color='secondary.main'
-          chipAlign={isMdDown ? 'center' : 'right'}
-          //@ts-ignore
-          icon={<CodeRounded color='text.primary' />}
-        >
-          توسعه دهنده فول استک
-        </HeaderDivider>
+    <div className="w-full mb-8">
+      <HeaderDivider icon={<Code2 className="w-5 h-5 text-emerald-500" />} chipAlign="right">
+        لید تیم فرانت‌اند & توسعه‌دهنده فول‌استک
+      </HeaderDivider>
 
-        <AboutMeContent />
-      </Grid>
-      <AboutMeMobile />
-    </Grid>
+      {/* RTL Layout: Image on the Right, Info Cards on the Left on Desktop */}
+      <div className="flex flex-col md:flex-row items-center gap-6 mt-4">
+        <AboutMeMobile />
+        <div className="w-full md:w-2/3">
+          <AboutMeContent />
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default AboutMeHeader;
+}

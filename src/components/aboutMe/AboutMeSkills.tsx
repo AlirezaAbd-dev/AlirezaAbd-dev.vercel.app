@@ -1,87 +1,39 @@
-'use client';
-import { SelfImprovementRounded } from '@mui/icons-material';
-import Grid from '@mui/material/Grid';
+"use client";
+import React from "react";
+import { Cpu } from "lucide-react";
+import HeaderDivider from "../ui/HeaderDivider";
+import Skill from "../../page-components/Skill";
+import { devSkills } from "../../constants/skills";
 
-import useSkillRandom from '../../hooks/useSkillRandom';
-import Skill from '../../page-components/Skill';
-import { devSkills } from '../../constants/skills';
-import HeaderDivider from '../../components/ui/HeaderDivider';
+const skillsData = [
+  { ...devSkills.tsSkill, color: "info", value: devSkills.tsSkill.value },
+  { ...devSkills.nextJsSkill, color: "primary", value: devSkills.nextJsSkill.value },
+  { ...devSkills.uiSkill, color: "info", value: devSkills.uiSkill.value },
+  { ...devSkills.devopsSkill, color: "primary", value: devSkills.devopsSkill.value },
+  { ...devSkills.nestSkill, color: "error", value: devSkills.nestSkill.value },
+  { ...devSkills.architectureSkill, color: "success", value: devSkills.architectureSkill.value },
+  { ...devSkills.csharpSkill, color: "secondary", value: devSkills.csharpSkill.value },
+  { ...devSkills.databaseSkill, color: "warning", value: devSkills.databaseSkill.value },
+];
 
-const AboutMeSkills = () => {
-  const javascript = useSkillRandom(80);
-  const html = useSkillRandom(80);
-  const css = useSkillRandom(85);
-  const nodeJs = useSkillRandom(70);
-  const reactJs = useSkillRandom(90);
-  const nextJs = useSkillRandom(85);
-  const git = useSkillRandom(65);
-
-  const {
-    htmlSkill,
-    cssSkill,
-    jsSkill,
-    reactSkill,
-    nodeSkill,
-    gitSkill,
-    nextJsSkill,
-  } = devSkills;
-
+export default function AboutMeSkills() {
   return (
-    <Grid container>
-      <Grid sx={{ width: 1, mt: 1 }}>
-        <HeaderDivider
-          color='primary.dark'
-          animation={false}
-          // @ts-ignore
-          icon={<SelfImprovementRounded color='text.primary' />}
-        >
-          مهارت های من
-        </HeaderDivider>
-        <Skill
-          value={html}
-          name={htmlSkill.name}
-          color={htmlSkill.color}
-          icon={htmlSkill.icon}
-        />
-        <Skill
-          value={css}
-          name={cssSkill.name}
-          color={cssSkill.color}
-          icon={cssSkill.icon}
-        />
-        <Skill
-          value={javascript}
-          name={jsSkill.name}
-          color={jsSkill.color}
-          icon={jsSkill.icon}
-        />
-        <Skill
-          value={reactJs}
-          name={reactSkill.name}
-          color={reactSkill.color}
-          icon={reactSkill.icon}
-        />
-        <Skill
-          value={nodeJs}
-          name={nodeSkill.name}
-          color={nodeSkill.color}
-          icon={nodeSkill.icon}
-        />
-        <Skill
-          value={nextJs}
-          name={nextJsSkill.name}
-          color={nextJsSkill.color}
-          icon={nextJsSkill.icon}
-        />
-        <Skill
-          value={git}
-          name={gitSkill.name}
-          color={gitSkill.color}
-          icon={gitSkill.icon}
-        />
-      </Grid>
-    </Grid>
-  );
-};
+    <div className="w-full mb-10 animate-slide-up">
+      <HeaderDivider icon={<Cpu className="w-5 h-5 text-emerald-500" />} chipAlign="right">
+        مهارت‌های تخصصی و سطح تسلط (تحلیل شده از کدهای گیت‌هاب)
+      </HeaderDivider>
 
-export default AboutMeSkills;
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2.5 mt-4">
+        {skillsData.map((skill) => (
+          <Skill
+            key={skill.name}
+            name={skill.name}
+            icon={skill.icon}
+            color={skill.color}
+            value={skill.value}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

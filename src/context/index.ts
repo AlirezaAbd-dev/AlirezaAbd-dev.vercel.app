@@ -1,13 +1,18 @@
 "use client";
-import { ChangeEvent, createContext, SyntheticEvent } from "react";
+import { createContext } from "react";
 
-export default createContext({
+export interface MainContextType {
+  pageNumber: number;
+  setPageNumber: (page: number) => void;
+  drawerOpen: boolean;
+  setDrawerOpen: (isOpen: boolean) => void;
+}
+
+const MainContext = createContext<MainContextType>({
   pageNumber: 0,
-  handlePageNumber: (
-    e: SyntheticEvent,
-    newValue: number
-  ): void => {},
+  setPageNumber: () => {},
   drawerOpen: false,
-  setDrawerOpen: (isOpen: boolean): void => {},
-  handleThemeChange: () => {},
+  setDrawerOpen: () => {},
 });
+
+export default MainContext;
