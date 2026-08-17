@@ -496,30 +496,30 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
 
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center select-none touch-manipulation transition-all duration-300">
-      {/* Top Stats Bar */}
-      <div className="w-full grid grid-cols-4 gap-2 mb-3">
+      {/* Stats Bar */}
+      <div className="w-full grid grid-cols-4 gap-1.5 sm:gap-2 mb-2.5 sm:mb-3">
         {/* Score */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
-          <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
+          <span className="text-base sm:text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
         </div>
 
         {/* Level */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">مرحله</span>
-          <span className="text-lg font-black text-cyan-600 dark:text-cyan-400">{level}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">مرحله</span>
+          <span className="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400">{level}</span>
         </div>
 
         {/* Remaining Tiles */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">کاشی باقیمانده</span>
-          <span className="text-lg font-black text-amber-500">{boardTiles.length}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">باقیمانده</span>
+          <span className="text-base sm:text-lg font-black text-amber-500">{boardTiles.length}</span>
         </div>
 
         {/* High Score */}
-        <div className="relative group p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+        <div className="relative group p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
           <div className="flex items-center justify-center gap-1">
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
+            <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
             <button
               type="button"
               onClick={() => {
@@ -536,20 +536,20 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
               <RotateCcw className="w-2.5 h-2.5" />
             </button>
           </div>
-          <span className="text-lg font-black text-purple-500">{highScore}</span>
+          <span className="text-base sm:text-lg font-black text-purple-500">{highScore}</span>
         </div>
       </div>
 
       {/* Visual Clarity Guide & Desktop Shortcuts Bar */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 px-3.5 py-2 mb-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 mb-2.5 sm:mb-3 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[11px] sm:text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-md bg-emerald-500 border border-emerald-300 shadow-sm" />
+            <span className="w-2.5 h-2.5 rounded bg-emerald-500 border border-emerald-300 shadow-sm" />
             <span className="font-bold text-emerald-600 dark:text-emerald-400">کاشی روشن: آزاد</span>
           </div>
           <span className="text-zinc-400">|</span>
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-md bg-zinc-950 border border-zinc-700 opacity-60" />
+            <span className="w-2.5 h-2.5 rounded bg-zinc-950 border border-zinc-700 opacity-60" />
             <span className="text-zinc-500 dark:text-zinc-400">کاشی تیره: قفل</span>
           </div>
         </div>
@@ -557,7 +557,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
         {/* Desktop Keyboard Hints */}
         <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
           <Keyboard className="w-3.5 h-3.5 text-amber-400" />
-          <span>[کلید کاشی‌ها] انتخاب</span>
+          <span>[کلیدها] انتخاب</span>
           <span>•</span>
           <span>[U] بازگشت</span>
           <span>•</span>
@@ -570,7 +570,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
       {/* Main 3D Layered Board Container */}
       <div
         dir="ltr"
-        className="relative w-full max-w-[440px] aspect-[1/0.95] rounded-3xl bg-zinc-200/90 dark:bg-[#0c0c10] border-2 border-zinc-300 dark:border-zinc-800 shadow-2xl p-4 flex items-center justify-center overflow-hidden"
+        className="relative w-full max-w-[420px] aspect-[1/0.95] rounded-2xl sm:rounded-3xl bg-zinc-200/90 dark:bg-[#0c0c10] border-2 border-zinc-300 dark:border-zinc-800 shadow-2xl p-2.5 sm:p-4 flex items-center justify-center overflow-hidden"
       >
         {/* Board Depth Shadow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.4)_0,transparent_100%)] pointer-events-none" />
@@ -600,7 +600,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
                   top: `${topPercent}%`,
                   zIndex,
                 }}
-                className={`group w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex flex-col items-center justify-center transition-all duration-200 ${
+                className={`group w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex flex-col items-center justify-center transition-all duration-200 ${
                   isCovered
                     ? "bg-zinc-950/95 border-2 border-zinc-800/80 shadow-none cursor-not-allowed opacity-75 filter brightness-60"
                     : `bg-white dark:bg-[#181822] border-2 ${config.borderColor} ${config.glow} shadow-[0_12px_24px_rgba(0,0,0,0.7)] hover:-translate-y-2 hover:scale-110 hover:z-50 cursor-pointer active:scale-95 animate-scaleIn`
@@ -608,7 +608,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
               >
                 {/* 3D Physical Extruded Bottom Edge */}
                 <div
-                  className={`absolute -bottom-2 left-0.5 right-0.5 h-2 rounded-b-xl transition-all ${
+                  className={`absolute -bottom-1.5 sm:-bottom-2 left-0.5 right-0.5 h-1.5 sm:h-2 rounded-b-lg sm:rounded-b-xl transition-all ${
                     isCovered
                       ? "bg-zinc-900 border-t border-zinc-800"
                       : `${config.bevelColor} shadow-md shadow-zinc-950/50 group-hover:h-2.5`
@@ -616,26 +616,26 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
                 />
 
                 {/* Status Indicator / Desktop Keyboard Shortcut Tag */}
-                <div className="absolute top-1 left-1.5 flex items-center">
+                <div className="absolute top-1 left-1 sm:left-1.5 flex items-center">
                   {isCovered ? (
                     <div className="p-0.5 rounded-md bg-zinc-900/90 border border-zinc-700/60 text-zinc-500">
-                      <Lock className="w-2.5 h-2.5" />
+                      <Lock className="w-2 h-2 sm:w-2.5 sm:h-2.5" />
                     </div>
                   ) : shortcutKey ? (
                     <span className="hidden sm:flex items-center justify-center min-w-4 h-4 px-1 rounded-md bg-amber-400 text-zinc-950 font-mono text-[9px] font-black uppercase shadow-[0_0_8px_rgba(245,158,11,0.6)] animate-pulse">
                       {shortcutKey}
                     </span>
                   ) : (
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                   )}
                 </div>
 
                 {/* Layer Elevation Pip Dots (Top-Right) */}
-                <div className="absolute top-1 right-1.5 flex items-center gap-0.5">
+                <div className="absolute top-1 right-1 sm:right-1.5 flex items-center gap-0.5">
                   {[...Array(tile.layer + 1)].map((_, dotIdx) => (
                     <span
                       key={dotIdx}
-                      className={`w-1.5 h-1.5 rounded-full ${
+                      className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${
                         isCovered
                           ? "bg-zinc-700"
                           : "bg-amber-400 shadow-[0_0_6px_#f59e0b]"
@@ -646,28 +646,23 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
 
                 {/* Tile Icon */}
                 <Icon
-                  className={`w-6 h-6 sm:w-7 sm:h-7 transition-all ${
+                  className={`w-5 h-5 sm:w-7 sm:h-7 transition-all ${
                     isCovered
-                      ? "text-zinc-500 opacity-50"
-                      : `${config.color} group-hover:scale-110 group-hover:rotate-6 drop-shadow-md`
+                      ? "text-zinc-600 opacity-60"
+                      : `${config.color} group-hover:scale-110 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]`
                   }`}
                 />
 
                 {/* Tile Label */}
                 <span
-                  className={`text-[9px] font-black mt-0.5 tracking-tight truncate max-w-[90%] ${
+                  className={`text-[8px] sm:text-[9px] font-black leading-tight mt-0.5 ${
                     isCovered
-                      ? "text-zinc-600 dark:text-zinc-600"
-                      : `${config.color} font-black drop-shadow-sm`
+                      ? "text-zinc-600 opacity-50"
+                      : "text-zinc-800 dark:text-zinc-200"
                   }`}
                 >
                   {config.label}
                 </span>
-
-                {/* Dark Shadow Mask Overlay for Covered Tiles */}
-                {isCovered && (
-                  <div className="absolute inset-0 rounded-2xl bg-black/45 pointer-events-none" />
-                )}
               </button>
             );
           })}
@@ -675,17 +670,17 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
 
         {/* Victory Overlay */}
         {isWon && (
-          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-6 text-center z-50 animate-fadeIn">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 shadow-lg shadow-emerald-500/20">
-              <CheckCircle2 className="w-8 h-8" />
+          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-4 sm:p-6 text-center z-50 animate-fadeIn">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3 sm:mb-4 shadow-lg shadow-emerald-500/20">
+              <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-xl font-black text-white mb-1">مرحله با موفقیت پاکسازی شد!</h3>
-            <p className="text-xs text-zinc-400 mb-6">تمام کاشی‌های لایه‌ای با مهارت ست شدند.</p>
+            <h3 className="text-lg sm:text-xl font-black text-white mb-1">مرحله با موفقیت پاکسازی شد!</h3>
+            <p className="text-xs text-zinc-400 mb-4 sm:mb-6">تمام کاشی‌های لایه‌ای با مهارت ست شدند.</p>
 
             <button
               type="button"
               onClick={nextLevel}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-amber-500 text-zinc-950 font-black text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-emerald-500 to-amber-500 text-zinc-950 font-black text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <span>مرحله بعدی (Space)</span>
               <Sparkles className="w-4 h-4" />
@@ -695,18 +690,18 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
 
         {/* Game Over Overlay */}
         {isGameOver && (
-          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-6 text-center z-50 animate-fadeIn">
-            <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-4 shadow-lg shadow-rose-500/20">
-              <Flame className="w-8 h-8" />
+          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-4 sm:p-6 text-center z-50 animate-fadeIn">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-3 sm:mb-4 shadow-lg shadow-rose-500/20">
+              <Flame className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-xl font-black text-white mb-1">ظرفیت بارانداز پر شد!</h3>
-            <p className="text-sm font-bold text-emerald-400 mb-1">امتیاز نهایی: {score}</p>
-            <p className="text-xs text-zinc-400 mb-6">برای ترکیب ۳ کاشی فضای خالی نمانده بود.</p>
+            <h3 className="text-lg sm:text-xl font-black text-white mb-1">ظرفیت بارانداز پر شد!</h3>
+            <p className="text-xs sm:text-sm font-bold text-emerald-400 mb-1">امتیاز نهایی: {score}</p>
+            <p className="text-xs text-zinc-400 mb-4 sm:mb-6">برای ترکیب ۳ کاشی فضای خالی نمانده بود.</p>
 
             <button
               type="button"
               onClick={restartLevel}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>تلاش مجدد (R)</span>
@@ -718,7 +713,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
       {/* Dock / Holder Bar (Bottom Capacity: 7) */}
       <div
         dir="ltr"
-        className={`w-full max-w-[440px] mt-3 p-3 rounded-2xl bg-zinc-100/90 dark:bg-zinc-900/90 border-2 transition-all duration-300 shadow-xl flex items-center justify-center gap-1.5 sm:gap-2 ${
+        className={`w-full max-w-[420px] mt-2.5 sm:mt-3 p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100/90 dark:bg-zinc-900/90 border-2 transition-all duration-300 shadow-xl flex items-center justify-center gap-1 sm:gap-2 ${
           dockTiles.length >= 6
             ? "border-rose-500/80 ring-2 ring-rose-500/30 animate-pulse"
             : "border-zinc-300/80 dark:border-zinc-800/80"
@@ -732,7 +727,7 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
           return (
             <div
               key={idx}
-              className={`w-11 h-12 sm:w-13 sm:h-14 rounded-xl flex flex-col items-center justify-center border-2 transition-all duration-200 ${
+              className={`w-9 h-10 xs:w-10 xs:h-11 sm:w-13 sm:h-14 rounded-lg sm:rounded-xl flex flex-col items-center justify-center border-2 transition-all duration-200 ${
                 tile && config
                   ? isPopping
                     ? "bg-amber-400 border-amber-300 text-zinc-950 scale-110 shadow-lg shadow-amber-400/50 animate-bounce"
@@ -742,8 +737,8 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
             >
               {config && (
                 <>
-                  <config.icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span className="text-[8px] font-bold mt-0.5 truncate max-w-[90%]">
+                  <config.icon className="w-4 h-4 sm:w-6 sm:h-6" />
+                  <span className="text-[7px] sm:text-[8px] font-bold mt-0.5 truncate max-w-[90%]">
                     {config.label}
                   </span>
                 </>
@@ -754,16 +749,16 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
       </div>
 
       {/* Boosters & Action Toolbar with Desktop Shortcuts */}
-      <div className="w-full max-w-[440px] flex items-center justify-between mt-3 px-1">
+      <div className="w-full max-w-[420px] grid grid-cols-3 gap-1.5 sm:gap-2.5 mt-2.5 sm:mt-3 px-1">
         {/* Undo */}
         <button
           type="button"
           onClick={handleUndo}
           disabled={undosLeft <= 0 || history.length === 0}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <Undo2 className="w-3.5 h-3.5" />
-          <span>بازگشت [U] ({undosLeft})</span>
+          <span>بازگشت ({undosLeft})</span>
         </button>
 
         {/* Shuffle */}
@@ -771,10 +766,10 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
           type="button"
           onClick={handleShuffle}
           disabled={shufflesLeft <= 0 || boardTiles.length === 0}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <Shuffle className="w-3.5 h-3.5" />
-          <span>بر زدن [S] ({shufflesLeft})</span>
+          <span>بر زدن ({shufflesLeft})</span>
         </button>
 
         {/* Magic Vacuum */}
@@ -782,10 +777,10 @@ export default function CyberTileMatch({ onScoreUpdate }: { onScoreUpdate?: (sco
           type="button"
           onClick={handleVacuum}
           disabled={vacuumsLeft <= 0 || dockTiles.length === 0}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-500/15 to-indigo-500/15 border border-purple-500/30 text-purple-600 dark:text-purple-300 text-xs font-bold disabled:opacity-40 hover:bg-purple-500/25 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-gradient-to-r from-purple-500/15 to-indigo-500/15 border border-purple-500/30 text-purple-600 dark:text-purple-300 text-[11px] sm:text-xs font-bold disabled:opacity-40 hover:bg-purple-500/25 transition active:scale-95 cursor-pointer"
         >
           <Wand2 className="w-3.5 h-3.5 text-purple-500" />
-          <span>جارو [V] ({vacuumsLeft})</span>
+          <span>جارو ({vacuumsLeft})</span>
         </button>
       </div>
     </div>

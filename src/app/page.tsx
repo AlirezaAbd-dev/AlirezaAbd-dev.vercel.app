@@ -10,7 +10,7 @@ import BorderBeam from "../components/ui/BorderBeam";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center px-4 py-12 overflow-hidden select-none">
+    <div className="relative min-h-screen flex flex-col justify-center items-center px-4 pt-16 pb-12 sm:py-12 overflow-hidden select-none">
       {/* Interactive Constellation Canvas with Click Ripples & Quantum Meteors */}
       <CanvasParticles />
 

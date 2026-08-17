@@ -7,7 +7,7 @@ export default function DrawerActionButton() {
   const { setDrawerOpen } = useContext(MainContext);
 
   return (
-    <div className="fixed top-4 right-4 z-40 md:hidden">
+    <div className="fixed top-4 left-4 z-40 md:hidden">
       <button
         onClick={() => setDrawerOpen(true)}
         type="button"

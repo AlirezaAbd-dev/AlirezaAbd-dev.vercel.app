@@ -378,29 +378,29 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center select-none touch-manipulation transition-all duration-300">
       {/* Stats Bar */}
-      <div className="w-full grid grid-cols-4 gap-2 mb-3">
+      <div className="w-full grid grid-cols-4 gap-1.5 sm:gap-2 mb-2.5 sm:mb-3">
         {/* Score */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
-          <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
+          <span className="text-base sm:text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
         </div>
 
         {/* Level */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">مرحله</span>
-          <span className="text-lg font-black text-cyan-600 dark:text-cyan-400">{level}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">مرحله</span>
+          <span className="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400">{level}</span>
         </div>
 
         {/* Moves */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">حرکات</span>
-          <span className="text-lg font-black text-amber-500">{moves}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">حرکات</span>
+          <span className="text-base sm:text-lg font-black text-amber-500">{moves}</span>
         </div>
 
         {/* High Score */}
-        <div className="relative group p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+        <div className="relative group p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
           <div className="flex items-center justify-center gap-1">
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
+            <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
             <button
               type="button"
               onClick={() => {
@@ -417,25 +417,25 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
               <RotateCcw className="w-2.5 h-2.5" />
             </button>
           </div>
-          <span className="text-lg font-black text-purple-500">{highScore}</span>
+          <span className="text-base sm:text-lg font-black text-purple-500">{highScore}</span>
         </div>
       </div>
 
       {/* Info Banner & Keyboard Shortcuts Hint */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 px-3.5 py-2 mb-3 rounded-xl bg-cyan-500/5 dark:bg-cyan-500/10 border border-cyan-500/20 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 mb-2.5 sm:mb-3 rounded-xl bg-cyan-500/5 dark:bg-cyan-500/10 border border-cyan-500/20 text-[11px] sm:text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <div className="flex items-center gap-1.5">
-          <FlaskConical className="w-4 h-4 text-cyan-500 animate-pulse" />
+          <FlaskConical className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-500 animate-pulse" />
           <span>مایع هم‌رنگ را در لوله‌های دیگر تفکیک کنید.</span>
         </div>
 
         {/* Desktop Keyboard Hints */}
         <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
           <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
-          <span>[1-{tubes.length}] انتخاب لوله</span>
+          <span>[1-{tubes.length}] لوله</span>
           <span>•</span>
           <span>[U] بازگشت</span>
           <span>•</span>
-          <span>[A] لوله خالی</span>
+          <span>[A] لوله اضافی</span>
           <span>•</span>
           <span>[R] ریست</span>
         </div>
@@ -444,7 +444,7 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
       {/* Main Glass Tubes Field */}
       <div
         dir="ltr"
-        className="relative w-full max-w-[440px] min-h-[300px] sm:min-h-[340px] rounded-3xl bg-zinc-100/80 dark:bg-[#101014]/90 backdrop-blur-xl border border-zinc-200/90 dark:border-zinc-800/90 shadow-2xl p-5 flex flex-wrap items-center justify-center gap-4 sm:gap-6 overflow-hidden"
+        className="relative w-full max-w-[420px] min-h-[260px] sm:min-h-[340px] rounded-2xl sm:rounded-3xl bg-zinc-100/80 dark:bg-[#101014]/90 backdrop-blur-xl border border-zinc-200/90 dark:border-zinc-800/90 shadow-2xl p-3 sm:p-5 flex flex-wrap items-center justify-center gap-2.5 sm:gap-6 overflow-hidden"
       >
         {/* Ambient Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.06)_0,transparent_75%)] pointer-events-none rounded-3xl" />
@@ -460,7 +460,7 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
               onClick={() => handleTubeClick(tube.id)}
               aria-label={`لوله آزمایش شماره ${tube.id + 1}`}
               className={`relative flex flex-col justify-end items-center transition-all duration-300 cursor-pointer ${
-                isSelected ? "-translate-y-4 scale-105" : "translate-y-0 hover:scale-105"
+                isSelected ? "-translate-y-3 sm:-translate-y-4 scale-105" : "translate-y-0 hover:scale-105"
               }`}
             >
               {/* Desktop Keyboard Shortcut Badge Tag */}
@@ -470,16 +470,16 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
 
               {/* Glass Tube Container */}
               <div
-                className={`relative w-12 sm:w-14 h-36 sm:h-40 rounded-b-3xl rounded-t-lg border-2 backdrop-blur-md overflow-hidden flex flex-col justify-end p-1 transition-all duration-300 ${
+                className={`relative w-10 xs:w-11 sm:w-14 h-32 xs:h-36 sm:h-40 rounded-b-2xl sm:rounded-b-3xl rounded-t-lg border-2 backdrop-blur-md overflow-hidden flex flex-col justify-end p-0.5 sm:p-1 transition-all duration-300 ${
                   isCompleted
                     ? "border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.4)] bg-emerald-500/5"
                     : isSelected
-                    ? "border-cyan-400 ring-4 ring-cyan-400/30 shadow-[0_0_25px_rgba(6,182,212,0.5)] bg-cyan-500/10"
+                    ? "border-cyan-400 ring-2 sm:ring-4 ring-cyan-400/30 shadow-[0_0_25px_rgba(6,182,212,0.5)] bg-cyan-500/10"
                     : "border-zinc-300/90 dark:border-zinc-700/80 bg-white/40 dark:bg-zinc-900/60 hover:border-cyan-400/60 shadow-lg"
                 }`}
               >
                 {/* Lip Top Collar Rim */}
-                <div className="absolute top-0 left-0 right-0 h-2 bg-white/40 dark:bg-zinc-700/40 border-b border-zinc-200 dark:border-zinc-700 rounded-t-md" />
+                <div className="absolute top-0 left-0 right-0 h-1.5 sm:h-2 bg-white/40 dark:bg-zinc-700/40 border-b border-zinc-200 dark:border-zinc-700 rounded-t-md" />
 
                 {/* Liquid Layers (Bottom to Top) */}
                 <div className="w-full flex flex-col-reverse justify-start items-center">
@@ -489,11 +489,11 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
                     return (
                       <div
                         key={layerIdx}
-                        className={`w-full h-7 sm:h-8 rounded-sm bg-gradient-to-t ${cfg.gradient} ${cfg.glow} transition-all duration-300 flex items-center justify-center relative overflow-hidden`}
+                        className={`w-full h-6 xs:h-7 sm:h-8 rounded-sm bg-gradient-to-t ${cfg.gradient} ${cfg.glow} transition-all duration-300 flex items-center justify-center relative overflow-hidden`}
                       >
                         {/* Bubbling ripple sheen */}
                         <div className="absolute inset-0 bg-white/15 opacity-60 animate-pulse" />
-                        <span className="text-[7px] font-black text-white/90 drop-shadow-sm opacity-60 uppercase">
+                        <span className="text-[6px] sm:text-[7px] font-black text-white/90 drop-shadow-sm opacity-60 uppercase">
                           {cfg.key.slice(0, 3)}
                         </span>
                       </div>
@@ -502,13 +502,13 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
                 </div>
 
                 {/* Glass Reflection Glare Streak */}
-                <div className="absolute top-2 left-1 bottom-4 w-1 bg-white/30 rounded-full pointer-events-none" />
+                <div className="absolute top-2 left-0.5 sm:left-1 bottom-3 sm:bottom-4 w-0.5 sm:w-1 bg-white/30 rounded-full pointer-events-none" />
               </div>
 
               {/* Completed Shield Badge */}
               {isCompleted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-emerald-500 border border-emerald-300 flex items-center justify-center text-zinc-950 shadow-md shadow-emerald-500/50 animate-bounce">
-                  <CheckCircle2 className="w-4 h-4" />
+                <div className="absolute -top-2.5 sm:-top-3 left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-500 border border-emerald-300 flex items-center justify-center text-zinc-950 shadow-md shadow-emerald-500/50 animate-bounce">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               )}
             </button>
@@ -517,17 +517,17 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
 
         {/* Victory Overlay */}
         {isWon && (
-          <div className="absolute inset-0 bg-zinc-950/85 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-6 text-center z-40 animate-fadeIn">
-            <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 shadow-lg shadow-cyan-500/20">
-              <Sparkles className="w-8 h-8" />
+          <div className="absolute inset-0 bg-zinc-950/85 backdrop-blur-md rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-4 sm:p-6 text-center z-40 animate-fadeIn">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-3 sm:mb-4 shadow-lg shadow-cyan-500/20">
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-xl font-black text-white mb-1">مایعات کوانتومی تفکیک شدند!</h3>
-            <p className="text-xs text-zinc-400 mb-6">تمام پلاسماها با خلوص کامل درون فلاسک‌ها پایدار شدند.</p>
+            <h3 className="text-lg sm:text-xl font-black text-white mb-1">مایعات کوانتومی تفکیک شدند!</h3>
+            <p className="text-xs text-zinc-400 mb-4 sm:mb-6">تمام پلاسماها با خلوص کامل درون فلاسک‌ها پایدار شدند.</p>
 
             <button
               type="button"
               onClick={nextLevel}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-zinc-950 font-black text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-zinc-950 font-black text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <span>مرحله بعدی (Space)</span>
               <Sparkles className="w-4 h-4" />
@@ -537,16 +537,16 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
       </div>
 
       {/* Boosters & Actions Toolbar */}
-      <div className="w-full max-w-[440px] flex items-center justify-between mt-4 px-1">
+      <div className="w-full max-w-[420px] grid grid-cols-3 gap-1.5 sm:gap-2.5 mt-2.5 sm:mt-4 px-1">
         {/* Undo Move */}
         <button
           type="button"
           onClick={handleUndo}
           disabled={undosLeft <= 0 || history.length === 0 || isWon}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <Undo2 className="w-3.5 h-3.5" />
-          <span>بازگشت [U] ({undosLeft})</span>
+          <span>بازگشت ({undosLeft})</span>
         </button>
 
         {/* Add Extra Tube */}
@@ -554,20 +554,20 @@ export default function CyberLiquidSort({ onScoreUpdate }: { onScoreUpdate?: (sc
           type="button"
           onClick={handleAddTube}
           disabled={extraTubesLeft <= 0 || isWon}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500/15 to-blue-500/15 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300 text-xs font-bold disabled:opacity-40 hover:bg-cyan-500/25 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-gradient-to-r from-cyan-500/15 to-blue-500/15 border border-cyan-500/30 text-cyan-600 dark:text-cyan-300 text-[11px] sm:text-xs font-bold disabled:opacity-40 hover:bg-cyan-500/25 transition active:scale-95 cursor-pointer"
         >
           <PlusCircle className="w-3.5 h-3.5 text-cyan-500" />
-          <span>+۱ لوله [A] ({extraTubesLeft})</span>
+          <span>+۱ لوله ({extraTubesLeft})</span>
         </button>
 
         {/* Restart */}
         <button
           type="button"
           onClick={restartLevel}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-bold hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          <span>ریست [R]</span>
+          <span>ریست</span>
         </button>
       </div>
     </div>

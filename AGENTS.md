@@ -62,7 +62,7 @@ This repository houses the personal portfolio, engineering showcase, and interac
 │   │   ├── aboutMe/            # About page modules (Header, Stats, Skills, Badges)
 │   │   ├── contact/            # Contact form and direct communication cards
 │   │   ├── drawer/             # Mobile responsive navigation drawer
-│   │   ├── games/              # Cyber Arcade Mini-Games (GameHub, CyberTileMatch, CyberLiquidSort, CyberBlockBlast, Cyber2048)
+│   │   ├── games/              # Cyber Arcade Mini-Games (GameHub, GameGuideModal, CyberTileMatch, CyberLiquidSort, CyberBlockBlast, Cyber2048)
 │   │   ├── home/               # CanvasParticles, HomeTitle, HomeSubtitle
 │   │   ├── icons/              # Official SVG logos (TechIcons, BrandIcons)
 │   │   ├── myProjects/         # ProjectCard, MainMyProject with category filter
@@ -97,8 +97,10 @@ This repository houses the personal portfolio, engineering showcase, and interac
    - Continuous laser ray scanner traversing down the education connection timeline.
 7. **Procedural Web Audio Synthesizer & Cyber Arcade** ([`audioSynth.ts`](src/utils/audioSynth.ts) & [`GameHub.tsx`](src/components/games/GameHub.tsx)):
    - Zero-asset Web Audio API sound generator delivering retro-futuristic synthesized feedback across 4 cognitive thinking mini-games (Cyber Tile Match / Tile Family 3D, Quantum Liquid Sort / Water Sort, Cyber Block Blast / Blockudoku, and Cyber 2048).
-8. **Desktop Keyboard Controls & Shortcut Badges**:
-   - High-speed keyboard navigation across all games (`[1-9]`, `[Q-P]`, `[WASD]`, `[Arrows]`, `[U]` Undo, `[S]` Shuffle, `[V]` Vacuum, `[A]` Add Tube, `[T]` Rotate, `[B]` Bomb, `[R]` Restart) with on-screen desktop key hints.
+8. **Interactive Device-Aware Game Guides & Rules Modal** ([`GameGuideModal.tsx`](src/components/games/GameGuideModal.tsx)):
+   - Dedicated glassmorphism modal with game selector tabs and a responsive device mode switcher toggling between **📱 Mobile Touch Gestures** (taps, drags, swipes) and **💻 Desktop Keyboards & Mouse Shortcuts** (`[1-9]`, `[WASD]`, `[Arrows]`, `[Space]`, `[U]`, `[S]`, `[V]`, `[A]`, `[T]`, `[B]`, `[R]`), complete with power-ups explanation and pro tips.
+9. **Desktop Keyboard Controls & Shortcut Badges**:
+   - High-speed keyboard navigation across all games with on-screen desktop key hints.
 
 ---
 

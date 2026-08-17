@@ -15,11 +15,13 @@ import {
   Trash2,
   X,
   Check,
+  HelpCircle,
 } from "lucide-react";
 import CyberTileMatch from "./CyberTileMatch";
 import CyberLiquidSort from "./CyberLiquidSort";
 import CyberBlockBlast from "./CyberBlockBlast";
 import Cyber2048 from "./Cyber2048";
+import GameGuideModal from "./GameGuideModal";
 import { sound } from "@/utils/audioSynth";
 import BorderBeam from "../ui/BorderBeam";
 
@@ -169,6 +171,7 @@ const SERVER_STATS: ScoreStats = {
 export default function GameHub() {
   const [activeGame, setActiveGame] = useState<GameId | null>(null);
   const [isScoreModalOpen, setIsScoreModalOpen] = useState<boolean>(false);
+  const [guideModalGame, setGuideModalGame] = useState<GameId | null>(null);
   const [confirmResetAll, setConfirmResetAll] = useState<boolean>(false);
 
   const stats = useSyncExternalStore(
@@ -234,44 +237,57 @@ export default function GameHub() {
   };
 
   return (
-    <div className="w-full min-h-screen py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col">
+    <div className="w-full min-h-screen pt-14 pb-8 sm:py-8 px-3.5 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col">
       {/* Top Header & Cyber Arena Title */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-5 sm:pb-6 border-b border-zinc-200/80 dark:border-zinc-800/80 mb-5 sm:mb-6">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
-              <Gamepad2 className="w-5 h-5" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-500">
+              <Gamepad2 className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 animate-pulse">
+            <span className="text-[11px] sm:text-xs font-black px-2 sm:px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 animate-pulse">
               اتاق چالش‌های فکری و مینی‌گیم
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white tracking-tight">
+          <h1 className="text-xl sm:text-3xl font-black text-zinc-900 dark:text-white tracking-tight">
             سایبر آرکید (Cyber Arcade)
           </h1>
-          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
             مجموعه مینی‌گیم‌ها و چالش‌های فکری تعاملی؛ طراحی و پیاده‌سازی اختصاصی با فرانت‌اند مدرن، رندرینگ ۶۰ فریم و پردازش صدای تعاملی
           </p>
         </div>
 
         {/* Global Controls & Stats */}
-        <div className="flex items-center gap-3 self-end sm:self-center">
+        <div className="w-full sm:w-auto flex flex-wrap items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0">
+          {/* Global Game Guide Trigger */}
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              setGuideModalGame("tileMatch");
+            }}
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl sm:rounded-2xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-600 dark:text-purple-400 text-[11px] sm:text-xs font-bold transition-all active:scale-95 cursor-pointer"
+          >
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>راهنمای بازی‌ها</span>
+          </button>
+
           {/* Sound Toggle Button */}
           <button
             type="button"
             onClick={handleToggleSound}
             aria-label={isMuted ? "وصل صدا" : "قطع صدا"}
-            className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700/80 text-zinc-700 dark:text-zinc-300 text-xs font-bold border border-zinc-200 dark:border-zinc-700/80 transition-all active:scale-95 cursor-pointer"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700/80 text-zinc-700 dark:text-zinc-300 text-[11px] sm:text-xs font-bold border border-zinc-200 dark:border-zinc-700/80 transition-all active:scale-95 cursor-pointer"
           >
             {isMuted ? (
               <>
-                <VolumeX className="w-4 h-4 text-rose-500" />
+                <VolumeX className="w-3.5 h-3.5 text-rose-500" />
                 <span>صدا قطع</span>
               </>
             ) : (
               <>
-                <Volume2 className="w-4 h-4 text-emerald-500" />
-                <span>افکت صوتی فعال</span>
+                <Volume2 className="w-3.5 h-3.5 text-emerald-500" />
+                <span>افکت صوتی</span>
               </>
             )}
           </button>
@@ -284,9 +300,9 @@ export default function GameHub() {
               refreshStats();
               setIsScoreModalOpen(true);
             }}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-black transition active:scale-95 cursor-pointer shadow-sm"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl sm:rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-[11px] sm:text-xs font-black transition active:scale-95 cursor-pointer shadow-sm"
           >
-            <Trophy className="w-4 h-4" />
+            <Trophy className="w-3.5 h-3.5" />
             <span>مجموع رکوردها: {stats.total}</span>
           </button>
         </div>
@@ -296,7 +312,7 @@ export default function GameHub() {
       {!activeGame ? (
         // Game Catalog Grid
         <div className="flex-1 flex flex-col justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 my-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 my-auto">
             {GAMES.map((game) => {
               const Icon = game.icon;
 
@@ -304,7 +320,7 @@ export default function GameHub() {
                 <div
                   key={game.id}
                   onClick={() => handleSelectGame(game.id)}
-                  className="group relative p-6 sm:p-7 rounded-3xl bg-white/80 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200/90 dark:border-zinc-800/90 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer overflow-hidden"
+                  className="group relative p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-zinc-900/60 backdrop-blur-xl border border-zinc-200/90 dark:border-zinc-800/90 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer overflow-hidden"
                 >
                   {/* Neon laser hover border */}
                   <BorderBeam
@@ -321,48 +337,58 @@ export default function GameHub() {
 
                   <div>
                     {/* Header: Icon & Category */}
-                    <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
                       <div
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${game.color} flex items-center justify-center text-white shadow-md shadow-zinc-950/20 group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${game.color} flex items-center justify-center text-white shadow-md shadow-zinc-950/20 group-hover:scale-110 transition-transform duration-300`}
                       >
-                        <Icon className="w-7 h-7" />
+                        <Icon className="w-5 h-5 sm:w-7 sm:h-7" />
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${game.badgeBg}`}>
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <span className={`text-[10px] sm:text-[11px] font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border ${game.badgeBg}`}>
                           {game.badge}
                         </span>
-                        <span className="text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">
+                        <span className="text-[10px] sm:text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">
                           {game.difficulty}
                         </span>
                       </div>
                     </div>
 
                     {/* Titles */}
-                    <h3 className="text-xl font-black text-zinc-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-base sm:text-xl font-black text-zinc-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
                       {game.title}
                     </h3>
-                    <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500 block mt-0.5">
+                    <span className="text-[11px] sm:text-xs font-mono text-zinc-400 dark:text-zinc-500 block mt-0.5">
                       {game.subtitle}
                     </span>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-2 sm:mt-3 leading-relaxed">
                       {game.description}
                     </p>
                   </div>
 
-                  {/* Play Action Footer */}
-                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-500 font-medium">
-                      <span>تست شده روی موبایل و لپ‌تاپ</span>
-                    </div>
+                  {/* Play & Guide Action Footer */}
+                  <div className="flex items-center justify-between mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-zinc-100 dark:border-zinc-800/80">
+                    {/* Secondary Quick Guide Button */}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        sound.playClick();
+                        setGuideModalGame(game.id);
+                      }}
+                      className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg sm:rounded-xl bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300 hover:text-emerald-500 text-[11px] sm:text-xs font-bold transition cursor-pointer"
+                    >
+                      <HelpCircle className="w-3.5 h-3.5 text-purple-500" />
+                      <span>راهنمای بازی</span>
+                    </button>
 
                     <button
                       type="button"
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-black shadow-md group-hover:bg-emerald-500 dark:group-hover:bg-emerald-400 dark:group-hover:text-zinc-950 transition-colors"
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[11px] sm:text-xs font-black shadow-md group-hover:bg-emerald-500 dark:group-hover:bg-emerald-400 dark:group-hover:text-zinc-950 transition-colors"
                     >
-                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
                       <span>شروع بازی</span>
                     </button>
                   </div>
@@ -375,17 +401,30 @@ export default function GameHub() {
         // Active Game Screen
         <div className="flex-1 flex flex-col animate-fadeIn">
           {/* Back Navigation Bar */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between gap-2 mb-4 sm:mb-6">
             <button
               type="button"
               onClick={handleBackToHub}
-              className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 font-black text-xs hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 font-black text-[11px] sm:text-xs hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
             >
-              <ArrowRight className="w-4 h-4" />
-              <span>بازگشت به لیست بازی‌ها</span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>بازگشت</span>
             </button>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Quick Game-Specific Guide Modal Trigger */}
+              <button
+                type="button"
+                onClick={() => {
+                  sound.playClick();
+                  setGuideModalGame(activeGame);
+                }}
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-purple-600 dark:text-purple-400 text-[11px] sm:text-xs font-bold transition cursor-pointer"
+              >
+                <HelpCircle className="w-3.5 h-3.5" />
+                <span>راهنمای بازی</span>
+              </button>
+
               <button
                 type="button"
                 onClick={() => {
@@ -393,13 +432,13 @@ export default function GameHub() {
                   refreshStats();
                   setIsScoreModalOpen(true);
                 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-xs font-bold transition"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-[11px] sm:text-xs font-bold transition cursor-pointer"
               >
                 <Trophy className="w-3.5 h-3.5" />
-                <span>جدول رکوردها</span>
+                <span className="hidden sm:inline">جدول رکوردها</span>
               </button>
 
-              <span className="text-xs font-black text-emerald-600 dark:text-emerald-400">
+              <span className="text-[11px] sm:text-xs font-black text-emerald-600 dark:text-emerald-400">
                 {GAMES.find((g) => g.id === activeGame)?.title}
               </span>
             </div>
@@ -547,6 +586,12 @@ export default function GameHub() {
           </div>
         </div>
       )}
+      {/* Game Guide Modal */}
+      <GameGuideModal
+        isOpen={guideModalGame !== null}
+        onClose={() => setGuideModalGame(null)}
+        initialGameId={guideModalGame ?? "tileMatch"}
+      />
     </div>
   );
 }

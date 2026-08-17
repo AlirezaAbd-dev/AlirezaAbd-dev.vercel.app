@@ -257,25 +257,25 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center select-none touch-manipulation transition-all duration-300">
       {/* Stats Bar */}
-      <div className="w-full grid grid-cols-3 gap-2 mb-4">
+      <div className="w-full grid grid-cols-3 gap-1.5 sm:gap-2 mb-2.5 sm:mb-4">
         {/* Score */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
-          <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
+          <span className="text-base sm:text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
         </div>
 
         {/* Highest Tier */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">بالاترین سطح</span>
-          <span className="text-lg font-black text-cyan-600 dark:text-cyan-400">
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">بالاترین سطح</span>
+          <span className="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400">
             {DEV_TIERS[highestTile]?.label || highestTile}
           </span>
         </div>
 
         {/* High Score */}
-        <div className="relative group p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+        <div className="relative group p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
           <div className="flex items-center justify-center gap-1">
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
+            <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
             <button
               type="button"
               onClick={() => {
@@ -292,15 +292,15 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
               <RotateCcw className="w-2.5 h-2.5" />
             </button>
           </div>
-          <span className="text-lg font-black text-purple-500">{highScore}</span>
+          <span className="text-base sm:text-lg font-black text-purple-500">{highScore}</span>
         </div>
       </div>
 
       {/* Swipe & Desktop Shortcut Guide */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 px-3.5 py-2 mb-3 rounded-xl bg-purple-500/5 dark:bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 mb-2.5 sm:mb-3 rounded-xl bg-purple-500/5 dark:bg-purple-500/10 border border-purple-500/20 text-[11px] sm:text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <div className="flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4 text-purple-500 animate-pulse" />
-          <span>کدهای نرم‌افزاری مشابه را ترکیب کنید.</span>
+          <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500 animate-pulse" />
+          <span>کدهای نرم‌افزاری مشابه را با لمس یا کلیدها ترکیب کنید.</span>
         </div>
 
         {/* Desktop Keyboard Badge */}
@@ -318,9 +318,9 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
         dir="ltr"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        className="relative p-4 sm:p-5 rounded-3xl bg-white/70 dark:bg-[#121216]/90 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-xl w-full aspect-square max-w-[380px] sm:max-w-[420px] flex items-center justify-center touch-none"
+        className="relative p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/70 dark:bg-[#121216]/90 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 shadow-xl w-full aspect-square max-w-[340px] xs:max-w-[380px] sm:max-w-[420px] flex items-center justify-center touch-none"
       >
-        <div className="grid grid-cols-4 grid-rows-4 gap-2.5 sm:gap-3 w-full h-full">
+        <div className="grid grid-cols-4 grid-rows-4 gap-1.5 sm:gap-3 w-full h-full">
           {board.map((row, r) =>
             row.map((cell, c) => {
               const tier = DEV_TIERS[cell];
@@ -328,7 +328,7 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
               return (
                 <div
                   key={`${r}-${c}`}
-                  className={`rounded-2xl transition-all duration-150 flex flex-col items-center justify-center font-black border text-center ${
+                  className={`rounded-xl sm:rounded-2xl transition-all duration-150 flex flex-col items-center justify-center font-black border text-center ${
                     cell === 0
                       ? "bg-zinc-100 dark:bg-zinc-900/70 border-zinc-200/80 dark:border-zinc-800/80"
                       : `${tier?.bg} ${tier?.text} scale-100 animate-scaleIn`
@@ -336,8 +336,8 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
                 >
                   {cell !== 0 && (
                     <>
-                      <span className="text-sm sm:text-lg font-black leading-none">{cell}</span>
-                      <span className="text-[10px] sm:text-xs opacity-75 font-semibold mt-0.5">
+                      <span className="text-xs sm:text-lg font-black leading-none">{cell}</span>
+                      <span className="text-[8px] sm:text-xs opacity-75 font-semibold mt-0.5">
                         {tier?.label}
                       </span>
                     </>
@@ -350,18 +350,18 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
 
         {/* Game Over / Won Overlay */}
         {gameOver && (
-          <div className="absolute inset-0 bg-zinc-950/85 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-6 text-center z-20 animate-fadeIn">
-            <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-4 shadow-lg shadow-rose-500/20">
-              <Flame className="w-8 h-8" />
+          <div className="absolute inset-0 bg-zinc-950/85 backdrop-blur-md rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-4 sm:p-6 text-center z-20 animate-fadeIn">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-3 sm:mb-4 shadow-lg shadow-rose-500/20">
+              <Flame className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-xl font-black text-white mb-1">پایان بازی!</h3>
-            <p className="text-sm font-bold text-emerald-400 mb-1">امتیاز کسب شده: {score}</p>
-            <p className="text-xs text-zinc-400 mb-6">فضای خالی برای حرکت دیگری نمانده است.</p>
+            <h3 className="text-lg sm:text-xl font-black text-white mb-1">پایان بازی!</h3>
+            <p className="text-xs sm:text-sm font-bold text-emerald-400 mb-1">امتیاز کسب شده: {score}</p>
+            <p className="text-xs text-zinc-400 mb-4 sm:mb-6">فضای خالی برای حرکت دیگری نمانده است.</p>
 
             <button
               type="button"
               onClick={initGame}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-zinc-950 font-black text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-zinc-950 font-black text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>شروع مجدد</span>
@@ -371,21 +371,21 @@ export default function Cyber2048({ onScoreUpdate }: { onScoreUpdate?: (score: n
       </div>
 
       {/* Bottom Action Controls */}
-      <div className="w-full flex items-center justify-between mt-4 text-xs">
+      <div className="w-full max-w-[420px] flex items-center justify-between mt-2.5 sm:mt-4 text-[11px] sm:text-xs">
         <button
           type="button"
           onClick={undoMove}
           disabled={!previousState || gameOver}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 font-bold text-zinc-700 dark:text-zinc-300 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 font-bold text-zinc-700 dark:text-zinc-300 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer"
         >
           <Undo2 className="w-3.5 h-3.5" />
-          <span>بازگشت ۱ حرکت (Undo)</span>
+          <span>بازگشت ۱ حرکت</span>
         </button>
 
         <button
           type="button"
           onClick={initGame}
-          className="flex items-center gap-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition font-medium"
+          className="flex items-center gap-1 px-3 py-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition font-medium cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>بازی جدید</span>

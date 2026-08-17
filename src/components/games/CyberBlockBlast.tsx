@@ -675,31 +675,31 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center select-none touch-manipulation transition-all duration-300">
       {/* Top Stats Bar */}
-      <div className="w-full grid grid-cols-4 gap-2 mb-3">
+      <div className="w-full grid grid-cols-4 gap-1.5 sm:gap-2 mb-2.5 sm:mb-3">
         {/* Score */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
-          <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">امتیاز</span>
+          <span className="text-base sm:text-lg font-black text-emerald-600 dark:text-emerald-400">{score}</span>
         </div>
 
         {/* Combo */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">کمبو انفجار</span>
-          <span className="text-lg font-black text-amber-500">
-            {comboStreak > 1 ? `x${comboStreak}` : "آماده"}
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">کمبو</span>
+          <span className="text-base sm:text-lg font-black text-amber-500">
+            {comboStreak > 1 ? `x${comboStreak}` : "۱x"}
           </span>
         </div>
 
         {/* Pieces Left */}
-        <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
-          <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">قطعات باقی</span>
-          <span className="text-lg font-black text-cyan-500">{availableShapes.length} / ۳</span>
+        <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+          <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400 block">باقیمانده</span>
+          <span className="text-base sm:text-lg font-black text-cyan-500">{availableShapes.length}/۳</span>
         </div>
 
         {/* High Score */}
-        <div className="relative group p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
+        <div className="relative group p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-200 dark:border-zinc-800 text-center">
           <div className="flex items-center justify-center gap-1">
-            <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
+            <span className="text-[10px] sm:text-[11px] font-medium text-zinc-500 dark:text-zinc-400">رکورد</span>
             <button
               type="button"
               onClick={() => {
@@ -716,21 +716,21 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
               <RotateCcw className="w-2.5 h-2.5" />
             </button>
           </div>
-          <span className="text-lg font-black text-purple-500">{highScore}</span>
+          <span className="text-base sm:text-lg font-black text-purple-500">{highScore}</span>
         </div>
       </div>
 
       {/* Mode / Guide Banner */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2 px-3.5 py-2 mb-3 rounded-xl bg-purple-500/5 dark:bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 mb-2.5 sm:mb-3 rounded-xl bg-purple-500/5 dark:bg-purple-500/10 border border-purple-500/20 text-[11px] sm:text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <div className="flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4 text-purple-500 animate-pulse" />
-          <span>قطعات را بکشید و روی صفحه رها کنید (Drag & Drop) یا با کلیک جای‌گذاری کنید.</span>
+          <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500 animate-pulse" />
+          <span>قطعات را بکشید و رها کنید (Drag & Drop) یا با کلیک جای‌گذاری کنید.</span>
         </div>
 
         {/* Desktop Keyboard Hints */}
         <div className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-zinc-500 dark:text-zinc-400">
           <Keyboard className="w-3.5 h-3.5 text-purple-400" />
-          <span>[1-3] انتخاب</span>
+          <span>[1-3] قطعه</span>
           <span>•</span>
           <span>[T] چرخش</span>
           <span>•</span>
@@ -742,9 +742,14 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
       <div
         ref={gridContainerRef}
         dir="ltr"
-        className="relative p-3 sm:p-4 rounded-3xl bg-zinc-200/90 dark:bg-[#0d0d12] border-2 border-zinc-300 dark:border-zinc-800 shadow-2xl w-full aspect-square max-w-[390px] sm:max-w-[420px] flex items-center justify-center overflow-hidden"
+        style={{ direction: "ltr" }}
+        className="relative p-2 sm:p-4 rounded-2xl sm:rounded-3xl bg-zinc-200/90 dark:bg-[#0d0d12] border-2 border-zinc-300 dark:border-zinc-800 shadow-2xl w-full aspect-square max-w-[340px] xs:max-w-[380px] sm:max-w-[420px] flex items-center justify-center overflow-hidden"
       >
-        <div className="grid grid-cols-8 grid-rows-8 gap-1 sm:gap-1.5 w-full h-full">
+        <div
+          dir="ltr"
+          style={{ direction: "ltr" }}
+          className="grid grid-cols-8 grid-rows-8 gap-0.5 sm:gap-1.5 w-full h-full"
+        >
           {grid.map((row, r) =>
             row.map((cell, c) => {
               const key = `${r}-${c}`;
@@ -762,7 +767,7 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
                   onMouseEnter={() => setHoverPos({ r, c })}
                   onMouseLeave={() => setHoverPos(null)}
                   aria-label={`خانه ${r + 1}-${c + 1}`}
-                  className={`relative rounded-lg transition-all duration-150 flex items-center justify-center border active:scale-95 cursor-pointer ${
+                  className={`relative rounded-md sm:rounded-lg transition-all duration-150 flex items-center justify-center border active:scale-95 cursor-pointer ${
                     isClearing
                       ? "bg-white border-amber-300 shadow-[0_0_20px_#fff] scale-110 z-20 animate-tile-match"
                       : cell !== null
@@ -775,7 +780,7 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
                   } ${isCursorPos && !dragState.isDragging ? "ring-2 ring-amber-400 ring-offset-1 dark:ring-offset-zinc-950" : ""}`}
                 >
                   {cell !== null && (
-                    <div className="absolute top-0.5 left-0.5 right-0.5 h-1 bg-white/40 rounded-t-md pointer-events-none" />
+                    <div className="absolute top-0.5 left-0.5 right-0.5 h-0.5 sm:h-1 bg-white/40 rounded-t-md pointer-events-none" />
                   )}
                 </button>
               );
@@ -785,18 +790,18 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
 
         {/* Game Over Overlay */}
         {isGameOver && (
-          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-6 text-center z-30 animate-fadeIn">
-            <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-4 shadow-lg shadow-rose-500/20">
-              <Flame className="w-8 h-8" />
+          <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-md rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center p-4 sm:p-6 text-center z-30 animate-fadeIn">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mb-3 sm:mb-4 shadow-lg shadow-rose-500/20">
+              <Flame className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-xl font-black text-white mb-1">فضایی برای قطعات جدید نماند!</h3>
-            <p className="text-sm font-bold text-emerald-400 mb-1">امتیاز نهایی: {score}</p>
-            <p className="text-xs text-zinc-400 mb-6">شبکه را برای ثبت رکوردهای بالاتر آماده کنید.</p>
+            <h3 className="text-lg sm:text-xl font-black text-white mb-1">فضایی برای قطعات جدید نماند!</h3>
+            <p className="text-xs sm:text-sm font-bold text-emerald-400 mb-1">امتیاز نهایی: {score}</p>
+            <p className="text-xs text-zinc-400 mb-4 sm:mb-6">شبکه را برای ثبت رکوردهای بالاتر آماده کنید.</p>
 
             <button
               type="button"
               onClick={restartGame}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-rose-500 to-amber-500 text-white font-black text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
               <span>تلاش مجدد (Space)</span>
@@ -808,7 +813,8 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
       {/* Bottom 3 Polyomino Shape Selection Slots with Drag & Drop */}
       <div
         dir="ltr"
-        className="w-full max-w-[420px] mt-4 p-3 rounded-2xl bg-zinc-100/90 dark:bg-zinc-900/90 border-2 border-zinc-300/80 dark:border-zinc-800/80 shadow-xl flex items-center justify-around gap-2 min-h-[95px]"
+        style={{ direction: "ltr" }}
+        className="w-full max-w-[420px] mt-2.5 sm:mt-4 p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-zinc-100/90 dark:bg-zinc-900/90 border-2 border-zinc-300/80 dark:border-zinc-800/80 shadow-xl flex items-center justify-around gap-1.5 sm:gap-2 min-h-[80px] sm:min-h-[95px]"
       >
         {availableShapes.map((shape, idx) => {
           const isSelected = selectedShapeIndex === idx && !isBombMode;
@@ -818,13 +824,15 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
           return (
             <button
               key={shape.id}
+              dir="ltr"
               type="button"
+              style={{ direction: "ltr" }}
               onPointerDown={(e) => handleShapePointerDown(idx, e)}
-              className={`relative p-3 rounded-xl transition-all duration-200 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none ${
+              className={`relative p-2 sm:p-3 rounded-xl transition-all duration-200 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing touch-none select-none ${
                 isCurrentlyDragged
                   ? "opacity-25 scale-95"
                   : isSelected
-                  ? "bg-purple-500/20 border-2 border-purple-400 ring-2 ring-purple-400/40 shadow-lg -translate-y-1 scale-110"
+                  ? "bg-purple-500/20 border-2 border-purple-400 ring-2 ring-purple-400/40 shadow-lg -translate-y-1 scale-105 sm:scale-110"
                   : "bg-white/60 dark:bg-zinc-800/60 border border-zinc-300 dark:border-zinc-700/80 hover:border-purple-400 hover:scale-105"
               }`}
             >
@@ -835,16 +843,18 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
 
               {/* Render Mini Shape Grid */}
               <div
-                className="grid gap-1"
+                dir="ltr"
+                className="grid gap-0.5 sm:gap-1"
                 style={{
                   gridTemplateColumns: `repeat(${shape.matrix[0].length}, minmax(0, 1fr))`,
+                  direction: "ltr",
                 }}
               >
                 {shape.matrix.map((row, r) =>
                   row.map((cell, c) => (
                     <div
                       key={`${r}-${c}`}
-                      className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-sm transition-colors ${
+                      className={`w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 rounded-sm transition-colors ${
                         cell === 1
                           ? `${cfg.bg} ${cfg.border} border shadow-sm`
                           : "opacity-0"
@@ -865,6 +875,7 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
         availableShapes[dragState.shapeIndex] &&
         createPortal(
           <div
+            dir="ltr"
             style={{
               position: "fixed",
               left: `${dragState.x}px`,
@@ -872,6 +883,7 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
               transform: "translate(-50%, -50%)",
               pointerEvents: "none",
               zIndex: 99999,
+              direction: "ltr",
             }}
             className="select-none pointer-events-none"
           >
@@ -881,16 +893,18 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
 
               return (
                 <div
-                  className="grid gap-1.5 p-2.5 rounded-2xl bg-zinc-950/90 backdrop-blur-md border-2 border-purple-400/90 shadow-[0_10px_30px_rgba(168,85,247,0.7)] scale-110"
+                  dir="ltr"
+                  className="grid gap-1 sm:gap-1.5 p-2 sm:p-2.5 rounded-2xl bg-zinc-950/90 backdrop-blur-md border-2 border-purple-400/90 shadow-[0_10px_30px_rgba(168,85,247,0.7)] scale-105 sm:scale-110"
                   style={{
                     gridTemplateColumns: `repeat(${dragShape.matrix[0].length}, minmax(0, 1fr))`,
+                    direction: "ltr",
                   }}
                 >
                   {dragShape.matrix.map((row, r) =>
                     row.map((cell, c) => (
                       <div
                         key={`${r}-${c}`}
-                        className={`w-8 h-8 rounded-lg ${
+                        className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg ${
                           cell === 1
                             ? `${cfg.bg} ${cfg.border} border-2 ${cfg.glow}`
                             : "opacity-0"
@@ -906,16 +920,16 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
         )}
 
       {/* Boosters & Action Toolbar */}
-      <div className="w-full max-w-[420px] flex items-center justify-between mt-3 px-1">
+      <div className="w-full max-w-[420px] grid grid-cols-4 gap-1 sm:gap-2 mt-2.5 sm:mt-3 px-1">
         {/* Undo */}
         <button
           type="button"
           onClick={handleUndo}
           disabled={undosLeft <= 0 || history.length === 0 || isGameOver}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 px-1.5 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <Undo2 className="w-3.5 h-3.5" />
-          <span>بازگشت [U] ({undosLeft})</span>
+          <span>بازگشت ({undosLeft})</span>
         </button>
 
         {/* Rotate */}
@@ -923,10 +937,10 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
           type="button"
           onClick={handleRotate}
           disabled={rotatesLeft <= 0 || !currentSelectedShape || isGameOver}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 px-1.5 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-bold disabled:opacity-40 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <RotateCw className="w-3.5 h-3.5" />
-          <span>چرخش [T] ({rotatesLeft})</span>
+          <span>چرخش ({rotatesLeft})</span>
         </button>
 
         {/* Bomb */}
@@ -937,24 +951,24 @@ export default function CyberBlockBlast({ onScoreUpdate }: { onScoreUpdate?: (sc
             setIsBombMode((m) => !m);
           }}
           disabled={bombsLeft <= 0 || isGameOver}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition active:scale-95 cursor-pointer ${
+          className={`flex items-center justify-center gap-1 px-1.5 sm:px-3 py-2 rounded-xl border text-[10px] sm:text-xs font-bold transition active:scale-95 cursor-pointer ${
             isBombMode
               ? "bg-rose-500 text-white border-rose-400 shadow-lg shadow-rose-500/40 animate-pulse"
               : "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30 hover:bg-rose-500/25"
           }`}
         >
           <Bomb className="w-3.5 h-3.5" />
-          <span>بمب [B] ({bombsLeft})</span>
+          <span>بمب ({bombsLeft})</span>
         </button>
 
         {/* Restart */}
         <button
           type="button"
           onClick={restartGame}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-bold hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
+          className="flex items-center justify-center gap-1 px-1.5 sm:px-3 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-[10px] sm:text-xs font-bold hover:bg-zinc-200 dark:hover:bg-zinc-800 transition active:scale-95 cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          <span>ریست [R]</span>
+          <span>ریست</span>
         </button>
       </div>
     </div>
