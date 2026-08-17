@@ -40,7 +40,12 @@ export default function SidebarTabs() {
                   : "text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-800 dark:group-hover:text-zinc-200"
               }`}
             />
-            <span>{tab.label}</span>
+            <span className="flex-1 text-right">{tab.label}</span>
+            {tab.badge && (
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 animate-pulse">
+                {tab.badge}
+              </span>
+            )}
           </Link>
         );
       })}

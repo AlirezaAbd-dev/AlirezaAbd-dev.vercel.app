@@ -13,7 +13,8 @@ export default function AppContainer({ children }: { children: ReactNode }) {
   let pageNumber = 0;
   if (pathname === "/about") pageNumber = 1;
   else if (pathname === "/myProjects") pageNumber = 2;
-  else if (pathname === "/contactUs") pageNumber = 3;
+  else if (pathname === "/games") pageNumber = 3;
+  else if (pathname === "/contactUs") pageNumber = 4;
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 

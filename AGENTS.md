@@ -51,6 +51,7 @@ This repository houses the personal portfolio, engineering showcase, and interac
 │   │   ├── page.tsx            # Homepage (Hero with Canvas, Bio, and CTAs)
 │   │   ├── about/page.tsx      # About Me (Avatar, Personal Details, Stats, Skills)
 │   │   ├── myProjects/page.tsx # Projects Showcase (Category Filters, Project Cards)
+│   │   ├── games/page.tsx      # Cyber Arcade (4 Lightweight Thinking Mini-Games)
 │   │   ├── contactUs/page.tsx  # Contact Page (Interactive Form & Quick Contacts)
 │   │   ├── robots.ts           # Dynamic SEO robots.txt generator
 │   │   └── sitemap.ts          # Dynamic SEO sitemap.xml generator
@@ -61,6 +62,7 @@ This repository houses the personal portfolio, engineering showcase, and interac
 │   │   ├── aboutMe/            # About page modules (Header, Stats, Skills, Badges)
 │   │   ├── contact/            # Contact form and direct communication cards
 │   │   ├── drawer/             # Mobile responsive navigation drawer
+│   │   ├── games/              # Cyber Arcade Mini-Games (GameHub, CyberTileMatch, CyberLiquidSort, CyberBlockBlast, Cyber2048)
 │   │   ├── home/               # CanvasParticles, HomeTitle, HomeSubtitle
 │   │   ├── icons/              # Official SVG logos (TechIcons, BrandIcons)
 │   │   ├── myProjects/         # ProjectCard, MainMyProject with category filter
@@ -69,7 +71,8 @@ This repository houses the personal portfolio, engineering showcase, and interac
 │   │   └── ui/                 # Reusable UI primitives (BorderBeam, SpotlightCard, InteractiveCursor, AnimatedCounter)
 │   ├── constants/              # Data sources (myProjects, skills, education, navbar)
 │   ├── context/                # Global State & ThemeContext (Dark/Light toggle)
-│   └── hooks/                  # Custom hooks (useDecryptEffect, useRotatingText, useTypewriter)
+│   ├── hooks/                  # Custom hooks (useDecryptEffect, useRotatingText, useTypewriter)
+│   └── utils/                  # Utilities (audioSynth Web Audio procedural sound engine)
 ├── .nvmrc                      # Node.js runtime version lock (Node 22)
 ├── package.json                # Dependencies, scripts, engines definition
 ├── tsconfig.json               # TypeScript strict configuration
@@ -92,6 +95,10 @@ This repository houses the personal portfolio, engineering showcase, and interac
    - Smooth cubic-eased counting animation for percentages, years of experience, and project tallies.
 6. **Timeline Traveling Laser Ray** ([`EducationTimelineItem.tsx`](src/components/timeline/EducationTimelineItem.tsx)):
    - Continuous laser ray scanner traversing down the education connection timeline.
+7. **Procedural Web Audio Synthesizer & Cyber Arcade** ([`audioSynth.ts`](src/utils/audioSynth.ts) & [`GameHub.tsx`](src/components/games/GameHub.tsx)):
+   - Zero-asset Web Audio API sound generator delivering retro-futuristic synthesized feedback across 4 cognitive thinking mini-games (Cyber Tile Match / Tile Family 3D, Quantum Liquid Sort / Water Sort, Cyber Block Blast / Blockudoku, and Cyber 2048).
+8. **Desktop Keyboard Controls & Shortcut Badges**:
+   - High-speed keyboard navigation across all games (`[1-9]`, `[Q-P]`, `[WASD]`, `[Arrows]`, `[U]` Undo, `[S]` Shuffle, `[V]` Vacuum, `[A]` Add Tube, `[T]` Rotate, `[B]` Bomb, `[R]` Restart) with on-screen desktop key hints.
 
 ---
 

@@ -273,3 +273,63 @@
   background-size: 400% 400%;
   animation: holographicShimmer 10s ease infinite;
 }
+
+/* Arcade & Mini-Game Animations */
+@keyframes shakeAnim {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes fadeInAnim {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleInAnim {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes tileMatchPopAnim {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.22); filter: brightness(1.8) drop-shadow(0 0 16px rgba(245, 158, 11, 0.8)); }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes circuitFlowAnim {
+  0% { stroke-dashoffset: 60; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scoreFloatAnim {
+  0% { opacity: 1; transform: translateY(0px) scale(1); }
+  100% { opacity: 0; transform: translateY(-30px) scale(1.2); }
+}
+
+.animate-shake {
+  animation: shakeAnim 0.35s ease-in-out;
+}
+
+.animate-fadeIn {
+  animation: fadeInAnim 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleInAnim 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-tile-match {
+  animation: tileMatchPopAnim 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-circuit-flow {
+  stroke-dasharray: 12 6;
+  animation: circuitFlowAnim 1.2s linear infinite;
+}
+
+.animate-score-float {
+  animation: scoreFloatAnim 0.8s ease-out forwards;
+}
+
+
