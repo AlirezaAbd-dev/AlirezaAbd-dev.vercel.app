@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { FolderGit2, Mail, User, Code2, Zap, Award, Sparkles } from "lucide-react";
+import { FolderGit2, Mail, User, Code2, Zap, Award, Sparkles, Layers, ShieldCheck } from "lucide-react";
 import HomeTitle from "../components/home/HomeTitle";
 import HomeSubtitle from "../components/home/HomeSubtitle";
 import CanvasParticles from "../components/home/CanvasParticles";
@@ -30,7 +30,7 @@ export default function Home() {
           <span>سلام! 👋 به وب‌سایت من خوش آمدید</span>
         </div>
 
-        {/* Title with Shimmer Animation */}
+        {/* Title with Shimmer Animation & Semantic H1 */}
         <HomeTitle />
 
         {/* Subtitle */}
@@ -116,6 +116,29 @@ export default function Home() {
             </div>
           </SpotlightCard>
         </div>
+
+        {/* Semantic Structured Content for Search Crawlers and AI Indexers */}
+        <section className="sr-only" aria-label="خلاصه بیوگرافی و تخصص‌های علیرضا عابدی">
+          <h2>درباره علیرضا عابدی و پیشینه شغلی</h2>
+          <p>
+            علیرضا عابدی (Alireza Abedi) مهندس نرم‌افزار، لید تیم فرانت‌اند و برنامه‌نویس فول‌استک با بیش از ۳.۵ سال تجربه در حوزه توسعه نرم‌افزارهای سازمانی و وب اپلیکیشن‌های مدرن مقیاس‌پذیر است. سوابق تحصیلی وی شامل کارشناسی ارشد مهندسی نرم‌افزار از دانشگاه آزاد اسلامی رشت، کارشناسی مهندسی کامپیوتر و کاردانی فنی است.
+          </p>
+
+          <h2>مهارت‌های اصلی در فرانت‌اند و بک‌اند</h2>
+          <p>
+            تخصص‌های فنی شامل Next.js 16، React 19، TypeScript، Tailwind CSS v4، معماری تمیز (Clean Architecture)، طراحی دامنه‌محور (DDD)، نست‌جی‌اس (NestJS)، سی‌شارپ و دات‌نت کور (C# / ASP.NET Core)، پایگاه‌های داده PostgreSQL و MongoDB، ارتباطات بلادرنگ WebRTC و سوکت، و داکر (Docker).
+          </p>
+
+          <h2>پروژه‌های برجسته و نمونه‌کارها</h2>
+          <p>
+            از نمونه‌کارهای شاخص می‌توان به معماری میکروسرویس دات‌نت، پلتفرم املاک NestJS Realtor API، شبکه اجتماعی بلبلر، سامانه استریم رسانه ASP.NET Core، سیستم ارتباط ویدیویی WebRTC، چت‌بات چندحالته جمینای و داشبورد پنل ادمین فارسی اشاره کرد.
+          </p>
+
+          <h2>اطلاعات تماس و لینک‌های رسمی</h2>
+          <p>
+            پست الکترونیک رسمی: alireza.abedi9310@gmail.com | تلگرام: @AlirezaAbd_Dev | گیت‌هاب: https://github.com/AlirezaAbd-dev | وب‌سایت اصلی: https://alireza-abedi.ir | دامنه پورتفولیو: https://portfolio.alireza-abedi.ir
+          </p>
+        </section>
       </div>
     </div>
   );

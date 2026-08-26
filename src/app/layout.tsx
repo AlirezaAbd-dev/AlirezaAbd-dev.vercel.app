@@ -8,14 +8,16 @@ const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://alireza-abedi.ir';
 
 export const metadata: Metadata = {
   title: {
-    default: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک',
-    template: '%s | علیرضا عابدی',
+    default: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi Portfolio',
+    template: '%s | علیرضا عابدی - Alireza Abedi',
   },
   description:
-    'رزومه و نمونه‌کارهای علیرضا عابدی، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک با تخصص در Next.js، React، Angular، NestJS، ASP.NET Core، و معماری تمیز.',
+    'وب‌سایت رسمی، رزومه و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک با تخصص در Next.js، React، Angular، NestJS، ASP.NET Core، معماری تمیز و طراحی سیستم‌های مقیاس‌پذیر.',
   keywords: [
     'علیرضا عابدی',
     'Alireza Abedi',
+    'Alireza Abedi Portfolio',
+    'علیرضا عابدی برنامه نویس',
     'توسعه دهنده فرانت اند',
     'لید تیم فرانت اند',
     'برنامه نویس فول استک',
@@ -32,8 +34,8 @@ export const metadata: Metadata = {
   authors: [
     { name: 'علیرضا عابدی - Alireza Abedi', url: 'https://alireza-abedi.ir' },
   ],
-  creator: 'علیرضا عابدی',
-  publisher: 'علیرضا عابدی',
+  creator: 'علیرضا عابدی (Alireza Abedi)',
+  publisher: 'علیرضا عابدی (Alireza Abedi)',
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
@@ -42,24 +44,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fa_IR',
     url: siteUrl,
-    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک',
+    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi Portfolio',
     description:
-      'رزومه و نمونه‌کارهای علیرضا عابدی، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک. متخصص در Next.js, React, NestJS, ASP.NET Core.',
-    siteName: 'Alireza Abedi Portfolio',
+      'رزومه، بیوگرافی و نمونه‌کارهای رسمی علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک. متخصص در Next.js, React, NestJS, ASP.NET Core.',
+    siteName: 'Alireza Abedi Portfolio - علیرضا عابدی',
     images: [
       {
         url: '/avatar.png',
         width: 800,
         height: 800,
-        alt: 'علیرضا عابدی - Alireza Abedi',
+        alt: 'علیرضا عابدی - Alireza Abedi Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک',
+    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi',
     description:
-      'رزومه و نمونه‌کارهای علیرضا عابدی، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک.',
+      'رزومه و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک.',
     images: ['/avatar.png'],
   },
   robots: {
@@ -93,37 +95,121 @@ export const viewport: Viewport = {
   ],
 };
 
-const jsonLd = {
+const jsonLdGraph = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'علیرضا عابدی',
-  alternateName: 'Alireza Abedi',
-  url: siteUrl,
-  image: `${siteUrl}/avatar.png`,
-  jobTitle: 'Frontend Team Lead & Full-Stack Developer',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Software Development',
-  },
-  sameAs: [
-    'https://github.com/AlirezaAbd-dev',
-    'https://www.linkedin.com/in/alireza-abedi-714280235',
-    'https://t.me/AlirezaAbd_Dev',
-    'https://www.instagram.com/alirezaabd.dev',
-  ],
-  knowsAbout: [
-    'Next.js',
-    'React',
-    'Angular',
-    'TypeScript',
-    'NestJS',
-    'ASP.NET Core',
-    'Node.js',
-    'MongoDB',
-    'PostgreSQL',
-    'Clean Architecture',
-    'Domain-Driven Design (DDD)',
-    'Tailwind CSS',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'علیرضا عابدی',
+      alternateName: ['Alireza Abedi', 'علیرضا عابدی - Alireza Abedi', 'Alireza Abedi Portfolio'],
+      description:
+        'لید تیم فرانت‌اند و توسعه‌دهنده ارشد فول‌استک با بیش از ۳.۵ سال سابقه حرفه‌ای، متخصص در Next.js، React، NestJS، ASP.NET Core و Clean Architecture.',
+      url: siteUrl,
+      image: `${siteUrl}/avatar.png`,
+      jobTitle: 'Frontend Team Lead & Full-Stack Developer',
+      email: 'alireza.abedi9310@gmail.com',
+      telephone: '+98-990-931-0164',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Rasht',
+        addressRegion: 'Guilan',
+        addressCountry: 'IR',
+      },
+      alumniOf: [
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Islamic Azad University of Rasht',
+        },
+        {
+          '@type': 'EducationalOrganization',
+          name: 'Shahid Chamran Technical College of Rasht',
+        },
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+      },
+      sameAs: [
+        'https://github.com/AlirezaAbd-dev',
+        'https://www.linkedin.com/in/alireza-abedi-714280235',
+        'https://t.me/AlirezaAbd_Dev',
+        'https://instagram.com/alirezaabd.dev',
+        'https://portfolio.alireza-abedi.ir',
+        'https://AlirezaAbd-dev.vercel.app',
+      ],
+      knowsAbout: [
+        'Next.js',
+        'React',
+        'Angular',
+        'TypeScript',
+        'JavaScript',
+        'NestJS',
+        'ASP.NET Core',
+        'C#',
+        'Node.js',
+        'MongoDB',
+        'PostgreSQL',
+        'SQL Server',
+        'Prisma ORM',
+        'Entity Framework Core',
+        'Clean Architecture',
+        'Domain-Driven Design (DDD)',
+        'Microservices',
+        'Tailwind CSS',
+        'Docker',
+        'WebRTC',
+        'Socket.io',
+      ],
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'علیرضا عابدی - خدمات مهندسی نرم‌افزار و وب (Alireza Abedi Software Development)',
+      alternateName: 'Alireza Abedi Engineering & Consulting',
+      url: siteUrl,
+      logo: `${siteUrl}/icon.png`,
+      image: `${siteUrl}/avatar.png`,
+      description:
+        'خدمات تخصصی طراحی، پیاده‌سازی و مشاوره معماری سیستم‌های سازمانی وب، CRM، فرانت‌اند مدرن با Next.js/React و سرویس‌های مقیاس‌پذیر دات‌نت و نست‌جی‌اس.',
+      founder: {
+        '@id': `${siteUrl}/#person`,
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Rasht Central Area',
+        addressLocality: 'Rasht',
+        addressRegion: 'Guilan',
+        postalCode: '41000',
+        addressCountry: 'IR',
+      },
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+98-990-931-0164',
+          email: 'alireza.abedi9310@gmail.com',
+          contactType: 'technical support and hiring inquiries',
+          areaServed: ['IR', 'Worldwide'],
+          availableLanguage: ['Persian', 'English'],
+        },
+      ],
+      sameAs: [
+        'https://github.com/AlirezaAbd-dev',
+        'https://www.linkedin.com/in/alireza-abedi-714280235',
+        'https://t.me/AlirezaAbd_Dev',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Alireza Abedi Portfolio - وب‌سایت علیرضا عابدی',
+      description: 'وب‌سایت و پورتفولیوی رسمی مهندسی علیرضا عابدی، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک.',
+      publisher: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      inLanguage: 'fa-IR',
+    },
   ],
 };
 
@@ -147,7 +233,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
         />
       </head>
       <body className='bg-zinc-50 dark:bg-[#09090b] text-zinc-800 dark:text-zinc-100 min-h-screen selection:bg-emerald-500 selection:text-white transition-colors duration-300 antialiased'>

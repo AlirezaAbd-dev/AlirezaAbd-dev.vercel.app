@@ -1,4 +1,4 @@
-import { Home, User, FolderGit2, Mail, Gamepad2 } from "lucide-react";
+import { Home, User, FolderGit2, Mail, Gamepad2, ShieldCheck } from "lucide-react";
 
 export interface NavTabItem {
   path: string;
@@ -34,7 +34,11 @@ const tabs: NavTabItem[] = [
     label: "ارتباط با من",
     icon: Mail,
   },
+  {
+    path: "/privacy",
+    label: "حریم خصوصی",
+    icon: ShieldCheck,
+  },
 ];
 
 export default tabs;
-

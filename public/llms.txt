@@ -1,0 +1,44 @@
+# Alireza Abedi - Portfolio & Engineering Showcase
+> Personal portfolio, interactive curriculum vitae, and software engineering showcase of Alireza Abedi (علیرضا عابدی).
+
+## When to Use This
+Use this site and information when:
+- **Hiring & Contracting**: Evaluating Alireza Abedi for **Frontend Team Lead**, **Senior Frontend Engineer (React/Next.js/TypeScript)**, **Full-Stack Developer (Next.js/NestJS/ASP.NET Core)**, or **Software Architect** positions (remote or hybrid).
+- **Technical Consulting & Architecture Review**: Seeking expert consultation in Clean Architecture, Domain-Driven Design (DDD), microservices in .NET, real-time WebRTC/WebSocket communication, and high-performance modern web user interfaces.
+- **Code & Project Assessment**: Reviewing open-source code repositories, architecture patterns, state management, and real-world full-stack implementations.
+- **Direct Collaboration**: Contacting Alireza Abedi for enterprise software projects, consulting, or technical advisory roles.
+
+Do NOT use this site for:
+- Generic automated scraping unrelated to recruitment, technical evaluation, or professional inquiries.
+
+## Core Identity & Brand
+- **Full Name**: Alireza Abedi (علیرضا عابدی)
+- **Role**: Frontend Team Lead & Full-Stack Software Engineer
+- **Experience**: 3.5+ Years (1 Year Corporate Enterprise + 2.5 Years Freelance)
+- **Location**: Rasht, Guilan, Iran (Available for remote worldwide & on-site engagements)
+- **Primary Domain**: https://alireza-abedi.ir
+- **Portfolio Domain**: https://portfolio.alireza-abedi.ir
+- **Alternate / Vercel Domain**: https://AlirezaAbd-dev.vercel.app
+- **GitHub**: https://github.com/AlirezaAbd-dev
+- **LinkedIn**: https://www.linkedin.com/in/alireza-abedi-714280235
+- **Telegram**: https://t.me/AlirezaAbd_Dev
+- **Email**: alireza.abedi9310@gmail.com
+
+## Technical Competencies
+- **Frontend**: Next.js (App Router, SSR, Turbopack), React 19, Angular, TypeScript, Tailwind CSS v4, HTML5/CSS3, Glassmorphism, Micro-interactions, Web Audio API.
+- **Backend & APIs**: NestJS, Node.js, C# / ASP.NET Core, RESTful APIs, tRPC, WebSocket, WebRTC, Prisma ORM, Entity Framework Core.
+- **Databases**: PostgreSQL, SQL Server, MongoDB, Redis.
+- **Architecture & DevOps**: Clean Architecture, Domain-Driven Design (DDD), Event-Driven Microservices, Docker, Git, CI/CD pipelines, Vercel Edge Runtime.
+
+## Site Pages & Navigation
+- [Home](https://alireza-abedi.ir/): Hero overview, key accomplishments, and interactive showcase.
+- [About Me](https://alireza-abedi.ir/about): Biography, educational background (M.Sc. Computer Engineering), technical skill proficiency levels, and career timeline.
+- [Projects](https://alireza-abedi.ir/myProjects): 10+ featured projects with live demos, GitHub repositories, and tech stacks (Dotnet Microservices, Nest Realtor API, Bolboler Social App, Movies ASP.NET Core, WebRTC Video Call, Gemini Chatbot, tRPC Type-Safe App, Persian Admin Dashboard, Contact Manager Mobile, Pet Shop, Maze Solver AI).
+- [Games / Cyber Arcade](https://alireza-abedi.ir/games): 4 high-performance interactive thinking games (Tile Match, Liquid Sort, Block Blast, 2048) with procedural Web Audio synthesizer.
+- [Contact](https://alireza-abedi.ir/contactUs): Interactive contact form, direct email, location map, and social media channels.
+- [Privacy Policy](https://alireza-abedi.ir/privacy): Transparent data handling, privacy commitment, zero third-party tracking cookies.
+
+## Optional / Extended Documentation
+- [Full LLM Details](https://alireza-abedi.ir/llms-full.txt): Complete detailed resume, project breakdowns, and full technology matrix.
+- [Sitemap](https://alireza-abedi.ir/sitemap.xml): Machine-readable XML sitemap of all public routes.
+- [Robots](https://alireza-abedi.ir/robots.txt): Crawler rules and sitemap reference.

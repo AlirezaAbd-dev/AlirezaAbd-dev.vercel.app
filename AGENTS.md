@@ -20,15 +20,17 @@ This repository houses the personal portfolio, engineering showcase, and interac
   - **Associate Degree in Software**: Shahid Chamran Technical College of Rasht (1400 - 1402)
   - **Technical Diploma**: Shahid Beheshti Technical High School of Rasht (1396 - 1399)
 - **Official Domain**: [`https://alireza-abedi.ir`](https://alireza-abedi.ir)
+- **Alternate / Vercel Domain**: [`https://portfolio.alireza-abedi.ir`](https://portfolio.alireza-abedi.ir) / [`https://AlirezaAbd-dev.vercel.app`](https://AlirezaAbd-dev.vercel.app)
 - **Contact Channels**: 
   - Email: `alireza.abedi9310@gmail.com`
+  - Phone: `+98-911-558-4629`
   - Telegram: `@AlirezaAbd_Dev`
   - LinkedIn: [`linkedin.com/in/alireza-abedi-714280235`](https://www.linkedin.com/in/alireza-abedi-714280235)
   - GitHub: [`github.com/AlirezaAbd-dev`](https://github.com/AlirezaAbd-dev)
 
 ---
 
-## 🛠️ 2. Technology Stack
+## 🛠️ 2. Technology Stack & AI Readiness
 
 | Layer / Concern | Technologies & Libraries |
 | :--- | :--- |
@@ -37,7 +39,8 @@ This repository houses the personal portfolio, engineering showcase, and interac
 | **Styling & Design System** | [Tailwind CSS v4](https://tailwindcss.com), Custom CSS keyframe shaders, Glassmorphism (Obsidian Dark & Pearl Light) |
 | **Icons & Media** | [Lucide React](https://lucide.dev), Dedicated official vector SVG component library ([`TechIcons.tsx`](src/components/icons/TechIcons.tsx)) |
 | **Form Handling & Validation** | [Formik](https://formik.org), [Zod](https://zod.dev), React Google reCAPTCHA |
-| **Optimization & SEO** | Next.js Metadata API, dynamic OpenGraph, structured JSON-LD schemas, `sitemap.ts`, `robots.ts`, Sharp image optimization |
+| **Optimization & SEO** | Next.js Metadata API, dynamic OpenGraph, structured JSON-LD schemas (`Person`, `Organization`, `WebSite`), `sitemap.ts`, `robots.ts`, Sharp image optimization |
+| **AI Agent Readiness & Protocols** | `llms.txt`, `llms-full.txt` (following [llmstxt.org](https://llmstxt.org)), Content Negotiation (`Accept: text/markdown` with `Vary: Accept, Accept-Encoding`), Agent-friendly 404 recovery with markdown fallback, Trust Anchor pages (`/privacy`). |
 
 ---
 
@@ -45,14 +48,18 @@ This repository houses the personal portfolio, engineering showcase, and interac
 
 ```
 ├── public/                     # Static public assets (avatars, icons, favicon)
+│   ├── llms.txt                # Machine-readable AI Agent Guidance (When to use, URLs)
+│   └── llms-full.txt           # Extended detailed curriculum vitae & project matrix
 ├── src/
 │   ├── app/                    # Next.js App Router Pages
-│   │   ├── layout.tsx          # Root HTML layout with RTL dir="rtl" & fonts
-│   │   ├── page.tsx            # Homepage (Hero with Canvas, Bio, and CTAs)
+│   │   ├── layout.tsx          # Root HTML layout with RTL dir="rtl" & Rich JSON-LD Graph
+│   │   ├── page.tsx            # Homepage (Hero with Canvas, Bio, CTAs, Semantic SSR text)
 │   │   ├── about/page.tsx      # About Me (Avatar, Personal Details, Stats, Skills)
 │   │   ├── myProjects/page.tsx # Projects Showcase (Category Filters, Project Cards)
 │   │   ├── games/page.tsx      # Cyber Arcade (4 Lightweight Thinking Mini-Games)
 │   │   ├── contactUs/page.tsx  # Contact Page (Interactive Form & Quick Contacts)
+│   │   ├── privacy/page.tsx    # Privacy Policy & Transparency Trust Anchor Page
+│   │   ├── not-found.tsx       # Agent-friendly 404 handler with Markdown Recovery
 │   │   ├── robots.ts           # Dynamic SEO robots.txt generator
 │   │   └── sitemap.ts          # Dynamic SEO sitemap.xml generator
 │   ├── assets/                 # Fonts, styles, and project images
@@ -62,18 +69,20 @@ This repository houses the personal portfolio, engineering showcase, and interac
 │   │   ├── aboutMe/            # About page modules (Header, Stats, Skills, Badges)
 │   │   ├── contact/            # Contact form and direct communication cards
 │   │   ├── drawer/             # Mobile responsive navigation drawer
-│   │   ├── games/              # Cyber Arcade Mini-Games (GameHub, GameGuideModal, CyberTileMatch, CyberLiquidSort, CyberBlockBlast, Cyber2048)
+│   │   ├── games/              # Cyber Arcade Mini-Games (GameHub, GameGuideModal, etc.)
 │   │   ├── home/               # CanvasParticles, HomeTitle, HomeSubtitle
 │   │   ├── icons/              # Official SVG logos (TechIcons, BrandIcons)
 │   │   ├── myProjects/         # ProjectCard, MainMyProject with category filter
 │   │   ├── sidebar/            # Desktop sidebar (Avatar, Social Links, Navigation, Footer)
 │   │   ├── timeline/           # Educational timeline with laser scanner ray
-│   │   └── ui/                 # Reusable UI primitives (BorderBeam, SpotlightCard, InteractiveCursor, AnimatedCounter)
-│   ├── constants/              # Data sources (myProjects, skills, education, navbar)
+│   │   └── ui/                 # Reusable UI primitives (BorderBeam, SpotlightCard, etc.)
+│   ├── constants/              # Data sources (myProjects, skills, education)
 │   ├── context/                # Global State & ThemeContext (Dark/Light toggle)
 │   ├── hooks/                  # Custom hooks (useDecryptEffect, useRotatingText, useTypewriter)
+│   ├── proxy.ts                # Markdown content negotiation (Accept: text/markdown & Vary headers)
 │   └── utils/                  # Utilities (audioSynth Web Audio procedural sound engine)
 ├── .nvmrc                      # Node.js runtime version lock (Node 22)
+├── next.config.js              # Rewrites for /.well-known/llms.txt and Turbopack options
 ├── package.json                # Dependencies, scripts, engines definition
 ├── tsconfig.json               # TypeScript strict configuration
 └── AGENTS.md                   # This instruction and knowledge base for AI agents
@@ -81,26 +90,22 @@ This repository houses the personal portfolio, engineering showcase, and interac
 
 ---
 
-## ✨ 4. Key Visual Systems & Interactive Animations
+## ✨ 4. AI Readiness & Machine-Readable Interfaces
 
-1. **Quantum Canvas Particles & Cosmic Shockwaves** ([`CanvasParticles.tsx`](src/components/home/CanvasParticles.tsx)):
-   - 60fps HTML5 Canvas with shooting meteors, gradient constellations, magnetic gravity pull to cursor, and multi-color chromatic shockwaves on click.
-2. **Cyber Interactive Magnetic Cursor Halo** ([`InteractiveCursor.tsx`](src/components/ui/InteractiveCursor.tsx)):
-   - Hardware-accelerated trailing light halo with context-aware morphing over clickable elements (`w-12 h-12` emerald spotlight) and click pulses.
-3. **Holographic Laser Border Beam** ([`BorderBeam.tsx`](src/components/ui/BorderBeam.tsx)):
-   - Traveling neon laser perimeter around flagship project cards, avatar frames, and key achievements using CSS `offset-path` and `mask-composite`.
-4. **3D Holographic Spotlight Cards** ([`SpotlightCard.tsx`](src/components/ui/SpotlightCard.tsx)):
-   - Dynamic cursor radial spotlight with 3D tilt geometry and iridescent metallic glare sheen.
-5. **Live Eased Numerical Counters** ([`AnimatedCounter.tsx`](src/components/ui/AnimatedCounter.tsx)):
-   - Smooth cubic-eased counting animation for percentages, years of experience, and project tallies.
-6. **Timeline Traveling Laser Ray** ([`EducationTimelineItem.tsx`](src/components/timeline/EducationTimelineItem.tsx)):
-   - Continuous laser ray scanner traversing down the education connection timeline.
-7. **Procedural Web Audio Synthesizer & Cyber Arcade** ([`audioSynth.ts`](src/utils/audioSynth.ts) & [`GameHub.tsx`](src/components/games/GameHub.tsx)):
-   - Zero-asset Web Audio API sound generator delivering retro-futuristic synthesized feedback across 4 cognitive thinking mini-games (Cyber Tile Match / Tile Family 3D, Quantum Liquid Sort / Water Sort, Cyber Block Blast / Blockudoku, and Cyber 2048).
-8. **Interactive Device-Aware Game Guides & Rules Modal** ([`GameGuideModal.tsx`](src/components/games/GameGuideModal.tsx)):
-   - Dedicated glassmorphism modal with game selector tabs and a responsive device mode switcher toggling between **📱 Mobile Touch Gestures** (taps, drags, swipes) and **💻 Desktop Keyboards & Mouse Shortcuts** (`[1-9]`, `[WASD]`, `[Arrows]`, `[Space]`, `[U]`, `[S]`, `[V]`, `[A]`, `[T]`, `[B]`, `[R]`), complete with power-ups explanation and pro tips.
-9. **Desktop Keyboard Controls & Shortcut Badges**:
-   - High-speed keyboard navigation across all games with on-screen desktop key hints.
+1. **Content Negotiation (`Accept: text/markdown`)**:
+   - Built via [`proxy.ts`](src/proxy.ts) compliant with `acceptmarkdown.com`.
+   - Returns clean, structured markdown for routes `/`, `/about`, `/myProjects`, `/games`, `/contactUs`, `/privacy`, and 404 fallbacks.
+   - Includes `Vary: Accept, Accept-Encoding` ensuring CDN caches do not mix HTML and Markdown responses.
+2. **`llms.txt` & `llms-full.txt` Guidance**:
+   - Fully compliant with [llmstxt.org](https://llmstxt.org) standard.
+   - Contains an explicit **When to Use This** section defining ideal recruiter/client use cases and boundaries.
+3. **Agent-Friendly 404 Recovery**:
+   - Implemented in [`src/app/not-found.tsx`](src/app/not-found.tsx) returning valid HTTP 404 status alongside structured machine-readable links pointing agents to index documents.
+4. **Rich JSON-LD Multi-Type Knowledge Graph**:
+   - Integrated in [`src/app/layout.tsx`](src/app/layout.tsx) with linked `Person`, `Organization`, and `WebSite` nodes.
+   - Includes complete `contactPoint`, `address` (`PostalAddress`), `email`, `telephone`, `sameAs`, `knowsAbout`, and brand aliases (`Alireza Abedi Portfolio`).
+5. **Trust Anchor (`/privacy`)**:
+   - High-character count, transparent privacy policy published at [`/privacy`](src/app/privacy/page.tsx) asserting zero advertising trackers, client-side reCAPTCHA safety, and open crawler accessibility.
 
 ---
 
