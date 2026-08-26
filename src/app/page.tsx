@@ -7,7 +7,7 @@ const PORTFOLIO_DOMAIN = "https://portfolio.alireza-abedi.ir";
 export const metadata: Metadata = {
   title: "Portfolio & Projects — Alireza Abedi",
   description:
-    "وب‌سایت رسمی، بیوگرافی و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک با تخصص در Next.js، React، NestJS، ASP.NET Core و معماری تمیز.",
+    "وب‌سایت و نمونه‌کارهای رسمی علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک متخصص در Next.js، React، NestJS و دات‌نت.",
   keywords: [
     "علیرضا عابدی",
     "Alireza Abedi",

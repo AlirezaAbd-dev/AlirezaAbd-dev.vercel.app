@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-const BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL || "https://portfolio.alireza-abedi.ir";
+const TARGET_HOST = "https://portfolio.alireza-abedi.ir";
 const APEX_URL = "https://alireza-abedi.ir";
 
 test.describe("Technical SEO & OpenGraph Regression Suite", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(BASE_URL, { waitUntil: "domcontentloaded" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
   });
 
   test("1. Validate <title> and <meta name='description'> length and quality", async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe("Technical SEO & OpenGraph Regression Suite", () => {
 
   test("2. Validate Self-Referencing Canonical URL", async ({ page }) => {
     const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
-    expect(canonical).toBe(BASE_URL);
+    expect(canonical).toBe(TARGET_HOST);
   });
 
   test("3. Validate OpenGraph and Twitter Meta Tags", async ({ page }) => {
@@ -33,7 +33,7 @@ test.describe("Technical SEO & OpenGraph Regression Suite", () => {
     expect(ogDescription).toBeTruthy();
 
     const ogUrl = await page.locator('meta[property="og:url"]').getAttribute("content");
-    expect(ogUrl).toBe(BASE_URL);
+    expect(ogUrl).toBe(TARGET_HOST);
 
     const ogType = await page.locator('meta[property="og:type"]').getAttribute("content");
     expect(ogType).toBe("website");
@@ -44,20 +44,16 @@ test.describe("Technical SEO & OpenGraph Regression Suite", () => {
   });
 
   test("4. Validate Root JSON-LD Graph with Person, Organization, WebSite & BreadcrumbList", async ({ page }) => {
-    const jsonLdElements = await page.locator('script[type="application/ld+json"]').all();
-    expect(jsonLdElements.length).toBeGreaterThanOrEqual(1);
-
-    let parsedGraph: any = null;
-    for (const elem of jsonLdElements) {
-      const text = await elem.textContent();
-      if (text) {
-        const json = JSON.parse(text);
-        if (json["@graph"]) {
-          parsedGraph = json["@graph"];
-          break;
-        }
+    const parsedGraph = await page.evaluate(() => {
+      const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+      for (const s of scripts) {
+        try {
+          const json = JSON.parse(s.textContent || "");
+          if (json["@graph"]) return json["@graph"];
+        } catch (_) {}
       }
-    }
+      return null;
+    });
 
     expect(parsedGraph).not.toBeNull();
     const personNode = parsedGraph.find((n: any) => n["@type"] === "Person");
@@ -70,25 +66,26 @@ test.describe("Technical SEO & OpenGraph Regression Suite", () => {
     expect(breadcrumbNode).toBeDefined();
     expect(breadcrumbNode.itemListElement).toHaveLength(2);
     expect(breadcrumbNode.itemListElement[0].item).toBe(APEX_URL);
-    expect(breadcrumbNode.itemListElement[1].item).toBe(BASE_URL);
+    expect(breadcrumbNode.itemListElement[1].item).toBe(TARGET_HOST);
   });
 
   test("5. Validate /myProjects ItemList Structured Data (SoftwareSourceCode)", async ({ page }) => {
-    await page.goto(`${BASE_URL}/myProjects`, { waitUntil: "domcontentloaded" });
+    await page.goto("/myProjects", { waitUntil: "domcontentloaded" });
 
-    const jsonLdElements = await page.locator('script[type="application/ld+json"]').all();
-    let itemList: any = null;
-
-    for (const elem of jsonLdElements) {
-      const text = await elem.textContent();
-      if (text) {
-        const json = JSON.parse(text);
-        if (json["@type"] === "ItemList") {
-          itemList = json;
-          break;
-        }
+    const itemList = await page.evaluate(() => {
+      const scripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
+      for (const s of scripts) {
+        try {
+          const data = JSON.parse(s.textContent || "");
+          if (data["@type"] === "ItemList") return data;
+          if (data["@graph"]) {
+            const match = data["@graph"].find((n: any) => n["@type"] === "ItemList");
+            if (match) return match;
+          }
+        } catch (_) {}
       }
-    }
+      return null;
+    });
 
     expect(itemList).not.toBeNull();
     expect(itemList["@type"]).toBe("ItemList");
@@ -126,30 +123,30 @@ test.describe("Technical SEO & OpenGraph Regression Suite", () => {
 
 test.describe("Crawler Directives & Protocol Endpoints", () => {
   test("8. Verify robots.txt Returns HTTP 200 with text/plain", async ({ request }) => {
-    const response = await request.get(`${BASE_URL}/robots.txt`);
+    const response = await request.get("/robots.txt");
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("text/plain");
 
     const text = await response.text();
     expect(text).toContain("User-Agent: *");
     expect(text).toContain("Allow: /");
-    expect(text).toContain(`Sitemap: ${BASE_URL}/sitemap.xml`);
+    expect(text).toContain(`Sitemap: ${TARGET_HOST}/sitemap.xml`);
   });
 
   test("9. Verify sitemap.xml Returns HTTP 200 with application/xml", async ({ request }) => {
-    const response = await request.get(`${BASE_URL}/sitemap.xml`);
+    const response = await request.get("/sitemap.xml");
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("xml");
 
     const xml = await response.text();
     expect(xml).toContain("<urlset");
-    expect(xml).toContain(`${BASE_URL}/`);
-    expect(xml).toContain(`${BASE_URL}/myProjects`);
-    expect(xml).toContain(`${BASE_URL}/about`);
+    expect(xml).toContain(`${TARGET_HOST}/`);
+    expect(xml).toContain(`${TARGET_HOST}/myProjects`);
+    expect(xml).toContain(`${TARGET_HOST}/about`);
   });
 
   test("10. Verify /llms.txt Machine-Readable Agent File", async ({ request }) => {
-    const response = await request.get(`${BASE_URL}/llms.txt`);
+    const response = await request.get("/llms.txt");
     expect(response.status()).toBe(200);
 
     const body = await response.text();

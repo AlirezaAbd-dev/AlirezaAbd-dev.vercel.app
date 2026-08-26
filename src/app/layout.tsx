@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | Projects — Alireza Abedi',
   },
   description:
-    'وب‌سایت رسمی، رزومه و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک با تخصص در Next.js، React، Angular، NestJS، ASP.NET Core، معماری تمیز و طراحی سیستم‌های مقیاس‌پذیر.',
+    "وب‌سایت و رزومه رسمی علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس فول‌استک متخصص در Next.js، React، NestJS، ASP.NET Core و معماری تمیز.",
   keywords: [
     'علیرضا عابدی',
     'Alireza Abedi',
