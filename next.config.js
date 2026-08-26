@@ -21,7 +21,7 @@ const nextConfig = {
     return [
       {
         // Global Security and Referrer Policy headers
-        source: "/(.*)",
+        source: "/:path*",
         headers: [
           {
             key: "X-Content-Type-Options",
@@ -43,7 +43,7 @@ const nextConfig = {
       },
       {
         // Cache-Control for Next.js immutable static hashed chunks
-        source: "/_next/static/(.*)",
+        source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
@@ -53,7 +53,7 @@ const nextConfig = {
       },
       {
         // Cache-Control for public static images and media assets
-        source: "/(.*)\\.(?:jpg|jpeg|gif|png|webp|avif|ico|svg|woff2|woff)",
+        source: "/:all*(jpg|jpeg|gif|png|webp|avif|ico|svg|woff2|woff)",
         headers: [
           {
             key: "Cache-Control",
