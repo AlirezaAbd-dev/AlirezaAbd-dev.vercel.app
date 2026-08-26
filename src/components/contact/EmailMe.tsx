@@ -25,9 +25,10 @@ export default function EmailMe() {
       <div className="absolute inset-0 opacity-10 dark:opacity-15 pointer-events-none flex items-center justify-center">
         <Image
           src={worldMap}
-          alt="world map"
+          alt="نقشه دسترسی و موقعیت مکانی علیرضا عابدی - رشت، گیلان، ایران"
           width={400}
           height={300}
+          loading="lazy"
           className="w-full h-auto object-contain dark:invert"
         />
       </div>

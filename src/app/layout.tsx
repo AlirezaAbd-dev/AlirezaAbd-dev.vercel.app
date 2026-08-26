@@ -212,6 +212,24 @@ const jsonLdGraph = {
       },
       inLanguage: 'fa-IR',
     },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${PORTFOLIO_DOMAIN}/#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Alireza Abedi (Official Hub)',
+          item: APEX_DOMAIN,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Portfolio & Projects',
+          item: PORTFOLIO_DOMAIN,
+        },
+      ],
+    },
   ],
 };
 

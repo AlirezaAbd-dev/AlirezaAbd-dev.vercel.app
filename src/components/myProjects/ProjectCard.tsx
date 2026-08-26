@@ -15,6 +15,7 @@ export default function ProjectCard({
   index: number;
 }) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const isAboveTheFold = index < 2;
 
   return (
     <SpotlightCard
@@ -40,9 +41,11 @@ export default function ProjectCard({
             )}
             <Image
               src={item.image}
-              alt={item.title}
+              alt={`${item.title} - پروژه برنامه نویسی علیرضا عابدی`}
               width={600}
-              height={380}
+              height={338}
+              priority={isAboveTheFold}
+              loading={isAboveTheFold ? undefined : "lazy"}
               className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 ${
                 isImageLoaded ? "opacity-100" : "opacity-0"
               }`}
