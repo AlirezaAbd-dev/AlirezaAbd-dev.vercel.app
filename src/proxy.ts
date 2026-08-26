@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://alireza-abedi.ir";
+const PORTFOLIO_DOMAIN = "https://portfolio.alireza-abedi.ir";
+const APEX_DOMAIN = "https://alireza-abedi.ir";
 
 function getMarkdownForPath(pathname: string): string {
   switch (pathname) {
@@ -15,6 +16,8 @@ function getMarkdownForPath(pathname: string): string {
 - **سابقه کاری**: ۳.۵ سال (۱ سال شرکتی + ۲.۵ سال فریلنس)
 - **تحصیلات**: کارشناسی ارشد مهندسی کامپیوتر - نرم‌افزار (دانشگاه آزاد اسلامی واحد رشت)
 - **موقعیت مکانی**: رشت، گیلان، ایران (همکاری حضوری و ریموت)
+- **دامنه پورتفولیو**: ${PORTFOLIO_DOMAIN}
+- **دامنه رسمی**: ${APEX_DOMAIN}
 - **ایمیل**: alireza.abedi9310@gmail.com
 - **تلگرام**: https://t.me/AlirezaAbd_Dev
 - **گیت‌هاب**: https://github.com/AlirezaAbd-dev
@@ -27,12 +30,12 @@ function getMarkdownForPath(pathname: string): string {
 - **معماری**: Clean Architecture, Domain-Driven Design (DDD), Event-Driven Microservices, Docker
 
 ## صفحات و بخش‌های پورتفولیو
-- [درباره من (${BASE_URL}/about)](${BASE_URL}/about): بیوگرافی کامل، جزئیات تحصیلی و نمودار مهارت‌ها
-- [نمونه‌کارها (${BASE_URL}/myProjects)](${BASE_URL}/myProjects): بیش از ۱۰ پروژه شاخص سازمانی و متن‌باز
-- [اتاق بازی (${BASE_URL}/games)](${BASE_URL}/games): ۴ مینی‌گیم فکری تعاملی با سنتز صدای وب‌آدیو
-- [ارتباط با من (${BASE_URL}/contactUs)](${BASE_URL}/contactUs): فرم تماس آنلاین و راه‌های ارتباطی
-- [حریم خصوصی (${BASE_URL}/privacy)](${BASE_URL}/privacy): تعهدات امنیتی، عدم رهگیری و شفافیت اطلاعات
-- [راهنمای مدل‌های زبانی (${BASE_URL}/llms.txt)](${BASE_URL}/llms.txt): مستندات ماشین‌خوان جهت پردازش عامل‌های هوشمند
+- [درباره من (${PORTFOLIO_DOMAIN}/about)](${PORTFOLIO_DOMAIN}/about): بیوگرافی کامل، جزئیات تحصیلی و نمودار مهارت‌ها
+- [نمونه‌کارها (${PORTFOLIO_DOMAIN}/myProjects)](${PORTFOLIO_DOMAIN}/myProjects): بیش از ۱۰ پروژه شاخص سازمانی و متن‌باز
+- [اتاق بازی (${PORTFOLIO_DOMAIN}/games)](${PORTFOLIO_DOMAIN}/games): ۴ مینی‌گیم فکری تعاملی با سنتز صدای وب‌آدیو
+- [ارتباط با من (${PORTFOLIO_DOMAIN}/contactUs)](${PORTFOLIO_DOMAIN}/contactUs): فرم تماس آنلاین و راه‌های ارتباطی
+- [حریم خصوصی (${PORTFOLIO_DOMAIN}/privacy)](${PORTFOLIO_DOMAIN}/privacy): تعهدات امنیتی، عدم رهگیری و شفافیت اطلاعات
+- [راهنمای مدل‌های زبانی (${PORTFOLIO_DOMAIN}/llms.txt)](${PORTFOLIO_DOMAIN}/llms.txt): مستندات ماشین‌خوان جهت پردازش عامل‌های هوشمند
 `;
 
     case "/about":
@@ -45,6 +48,7 @@ function getMarkdownForPath(pathname: string): string {
 - **تاریخ تولد**: ۱۳۸۲/۰۳/۲۰ (۲۰ خرداد ۱۳۸۲ / 10 June 2003)
 - **محل سکونت**: رشت، استان گیلان، ایران
 - **ایمیل رسمی**: alireza.abedi9310@gmail.com
+- **پورتفولیو**: ${PORTFOLIO_DOMAIN}
 
 ## سوابق تحصیلی
 1. **کارشناسی ارشد مهندسی کامپیوتر - نرم‌افزار**: دانشگاه آزاد اسلامی رشت (۱۴۰۴ - اکنون)
@@ -65,47 +69,54 @@ function getMarkdownForPath(pathname: string): string {
 
     case "/myProjects":
       return `# نمونه‌کارها و پروژه‌ها | علیرضا عابدی (Alireza Abedi)
-> فهرست پروژه‌های شاخص سازمانی و متن‌باز
+> فهرست پروژه‌های شاخص سازمانی و متن‌باز — ${PORTFOLIO_DOMAIN}/myProjects
 
 1. **معماری میکروسرویس سازمانی دات‌نت (Dotnet Microservices)**
    - **تکنولوژی‌ها**: C#, .NET Core, Microservices, Docker, RabbitMQ, SQL Server
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/Dotnet-Microservices
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#dotnet-microservices
    - **توضیحات**: معماری میکروسرویس مبتنی بر رویداد (Event-Driven)، پیام‌رسانی با RabbitMQ و کانتینرسازی داکر.
 
 2. **پلتفرم جامع املاک NestJS Realtor API**
    - **تکنولوژی‌ها**: NestJS, TypeScript, PostgreSQL, Prisma ORM, JWT Auth, Clean Architecture
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/Nest-Realtor-Api
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#nest-realtor
    - **توضیحات**: توسعه RESTful API مقیاس‌پذیر برای مدیریت معاملات املاک و احراز هویت نقش‌محور.
 
 3. **شبکه اجتماعی بلبلر (Bolboler Social App)**
    - **تکنولوژی‌ها**: Next.js, React, TypeScript, Tailwind CSS, REST API
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/Bolboler
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#bolboler
    - **توضیحات**: شبکه اجتماعی تعاملی با فید اختصاصی، ارسال پست، لایک، ریتوییت و SSR بهینه‌سازی‌شده.
 
 4. **سامانه مدیریت و استریم رسانه با ASP.NET Core**
    - **تکنولوژی‌ها**: C#, ASP.NET Core, Entity Framework Core, SQL Server, MVC Architecture
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/Movies-ASP.NET-Core
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#movies-aspnet
    - **توضیحات**: پلتفرم مدیریت محتوا و رسانه با معماری MVC و تراکنش‌های EF Core.
 
 5. **سامانه تماس تصویری بلادرنگ (WebRTC Video Call)**
    - **تکنولوژی‌ها**: JavaScript, WebRTC, Socket.io, Node.js, P2P Streaming
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/webRTC-VideoCall
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#webrtc-call
    - **توضیحات**: تماس ویدیویی و صوتی همتابه‌همتا (Peer-to-Peer) بدون واسطه با تاخیر بسیار کم.
 
 6. **دستیار هوش مصنوعی و ربات چت هوشمند (Gemini AI)**
    - **تکنولوژی‌ها**: Python, Gemini API, Prompt Engineering, Async IO
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/Gemini-Chat-Bot
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#gemini-chatbot
    - **توضیحات**: چت‌بات مکالمه‌ای چندحالته با قدرت مدل Gemini 2.5 Pro و تحلیل زمینه هوشمند.
 
 7. **معماری فول‌استک Type-Safe با tRPC & Next.js**
    - **تکنولوژی‌ها**: tRPC, Next.js, TypeScript, Prisma, Zod Validation
    - **لینک گیت‌هاب**: https://github.com/AlirezaAbd-dev/TRPC-Example
+   - **لینک مستقیم**: ${PORTFOLIO_DOMAIN}/myProjects#trpc-type-safe
    - **توضیحات**: طراحی معماری کلاینت-سرور با امنیت کامل نوع داده‌ها بدون نیاز به تولید کد مجدد.
 `;
 
     case "/games":
       return `# اتاق بازی و چالش‌های فکری تعاملی | Cyber Arcade
-> ۴ مینی‌گیم فکری آنلاین در پورتفولیوی علیرضا عابدی
+> ۴ مینی‌گیم فکری آنلاین در پورتفولیوی علیرضا عابدی — ${PORTFOLIO_DOMAIN}/games
 
 1. **Cyber Tile Match (Tile Family 3D)**: تطبیق سه‌تایی کاشی‌ها با ۳ اسلات خالی و پاورآپ‌های جادویی.
 2. **Quantum Liquid Sort (Water Sort)**: تفکیک مایعات رنگی در لوله‌های آزمایشگاهی کوانتومی.
@@ -125,7 +136,7 @@ function getMarkdownForPath(pathname: string): string {
 - **لینکدین**: https://www.linkedin.com/in/alireza-abedi-714280235
 - **گیت‌هاب**: https://github.com/AlirezaAbd-dev
 - **موقعیت**: رشت، استان گیلان، ایران
-- **فرم پیام**: در دسترس در نسخه تعاملی وب‌سایت https://alireza-abedi.ir/contactUs
+- **فرم پیام آنلاین**: ${PORTFOLIO_DOMAIN}/contactUs
 `;
 
     case "/privacy":
@@ -145,13 +156,13 @@ function getMarkdownForPath(pathname: string): string {
 > مسیر درخواستی (${pathname}) یافت نشد.
 
 برای راهنمایی و بازیابی، از پیوندهای زیر استفاده کنید:
-- راهنمای هوش مصنوعی: ${BASE_URL}/llms.txt
-- نقشه سایت: ${BASE_URL}/sitemap.xml
-- صفحه اصلی: ${BASE_URL}/
-- درباره من: ${BASE_URL}/about
-- پروژه‌ها: ${BASE_URL}/myProjects
-- تماس: ${BASE_URL}/contactUs
-- حریم خصوصی: ${BASE_URL}/privacy
+- راهنمای هوش مصنوعی: ${PORTFOLIO_DOMAIN}/llms.txt
+- نقشه سایت: ${PORTFOLIO_DOMAIN}/sitemap.xml
+- صفحه اصلی: ${PORTFOLIO_DOMAIN}/
+- درباره من: ${PORTFOLIO_DOMAIN}/about
+- پروژه‌ها: ${PORTFOLIO_DOMAIN}/myProjects
+- تماس: ${PORTFOLIO_DOMAIN}/contactUs
+- حریم خصوصی: ${PORTFOLIO_DOMAIN}/privacy
 `;
   }
 }

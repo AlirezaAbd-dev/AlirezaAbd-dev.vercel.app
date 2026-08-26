@@ -4,12 +4,13 @@ import { ReactNode } from 'react';
 import AppContainer from '../containers/AppContainer';
 import { Metadata, Viewport } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://alireza-abedi.ir';
+const PORTFOLIO_DOMAIN = 'https://portfolio.alireza-abedi.ir';
+const APEX_DOMAIN = 'https://alireza-abedi.ir';
 
 export const metadata: Metadata = {
   title: {
-    default: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi Portfolio',
-    template: '%s | علیرضا عابدی - Alireza Abedi',
+    default: 'Portfolio & Projects — Alireza Abedi',
+    template: '%s | Projects — Alireza Abedi',
   },
   description:
     'وب‌سایت رسمی، رزومه و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و مهندس نرم‌افزار فول‌استک با تخصص در Next.js، React، Angular، NestJS، ASP.NET Core، معماری تمیز و طراحی سیستم‌های مقیاس‌پذیر.',
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     'علیرضا عابدی',
     'Alireza Abedi',
     'Alireza Abedi Portfolio',
+    'Alireza Abedi Projects',
     'علیرضا عابدی برنامه نویس',
     'توسعه دهنده فرانت اند',
     'لید تیم فرانت اند',
@@ -32,37 +34,37 @@ export const metadata: Metadata = {
     'رزومه علیرضا عابدی',
   ],
   authors: [
-    { name: 'علیرضا عابدی - Alireza Abedi', url: 'https://alireza-abedi.ir' },
+    { name: 'علیرضا عابدی - Alireza Abedi', url: APEX_DOMAIN },
   ],
   creator: 'علیرضا عابدی (Alireza Abedi)',
   publisher: 'علیرضا عابدی (Alireza Abedi)',
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(PORTFOLIO_DOMAIN),
   alternates: {
-    canonical: '/',
+    canonical: PORTFOLIO_DOMAIN,
   },
   openGraph: {
     type: 'website',
     locale: 'fa_IR',
-    url: siteUrl,
-    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi Portfolio',
+    url: PORTFOLIO_DOMAIN,
+    title: 'Portfolio & Projects — Alireza Abedi',
     description:
       'رزومه، بیوگرافی و نمونه‌کارهای رسمی علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک. متخصص در Next.js, React, NestJS, ASP.NET Core.',
     siteName: 'Alireza Abedi Portfolio - علیرضا عابدی',
     images: [
       {
-        url: '/avatar.png',
-        width: 800,
-        height: 800,
-        alt: 'علیرضا عابدی - Alireza Abedi Portfolio',
+        url: `${PORTFOLIO_DOMAIN}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio & Projects — Alireza Abedi Preview Banner',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'علیرضا عابدی | لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک - Alireza Abedi',
+    title: 'Portfolio & Projects — Alireza Abedi',
     description:
       'رزومه و نمونه‌کارهای علیرضا عابدی (Alireza Abedi)، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک.',
-    images: ['/avatar.png'],
+    images: [`${PORTFOLIO_DOMAIN}/opengraph-image`],
   },
   robots: {
     index: true,
@@ -100,13 +102,13 @@ const jsonLdGraph = {
   '@graph': [
     {
       '@type': 'Person',
-      '@id': `${siteUrl}/#person`,
+      '@id': `${APEX_DOMAIN}/#person`,
       name: 'علیرضا عابدی',
       alternateName: ['Alireza Abedi', 'علیرضا عابدی - Alireza Abedi', 'Alireza Abedi Portfolio'],
       description:
         'لید تیم فرانت‌اند و توسعه‌دهنده ارشد فول‌استک با بیش از ۳.۵ سال سابقه حرفه‌ای، متخصص در Next.js، React، NestJS، ASP.NET Core و Clean Architecture.',
-      url: siteUrl,
-      image: `${siteUrl}/avatar.png`,
+      url: APEX_DOMAIN,
+      image: `${PORTFOLIO_DOMAIN}/avatar.png`,
       jobTitle: 'Frontend Team Lead & Full-Stack Developer',
       email: 'alireza.abedi9310@gmail.com',
       telephone: '+98-990-931-0164',
@@ -128,14 +130,14 @@ const jsonLdGraph = {
       ],
       worksFor: {
         '@type': 'Organization',
-        '@id': `${siteUrl}/#organization`,
+        '@id': `${APEX_DOMAIN}/#organization`,
       },
       sameAs: [
         'https://github.com/AlirezaAbd-dev',
         'https://www.linkedin.com/in/alireza-abedi-714280235',
         'https://t.me/AlirezaAbd_Dev',
         'https://instagram.com/alirezaabd.dev',
-        'https://portfolio.alireza-abedi.ir',
+        PORTFOLIO_DOMAIN,
         'https://AlirezaAbd-dev.vercel.app',
       ],
       knowsAbout: [
@@ -164,16 +166,16 @@ const jsonLdGraph = {
     },
     {
       '@type': 'Organization',
-      '@id': `${siteUrl}/#organization`,
+      '@id': `${APEX_DOMAIN}/#organization`,
       name: 'علیرضا عابدی - خدمات مهندسی نرم‌افزار و وب (Alireza Abedi Software Development)',
       alternateName: 'Alireza Abedi Engineering & Consulting',
-      url: siteUrl,
-      logo: `${siteUrl}/icon.png`,
-      image: `${siteUrl}/avatar.png`,
+      url: APEX_DOMAIN,
+      logo: `${PORTFOLIO_DOMAIN}/icon.png`,
+      image: `${PORTFOLIO_DOMAIN}/avatar.png`,
       description:
         'خدمات تخصصی طراحی، پیاده‌سازی و مشاوره معماری سیستم‌های سازمانی وب، CRM، فرانت‌اند مدرن با Next.js/React و سرویس‌های مقیاس‌پذیر دات‌نت و نست‌جی‌اس.',
       founder: {
-        '@id': `${siteUrl}/#person`,
+        '@id': `${APEX_DOMAIN}/#person`,
       },
       address: {
         '@type': 'PostalAddress',
@@ -201,12 +203,12 @@ const jsonLdGraph = {
     },
     {
       '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      url: siteUrl,
-      name: 'Alireza Abedi Portfolio - وب‌سایت علیرضا عابدی',
+      '@id': `${PORTFOLIO_DOMAIN}/#website`,
+      url: PORTFOLIO_DOMAIN,
+      name: 'Portfolio & Projects — Alireza Abedi',
       description: 'وب‌سایت و پورتفولیوی رسمی مهندسی علیرضا عابدی، لید تیم فرانت‌اند و توسعه‌دهنده فول‌استک.',
       publisher: {
-        '@id': `${siteUrl}/#organization`,
+        '@id': `${APEX_DOMAIN}/#organization`,
       },
       inLanguage: 'fa-IR',
     },

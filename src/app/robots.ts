@@ -1,14 +1,14 @@
 import { MetadataRoute } from "next";
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://alireza-abedi.ir";
+const PORTFOLIO_DOMAIN = "https://portfolio.alireza-abedi.ir";
 
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${PORTFOLIO_DOMAIN}/sitemap.xml`,
   };
 }
